@@ -22,6 +22,21 @@
                 </li>
             @endpermission
 
+                <li class="">
+                    <a href="#">
+                        <i class="fa fa-building fa-fw"></i>
+                        @lang('app.company')
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level collapse">
+                            <li>
+                                <a href="#" class="">
+                                    @lang('app.subsidiaries')
+                                </a>
+                            </li>                        
+                    </ul>
+                </li>
+
             @permission('users.activity')
                 <li class="{{ Request::is('activity*') ? 'active open' : ''  }}">
                     <a href="{{ route('activity.index') }}" class="{{ Request::is('activity*') ? 'active' : ''  }}">

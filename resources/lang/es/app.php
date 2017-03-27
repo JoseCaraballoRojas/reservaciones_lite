@@ -15,6 +15,9 @@ return [
     'auth_and_registration' => 'Autenticación',
     'notifications' => 'Notificaciones',
     'action' => 'Acción',
+    'company' => 'Empresa',
+    'subsidiary' => 'Sucursal', 
+    'subsidiaries' => 'Sucursales', 
 
     // Activity Log Section
     'activity_log' => 'Registro de Actividades',

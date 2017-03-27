@@ -15,6 +15,9 @@ return [
     'auth_and_registration' => 'Auth & Registration',
     'notifications' => 'Notifications',
     'action' => 'Action',
+    'company' => 'Company',
+    'subsidiary' => 'Subsidiary',  
+    'subsidiaries' => 'Subsidiaries',   
 
     //Installation
     'installation' => 'Installation',
