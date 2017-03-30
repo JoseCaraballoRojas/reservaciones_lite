@@ -33,7 +33,14 @@
                                 <a href="#" class="">
                                     @lang('app.subsidiaries')
                                 </a>
-                            </li>                        
+                            </li>
+                    </ul>
+                    <ul class="nav nav-second-level collapse">
+                            <li>
+                                <a href="{{ route('empresas.create') }}" class="">
+                                    @lang('app.subsidiaries')
+                                </a>
+                            </li>
                     </ul>
                 </li>
 
@@ -107,5 +114,5 @@
         </ul>
     </div>
     <!-- /.sidebar-collapse -->
-    
+
 </div>

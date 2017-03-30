@@ -376,3 +376,14 @@ $router->get('install/error', [
     'as' => 'install.error',
     'uses' => 'InstallController@error'
 ]);
+
+//// rutas nuevas para la aplicacion
+
+/*
+* Empresas
+*/
+Route::resource('empresas', 'EmpresasController');
+Route::get('empresa/{id}/destroy', [
+        'uses' => 'EmpresasController@destroy',
+        'as' => 'empresas.destroy'
+        ]);
