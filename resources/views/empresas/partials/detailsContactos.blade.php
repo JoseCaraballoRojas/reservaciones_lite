@@ -5,7 +5,7 @@
         <div class="panel-body">
             <div class="form-group">
                 {!! Form::label('user_id', 'Usuario') !!}
-                {!! Form::select('contacto1_id', $users, null, ['class' => 'form-control',
+                {!! Form::select('contacto1_id', $users, $edit ? $empresa->contacto1_id : '', ['class' => 'form-control',
                 'placeholder' => 'selecione un contacto...', 'required'  ]) !!}
             </div>
       </div>
@@ -17,7 +17,7 @@
         <div class="panel-body">
             <div class="form-group">
                 {!! Form::label('user_id', 'Usuario') !!}
-                {!! Form::select('contacto2_id', $users, null, ['class' => 'form-control',
+                {!! Form::select('contacto2_id', $users, $edit ? $empresa->contacto2_id : '', ['class' => 'form-control',
                 'placeholder' => 'selecione un contacto...']) !!}
             </div>
       </div>

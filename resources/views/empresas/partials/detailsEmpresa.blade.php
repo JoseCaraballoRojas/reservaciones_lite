@@ -7,17 +7,17 @@
               <div class="col-md-6">
                   <div class="form-group">
                       {!! Form::label('nombre', 'Razon social nombre') !!}
-                      {!! Form::text('nombre',null, ['class' => 'form-control',
+                      {!! Form::text('nombre', $edit ? $empresa->nombre : '', ['class' => 'form-control',
                       'placeholder' => 'Razon social nombre', 'required']) !!}
                   </div>
                   <div class="form-group">
                       {!! Form::label('direccion', 'Dirección') !!}
-                      {!! Form::text('direccion',null, ['class' => 'form-control',
+                      {!! Form::text('direccion', $edit ? $empresa->direccion : '', ['class' => 'form-control',
                       'placeholder' => 'Dirección']) !!}
                   </div>
                   <div class="form-group">
                       {!! Form::label('ciudad', 'Ciudad') !!}
-                      {!! Form::text('ciudad',null, ['class' => 'form-control',
+                      {!! Form::text('ciudad', $edit ? $empresa->ciudad : '', ['class' => 'form-control',
                       'placeholder' => 'Ciudad']) !!}
                   </div>
 
@@ -26,12 +26,12 @@
 
                   <div class="form-group">
                       {!! Form::label('estado', 'Estado') !!}
-                      {!! Form::text('estado',null, ['class' => 'form-control',
+                      {!! Form::text('estado', $edit ? $empresa->estado : '', ['class' => 'form-control',
                       'placeholder' => 'Estado']) !!}
                   </div>
                   <div class="form-group">
                       {!! Form::label('telefono', 'Telefono fijo') !!}
-                      {!! Form::text('telefono',null, ['class' => 'form-control',
+                      {!! Form::text('telefono', $edit ? $empresa->telefono : '', ['class' => 'form-control',
                       'placeholder' => 'Telefono fijo']) !!}
                   </div>
                   <div class="form-group">

@@ -27,7 +27,13 @@ class EmpresasController extends Controller
 
     public function index()
     {
-        return view('empresas.index');
+      $empresas = Empresa::orderBy('id', 'DESC')->paginate(5);
+      $empresas->each(function ($empresas){
+        $empresas->username;
+      });
+
+        return view('empresas.index')
+            ->with('empresas', $empresas);
     }
 
     /**
@@ -37,8 +43,10 @@ class EmpresasController extends Controller
      */
     public function create()
     {
+        $edit = false;
         return view('empresas.create', [
-            'users' => $this->users->getUsers()
+            'users' => $this->users->getUsers(),
+            'edit' => $edit
         ]);
     }
 
@@ -52,7 +60,7 @@ class EmpresasController extends Controller
     {
       $empresa = new Empresa($request->all());
       $empresa->save();
-      return redirect()->route('empresas.create')
+      return redirect()->route('empresas.index')
           ->withSuccess('Empresa creada con exito');
 
     }
@@ -76,7 +84,11 @@ class EmpresasController extends Controller
      */
     public function edit($id)
     {
-        //
+      $empresa = Empresa::find($id);
+      $empresa->user;
+      $edit = true;
+      $users= $this->users->getUsers();
+      return view('empresas.edit', compact('edit','users', 'empresa'));
     }
 
     /**
@@ -86,9 +98,14 @@ class EmpresasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(EmpresaRequest $request, $id)
     {
-        //
+      $empresa = Empresa::find($id);
+      $empresa->fill($request->all());
+      $empresa->save();
+      return redirect()->route('empresas.index')
+          ->withSuccess('Empresa actualizada con exito');
+
     }
 
     /**
@@ -99,6 +116,9 @@ class EmpresasController extends Controller
      */
     public function destroy($id)
     {
-        //
+      $empresa = Empresa::find($id);
+      $empresa->delete();
+      return redirect()->route('empresas.index')
+          ->withSuccess('Empresa eliminada con exito');
     }
 }

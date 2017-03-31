@@ -23,25 +23,10 @@
             @endpermission
 
                 <li class="">
-                    <a href="#">
+                    <a href="{{ route('empresas.index') }}">
                         <i class="fa fa-building fa-fw"></i>
-                        @lang('app.company')
-                        <span class="fa arrow"></span>
+                        @lang('app.company')s
                     </a>
-                    <ul class="nav nav-second-level collapse">
-                            <li>
-                                <a href="#" class="">
-                                    @lang('app.subsidiaries')
-                                </a>
-                            </li>
-                    </ul>
-                    <ul class="nav nav-second-level collapse">
-                            <li>
-                                <a href="{{ route('empresas.create') }}" class="">
-                                    @lang('app.subsidiaries')
-                                </a>
-                            </li>
-                    </ul>
                 </li>
 
             @permission('users.activity')
