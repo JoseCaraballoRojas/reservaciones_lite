@@ -73,7 +73,13 @@ class EmpresasController extends Controller
      */
     public function show($id)
     {
-        //
+      $empresa = Empresa::find($id);
+      $contacto1= $this->users->findUser($empresa->contacto1_id);
+      if ($empresa->contacto2_id)
+      {
+          $contacto2= $this->users->findUser($empresa->contacto2_id);
+      }
+      return view('empresas.view', compact('empresa', 'contacto1', 'contacto2'));
     }
 
     /**

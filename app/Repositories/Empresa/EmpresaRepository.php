@@ -18,4 +18,8 @@ class EmpresaRepository
       return Empresa::create($data);
   }
 
+  public function findUser($id)
+  {
+      return User::where('id', $id)->get();
+  }
 }

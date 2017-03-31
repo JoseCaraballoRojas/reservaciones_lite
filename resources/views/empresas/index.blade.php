@@ -50,7 +50,7 @@
                     <td>{{ $empresa->user->username }}</td>
                     <td>{{ $empresa->created_at->format('Y-m-d') }}</td>
                     <td class="text-center">
-                        <a href="#" class="btn btn-success btn-circle"
+                        <a href="{{ route('empresas.show', $empresa->id) }}" class="btn btn-success btn-circle"
                            title="Ver Empresa" data-toggle="tooltip" data-placement="top">
                             <i class="glyphicon glyphicon-eye-open"></i>
                         </a>
