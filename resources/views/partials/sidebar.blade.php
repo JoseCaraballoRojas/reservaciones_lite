@@ -21,14 +21,18 @@
                     </a>
                 </li>
             @endpermission
-
                 <li class="">
                     <a href="{{ route('empresas.index') }}">
                         <i class="fa fa-building fa-fw"></i>
                         @lang('app.company')s
                     </a>
                 </li>
-
+                <li class="">
+                    <a href="{{ route('sucursales.create') }}">
+                        <i class="fa fa-building fa-fw"></i>
+                        @lang('app.subsidiaries')
+                    </a>
+                </li>
             @permission('users.activity')
                 <li class="{{ Request::is('activity*') ? 'active open' : ''  }}">
                     <a href="{{ route('activity.index') }}" class="{{ Request::is('activity*') ? 'active' : ''  }}">

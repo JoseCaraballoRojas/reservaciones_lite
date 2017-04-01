@@ -104,8 +104,15 @@ class User extends Model implements AuthenticatableContract,
     {
         return $this->hasMany(Activity::class, 'user_id');
     }
+    //funciones nuevas///////
     public function empresas()
     {
         return $tihis->hasMany('Vanguard\Empresa');
     }
+
+    public function sucursales()
+    {
+        return $tihis->hasMany('Vanguard\Sucursal');
+    }
+
 }

@@ -17,5 +17,10 @@ class Empresa extends Model
     {
       return $this->belongsTo('Vanguard\User', 'contacto1_id');
     }
+    
+    public function sucursales()
+    {
+        return $tihis->hasMany('Vanguard\Sucursal');
+    }
 
 }
