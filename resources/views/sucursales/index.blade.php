@@ -63,7 +63,7 @@
                         <a href="{{ route('sucursales.destroy', $sucursal->id) }}" class="btn btn-danger btn-circle" title="Eliminar Sucursal"
                                 data-toggle="tooltip"
                                 data-placement="top"
-                                data-method="GET"
+                                data-method="DELETE"
                                 data-confirm-title="Confirme por favor!"
                                 data-confirm-text="Seguro que desea eliminar esta sucursal"
                                 data-confirm-delete="Si, la elimine">

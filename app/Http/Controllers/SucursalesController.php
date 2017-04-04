@@ -33,7 +33,7 @@ class SucursalesController extends Controller
           $sucursales->empresa;
           $sucursales->user;
         });
-          
+
           return view('sucursales.index')
               ->with('sucursales', $sucursales);
     }
@@ -63,7 +63,7 @@ class SucursalesController extends Controller
     {
         $sucursal = new Sucursal($request->all());
         $sucursal->save();
-        return redirect()->route('sucursales.create')
+        return redirect()->route('sucursales.index')
             ->withSuccess('Sucursal creada con exito');
     }
 
@@ -86,7 +86,13 @@ class SucursalesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $sucursal = Sucursal::find($id);
+        $sucursal->user;
+        $sucursal->empresa;
+        $edit = true;
+        $users = $this->sucursales->getUsers();
+        $empresas = $this->sucursales->getEmpresas();
+        return view('sucursales.edit', compact('edit', 'users', 'empresas', 'sucursal'));
     }
 
     /**
@@ -96,9 +102,13 @@ class SucursalesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(SucursalRequest $request, $id)
     {
-        //
+        $sucursal = Sucursal::find($id);
+        $sucursal->fill($request->all());
+        $sucursal->save();
+        return redirect()->route('sucursales.index')
+            ->withSuccess('Sucursal actualizada con exito');
     }
 
     /**
@@ -109,6 +119,9 @@ class SucursalesController extends Controller
      */
     public function destroy($id)
     {
-        //
+      $sucursal = Sucursal::find($id);
+      $sucursal->delete();
+      return redirect()->route('sucursales.index')
+          ->withSuccess('Sucursal eliminada con exito');
     }
 }
