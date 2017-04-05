@@ -75,7 +75,14 @@ class SucursalesController extends Controller
      */
     public function show($id)
     {
-        //
+      $sucursal = Sucursal::find($id);
+      $contacto1= $this->sucursales->findUser($sucursal->contacto1_id);
+      if ($sucursal->contacto2_id)
+      {
+          $contacto2= $this->sucursales->findUser($sucursal->contacto2_id);
+      }
+      return view('sucursales.view', compact('sucursal', 'contacto1', 'contacto2'));
+
     }
 
     /**

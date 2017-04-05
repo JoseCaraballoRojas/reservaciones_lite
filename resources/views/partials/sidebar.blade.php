@@ -28,7 +28,7 @@
                     </a>
                 </li>
                 <li class="">
-                    <a href="{{ route('sucursales.create') }}">
+                    <a href="{{ route('sucursales.index') }}">
                         <i class="fa fa-building fa-fw"></i>
                         @lang('app.subsidiaries')
                     </a>
