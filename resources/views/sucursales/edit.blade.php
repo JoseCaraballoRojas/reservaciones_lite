@@ -13,7 +13,7 @@
                 <ol class="breadcrumb">
                     <li><a href="{{ route('dashboard') }}">@lang('app.home')</a></li>
                     <li><a href="{{ route('sucursales.index') }}"> @lang('app.subsidiaries') </a></li>
-                    <li class="active">@lang('app.create')</li>
+                    <li class="active">@lang('app.edit')</li>
                 </ol>
             </div>
         </h1>

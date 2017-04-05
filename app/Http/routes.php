@@ -397,4 +397,12 @@ Route::get('sucursal/{id}/destroy', [
         'as' => 'sucursales.destroy'
         ]);
 
+/*
+* Areas
+*/
+Route::resource('areas', 'AreasController');
+Route::get('area/{id}/destroy', [
+        'uses' => 'AreasController@destroy',
+        'as' => 'areas.destroy'
+        ]);
 ///////////////////////////////////

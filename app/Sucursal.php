@@ -23,4 +23,9 @@ class Sucursal extends Model
       return $this->belongsTo('Vanguard\Empresa');
     }
 
+    public function areas()
+    {
+        return $tihis->hasMany('Vanguard\Area');
+    }
+
 }

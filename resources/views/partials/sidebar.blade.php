@@ -33,6 +33,12 @@
                         @lang('app.subsidiaries')
                     </a>
                 </li>
+                <li class="">
+                    <a href="{{ route('areas.index') }}">
+                        <i class="fa fa-building fa-fw"></i>
+                        areas
+                    </a>
+                </li>
             @permission('users.activity')
                 <li class="{{ Request::is('activity*') ? 'active open' : ''  }}">
                     <a href="{{ route('activity.index') }}" class="{{ Request::is('activity*') ? 'active' : ''  }}">

@@ -1,18 +1,18 @@
 @extends('layouts.app')
 
-@section('page-title', trans('app.company'))
+@section('page-title', 'Editar area')
 
 @section('content')
 
 <div class="row">
     <div class="col-lg-12">
         <h1 class="page-header">
-            Editar Empresa
-            <small>Detalles de la Empresa</small>
+            Editar Area
+            <small>Detalles del Area</small>
             <div class="pull-right">
                 <ol class="breadcrumb">
                     <li><a href="{{ route('dashboard') }}">@lang('app.home')</a></li>
-                    <li><a href="{{ route('empresas.index') }}"> Empresas </a></li>
+                    <li><a href="{{ route('areas.index') }}"> Areas </a></li>
                     <li class="active">@lang('app.edit')</li>
                 </ol>
             </div>
@@ -21,16 +21,16 @@
 </div>
 
 @include('partials.messages')
-{!! Form::open(['route' => ['empresas.update', $empresa], 'method' => 'PUT' ])  !!}
-@include('empresas.partials.detailsEmpresa')
-@include('empresas.partials.detailsContactos')
+{!! Form::open(['route' => ['areas.update', $area], 'method' => 'PUT' ])  !!}
+@include('areas.partials.detailsArea')
+@include('areas.partials.detailsContactos')
 
 <div class="row">
     <div class="col-md-12">
         <div class="form-group">
             <button type="submit" class="btn btn-primary">
                 <i class="fa fa-refresh"></i>
-                Actualizar Empresa
+                Actualizar Area
             </button>
       </div>
     </div>
