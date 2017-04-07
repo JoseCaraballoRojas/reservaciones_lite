@@ -52,15 +52,18 @@
                     <td>{{ $empresa->user->username }}</td>
                     <td>{{ $empresa->created_at->format('Y-m-d') }}</td>
                     <td class="text-center">
-                        <a href="{{ route('empresas.show', $empresa->id) }}" class="btn-floating btn-large waves-effect waves-light green"
+                        <a href="{{ route('empresas.show', $empresa->id) }}"
+                          class="btn-floating  waves-effect waves-light green"
                            title="Ver Empresa" data-toggle="tooltip" data-placement="top">
                             <i class="mdi-action-visibility"></i>
                         </a>
-                        <a href="{{ route('empresas.edit', $empresa->id) }}" class="btn-floating btn-large waves-effect waves-light blue" title="Editar Empresa"
+                        <a href="{{ route('empresas.edit', $empresa->id) }}"
+                          class="btn-floating  waves-effect waves-light blue" title="Editar Empresa"
                                 data-toggle="tooltip" data-placement="top">
                             <i class="mdi-content-create"></i>
                         </a>
-                        <a href="{{ route('empresas.destroy', $empresa->id) }}" class="btn-floating btn-large waves-effect waves-light red darken-2" title="Eliminar Empresa"
+                        <a href="{{ route('empresas.destroy', $empresa->id) }}"
+                          class="btn-floating  waves-effect waves-light red darken-2" title="Eliminar Empresa"
                                 data-toggle="tooltip"
                                 data-placement="top"
                                 data-method="GET"

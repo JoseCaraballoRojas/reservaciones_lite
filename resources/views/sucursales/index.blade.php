@@ -54,17 +54,17 @@
                     <td>{{ $sucursal->created_at->format('Y-m-d') }}</td>
                     <td class="text-center">
                         <a href="{{ route('sucursales.show', $sucursal->id) }}"
-                           class="btn-floating btn-large waves-effect waves-light green"
+                           class="btn-floating  waves-effect waves-light green"
                            title="Ver Sucursal" data-toggle="tooltip" data-placement="top">
                             <i  class="mdi-action-visibility"></i>
                         </a>
                         <a href="{{ route('sucursales.edit', $sucursal->id) }}"
-                          class="btn-floating btn-large waves-effect waves-light blue"
+                          class="btn-floating  waves-effect waves-light blue"
                           title="Editar Sucursal" data-toggle="tooltip" data-placement="top">
                             <i class="mdi-content-create"></i>
                         </a>
                         <a href="{{ route('sucursales.destroy', $sucursal->id) }}"
-                          class="btn-floating btn-large waves-effect waves-light red darken-2" title="Eliminar Sucursal"
+                          class="btn-floating  waves-effect waves-light red darken-2" title="Eliminar Sucursal"
                                 data-toggle="tooltip"
                                 data-placement="top"
                                 data-method="DELETE"

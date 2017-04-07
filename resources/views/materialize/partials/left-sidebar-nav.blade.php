@@ -9,7 +9,7 @@
               <ul id="profile-dropdown" class="dropdown-content">
                   <li><a href="#"><i class="mdi-action-face-unlock"></i> Profile</a>
                   </li>
-                  <li><a href="#"><i class="mdi-action-settings"></i> Settings</a>
+                  <li><a href="#"><i class="mdi-action-settings"></i> Config</a>
                   </li>
                   <li><a href="#"><i class="mdi-communication-live-help"></i> Help</a>
                   </li>
@@ -19,64 +19,126 @@
                   <li><a href="#"><i class="mdi-hardware-keyboard-tab"></i> Logout</a>
                   </li>
               </ul>
-              <a class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn" href="#" data-activates="profile-dropdown">Jose  Caraballo <i class="mdi-navigation-arrow-drop-down right"></i></a>
+              <a class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn"
+                  href="#" data-activates="profile-dropdown">Usuario
+                  <i class="mdi-navigation-arrow-drop-down right"></i></a>
               <p class="user-roal">Administrator</p>
           </div>
       </div>
       </li>
-      <li class="bold"><a href="index.html" class="waves-effect waves-cyan"><i class="mdi-action-dashboard"></i> Dashboard</a>
+      <li class="bold {{ Request::is('/') ? 'active open' : ''  }}" >
+        <a href="{{ route('dashboard') }}"
+          class="waves-effect waves-cyan {{ Request::is('/') ? 'active' : ''  }}">
+          <i class="mdi-action-dashboard"></i> @lang('app.dashboard')
+        </a>
       </li>
-      <li class="no-padding">
+
+      <li class="bold">
+        <a href="{{ route('empresas.index') }}" class="waves-effect waves-cyan">
+          <i class="mdi-communication-business"></i>  @lang('app.company')s
+        </a>
+      </li>
+
+      <li class="bold">
+        <a href="{{ route('sucursales.index') }}" class="waves-effect waves-cyan">
+          <i class="mdi-social-location-city"></i>  @lang('app.subsidiaries')
+        </a>
+      </li>
+      <li class="bold">
+        <a href="{{ route('areas.index') }}" class="waves-effect waves-cyan">
+          <i class="mdi-action-store"></i>  Areas & Departamentos
+        </a>
+      </li>
+      @permission('users.manage')
+      <li class="bold {{ Request::is('user*') ? 'active open' : ''  }}">
+        <a href="{{ route('user.list') }}"
+          class="waves-effect waves-cyan {{ Request::is('user*') ? 'active' : ''  }}">
+          <i class="mdi-social-people"></i> @lang('app.users')
+        </a>
+      </li>
+      @endpermission
+
+      @permission('users.activity')
+      <li class="bold {{ Request::is('activity*') ? 'active open' : ''  }}">
+        <a href="{{ route('activity.index') }}"
+          class="waves-effect waves-cyan {{ Request::is('activity*') ? 'active' : ''  }}">
+          <i class="mdi-notification-event-note"></i> @lang('app.activity_log')
+        </a>
+      </li>
+      @endpermission
+      @permission(['roles.manage', 'permissions.manage'])
+      <li class="no-padding {{ Request::is('role*') || Request::is('permission*') ? 'active open' : ''  }}">
           <ul class="collapsible collapsible-accordion">
-              <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-view-carousel"></i> Layouts</a>
+              <li class="bold">
+                <a class="collapsible-header waves-effect waves-cyan">
+                  <i class="mdi-action-account-box"></i> @lang('app.roles_and_permissions')
+                </a>
                   <div class="collapsible-body">
                       <ul>
-                          <li><a href="layout-fullscreen.html">Full Screen</a>
-                          </li>
-                          <li><a href="layout-horizontal-menu.html">Horizontal Menu</a>
-                          </li>
+                        @permission('roles.manage')
+                        <li>
+                          <a href="{{ route('role.index') }}"
+                            class="{{ Request::is('role*') ? 'active' : ''  }}">
+                            @lang('app.roles')
+                          </a>
+                        </li>
+                        @endpermission
+                        @permission('permissions.manage')
+                        <li>
+                          <a href="{{ route('permission.index') }}"
+                            class="{{ Request::is('permission*') ? 'active' : ''  }}">
+                            @lang('app.permissions')
+                          </a>
+                        </li>
+                        @endpermission
                       </ul>
                   </div>
               </li>
           </ul>
       </li>
-      <li class="no-padding">
+      @endpermission
+      @permission(['settings.general', 'settings.auth', 'settings.notifications'])
+      <li class="no-padding {{ Request::is('settings*') ? 'active open' : ''  }}">
           <ul class="collapsible collapsible-accordion">
-              <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-action-invert-colors"></i> CSS</a>
+              <li class="bold">
+                <a class="collapsible-header waves-effect waves-cyan">
+                  <i class="mdi-action-settings"></i>@lang('app.settings')
+                </a>
                   <div class="collapsible-body">
                       <ul>
-                          <li><a href="css-typography.html">Typography</a>
-                          </li>
-                          <li><a href="css-icons.html">Icons</a>
-                          </li>
-                      </ul>
-                  </div>
-              </li>
-              <li class="bold"><a class="collapsible-header  waves-effect waves-cyan"><i class="mdi-image-palette"></i> UI Elements</a>
-                  <div class="collapsible-body">
-                      <ul>
-                          <li><a href="ui-alerts.html">Alerts</a>
-                          </li>
-                          <li><a href="ui-buttons.html">Buttons</a>
-                          </li>
-                      </ul>
-                  </div>
-              </li>
-              <li class="bold"><a class="collapsible-header waves-effect waves-cyan"><i class="mdi-av-queue"></i> Advanced UI <span class="new badge"></span></a>
-                  <div class="collapsible-body">
-                      <ul>
-                          <li><a href="advanced-ui-chips.html">Chips</a>
-                          </li>
-                          <li><a href="advanced-ui-cards.html">Cards</a>
-                          </li>
+                        @permission('settings.general')
+                        <li>
+                          <a href="{{ route('settings.general') }}"
+                            class="{{ Request::is('settings') ? 'active' : ''  }}">
+                            @lang('app.general')
+                          </a>
+                        </li>
+                        @endpermission
+                        @permission('settings.auth')
+                        <li>
+                          <a href="{{ route('settings.auth') }}"
+                            class="{{ Request::is('settings/auth*') ? 'active' : ''  }}">
+                            @lang('app.auth_and_registration')
+                          </a>
+                        </li>
+                        @endpermission
+                        @permission('settings.notifications')
+                            <li>
+                                <a href="{{ route('settings.notifications') }}"
+                                   class="{{ Request::is('settings/notifications*') ? 'active' : ''  }}">
+                                    @lang('app.notifications')
+                                </a>
+                            </li>
+                        @endpermission
                       </ul>
                   </div>
               </li>
           </ul>
       </li>
+      @endpermission
       <li class="li-hover"><div class="divider"></div></li>
-      <li class="li-hover"><p class="ultra-small margin more-text">MORE</p></li>
-      <li><a href="angular-ui.html"><i class="mdi-action-verified-user"></i> Angular UI  <span class="new badge"></span></a>
+      <li class="li-hover"><p class="ultra-small margin more-text">MAS</p></li>
+      <li><a href="#"><i class="mdi-action-verified-user"></i> Angular UI  <span class="new badge"></span></a>
       </li>
       <li class="li-hover"><div class="divider"></div></li>
       <li class="li-hover"><p class="ultra-small margin more-text">Daily Sales</p></li>
