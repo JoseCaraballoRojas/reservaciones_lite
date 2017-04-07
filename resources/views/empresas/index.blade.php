@@ -3,27 +3,27 @@
 @section('page-title', trans('app.company'))
 
 @section('content')
-  
-    <div class="container">
-      <div class="row">
-        <div class="col s12 m12 l12">
-          <h5 class="breadcrumbs-title">Empresas
-            <small>Lista de empresas registradas</small>
-          <div class="pull-right">
-          <ol class="breadcrumbs">
-              <li><a href="{{ route('dashboard') }}">@lang('app.home')</a></li>
-              <li class="active">@lang('app.company')s</li>
-          </ol>
-          </div>
-          </h5>
+
+  <div class="container">
+    <div class="row">
+      <div class="col s12 m12 l12">
+        <h5 class="breadcrumbs-title">Empresas
+          <small>Lista de empresas registradas</small>
+        <div class="pull-right">
+        <ol class="breadcrumbs">
+            <li><a href="{{ route('dashboard') }}">@lang('app.home')</a></li>
+            <li class="active">@lang('app.company')s</li>
+        </ol>
         </div>
+        </h5>
       </div>
     </div>
+  </div>
 
 @include('partials.messages')
 
-<div class="row tab-search">
-    <div class="col-md-2">
+<div class="row">
+    <div class="col s12 m12 l12">
         <a href="{{ route('empresas.create') }}" class="btn waves-effect waves-light green  " id="add-user">
             <i class="mdi-content-add"></i>
             Agregar Empresa
@@ -32,7 +32,7 @@
 </div>
 <br>
 <div class="responsive-table" id="users-table-wrapper">
-    <table class="responsive-table striped">
+    <table class="responsive-table striped bordered">
         <thead>
             <th>@lang('app.company')</th>
             <th>Direccion</th>
@@ -52,15 +52,15 @@
                     <td>{{ $empresa->user->username }}</td>
                     <td>{{ $empresa->created_at->format('Y-m-d') }}</td>
                     <td class="text-center">
-                        <a href="{{ route('empresas.show', $empresa->id) }}" class="btn waves-effect waves-light green"
+                        <a href="{{ route('empresas.show', $empresa->id) }}" class="btn-floating btn-large waves-effect waves-light green"
                            title="Ver Empresa" data-toggle="tooltip" data-placement="top">
                             <i class="mdi-action-visibility"></i>
                         </a>
-                        <a href="{{ route('empresas.edit', $empresa->id) }}" class="btn waves-effect waves-light blue" title="Editar Empresa"
+                        <a href="{{ route('empresas.edit', $empresa->id) }}" class="btn-floating btn-large waves-effect waves-light blue" title="Editar Empresa"
                                 data-toggle="tooltip" data-placement="top">
                             <i class="mdi-content-create"></i>
                         </a>
-                        <a href="{{ route('empresas.destroy', $empresa->id) }}" class="btn waves-effect waves-light red darken-2" title="Eliminar Empresa"
+                        <a href="{{ route('empresas.destroy', $empresa->id) }}" class="btn-floating btn-large waves-effect waves-light red darken-2" title="Eliminar Empresa"
                                 data-toggle="tooltip"
                                 data-placement="top"
                                 data-method="GET"

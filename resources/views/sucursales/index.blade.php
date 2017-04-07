@@ -1,36 +1,37 @@
-@extends('layouts.app')
+@extends('materialize.template')
 
 @section('page-title', trans('app.subsidiaries'))
 
 @section('content')
-
-<div class="row">
-    <div class="col-lg-12">
-        <h1 class="page-header">
-            sucursales
-            <small>Lista de sucursales registradas</small>
-            <div class="pull-right">
-                <ol class="breadcrumb">
-                    <li><a href="{{ route('dashboard') }}">@lang('app.home')</a></li>
-                    <li class="active">@lang('app.subsidiaries')</li>
-                </ol>
-            </div>
-        </h1>
+  <div class="container">
+    <div class="row">
+      <div class="col s12 m12 l12">
+        <h5 class="breadcrumbs-title">Sucursales
+          <small>Lista de sucursales registradas</small>
+        <div class="pull-right">
+        <ol class="breadcrumbs">
+          <li><a href="{{ route('dashboard') }}">@lang('app.home')</a></li>
+          <li class="active">@lang('app.subsidiaries')</li>
+        </ol>
+        </div>
+        </h5>
+      </div>
     </div>
-</div>
+  </div>
 
 @include('partials.messages')
 
-<div class="row tab-search">
-    <div class="col-md-2">
-        <a href="{{ route('sucursales.create') }}" class="btn btn-success" id="add-user">
-            <i class="glyphicon glyphicon-plus"></i>
+<div class="row">
+    <div class="col s12 m12 l12">
+        <a href="{{ route('sucursales.create') }}" class="waves-effect waves-light green btn" id="add-user">
+            <i class=" large mdi-content-add"></i>
             Agregar Sucursal
         </a>
     </div>
 </div>
-<div class="table-responsive top-border-table" id="users-table-wrapper">
-    <table class="table">
+<br>
+<div class="responsive-table" id="users-table-wrapper">
+    <table class="responsive-table striped bordered">
         <thead>
             <th>Sucursal</th>
             <th>Direccion</th>
@@ -52,22 +53,25 @@
                     <td>{{ $sucursal->user->username }}</td>
                     <td>{{ $sucursal->created_at->format('Y-m-d') }}</td>
                     <td class="text-center">
-                        <a href="{{ route('sucursales.show', $sucursal->id) }}" class="btn btn-success btn-circle"
+                        <a href="{{ route('sucursales.show', $sucursal->id) }}"
+                           class="btn-floating btn-large waves-effect waves-light green"
                            title="Ver Sucursal" data-toggle="tooltip" data-placement="top">
-                            <i class="glyphicon glyphicon-eye-open"></i>
+                            <i  class="mdi-action-visibility"></i>
                         </a>
-                        <a href="{{ route('sucursales.edit', $sucursal->id) }}" class="btn btn-primary btn-circle edit" title="Editar Sucursal"
-                                data-toggle="tooltip" data-placement="top">
-                            <i class="glyphicon glyphicon-edit"></i>
+                        <a href="{{ route('sucursales.edit', $sucursal->id) }}"
+                          class="btn-floating btn-large waves-effect waves-light blue"
+                          title="Editar Sucursal" data-toggle="tooltip" data-placement="top">
+                            <i class="mdi-content-create"></i>
                         </a>
-                        <a href="{{ route('sucursales.destroy', $sucursal->id) }}" class="btn btn-danger btn-circle" title="Eliminar Sucursal"
+                        <a href="{{ route('sucursales.destroy', $sucursal->id) }}"
+                          class="btn-floating btn-large waves-effect waves-light red darken-2" title="Eliminar Sucursal"
                                 data-toggle="tooltip"
                                 data-placement="top"
                                 data-method="DELETE"
                                 data-confirm-title="Confirme por favor!"
                                 data-confirm-text="Seguro que desea eliminar esta sucursal"
                                 data-confirm-delete="Si, la elimine">
-                            <i class="glyphicon glyphicon-trash"></i>
+                            <i class="mdi-action-delete"></i>
                         </a>
                     </td>
                 </tr>

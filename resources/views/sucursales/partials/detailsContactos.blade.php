@@ -1,27 +1,34 @@
 <div class="row">
-  <div class="col-md-6">
-    <div class="panel panel-default">
-        <div class="panel-heading">Contacto 1  </div>
-        <div class="panel-body">
-            <div class="form-group">
-                {!! Form::label('user_id', 'Usuario') !!}
-                {!! Form::select('contacto1_id', $users, $edit ? $sucursal->contacto1_id : '', ['class' => 'form-control',
-                'placeholder' => 'selecione un contacto...', 'required'  ]) !!}
+  <div class="col s12 m12 l6">
+    <div class="card-panel">
+        <h4 class="header2">Contacto 1  </h4>
+        <div class="row">
+          <div class="col s12">
+            <div class="row">
+              <div class="finput-field col s12">
+                {!! Form::label('user_id', 'Catalogo de usuarios') !!}
+                {!! Form::select('contacto1_id', $users, $edit ? $sucursal->contacto1_id : '',
+                  ['placeholder' => 'selecione unresponsable...', 'required'  ]) !!}
+              </div>
             </div>
-      </div>
+          </div>
+        </div>
     </div>
   </div>
-  <div class="col-md-6">
-    <div class="panel panel-default">
-        <div class="panel-heading">Contacto 2  </div>
-        <div class="panel-body">
-            <div class="form-group">
-                {!! Form::label('user_id', 'Usuario') !!}
-                {!! Form::select('contacto2_id', $users, $edit ? $sucursal->contacto2_id : '', ['class' => 'form-control',
-                'placeholder' => 'selecione un contacto...']) !!}
+  <div class="col s12 m12 l6">
+    <div class="card-panel">
+        <h4 class="header2">Contacto 2  </h4>
+        <div class="row">
+          <div class="col s12">
+            <div class="row">
+              <div class="finput-field col s12">
+                {!! Form::label('user_id', 'Catalogo de usuarios') !!}
+                {!! Form::select('contacto2_id', $users, $edit ? $sucursal->contacto2_id : '',
+                  ['placeholder' => 'selecione un responsable...']) !!}
+              </div>
             </div>
-      </div>
+          </div>
+        </div>
     </div>
   </div>
-
 </div>
