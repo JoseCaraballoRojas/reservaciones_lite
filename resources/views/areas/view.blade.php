@@ -1,30 +1,31 @@
-@extends('layouts.app')
+@extends('materialize.template')
 
 @section('page-title', $area->area)
 
 @section('content')
 
-<div class="row">
-    <div class="col-lg-12">
-        <h1 class="page-header">
-            {{ $area->area }}
-            <small> Detalles de Area </small>
-            <div class="pull-right">
-                <ol class="breadcrumb">
-                    <li><a href="{{ route('dashboard') }}">@lang('app.home')</a></li>
-                    <li><a href="{{ route('areas.index') }}"> Areas</a></li>
-                    <li class="active">{{ $area->area }}</li>
-                </ol>
-            </div>
-
-        </h1>
+<div class="container">
+  <div class="row">
+    <div class="col s12 m12 l12">
+      <h5 class="breadcrumbs-title">
+        {{ $area->area }}
+        <small> Detalles del Area </small>
+      <div class="pull-right">
+      <ol class="breadcrumbs">
+        <li><a href="{{ route('dashboard') }}">@lang('app.home')</a></li>
+        <li><a href="{{ route('areas.index') }}"> Areas</a></li>
+        <li class="active">{{ $area->area }}</li>
+      </ol>
+      </div>
+      </h5>
     </div>
+  </div>
 </div>
 
 <div class="row">
-    <div class="col-lg-6 col-md-7">
-        <div id="edit-user-panel" class="panel panel-default">
-            <div class="panel-heading">
+    <div class="col s12 m12 l6">
+        <div id="edit-user-panel" class="card-panel">
+            <h4 class="header2">
                 @lang('app.details')
                 <div class="pull-right">
                     <a href="{{ route('areas.edit', $area->id) }}" class="edit"
@@ -32,18 +33,19 @@
                         @lang('app.edit')
                     </a>
                 </div>
-            </div>
-            <div class="panel-body panel-profile">
-                <div class="image">
-                    <img alt="image" class="img-circle" src="">
-                </div>
+            </h4>
+            <div class="card-panel">
+              <figure class="card-profile-image">
+                <img alt="profile image" class="circle z-depth-2 responsive-img activator"
+                src="{{ url('assets/template/images/avatar.jpg') }}">
+              </figure>
                 <div class="name"><strong>{{ $area->area }}</strong></div>
             </div>
-                <br>
-                <table class="table table-hover table-details">
+              <br>
+                <table class="responsive-table striped bordered">
                     <thead>
                         <tr>
-                            <th colspan="3">Informacion de area</th>
+                            <th colspan="3">Informacion del area</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -54,7 +56,7 @@
                     </tbody>
                 </table>
 
-                <table class="table table-hover">
+                <table class="responsive-table striped bordered">
                     <thead>
                     <tr>
                         <th colspan="3">@lang('app.additional_informations')</th>
@@ -70,12 +72,12 @@
                 </table>
             </div>
         </div>
-        <div class="col-lg-6 col-md-7">
-          <div class="panel panel-default">
-              <div class="panel-heading">Información de Responsable  </div>
+        <div class="col s12 m12 l6">
+          <div class="card-panel">
+              <h4 class="header2">Información de Responsable  </h4>
               <div class="panel-body">
                   <div class="form-group">
-                    <table class="table table-hover">
+                    <table class="responsive-table striped bordered">
                         <tbody>
                           @foreach($responsable as $user)
                             <tr>
