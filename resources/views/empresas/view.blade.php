@@ -1,30 +1,29 @@
-@extends('layouts.app')
+@extends('materialize.template')
 
 @section('page-title', $empresa->nombre)
 
 @section('content')
-
-<div class="row">
-    <div class="col-lg-12">
-        <h1 class="page-header">
-            {{ $empresa->nombre }}
-            <small> Detalles de Empresa </small>
-            <div class="pull-right">
-                <ol class="breadcrumb">
-                    <li><a href="{{ route('dashboard') }}">@lang('app.home')</a></li>
-                    <li><a href="{{ route('empresas.index') }}"> Empresas</a></li>
-                    <li class="active">{{ $empresa->nombre }}</li>
-                </ol>
-            </div>
-
-        </h1>
+  <div class="container">
+    <div class="row">
+      <div class="col s12 m12 l12">
+        <h5 class="breadcrumbs-title">
+          {{ $empresa->nombre }}
+          <small>Detalles de la Empresa</small>
+        <div class="pull-right">
+        <ol class="breadcrumbs">
+            <li><a href="{{ route('dashboard') }}">@lang('app.home')</a></li>
+            <li><a href="{{ route('empresas.index') }}"> Empresas </a></li>
+          <li class="active">{{ $empresa->nombre }}</li>
+        </ol>
+        </div>
+        </h5>
+      </div>
     </div>
-</div>
-
+  </div>
 <div class="row">
-    <div class="col-lg-4 col-md-5">
-        <div id="edit-user-panel" class="panel panel-default">
-            <div class="panel-heading">
+    <div class="col s12 m12 l6">
+        <div id="edit-user-panel" class="card-panel">
+            <h4 class="header2">
                 @lang('app.details')
                 <div class="pull-right">
                     <a href="{{ route('empresas.edit', $empresa->id) }}" class="edit"
@@ -32,18 +31,20 @@
                         @lang('app.edit')
                     </a>
                 </div>
-            </div>
-            <div class="panel-body panel-profile">
-                <div class="image">
-                    <img alt="image" class="img-circle" src="">
-                </div>
+            </h4>
+            <div class="card-panel">
+              <figure class="card-profile-image">
+                <img alt="profile image" class="circle z-depth-2 responsive-img activator" src="{{ url('assets/template/images/avatar.jpg') }}">
+              </figure>
                 <div class="name"><strong>{{ $empresa->nombre }}</strong></div>
             </div>
-                <br>
-                <table class="table table-hover table-details">
+
+                <table class="responsive-table striped bordered">
                     <thead>
                         <tr>
-                            <th colspan="3">Informacion de empresa</th>
+                            <th colspan="3">
+                              <h4 class="header2">Informacion de empresa</h4>
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -60,11 +61,13 @@
 
                     </tbody>
                 </table>
-
-                <table class="table table-hover">
+                <br>
+                <table class="responsive-table striped bordered">
                     <thead>
                     <tr>
-                        <th colspan="3">@lang('app.additional_informations')</th>
+                        <th colspan="3">
+                          <h4 class="header2">@lang('app.additional_informations')</h4>
+                         </th>
                     </tr>
                     </thead>
                     <tbody>
@@ -85,65 +88,60 @@
                 </table>
             </div>
         </div>
-        <div class="col-lg-4 col-md-7">
-          <div class="panel panel-default">
-              <div class="panel-heading">Información de Contacto 1  </div>
-              <div class="panel-body">
-                  <div class="form-group">
-                    <table class="table table-hover">
-                        <tbody>
-                          @foreach($contacto1 as $user)
-                            <tr>
-                                <td>Usuario </td>
-                                <td>{{ $user->username }}</td>
-                            </tr>
-                            <tr>
-                                <td>@lang('app.email')</td>
-                                <td><a href="mailto:{{ $user->email }}">{{ $user->email }}</a></td>
-                            </tr>
-                            <tr>
-                                <td>@lang('app.phone') </td>
-                                <td><a href="telto:{{ $user->phone }}"> {{ $user->phone }}</a></td>
-                            </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
-                  </div>
-            </div>
+        <div class="col s12 m12 l6">
+          <div class="card-panel">
+              <h4 class="header2"> Información de Contacto 1  </h4>
+                <div class="form-group">
+                  <table class="responsive-table striped bordered">
+                      <tbody>
+                        @foreach($contacto1 as $user)
+                          <tr>
+                              <td>Usuario </td>
+                              <td>{{ $user->username }}</td>
+                          </tr>
+                          <tr>
+                              <td>@lang('app.email')</td>
+                              <td><a href="mailto:{{ $user->email }}">{{ $user->email }}</a></td>
+                          </tr>
+                          <tr>
+                              <td>@lang('app.phone') </td>
+                              <td><a href="telto:{{ $user->phone }}"> {{ $user->phone }}</a></td>
+                          </tr>
+                      @endforeach
+                      </tbody>
+                </table>
+              </div>
           </div>
-        </div>
-        <div class="col-lg-4 col-md-7">
-          <div class="panel panel-default">
-              <div class="panel-heading">Información de Contacto 2  </div>
-              <div class="panel-body">
-                  <div class="form-group">
-                    <table class="table table-hover">
-                        <tbody>
-                          @if ($contacto2)
-                            @foreach($contacto2 as $user)
-                              <tr>
-                                  <td>Usuario </td>
-                                  <td>{{ $user->username }}</td>
-                              </tr>
-                              <tr>
-                                  <td>@lang('app.email')</td>
-                                  <td><a href="mailto:{{ $user->email }}">{{ $user->email }}</a></td>
-                              </tr>
-                              <tr>
-                                  <td>@lang('app.phone') </td>
-                                  <td><a href="telto:{{ $user->phone }}"> {{ $user->phone }}</a></td>
-                              </tr>
-                            @endforeach
-                          @else
-                            <td> La empresa no tiene un contacto 2 resgistrado</td>
-                          @endif
-                        </tbody>
-                    </table>
-                  </div>
-            </div>
+      </div>
+
+      <div class="col s12 m12 l6">
+        <div class="card-panel">
+            <h4 class="header2">Información de Contacto 2  </h4>
+              <table class="responsive-table striped bordered">
+                  <tbody>
+                    @if ($contacto2)
+                      @foreach($contacto2 as $user)
+                        <tr>
+                            <td>Usuario </td>
+                            <td>{{ $user->username }}</td>
+                        </tr>
+                        <tr>
+                            <td>@lang('app.email')</td>
+                            <td><a href="mailto:{{ $user->email }}">{{ $user->email }}</a></td>
+                        </tr>
+                        <tr>
+                            <td>@lang('app.phone') </td>
+                            <td><a href="telto:{{ $user->phone }}"> {{ $user->phone }}</a></td>
+                        </tr>
+                      @endforeach
+                    @else
+                      <td> La empresa no tiene un contacto 2 resgistrado</td>
+                    @endif
+                  </tbody>
+              </table>
           </div>
-        </div>
-    </div>
+      </div>
 </div>
+
 
 @stop
