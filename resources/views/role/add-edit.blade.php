@@ -70,7 +70,7 @@
     </div>
 
 <div class="row">
-    <div class="col-md-2">
+    <div class="col s12">
         <button type="submit" class="btn cyan waves-effect waves-light">
             <i class="mdi-content-save"></i>
             {{ $edit ? trans('app.update_role') : trans('app.create_role') }}
