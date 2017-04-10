@@ -1,39 +1,39 @@
-@extends('layouts.app')
+@extends('materialize.template')
 
 @section('page-title', trans('app.roles'))
 
 @section('content')
-
+  <div class="container">
     <div class="row">
-        <div class="col-lg-12">
-            <h1 class="page-header">
-                @lang('app.roles')
-                <small>@lang('app.available_system_roles')</small>
-                <div class="pull-right">
-                    <ol class="breadcrumb">
-                        <li><a href="{{ route('dashboard') }}">@lang('app.home')</a></li>
-                        <li class="active">@lang('app.roles')</li>
-                    </ol>
-                </div>
-
-            </h1>
+      <div class="col s12 m12 l12">
+        <h5 class="breadcrumbs-title">
+          @lang('app.roles')
+          <small>@lang('app.available_system_roles')</small>
+        <div class="pull-right">
+        <ol class="breadcrumbs">
+          <li><a href="{{ route('dashboard') }}">@lang('app.home')</a></li>
+          <li class="active">@lang('app.roles')</li>
+        </ol>
         </div>
+        </h5>
+      </div>
     </div>
+  </div>
 
     @include('partials.messages')
-
-    <div class="row tab-search">
-        <div class="col-md-2">
-            <a href="{{ route('role.create') }}" class="btn btn-success">
-                <i class="glyphicon glyphicon-plus"></i>
-                @lang('app.add_role')
+    <div class="row">
+        <div class="col s12 m12 l12">
+            <a href="{{ route('role.create') }}" class="btn waves-effect waves-light green" >
+                <i class="mdi-content-add"></i>
+                  @lang('app.add_role')
             </a>
         </div>
     </div>
+    <br>
 
 
-    <div class="table-responsive" id="users-table-wrapper">
-        <table class="table">
+    <div class="responsive-table" id="users-table-wrapper">
+        <table class="responsive-table striped bordered">
             <thead>
                 <th>@lang('app.name')</th>
                 <th>@lang('app.display_name')</th>
@@ -48,12 +48,14 @@
                         <td>{{ $role->display_name }}</td>
                         <td>{{ $role->users_count }}</td>
                         <td class="text-center">
-                            <a href="{{ route('role.edit', $role->id) }}" class="btn btn-primary btn-circle"
+                            <a href="{{ route('role.edit', $role->id) }}"
+                              class="btn-floating  waves-effect waves-light blue"
                                title="@lang('app.edit_role')" data-toggle="tooltip" data-placement="top">
-                                <i class="glyphicon glyphicon-edit"></i>
+                                <i class="mdi-content-create"></i>
                             </a>
                             @if ($role->removable)
-                                <a href="{{ route('role.delete', $role->id) }}" class="btn btn-danger btn-circle"
+                                <a href="{{ route('role.delete', $role->id) }}"
+                                  class="btn-floating  waves-effect waves-light red darken-2"
                                    title="@lang('app.delete_role')"
                                    data-toggle="tooltip"
                                    data-placement="top"
@@ -61,7 +63,7 @@
                                    data-confirm-title="@lang('app.please_confirm')"
                                    data-confirm-text="@lang('app.are_you_sure_delete_role')"
                                    data-confirm-delete="@lang('app.yes_delete_it')">
-                                    <i class="glyphicon glyphicon-trash"></i>
+                                    <i class="mdi-action-delete"></i>
                                 </a>
                             @endif
                         </td>
