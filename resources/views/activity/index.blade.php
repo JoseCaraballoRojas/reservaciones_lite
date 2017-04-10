@@ -1,54 +1,75 @@
-@extends('layouts.app')
+@extends('materialize.template')
 
 @section('page-title', trans('app.activity_log'))
 
 @section('content')
-
-<div class="row">
-    <div class="col-lg-12">
-        <h1 class="page-header">
-            {{ isset($user) ? $user->present()->nameOrEmail : trans('app.activity_log') }}
-            <small>{{ isset($user) ? trans('app.activity_log_sm') : trans('app.activity_log_all_users') }}</small>
-            <div class="pull-right">
-                <ol class="breadcrumb">
-                    <li><a href="{{ route('dashboard') }}">@lang('app.home')</a></li>
-                    @if (isset($user) && isset($adminView))
-                        <li><a href="{{ route('activity.index') }}">@lang('app.activity_log')</a></li>
-                        <li class="active">{{ $user->present()->nameOrEmail }}</li>
-                    @else
-                        <li class="active">@lang('app.activity_log')</li>
-                    @endif
-                </ol>
-            </div>
-
-        </h1>
-    </div>
-</div>
-
-<div class="row tab-search">
-    <div class="col-md-8"></div>
-    <form method="GET" action="" accept-charset="UTF-8" id="users-form">
-        <div class="col-md-4">
-            <div class="input-group custom-search-form">
-                <input type="text" class="form-control" name="search"
-                       value="{{ Input::get('search') }}" placeholder="@lang('app.search_for_action')">
-                <span class="input-group-btn">
-                    <button class="btn btn-default" type="submit" id="search-activities-btn">
-                        <span class="glyphicon glyphicon-search"></span>
-                    </button>
-                    @if (Input::has('search') && Input::get('search') != '')
-                        <a href="{{ route('activity.index') }}" class="btn btn-danger" type="button">
-                            <span class="glyphicon glyphicon-remove"></span>
-                        </a>
-                    @endif
-                </span>
-            </div>
+  <div class="container">
+    <div class="row">
+      <div class="col s12 m12 l12">
+        <h5 class="breadcrumbs-title">
+          {{ isset($user) ? $user->present()->nameOrEmail : trans('app.activity_log') }}
+          <small>{{ isset($user) ? trans('app.activity_log_sm') : trans('app.activity_log_all_users') }}</small>
+        <div class="pull-right">
+        <ol class="breadcrumbs">
+          <li><a href="{{ route('dashboard') }}">@lang('app.home')</a></li>
+          @if (isset($user) && isset($adminView))
+              <li><a href="{{ route('activity.index') }}">@lang('app.activity_log')</a></li>
+              <li class="active">{{ $user->present()->nameOrEmail }}</li>
+          @else
+              <li class="active">@lang('app.activity_log')</li>
+          @endif
+        </ol>
         </div>
-    </form>
+        </h5>
+      </div>
+    </div>
+  </div>
+
+<div id="search-bar" class="section">
+  <div class="row">
+    <div class="col s12 m8 l4">
+      <nav class="grey ">
+        <div class="nav-wrapper">
+          <div class="col s12 ">
+            <form class="row" method="GET" action="" accept-charset="UTF-8" id="users-form">
+              <a href="#" class="button-collapse">
+                <i class="mdi-navigation-menu"></i>
+              </a>
+              <ul class="hide-on-med-and-down">
+                <li>
+                  <div class="">
+                    <a href="#" type="submit" id="search-activities-btn">
+                        <i class="mdi-action-search"></i>
+                    </a>
+                  </div>
+                </li>
+                <li>
+                  <div class="input-field">
+                    <input id="search" type="text" required="" name="search"
+                      value="{{ Input::get('search') }}" placeholder="@lang('app.search_for_action')">
+                  </div>
+                </li>
+                <li>
+                  @if (Input::has('search') && Input::get('search') != '')
+                  <div class="">
+                    <a href="{{ route('activity.index') }}" class="red" type="button">
+                        <span class="mdi-content-clear"></span>
+                    </a>
+                  </div>
+                  @endif
+                </li>
+              </ul>
+            </form>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </div>
 </div>
 
-<div class="table-responsive top-border-table">
-    <table class="table">
+
+<div class="responsive-table top-border-table">
+    <table class="responsive-table striped bordered">
         <thead>
             @if (isset($adminView))
                 <th>@lang('app.user')</th>
@@ -77,13 +98,13 @@
                     <td>{{ $activity->description }}</td>
                     <td>{{ $activity->created_at->format('Y-m-d H:i:s') }}</td>
                     <td class="text-center">
-                        <a tabindex="0" role="button" class="btn btn-primary btn-circle"
+                        <a tabindex="0" role="button" class="btn-floating  waves-effect waves-light blue"
                            data-trigger="focus"
                            data-placement="left"
                            data-toggle="popover"
                            title="@lang('app.user_agent')"
                            data-content="{{ $activity->user_agent }}">
-                            <i class="fa fa-info"></i>
+                            <i class="mdi-action-info-outline"></i>
                         </a>
                     </td>
                 </tr>
