@@ -1,11 +1,11 @@
-@extends('layouts.app')
+@extends('materialize.template')
 
 @section('page-title', trans('app.dashboard'))
 
 @section('content')
 
 <div class="row">
-    <div class="col-lg-12">
+      <div class="col s12 m12 l12">
         <h1 class="page-header">
             @lang('app.welcome') <?= Auth::user()->username ?: Auth::user()->first_name ?>!
             <div class="pull-right">
@@ -17,7 +17,7 @@
         </h1>
     </div>
 </div>
-
+{{--
 <div class="row">
     <div class="col-md-3">
         <a href="{{ route('profile') }}" class="panel-link">
@@ -83,7 +83,7 @@
         </div>
     </div>
 </div>
-
+--}}
 @stop
 
 @section('scripts')

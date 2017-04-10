@@ -1,11 +1,11 @@
-@extends('layouts.app')
+@extends('materialize.template')
 
 @section('page-title', trans('app.dashboard'))
 
 @section('content')
 
 <div class="row">
-    <div class="col-lg-12">
+    <div class="col s12 m12 l12">
         <h1 class="page-header">
             @lang('app.welcome') <?= Auth::user()->username ?: Auth::user()->first_name ?>!
             <div class="pull-right">
@@ -18,21 +18,47 @@
         </h1>
     </div>
 </div>
-
+<!--card stats start-->
+<div id="card-stats">
+    <div class="row">
+        <div class="col s12 m6 l3">
+            <div class="card">
+                <div class="card-content  green white-text">
+                    <p class="card-stats-title">
+                      @lang('app.new_users_this_month')
+                    </p>
+                    <h3 class="card-stats-number">{{ $stats['new'] }}
+                      <i class="mdi-social-group-add medium"></i>
+                    </h3>
+                </div>
+                <a href="{{ route('user.list') }}" class="white-text">
+                  <div class="card-action  green darken-2">
+                      <div id="clients-bar" class="center-align">
+                        <span class="pull-left">@lang('app.view_all_users')</span>
+                        <span class="pull-right"><i class="mdi-navigation-arrow-forward small"></i></span>
+                        <div class="clearfix"></div>
+                      </div>
+                  </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- card stats send -->
 <div class="row">
-    <div class="col-lg-3 col-md-6">
-        <div class="panel panel-widget panel-primary">
-            <div class="panel-heading">
+{{--    <div class="col s12 m3 l6">
+        <div class="card-panel">
+            <h4 class="header2">
                 <div class="row">
-                    <div class="col-xs-7">
+                    <div class="col s7">
                         <div class="title">@lang('app.new_users_this_month')</div>
                         <div class="text-huge">{{ $stats['new'] }}</div>
                     </div>
                     <div class="icon">
-                        <i class="fa fa-user-plus fa-5x"></i>
+                        <i class="mdi-action-perm-identity"></i>
                     </div>
                 </div>
-            </div>
+            </h4>
             <a href="{{ route('user.list') }}">
                 <div class="panel-footer">
                     <span class="pull-left">@lang('app.view_all_users')</span>
@@ -41,9 +67,9 @@
                 </div>
             </a>
         </div>
-    </div>
+    </div>--}}
 
-    <div class="col-lg-3 col-md-6">
+{{--    <div class="col-lg-3 col-md-6">
         <div class="panel panel-widget panel-green">
             <div class="panel-heading">
                 <div class="row">
@@ -64,9 +90,9 @@
                 </div>
             </a>
         </div>
-    </div>
+    </div>--}}
 
-    <div class="col-lg-3 col-md-6">
+{{--    <div class="col-lg-3 col-md-6">
         <div class="panel panel-widget panel-danger">
             <div class="panel-heading">
                 <div class="row">
@@ -78,8 +104,9 @@
                         <i class="fa fa-user-times fa-5x"></i>
                     </div>
                 </div>
-            </div>
-            <a href="{{ route('user.list', ['status' => \Vanguard\Support\Enum\UserStatus::BANNED]) }}">
+            </div>--}}
+
+{{--            <a href="{{ route('user.list', ['status' => \Vanguard\Support\Enum\UserStatus::BANNED]) }}">
                 <div class="panel-footer">
                     <span class="pull-left">@lang('app.view_details')</span>
                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -87,9 +114,9 @@
                 </div>
             </a>
         </div>
-    </div>
+    </div>--}}
 
-    <div class="col-lg-3 col-md-6">
+{{--  <div class="col-lg-3 col-md-6">
         <div class="panel panel-widget panel-purple">
             <div class="panel-heading">
                 <div class="row">
@@ -113,9 +140,9 @@
         </div>
     </div>
 
-</div>
+</div>--}}
 
-<div class="row">
+{{--<div class="row">
     <div class="col-md-8">
         <div class="panel panel-default">
             <div class="panel-heading">@lang('app.registration_history')</div>
@@ -125,7 +152,8 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>--}}
+  {{--
     <div class="col-md-4">
         <div class="panel panel-default">
             <div class="panel-heading">@lang('app.latest_registrations')</div>
@@ -148,7 +176,7 @@
                 @endif
             </div>
         </div>
-    </div>
+    </div>--}}
 </div>
 
 @stop
