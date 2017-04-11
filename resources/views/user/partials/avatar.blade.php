@@ -1,5 +1,5 @@
-<div class="panel panel-default">
-    <div class="panel-heading">@lang('app.avatar')</div>
+<div class="card-panel">
+    <h4 class="header2">@lang('app.avatar')</h4>
     <div class="panel-body avatar-wrapper">
         <div class="spinner">
             <div class="spinner-dot"></div>
@@ -8,23 +8,35 @@
         </div>
         <div id="avatar"></div>
         <div>
-            <img class="avatar-preview img-circle" src="{{ $edit ? $user->present()->avatar : url('assets/img/profile.png') }}">
-            <div id="change-picture" class="btn btn-default btn-block" data-toggle="modal" data-target="#choose-modal">
-                <i class="fa fa-camera"></i>
+            <img class="avatar-preview img-circle"
+                 src="{{ $edit ? $user->present()->avatar : url('assets/img/profile.png') }}">
+                 <div class="col s12 ">
+                       <div id="change-picture" class="btn cyan waves-effect waves-light"
+                            data-toggle="modal" data-target="#choose-modal">
+                             <i class="mdi-image-camera-alt"></i>
+                               @lang('app.change_photo')
+                       </div>
+                 </div>
+          {{--  <div id="change-picture" class="btn btn-default btn-block"
+                 data-toggle="modal" data-target="#choose-modal">
+                <i class="mdi-image-camera-alt"></i>
                 @lang('app.change_photo')
-            </div>
-            <div class="row avatar-controls">
-                <div class="col-md-6">
-                    <div id="cancel-upload" style="text-align: center;" class="btn btn-block btn-danger">
-                        <i class="fa fa-times"></i> @lang('app.cancel')
+            </div> --}}
+          {{--  <div class="row avatar-controls">
+                <div class="col s6">
+                    <div id="cancel-upload" style="text-align: center;"
+                          class=" btn waves-effect waves-light red darken-2">
+                        <i class="mdi-av-not-interested"></i> @lang('app.cancel')
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <button type="submit" id="save-photo" style="text-align: center;" class="btn btn-success btn-block">
-                        <i class="fa fa-check"></i> @lang('app.save')
-                    </button>
+                <div class="col s6">
+                  <button type="submit" id="save-photo" style="text-align: center;"
+                          class="btn green waves-effect waves-light">
+                      <i class="mdi-content-save"></i>
+                        @lang('app.save')
+                  </button>
                 </div>
-            </div>
+            </div>--}}
         </div>
     </div>
 </div>

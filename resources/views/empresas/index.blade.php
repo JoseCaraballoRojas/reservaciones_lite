@@ -58,7 +58,7 @@
                             <i class="mdi-action-visibility"></i>
                         </a>
                         <a href="{{ route('empresas.edit', $empresa->id) }}"
-                          class="btn-floating  waves-effect waves-light blue" title="Editar Empresa"
+                          class="btn-floating  waves-effect waves-light light-blue darken-4" title="Editar Empresa"
                                 data-toggle="tooltip" data-placement="top">
                             <i class="mdi-content-create"></i>
                         </a>

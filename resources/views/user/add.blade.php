@@ -1,45 +1,49 @@
-@extends('layouts.app')
+@extends('materialize.template')
 
 @section('page-title', trans('app.add_user'))
 
 @section('content')
-
-<div class="row">
-    <div class="col-lg-12">
-        <h1 class="page-header">
-            @lang('app.create_new_user')
-            <small>@lang('app.user_details')</small>
-            <div class="pull-right">
-                <ol class="breadcrumb">
-                    <li><a href="{{ route('dashboard') }}">@lang('app.home')</a></li>
-                    <li><a href="{{ route('user.list') }}">@lang('app.users')</a></li>
-                    <li class="active">@lang('app.create')</li>
-                </ol>
-            </div>
-        </h1>
+  <div class="container">
+    <div class="row">
+      <div class="col s12 m12 l12">
+        <h5 class="breadcrumbs-title">
+          @lang('app.create_new_user')
+          <small>@lang('app.user_details')</small>
+        <div class="pull-right">
+        <ol class="breadcrumbs">
+          <li><a href="{{ route('dashboard') }}">@lang('app.home')</a></li>
+          <li><a href="{{ route('user.list') }}">@lang('app.users')</a></li>
+          <li class="active">@lang('app.create')</li>
+        </ol>
+        </div>
+        </h5>
+      </div>
     </div>
-</div>
+  </div>
 
 @include('partials.messages')
 
 {!! Form::open(['route' => 'user.store', 'files' => true, 'id' => 'user-form']) !!}
     <div class="row">
-        <div class="col-md-8">
+        <div class="col s8">
             @include('user.partials.details', ['edit' => false, 'profile' => false])
         </div>
-        <div class="col-md-4">
+        <div class="col s4">
             @include('user.partials.auth', ['edit' => false])
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-md-12">
-            <button type="submit" class="btn btn-primary">
-                <i class="fa fa-save"></i>
-                @lang('app.create_user')
+    <div class="col s12 ">
+        <div class="input-field col s4">
+          <div class="input-field col s12">
+            <button type="submit" class="btn cyan waves-effect waves-light">
+                <i class="mdi-content-save"></i>
+                  @lang('app.create_user')
             </button>
-        </div>
+          </div>
+      </div>
     </div>
+
 {!! Form::close() !!}
 
 @stop

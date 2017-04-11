@@ -98,7 +98,8 @@
                     <td>{{ $activity->description }}</td>
                     <td>{{ $activity->created_at->format('Y-m-d H:i:s') }}</td>
                     <td class="text-center">
-                        <a tabindex="0" role="button" class="btn-floating  waves-effect waves-light blue"
+                        <a tabindex="0" role="button"
+                        class="btn-floating  waves-effect waves-light blue"
                            data-trigger="focus"
                            data-placement="left"
                            data-toggle="popover"
