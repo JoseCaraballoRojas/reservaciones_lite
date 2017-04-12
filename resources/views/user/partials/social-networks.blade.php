@@ -1,8 +1,7 @@
-<div class="panel panel-default">
-    <div class="panel-heading">@lang('app.social_networks')</div>
-    <div class="panel-body">
+<div class="card-panel">
+    <h4 class="header2">@lang('app.social_networks')</h4>
         <div class="row">
-            <div class="col-md-6">
+            <div class="col l6">
                 <div class="form-group">
                     <label for="facebook">Facebook</label>
                     <div class="input-icon">
@@ -31,7 +30,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col l6">
                 <div class="form-group">
                     <label for="linkedin">LinkedIn</label>
                     <div class="input-icon">
@@ -61,9 +60,8 @@
                 </div>
             </div>
         </div>
-        <button type="submit" class="btn btn-primary">
-            <i class="fa fa-refresh"></i>
+        <button type="submit" class="btn cyan waves-effect waves-light">
+            <i class="mdi-content-save"></i>
             @lang('app.update_social_networks')
         </button>
-    </div>
 </div>

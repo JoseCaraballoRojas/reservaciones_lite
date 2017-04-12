@@ -136,20 +136,11 @@
           </ul>
       </li>
       @endpermission
-      <li class="li-hover"><div class="divider"></div></li>
-      <li class="li-hover"><p class="ultra-small margin more-text">MAS</p></li>
-      <li><a href="#"><i class="mdi-action-verified-user"></i> Angular UI  <span class="new badge"></span></a>
-      </li>
-      <li class="li-hover"><div class="divider"></div></li>
-      <li class="li-hover"><p class="ultra-small margin more-text">Daily Sales</p></li>
       <li class="li-hover">
-          <div class="row">
-              <div class="col s12 m12 l12">
-                  <div class="sample-chart-wrapper">
-                      <div class="ct-chart ct-golden-section" id="ct2-chart"></div>
-                  </div>
-              </div>
-          </div>
+        <div class="divider"></div>
+      </li>
+      <li class="li-hover">
+        <p class="ultra-small margin more-text">MAS</p>
       </li>
   </ul>
   <a href="#" data-activates="slide-out" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only cyan"><i class="mdi-navigation-menu"></i></a>

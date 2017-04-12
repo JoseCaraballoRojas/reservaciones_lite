@@ -11,18 +11,18 @@
             <img class="avatar-preview img-circle"
                  src="{{ $edit ? $user->present()->avatar : url('assets/img/profile.png') }}">
                  <div class="col s12 ">
-                       <div id="change-picture" class="btn cyan waves-effect waves-light"
-                            data-toggle="modal" data-target="#choose-modal">
+                       <a id="change-picture" class="btn blue modal-trigger"
+                            href="#choose-modal">
                              <i class="mdi-image-camera-alt"></i>
                                @lang('app.change_photo')
-                       </div>
+                       </a>
                  </div>
-          {{--  <div id="change-picture" class="btn btn-default btn-block"
-                 data-toggle="modal" data-target="#choose-modal">
+           {{--<div id="change-picture" class="btn modal-trigger"
+                  target="#choose-modal">
                 <i class="mdi-image-camera-alt"></i>
                 @lang('app.change_photo')
-            </div> --}}
-          {{--  <div class="row avatar-controls">
+            </div>--}}
+           <div class="row avatar-controls">
                 <div class="col s6">
                     <div id="cancel-upload" style="text-align: center;"
                           class=" btn waves-effect waves-light red darken-2">
@@ -36,7 +36,7 @@
                         @lang('app.save')
                   </button>
                 </div>
-            </div>--}}
+            </div>
         </div>
     </div>
 </div>
@@ -46,20 +46,21 @@
         <div class="modal-content">
             <div class="modal-body">
                 <div class="row">
-                    <div class="col-md-4 avatar-source" id="no-photo"
+                    <div class="col-md-4 col l4 avatar-source" id="no-photo"
                          data-url="{{ $updateUrl }}">
                         <img src="{{ url('assets/img/profile.png') }}" class="img-circle">
                         <p>@lang('app.no_photo')</p>
                     </div>
-                    <div class="col-md-4 avatar-source">
+                    <div class="col-md-4 col l4 avatar-source">
                         <div class="btn btn-default btn-upload">
                             <i class="fa fa-upload"></i>
-                            <input type="file" name="avatar" id="avatar-upload">
+                            <input type="file" name="avatar"
+                                   style="display: none" id="avatar-upload">
                         </div>
                         <p>@lang('app.upload_photo')</p>
                     </div>
                     @if ($edit)
-                        <div class="col-md-4 avatar-source source-external"
+                        <div class="col-md-4  col l4 avatar-source source-external"
                              data-url="{{ $updateUrl }}">
                             <img src="{{ $user->gravatar() }}" class="img-circle">
                             <p>@lang('app.gravatar')</p>
@@ -72,7 +73,7 @@
                         <br>
                         <div class="row">
                             @foreach($socialLoginsSet as $login)
-                                <div class="col-md-4 avatar-source source-external"
+                                <div class="col-md-4 col l4 avatar-source source-external"
                                      data-url="{{ $updateUrl }}">
                                     <img src="{{ $login->avatar }}" class="img-circle" style="width: 120px;">
                                     <p>{{ ucfirst($login->provider) }}</p>

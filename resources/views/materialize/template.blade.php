@@ -44,6 +44,9 @@
     {!! HTML::style('assets/template/js/plugins/perfect-scrollbar/perfect-scrollbar.css') !!}
     {!! HTML::style('assets/template/js/plugins/chartist-js/chartist.min.css') !!}
 
+  <!-- FONT-AWESOME -->
+    {!! HTML::style('assets/css/font-awesome.min.css') !!}
+
 </head>
 
 <body>
@@ -124,14 +127,18 @@
 
     <!-- jQuery Library -->
     {!! HTML::script('assets/template/js/plugins/jquery-1.11.2.min.js') !!}
+    <!--angularjs-->
+    {!! HTML::script('assets/template/js/plugins/angular.min.js') !!}
     <!--materialize js-->
     {!! HTML::script('assets/template/js/materialize.js') !!}
-    <!--prism
-    <script type="text/javascript" src="js/prism/prism.js"></script>-->
+    <!--prism js-->
+    {!! HTML::script('assets/template/js/plugins/prism/prism.js') !!}
     <!--scrollbar-->
     {!! HTML::script('assets/template/js/plugins/perfect-scrollbar/perfect-scrollbar.min.js') !!}
     <!-- chartist -->
     {!! HTML::script('assets/template/js/plugins/chartist-js/chartist.min.js') !!}
+    <!-- dropify -->
+    {!! HTML::script('assets/template/js/plugins/dropify/js/dropify.min.js') !!}
     <!--plugins.js - Some Specific JS codes for Plugin Settings-->
     {!! HTML::script('assets/template/js/plugins.js') !!}
     <!--custom-script.js - Add your own theme custom JS-->

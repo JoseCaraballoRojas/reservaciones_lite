@@ -1,35 +1,36 @@
-@extends('layouts.app')
+@extends('materialize.template')
 
 @section('page-title', $user->present()->nameOrEmail . ' - ' . trans('app.active_sessions'))
 
 @section('content')
+  <div class="container">
+    <div class="row">
+      <div class="col s12 m12 l12">
+        <h5 class="breadcrumbs-title">
+          {{ $user->present()->nameOrEmail }}
+          <small>@lang('app.active_sessions_sm')</small>
+        <div class="pull-right">
+        <ol class="breadcrumbs">
+          <li><a href="{{ route('dashboard') }}">@lang('app.home')</a></li>
 
-<div class="row">
-    <div class="col-lg-12">
-        <h1 class="page-header">
-            {{ $user->present()->nameOrEmail }}
-            <small>@lang('app.active_sessions_sm')</small>
-            <div class="pull-right">
-                <ol class="breadcrumb">
-                    <li><a href="{{ route('dashboard') }}">@lang('app.home')</a></li>
+          @if (isset($adminView))
+              <li><a href="{{ route('user.list') }}">@lang('app.users')</a></li>
+              <li><a href="{{ route('user.show', $user->id) }}">{{ $user->present()->name }}</a></li>
+          @endif
 
-                    @if (isset($adminView))
-                        <li><a href="{{ route('user.list') }}">@lang('app.users')</a></li>
-                        <li><a href="{{ route('user.show', $user->id) }}">{{ $user->present()->name }}</a></li>
-                    @endif
-
-                    <li class="active">@lang('app.sessions')</li>
-                </ol>
-            </div>
-
-        </h1>
+          <li class="active">@lang('app.sessions')</li>
+        </ol>
+        </div>
+        </h5>
+      </div>
     </div>
-</div>
+  </div>
 
 @include('partials.messages')
-
+<div class="divider"></div>
+<br>
 <div class="table-responsive">
-    <table class="table">
+    <table class="responsive-table striped bordered ">
         <thead>
             <th>@lang('app.ip_address')</th>
             <th>@lang('app.user_agent')</th>
@@ -45,7 +46,8 @@
                         <td>{{ \Carbon\Carbon::createFromTimestamp($session->last_activity)->format('Y-m-d H:i:s') }}</td>
                         <td class="text-center">
                             <a href="{{ isset($profile) ? route('profile.sessions.invalidate', $session->id) : route('user.sessions.invalidate', [$user->id, $session->id]) }}"
-                                class="btn btn-danger btn-circle" title="@lang('app.invalidate_session')"
+                                class="btn-floating  waves-effect waves-light red darken-2"
+                                title="@lang('app.invalidate_session')"
                                 data-toggle="tooltip"
                                 data-placement="top"
                                 data-method="DELETE"

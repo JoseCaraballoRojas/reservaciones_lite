@@ -82,14 +82,12 @@
                 </div>
                 @if ($edit)
                   <div class="col s12 ">
-                      <div class="input-field col s4">
-                        <div class="input-field col s12">
-                          <button type="submit" class="btn cyan waves-effect waves-light">
-                              <i class="mdi-content-save"></i>
-                                @lang('app.update_details')
-                          </button>
-                        </div>
-                    </div>
+                      <div class="input-field col s12">
+                        <button type="submit" class="btn cyan waves-effect waves-light">
+                            <i class="fa fa-refresh"></i>
+                              @lang('app.update_details')
+                        </button>
+                      </div>
                   </div>
                 @endif
             </div>

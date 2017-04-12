@@ -21,165 +21,102 @@
       </div>
     </div>
   </div>
-<div class="divider"></div>@include('partials.messages')
+<div class="divider"></div>
+@include('partials.messages')
 {{-- Incio de tab --}}
 <div id="multi-color-tab" class="section">
-         <div class="row">
-           <div class="col s12 m8 l12">
-             <div class="row">
-               <div class="col s12">
-                 <ul class="tabs tab-demo-active z-depth-1">
-                   <li class="tab col s3">
-                     <a class="white-text red darken-1 waves-effect waves-light  active" href="#sapien1">
-                     <i class="mdi-navigation-apps"></i>@lang('app.details')
-                     </a>
-                   </li>
-                   <li class="tab col s3">
-                     <a class="white-text purple darken-1 waves-effect waves-light" href="#activeone1">
-                       <i class="mdi-social-group"></i>  @lang('app.social_networks')
-                     </a>
-                   </li>
-                   <li class="tab col s3">
-                     <a class="white-text light-blue darken-1 waves-effect waves-light" href="#vestibulum1">
-                       <i class="mdi-action-lock"></i> @lang('app.authentication')
-                     </a>
-                   </li>
-                 </ul>
+   <div class="row">
+     <div class="col s12 m8 l12">
+       <div class="row">
+         <div class="col s12">
+           <ul class="tabs">
+             <li class="tab col s4">
+               <a href="#details" class="white-text red darken-1 waves-effect waves-light
+                  active"  >
+               <i class="mdi-navigation-apps"></i> @lang('app.details')
+               </a>
+             </li>
+             <li class="tab col s4">
+               <a href="#social-networks" class="white-text purple darken-1 waves-effect waves-light">
+                 <i class="fa fa-youtube"></i> @lang('app.social_networks')
+               </a>
+             </li>
+             <li class="tab col s4">
+               <a class="white-text light-blue darken-1 waves-effect waves-light"
+                  href="#auth">
+                 <i class="mdi-action-lock"></i> @lang('app.authentication')
+               </a>
+             </li>
+           </ul>
+         </div>
+         <div class="col s12">
+           <div class="row">
+             <div id="details" class="col s12  gray lighten-3">
+               <div class="col s12 m8 l7">
+                   {!! Form::open(['route' => ['user.update.details',
+                       $user->id], 'method' => 'PUT', 'id' => 'details-form']) !!}
+                       @include('user.partials.details', ['profile' => false])
+                   {!! Form::close() !!}
                </div>
-               <div class="col s12">
-                 <div id="sapien1" class="col s12  gray lighten-3">
-                   <div class="row">
-                       <div class="col s12 m8 l7">
-                           {!! Form::open(['route' => ['user.update.details',
-                             $user->id], 'method' => 'PUT', 'id' => 'details-form']) !!}
-                               @include('user.partials.details', ['profile' => false])
-                           {!! Form::close() !!}
-                       </div>
-                       <div class="col s12 m4 l5">
-                           {!! Form::open(['route' => ['user.update.avatar', $user->id], 'files' => true, 'id' => 'avatar-form']) !!}
-                               @include('user.partials.avatar',
-                               ['updateUrl' => route('user.update.avatar.external', $user->id)])
-                           {!! Form::close() !!}
-                       </div>
-                   </div>
-
-                 </div>
-                 <div id="activeone1" class="col s12  gray lighten-3">
-                   <div class="col s12">
-                       {!! Form::open(['route' => ['user.update.socials', $user->id]]) !!}
-                           @include('user.partials.social-networks')
-                       {!! Form::close() !!}
-                   </div>
-                 </div>
-                 <div id="vestibulum1" class="col s12  gray lighten-3">
-                   <div class="row">
-                       <div class="col-md-8">
-                           {!! Form::open(['route' => ['user.update.login-details', $user->id], 'method' => 'PUT', 'id' => 'login-details-form']) !!}
-                               @include('user.partials.auth')
-                           {!! Form::close() !!}
-                       </div>
-                   </div>
-                   <div class="row">
-                       <div class="col-md-8">
-                           @if (settings('2fa.enabled'))
-                               <?php $route = Authy::isEnabled($user) ? 'disable' : 'enable'; ?>
-
-                               {!! Form::open(['route' => ["user.two-factor.{$route}", $user->id], 'id' => 'two-factor-form']) !!}
-                                   @include('user.partials.two-factor')
-                               {!! Form::close() !!}
-                           @endif
-                       </div>
-                   </div>
-                 </div>
+               {{-- PANEL DEL AVATAR
+               <div class="col s12 m4 l5">
+                   {!! Form::open(['route' => ['user.update.avatar',
+                       $user->id], 'files' => true, 'id' => 'avatar-form']) !!}
+                       @include('user.partials.avatar',
+                       ['updateUrl' => route('user.update.avatar.external', $user->id)])
+                   {!! Form::close() !!}
+               </div>
+               --}}
+             </div>
+          </div>
+          <div class="row">
+             <div id="social-networks"  class="col s12  gray lighten-3">
+               <div class="col s12 m8 l12">
+                   {!! Form::open(['route' => ['user.update.socials', $user->id]]) !!}
+                       @include('user.partials.social-networks')
+                   {!! Form::close() !!}
                </div>
              </div>
+          </div>
+          <div class="row">
+             <div id="auth" class="col s12  gray lighten-3">
+
+                 <div class="col s12 m8 l7">
+                     {!! Form::open(['route' => ['user.update.login-details',
+                       $user->id], 'method' => 'PUT', 'id' => 'login-details-form']) !!}
+                         @include('user.partials.auth')
+                     {!! Form::close() !!}
+                 </div>
+                 <div class="col s12 m4 l5">
+                     @if (settings('2fa.enabled'))
+                         <?php $route = Authy::isEnabled($user) ? 'disable' : 'enable' ?>
+                         {!! Form::open(['route' => ["user.two-factor.{$route}",
+                             $user->id], 'id' => 'two-factor-form']) !!}
+                             @include('user.partials.two-factor')
+                         {!! Form::close() !!}
+                     @endif
+                 </div>
+
+             </div>
            </div>
-      </div>
+         </div>
+       </div>
+     </div>
+   </div>
 </div>
+@stop
 {{--fin de tab  --}}
 
-{{--
-<!-- Nav tabs -->
-<ul class="nav nav-tabs" role="tablist">
-    <li role="presentation" class="active">
-        <a href="#details" aria-controls="details" role="tab" data-toggle="tab">
-            <i class="glyphicon glyphicon-th"></i>
-
-        </a>
-    </li>
-    <li role="presentation">
-        <a href="#social-networks" aria-controls="social-networks" role="tab" data-toggle="tab">
-            <i class="fa fa-youtube"></i>
-
-        </a>
-    </li>
-    <li role="presentation">
-        <a href="#auth" aria-controls="auth" role="tab" data-toggle="tab">
-            <i class="fa fa-lock"></i>
-
-        </a>
-    </li>
-</ul>
-
-<!-- Tab panes -->
-
-<div class="tab-content">
-    <div role="tabpanel" class="tab-pane active" id="details">
-        <div class="row">
-            <div class="col-lg-8 col-md-7">
-                {!! Form::open(['route' => ['user.update.details', $user->id], 'method' => 'PUT', 'id' => 'details-form']) !!}
-                    @include('user.partials.details', ['profile' => false])
-                {!! Form::close() !!}
-            </div>
-            <div class="col-lg-4 col-md-5">
-                {!! Form::open(['route' => ['user.update.avatar', $user->id], 'files' => true, 'id' => 'avatar-form']) !!}
-                    @include('user.partials.avatar', ['updateUrl' => route('user.update.avatar.external', $user->id)])
-                {!! Form::close() !!}
-            </div>
-        </div>
-    </div>
-    <div role="tabpanel" class="tab-pane" id="social-networks">
-        <div class="row">
-            <div class="col-md-12">
-                {!! Form::open(['route' => ['user.update.socials', $user->id]]) !!}
-                    @include('user.partials.social-networks')
-                {!! Form::close() !!}
-            </div>
-        </div>
-    </div>
-    <div role="tabpanel" class="tab-pane" id="auth">
-        <div class="row">
-            <div class="col-md-8">
-                {!! Form::open(['route' => ['user.update.login-details', $user->id], 'method' => 'PUT', 'id' => 'login-details-form']) !!}
-                    @include('user.partials.auth')
-                {!! Form::close() !!}
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-8">
-                @if (settings('2fa.enabled'))--}}
-                    <?php $route = Authy::isEnabled($user) ? 'disable' : 'enable'; ?>
-{{--
-                    {!! Form::open(['route' => ["user.two-factor.{$route}", $user->id], 'id' => 'two-factor-form']) !!}
-                        @include('user.partials.two-factor')
-                    {!! Form::close() !!}
-                @endif
-            </div>
-        </div>
-    </div>
-</div>
---}}
-@stop
 
 @section('styles')
-    {!! HTML::style('assets/css/bootstrap-datetimepicker.min.css') !!}
+    {{--{!! HTML::style('assets/css/bootstrap-datetimepicker.min.css') !!}--}}
     {!! HTML::style('assets/plugins/croppie/croppie.css') !!}
 @stop
 
 @section('scripts')
     {!! HTML::script('assets/plugins/croppie/croppie.js') !!}
     {!! HTML::script('assets/js/moment.min.js') !!}
-    {!! HTML::script('assets/js/bootstrap-datetimepicker.min.js') !!}
+    {{--{!! HTML::script('assets/js/bootstrap-datetimepicker.min.js') !!}--}}
     {!! HTML::script('assets/js/as/btn.js') !!}
     {!! HTML::script('assets/js/as/profile.js') !!}
     {!! JsValidator::formRequest('Vanguard\Http\Requests\User\UpdateDetailsRequest', '#details-form') !!}

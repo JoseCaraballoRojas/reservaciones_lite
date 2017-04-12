@@ -1,30 +1,31 @@
-@extends('layouts.app')
+@extends('materialize.template')
 
 @section('page-title', $user->present()->nameOrEmail)
 
 @section('content')
-
-<div class="row">
-    <div class="col-lg-12">
-        <h1 class="page-header">
-            {{ $user->present()->nameOrEmail }}
-            <small>@lang('app.user_details')</small>
-            <div class="pull-right">
-                <ol class="breadcrumb">
-                    <li><a href="{{ route('dashboard') }}">@lang('app.home')</a></li>
-                    <li><a href="{{ route('user.list') }}">@lang('app.users')</a></li>
-                    <li class="active">{{ $user->present()->nameOrEmail }}</li>
-                </ol>
-            </div>
-
-        </h1>
+  <div class="container">
+    <div class="row">
+      <div class="col s12 m12 l12">
+        <h5 class="breadcrumbs-title">
+          {{ $user->present()->nameOrEmail }}
+          <small>@lang('app.user_details')</small>
+        <div class="pull-right">
+        <ol class="breadcrumbs">
+          <li><a href="{{ route('dashboard') }}">@lang('app.home')</a></li>
+          <li><a href="{{ route('user.list') }}">@lang('app.users')</a></li>
+          <li class="active">{{ $user->present()->nameOrEmail }}</li>
+        </ol>
+        </div>
+        </h5>
+      </div>
     </div>
-</div>
+  </div>
+
 
 <div class="row">
-    <div class="col-lg-4 col-md-5">
-        <div id="edit-user-panel" class="panel panel-default">
-            <div class="panel-heading">
+    <div class="col s12 m4 l5">
+        <div id="edit-user-panel" class="card-panel">
+            <h4 class="header2">
                 @lang('app.details')
                 <div class="pull-right">
                     <a href="{{ route('user.edit', $user->id) }}" class="edit"
@@ -32,47 +33,48 @@
                         @lang('app.edit')
                     </a>
                 </div>
-            </div>
-            <div class="panel-body panel-profile">
-                <div class="image">
-                    <img alt="image" class="img-circle" src="{{ $user->present()->avatar }}">
-                </div>
+            </h4>
+            <div class="card-panel">
+                <figure class="card-profile-image">
+                    <img alt="image" class="circle z-depth-2 responsive-img activator"
+                         src="{{ $user->present()->avatar }}">
+                </figure>
                 <div class="name"><strong>{{ $user->present()->name }}</strong></div>
 
                 @if ($socialNetworks)
                     <div class="icons">
                         @if ($socialNetworks->facebook)
-                            <a href="{{ $socialNetworks->facebook }}" class="btn btn-circle btn-facebook">
+                            <a href="{{ $socialNetworks->facebook }}" class="btn btn-floating btn-facebook">
                                 <i class="fa fa-facebook"></i>
                             </a>
                         @endif
 
                         @if ($socialNetworks->twitter)
-                            <a href="{{ $socialNetworks->twitter }}" class="btn btn-circle btn-twitter">
+                            <a href="{{ $socialNetworks->twitter }}" class="btn btn-floating btn-twitter">
                                 <i class="fa fa-twitter"></i>
                             </a>
                         @endif
 
                         @if ($socialNetworks->google_plus)
-                            <a href="{{ $socialNetworks->google_plus }}" class="btn btn-circle btn-google">
+                            <a href="{{ $socialNetworks->google_plus }}" class="btn btn-floating btn-google">
                                 <i class="fa fa-google-plus"></i>
                             </a>
                         @endif
 
                         @if ($socialNetworks->linked_in)
-                            <a href="{{ $socialNetworks->linked_in }}" class="btn btn-circle btn-linkedin">
+                            <a href="{{ $socialNetworks->linked_in }}" class="btn btn-floating btn-linkedin">
                                 <i class="fa fa-linkedin"></i>
                             </a>
                         @endif
 
                         @if ($socialNetworks->skype)
-                            <a href="{{ $socialNetworks->skype }}" class="btn btn-skype">
+                            <a href="{{ $socialNetworks->skype }}" class="btn btn-floating btn-skype">
                                 <i class="fa fa-skype"></i>
                             </a>
                         @endif
 
                         @if ($socialNetworks->dribbble)
-                            <a href="{{ $socialNetworks->dribbble }}" class="btn btn-circle btn-dribbble">
+                            <a href="{{ $socialNetworks->dribbble }}" class="btn btn-floating btn-dribbble">
                                 <i class="fa fa-dribbble"></i>
                             </a>
                         @endif
@@ -81,7 +83,7 @@
 
                 <br>
 
-                <table class="table table-hover table-details">
+                <table class="responsive-table striped bordered table-details">
                     <thead>
                         <tr>
                             <th colspan="3">@lang('app.contact_informations')</th>
@@ -108,7 +110,7 @@
                     </tbody>
                 </table>
 
-                <table class="table table-hover">
+                <table class="responsive-table striped bordered">
                     <thead>
                     <tr>
                         <th colspan="3">@lang('app.additional_informations')</th>
@@ -134,9 +136,9 @@
         </div>
     </div>
 
-    <div class="col-lg-8 col-md-7">
-        <div class="panel panel-default">
-            <div class="panel-heading">
+    <div class="col s12 m8 l7">
+        <div class="card-panel">
+            <h4 class="header2">
                 @lang('app.latest_activity')
                 <div class="pull-right">
                     <a href="{{ route('activity.user', $user->id) }}" class="edit"
@@ -144,9 +146,9 @@
                         @lang('app.view_all')
                     </a>
                 </div>
-            </div>
-            <div class="panel-body">
-                <table class="table user-activity">
+            </h4>
+            <div class="card-content">
+                <table class="responsive-table striped bordered user-activity">
                     <thead>
                         <tr>
                             <th>@lang('app.action')</th>
