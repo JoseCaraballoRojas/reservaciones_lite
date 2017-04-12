@@ -1,40 +1,54 @@
-<div class="panel panel-default">
-    <div class="panel-heading">@lang('app.authentication_throttling')</div>
-    <div class="panel-body">
+<div class="card-panel">
+    <h4 class="header2">@lang('app.authentication_throttling')</h4>
+    <div class="card-content">
         {!! Form::open(['route' => 'settings.auth.update', 'id' => 'auth-throttle-settings-form']) !!}
 
         <div class="form-group">
-            <label for="name">@lang('app.throttle_authentication')</label>
+            <label for="name">
+              <h6>@lang('app.throttle_authentication')</h6>
+            </label>
             <br>
-            <input type="hidden" name="throttle_enabled" value="0">
-            {!! Form::checkbox('throttle_enabled', 1, settings('throttle_enabled'), ['class' => 'switch']) !!}
+            <div class="switch">
+              <label>
+                OFF
+                <input type="hidden" name="throttle_enabled" value="0">
+                <input type="checkbox" name="throttle_enabled" value="1"
+                       {{ settings('throttle_enabled') ? 'checked' : '' }}>
+                <span class="lever"></span> ON
+              </label>
+            </div>
+          {{--  <input type="hidden" name="throttle_enabled" value="0">
+            {!! Form::checkbox('throttle_enabled', 1, settings('throttle_enabled'),
+               ['class' => 'switch']) !!}--}}
         </div>
+        <br>
 
         <div class="form-group">
             <label for="throttle_attempts">
-                @lang('app.maximum_number_of_attempts')
+                <h6>@lang('app.maximum_number_of_attempts')
                 <span class="fa fa-question-circle"
                       data-toggle="tooltip"
                       data-placement="top"
-                      title="@lang('app.max_number_of_incorrect_login_attempts')"></span>
+                      title="@lang('app.max_number_of_incorrect_login_attempts')"></span></h6>
             </label>
             <input type="text" name="throttle_attempts" class="form-control"
                    value="{{ settings('throttle_attempts', 10) }}">
         </div>
 
+
         <div class="form-group">
             <label for="throttle_lockout_time">
-                @lang('app.lockout_time')
+                <h6>@lang('app.lockout_time')
                 <span class="fa fa-question-circle"
                       data-toggle="tooltip"
                       data-placement="top"
-                      title="@lang('app.num_of_minutes_to_lock_the_user')"></span>
+                      title="@lang('app.num_of_minutes_to_lock_the_user')"></span></h6>
             </label>
             <input type="text" name="throttle_lockout_time" class="form-control"
                    value="{{ settings('throttle_lockout_time', 1) }}">
         </div>
-
-        <button type="submit" class="btn btn-primary">
+        <br>
+        <button type="submit" class="btn cyan waves-effect waves-light">
             <i class="fa fa-refresh"></i>
             @lang('app.update_settings')
         </button>
