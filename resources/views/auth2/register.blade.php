@@ -75,7 +75,7 @@
                     <input type="checkbox" name="tos" id="tos" value="1"/>
                     <label for="tos">
                       @lang('app.i_accept')
-                      <a href="#tos-modal" data-toggle="modal">
+                      <a href="#tos-modal" class="modal-trigger ">
                         @lang('app.terms_of_service')
                       </a>
                     </label>
@@ -115,47 +115,40 @@
 </div>
 
     @if (settings('tos'))
-        <div class="modal fade" id="tos-modal" tabindex="-1" role="dialog" aria-labelledby="tos-label">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="@lang('app.terms_of_service')">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                        <h3 class="modal-title" id="tos-label">@lang('app.terms_of_service')</h3>
-                    </div>
-                    <div class="modal-body">
-                        <h4>1. Terms</h4>
+        <div class="modal modal-fixed-footer" id="tos-modal">
+            <div class="modal-content">
+                  <h3 class="modal-title" id="tos-label">@lang('app.terms_of_service')</h3>
+                  <div class="divider"></div>
+                    <h4>1. Terms</h4>
 
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                            Donec quis lacus porttitor, dignissim nibh sit amet, fermentum felis.
-                            Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere
-                            cubilia Curae; In ultricies consectetur viverra. Nullam velit neque,
-                            placerat condimentum tempus tincidunt, placerat eu lectus. Nam molestie
-                            porta purus, et pretium risus vehicula in. Cras sem ipsum, varius sagittis
-                            rhoncus nec, dictum maximus diam. Duis ac laoreet est. In turpis velit, placerat
-                            eget nisi vitae, dignissim tristique nisl. Curabitur sollicitudin, nunc ut
-                            viverra interdum, lacus...
-                        </p>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Donec quis lacus porttitor, dignissim nibh sit amet, fermentum felis.
+                        Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere
+                        cubilia Curae; In ultricies consectetur viverra. Nullam velit neque,
+                        placerat condimentum tempus tincidunt, placerat eu lectus. Nam molestie
+                        porta purus, et pretium risus vehicula in. Cras sem ipsum, varius sagittis
+                        rhoncus nec, dictum maximus diam. Duis ac laoreet est. In turpis velit, placerat
+                        eget nisi vitae, dignissim tristique nisl. Curabitur sollicitudin, nunc ut
+                        viverra interdum, lacus...
+                    </p>
 
-                        <h4>2. Use License</h4>
+                    <h4>2. Use License</h4>
 
-                        <ol type="a">
-                            <li>
-                                Aenean vehicula erat eu nisi scelerisque, a mattis purus blandit. Curabitur congue
-                                ollis nisl malesuada egestas. Lorem ipsum dolor sit amet, consectetur adipiscing elit:
-                            </li>
-                        </ol>
+                    <ol type="a">
+                        <li>
+                            Aenean vehicula erat eu nisi scelerisque, a mattis purus blandit. Curabitur congue
+                            ollis nisl malesuada egestas. Lorem ipsum dolor sit amet, consectetur adipiscing elit:
+                        </li>
+                    </ol>
 
-                        <p>...</p>
-
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">@lang('app.close')</button>
-                    </div>
+                    <p>...</p>
                 </div>
-            </div>
+                <div class="modal-footer">
+                  <a href="#" class=" btn red waves-effect waves-red  modal-action modal-close">
+                    @lang('app.close')
+                  </a>
+                </div>
         </div>
     @endif
 
