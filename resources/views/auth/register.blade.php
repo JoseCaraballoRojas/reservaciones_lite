@@ -108,7 +108,7 @@
         </div>
         <div class="divider"></div>
         <br>
-        @include('auth2.social.buttons')
+        @include('auth.social.buttons')
 
     </div>
   </div>
