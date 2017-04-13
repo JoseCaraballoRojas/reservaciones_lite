@@ -29,7 +29,7 @@ class PasswordController extends Controller
      */
     public function forgotPassword()
     {
-        return view('auth.password.remind');
+        return view('auth2.password.remind');
     }
 
     /**
