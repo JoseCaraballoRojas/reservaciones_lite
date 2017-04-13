@@ -1,13 +1,15 @@
 @if ($socialProviders)
     <?php $colSize = 12 / count($socialProviders); ?>
 
+    <div class="divider-wrapper">
+        <hr class="or-divider">
+    </div>
 
     <div class="row">
 
         @if (in_array('facebook', $socialProviders))
-            <div class="col s{{ $colSize }} col-spaced">
-                <a class="btn waves-effect waves-light col s12 light-blue darken-4 btn-social btn-facebook"
-                   href="{{ url('auth/facebook/login') }}">
+            <div class="col-md-{{ $colSize }} col-spaced">
+                <a class="btn btn-block btn-social btn-facebook" href="{{ url('auth/facebook/login') }}">
                     <i class="fa fa-facebook"></i>
                     Facebook
                 </a>
@@ -15,9 +17,8 @@
         @endif
 
         @if (in_array('twitter', $socialProviders))
-            <div class="col s{{ $colSize }} col-spaced">
-                <a class="btn waves-effect waves-light col s12 blue btn-social btn-twitter"
-                   href="{{ url('auth/twitter/login') }}">
+            <div class="col-md-{{ $colSize }} col-spaced">
+                <a class="btn btn-block btn-social btn-twitter"  href="{{ url('auth/twitter/login') }}">
                     <i class="fa fa-twitter"></i>
                     Twitter
                 </a>
@@ -25,9 +26,8 @@
         @endif
 
         @if (in_array('google', $socialProviders))
-            <div class="col s{{ $colSize }} col-spaced">
-                <a class="btn waves-effect waves-light  col s12 red darken-2 btn-social btn-google"
-                   href="{{ url('auth/google/login') }}">
+            <div class="col-md-{{ $colSize }} col-spaced">
+                <a class="btn btn-block btn-social btn-google"  href="{{ url('auth/google/login') }}">
                     <i class="fa fa-google-plus"></i>
                     Google+
                 </a>
