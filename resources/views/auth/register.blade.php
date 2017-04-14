@@ -28,7 +28,7 @@
                 <i class="fa fa-envelope prefix"></i>
                 <input type="email" name="email" id="email"
                        placeholder="@lang('app.email')"
-                       value="{{ old('email') }}" >
+                       value="{{ old('email') }}" required>
                 <label for="email" class="center-align sr-only" >
                   @lang('app.email')
                 </label>
@@ -40,7 +40,7 @@
                 <i class="fa fa-user prefix"></i>
                 <input type="text" name="username" id="username"
                        placeholder="@lang('app.username')"
-                       value="{{ old('username') }}">
+                       value="{{ old('username') }}" required>
                 <label for="username" class="center-align sr-only" >
                   @lang('app.username')
                 </label>
@@ -49,12 +49,24 @@
 
             <div class="row margin">
               <div class="input-field col s12">
-                <i class="mdi-communication-phone prefix"></i>
-                <input type="text" name="phone" id="phone"
-                       placeholder="@lang('app.phone')"
-                       value="{{ old('phone') }}">
-                <label for="phone" class="center-align sr-only" >
-                  @lang('app.phone')
+                <i class="mdi-action-perm-contact-cal prefix"></i>
+                <input type="text" name="first_name" id="first_name"
+                       placeholder="@lang('app.first_name')"
+                       value="{{ old('first_name') }}" required>
+                <label for="first_name" class="center-align sr-only" >
+                  @lang('app.first_name')
+                </label>
+              </div>
+            </div>
+
+            <div class="row margin">
+              <div class="input-field col s12">
+                <i class="mdi-hardware-smartphone prefix"></i>
+                <input type="text" name="cell" id="cell"
+                       placeholder="@lang('app.cell_phone')"
+                       value="{{ old('cell') }}" required>
+                <label for="cell" class="center-align sr-only" >
+                  @lang('app.cell_phone')
                 </label>
               </div>
             </div>
