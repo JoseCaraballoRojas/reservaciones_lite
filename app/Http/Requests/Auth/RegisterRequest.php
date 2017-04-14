@@ -17,6 +17,7 @@ class RegisterRequest extends Request
             'email' => 'required|email|unique:users,email',
             'username' => 'required|unique:users,username',
             'password' => 'required|confirmed|min:6',
+            'phone' => 'required|min:10',
         ];
 
         if (settings('registration.captcha.enabled')) {

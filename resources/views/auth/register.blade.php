@@ -49,6 +49,18 @@
 
             <div class="row margin">
               <div class="input-field col s12">
+                <i class="mdi-communication-phone prefix"></i>
+                <input type="text" name="phone" id="phone"
+                       placeholder="@lang('app.phone')"
+                       value="{{ old('phone') }}">
+                <label for="phone" class="center-align sr-only" >
+                  @lang('app.phone')
+                </label>
+              </div>
+            </div>
+
+            <div class="row margin">
+              <div class="input-field col s12">
                 <i class="mdi-action-lock-outline prefix" aria-hidden="true"></i>
                 <input type="password" name="password" id="password"
                        placeholder="@lang('app.password')">

@@ -30,7 +30,7 @@
           </a>
       </div>
   </div>
-<br>  
+<br>
 {{--
 <div id="search-bar" class="section">
   <div class="row">
@@ -111,7 +111,7 @@
 </div>
 --}}
 <div class="table-responsive top-border-table" id="users-table-wrapper">
-    <table class="table">
+    <table class="table responsive-table bordered striped">
         <thead>
             <th>@lang('app.username')</th>
             <th>@lang('app.full_name')</th>
