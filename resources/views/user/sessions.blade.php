@@ -26,8 +26,9 @@
     </div>
   </div>
 
-@include('partials.messages')
 <div class="divider"></div>
+
+@include('partials.messages')
 <br>
 <div class="table-responsive">
     <table class="responsive-table striped bordered ">

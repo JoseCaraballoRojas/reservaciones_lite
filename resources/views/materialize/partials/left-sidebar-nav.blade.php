@@ -21,9 +21,9 @@
                   </li>
               </ul>
               <a class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn"
-                  href="#" data-activates="profile-dropdown">Usuario
+                  href="#" data-activates="profile-dropdown"><?=  Auth::user()->first_name ?>
                   <i class="mdi-navigation-arrow-drop-down right"></i></a>
-              <p class="user-roal">Administrator</p>
+              <p class="user-roal"><?=  Auth::user()->roles->first()->name ?></p>
           </div>
       </div>
       </li>
@@ -33,21 +33,28 @@
           <i class="mdi-action-dashboard"></i> @lang('app.dashboard')
         </a>
       </li>
+      @if (Auth::user()->roles->first()->name == 'Admin' || Auth::user()->roles->first()->name == 'User' )
+        <li class="bold">
+          <a href="{{ route('empresas.index') }}" class="waves-effect waves-cyan">
+            <i class="mdi-communication-business"></i>  @lang('app.company')s
+          </a>
+        </li>
+
+        <li class="bold">
+          <a href="{{ route('sucursales.index') }}" class="waves-effect waves-cyan">
+            <i class="mdi-social-location-city"></i>  @lang('app.subsidiaries')
+          </a>
+        </li>
+        <li class="bold">
+          <a href="{{ route('areas.index') }}" class="waves-effect waves-cyan">
+            <i class="mdi-action-store"></i>  Areas & Departamentos
+          </a>
+        </li>
+      @endif
 
       <li class="bold">
-        <a href="{{ route('empresas.index') }}" class="waves-effect waves-cyan">
-          <i class="mdi-communication-business"></i>  @lang('app.company')s
-        </a>
-      </li>
-
-      <li class="bold">
-        <a href="{{ route('sucursales.index') }}" class="waves-effect waves-cyan">
-          <i class="mdi-social-location-city"></i>  @lang('app.subsidiaries')
-        </a>
-      </li>
-      <li class="bold">
-        <a href="{{ route('areas.index') }}" class="waves-effect waves-cyan">
-          <i class="mdi-action-store"></i>  Areas & Departamentos
+        <a href="{{ route('citas.index') }}" class="waves-effect waves-cyan">
+          <i class="mdi-action-today"></i>  Citas
         </a>
       </li>
       @permission('users.manage')

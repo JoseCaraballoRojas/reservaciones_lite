@@ -20,6 +20,9 @@
     </div>
   </div>
 
+<div class="divider"></div>
+<br>
+
 @include('partials.messages')
 <div class="row">
     <div class="col s12 m12 l12">

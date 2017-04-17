@@ -3,21 +3,23 @@
 @section('page-title', trans('app.dashboard'))
 
 @section('content')
-
-<div class="row">
-    <div class="col s12 m12 l12">
-        <h1 class="page-header">
+  <div class="container">
+    <div class="row">
+      <div class="col s12 m12 l12">
+        <h5 class="breadcrumbs-title">
             @lang('app.welcome') <?= Auth::user()->username ?: Auth::user()->first_name ?>!
-            <div class="pull-right">
-                <ol class="breadcrumb">
-                    <li><a href="{{ route('dashboard') }}">@lang('app.home')</a></li>
-                    <li class="active">@lang('app.dashboard')</li>
-                </ol>
-            </div>
-
-        </h1>
+        <div class="pull-right">
+        <ol class="breadcrumbs">
+          <li><a href="{{ route('dashboard') }}">@lang('app.home')</a></li>
+          <li class="active">@lang('app.dashboard')</li>
+        </ol>
+        </div>
+        </h5>
+      </div>
     </div>
-</div>
+  </div>
+
+<div class="divider"></div>
 <!--card stats start-->
 <div id="card-stats">
     <div class="row">

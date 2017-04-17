@@ -22,6 +22,8 @@
   </div>
 </div>
 
+<div class="divider"></div>
+
 @include('partials.messages')
 {!! Form::open(['route' => ['areas.update', $area], 'method' => 'PUT' ])  !!}
 @include('areas.partials.detailsArea')

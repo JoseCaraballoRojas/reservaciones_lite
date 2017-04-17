@@ -368,7 +368,7 @@ class AuthController extends Controller
 
         $this->users->updateSocialNetworks($user->id, []);
 
-        $role = $roles->findByName('User');
+        $role = $roles->findByName('Client');
         $this->users->setRole($user->id, $role->id);
 
         // Check if email confirmation is required,

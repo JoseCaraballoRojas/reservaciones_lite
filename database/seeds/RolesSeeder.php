@@ -25,5 +25,12 @@ class RolesSeeder extends Seeder
             'description' => 'Default system user.',
             'removable' => false
         ]);
+
+        Role::create([
+            'name' => 'Client',
+            'display_name' => 'Client',
+            'description' => 'Person or organization using the services.',
+            'removable' => false
+        ]);
     }
 }

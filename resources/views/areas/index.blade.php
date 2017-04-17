@@ -19,6 +19,9 @@
     </div>
   </div>
 
+<div class="divider"></div>
+<br>
+
 @include('partials.messages')
 
 <div class="row">

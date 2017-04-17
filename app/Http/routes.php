@@ -405,4 +405,13 @@ Route::get('area/{id}/destroy', [
         'uses' => 'AreasController@destroy',
         'as' => 'areas.destroy'
         ]);
+
+/*
+* Citas
+*/
+Route::resource('citas', 'CitasController');
+Route::get('cita/{id}/destroy', [
+        'uses' => 'CitasController@destroy',
+        'as' => 'citas.destroy'
+        ]);
 ///////////////////////////////////

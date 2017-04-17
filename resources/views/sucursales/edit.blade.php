@@ -21,6 +21,7 @@
     </div>
   </div>
 
+<div class="divider"></div>
 
 @include('partials.messages')
 {!! Form::open(['route' => ['sucursales.update', $sucursal], 'method' => 'PUT' ])  !!}

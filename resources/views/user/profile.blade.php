@@ -19,6 +19,8 @@
     </div>
 </div>
 
+<div class="divider"></div>
+
 @include('partials.messages')
 
 <!-- Nav tabs -->

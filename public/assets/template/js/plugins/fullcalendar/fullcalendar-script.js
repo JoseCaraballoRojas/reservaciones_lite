@@ -1,6 +1,6 @@
 
   $(document).ready(function() {
-    
+
 
     /* initialize the external events
     -----------------------------------------------------------------*/
@@ -37,7 +37,7 @@
       eventLimit: true, // allow "more" link when too many events
       events: [
         {
-          title: 'All Day Event',
+          title: 'All Day',
           start: '2015-05-01',
           color: '#9c27b0'
         },
@@ -49,8 +49,9 @@
         },
         {
           id: 999,
-          title: 'Repeating Event',
+          title: 'Repeating Edit',
           start: '2015-05-09T16:00:00',
+          end:  '2015-05-09T16:30:00',
           color: '#ff1744'
         },
         {
@@ -98,5 +99,5 @@
         }
       ]
     });
-    
+
   });

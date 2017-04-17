@@ -47,6 +47,8 @@
   <!-- FONT-AWESOME -->
     {!! HTML::style('assets/css/font-awesome.min.css') !!}
 
+@yield('styles')
+
 </head>
 
 <body>
@@ -148,6 +150,9 @@
             headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
         });
     </script>
+
+@yield('scripts')
+
 </body>
 
 </html>
