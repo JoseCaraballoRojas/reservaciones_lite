@@ -1,6 +1,8 @@
 
   $(document).ready(function() {
 
+    var date = new Date(); //fecha actual
+
 
     /* initialize the external events
     -----------------------------------------------------------------*/
@@ -27,77 +29,73 @@
     -----------------------------------------------------------------*/
     $('#calendar').fullCalendar({
       header: {
-        left: 'prev,next today',
+        left: 'prev',
         center: 'title',
-        right: 'month,basicWeek,basicDay'
+        right: 'next'
       },
-      defaultDate: '2015-05-12',
+      defaultDate: date,
       editable: true,
       droppable: true, // this allows things to be dropped onto the calendar
       eventLimit: true, // allow "more" link when too many events
+      //hiddenDays: [ 0,6], //OCULTAR LOS DIAS SABO Y DOMINGO
       events: [
         {
-          title: 'All Day',
-          start: '2015-05-01',
-          color: '#9c27b0'
+          title: '3',
+          start: '2017-04-25',
+          color: '#00bcd4'
         },
+
         {
-          title: 'Long Event',
-          start: '2015-05-07',
-          end: '2015-05-10',
-          color: '#e91e63'
-        },
-        {
-          id: 999,
-          title: 'Repeating Edit',
-          start: '2015-05-09T16:00:00',
-          end:  '2015-05-09T16:30:00',
-          color: '#ff1744'
-        },
-        {
-          id: 999,
-          title: 'Repeating Event',
-          start: '2015-05-16T16:00:00',
-          color: '#aa00ff'
-        },
-        {
-          title: 'Conference',
-          start: '2015-05-3',
-          end: '2015-05-5',
-          color: '#01579b'
-        },
-        {
-          title: 'Meeting',
-          start: '2015-05-12T10:30:00',
-          end: '2015-05-12T12:30:00',
-          color: '#2196f3'
-        },
-        {
-          title: 'Lunch',
-          start: '2015-05-12T12:00:00',
-          color: '#ff5722'
-        },
-        {
-          title: 'Meeting',
-          start: '2015-05-12T14:30:00',
-          color: '#4caf50'
-        },
-        {
-          title: 'Happy Hour',
-          start: '2015-05-12T17:30:00',
-          color: '#03a9f4'
-        },
-        {
-          title: 'Dinner',
-          start: '2015-05-12T20:00:00',
-          color: '#009688'
-        },
-        {
-          title: 'Birthday Party',
-          start: '2015-05-13T07:00:00',
+          title: '7',
+          start: '2017-04-13',
           color: '#00bcd4'
         }
-      ]
+      ],
+
+      eventClick: function(calEvent, jsEvent, view) {
+
+          $('#btn-modal-citas').click();
+          //alert('Event: ' + calEvent.title);
+          //alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
+          //alert('View: ' + view.name);
+
+          // change the border color just for fun
+          //$(this).css('border-color', 'red');
+
+      }
+
     });
+    //hide btn
+    $('#btn-modal').hide();
+    $('#btn-modal-citas').hide();
+    //capture click event
+    $('.fc-day').on('click', function() {
+      var valor = $(this).attr('data-date');
+      $('#btn-modal').click();
+      //console.log(valor);
+
+    });
+    //btn close modal
+    $('#btn-modal-close').on('click', function() {
+        $('#modalForm').hide();
+        $('#materialize-lean-overlay-1').hide();
+    });
+    //btn close modal 2
+    $('#btn-modal-close2').on('click', function() {
+        $('#modalCitas').hide();
+        $('#materialize-lean-overlay-1').hide();
+    });
+    // fc hover
+    $('.fc-day').hover(function() {
+        $(this).css('cursor', 'pointer');
+        $(this).attr('title', 'Solicitar cita');
+
+
+    });
+
+    $('body table tbody tr td a ').addClass('btn');
+    //$('body table tbody tr td').addClass('btn');
+    $('body table ').addClass('bordered');
+    $('body table ').addClass('responsive');
 
   });

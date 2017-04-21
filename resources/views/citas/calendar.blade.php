@@ -3,8 +3,10 @@
 @section('page-title', 'Calendario de citas')
 
 @section('styles')
-  <!-- FULL CALENDAR -->
-    {!! HTML::style('assets/template/js/plugins/fullcalendar/css/fullcalendar.min.css') !!}
+<!-- FULL CALENDAR -->
+    {!! HTML::style('assets/template/js/plugins/fullcalendar/css/fullcalendar.css') !!}
+<!-- FULL CALENDAR NEW CONFIG -->
+    {!! HTML::style('assets/template/js/plugins/fullcalendar/css/newconfig.css') !!}
 @stop
 
 @section('content')
@@ -35,30 +37,68 @@
     <div id="full-calendar">
       <div class="col s12 m12 l12">
         <div class="row">
-          <div class="col s12 m4 l3">
-            <div id='external-events'>
-              <h4 class="header">Eventos </h4>
-              <div class='fc-event cyan'>Facturas</div>
-              <div class='fc-event teal'>LLamar </div>
-              <div class='fc-event cyan darken-1'>Cena con el equipo</div>
-              <div class='fc-event cyan accent-4'>Reunión con el Equipo de Apoyo</div>
-              <div class='fc-event teal accent-4'>Reunión con el equipo de ventas</div>
-              <div class='fc-event light-blue accent-3'>Diseñar una aplicación de iOS</div>
-              <div class='fc-event light-blue accent-4'>Fiesta de la empresa</div>
-              <p>
-                <input type='checkbox' id='drop-remove' />
-                <label for='drop-remove'>Eliminar después de relizar</label>
-              </p>
-            </div>
-          </div>
-          <div class="col s12 m8 l9">
+          <div class="col s12 m12 l12">
             <div id='calendar'></div>
           </div>
         </div>
     </div>
     </div>
   </div>
+  <div class="row">
+    <!-- modal 1-->
+    <a href="#modalForm" class="modal-trigger" id="btn-modal" >h</a>
+    <div class="modal modal-fixed-footer" id="modalForm">
+        <div class="modal-content">
+              <h3 class="modal-title" id="tos-label">Solicitar Cita</h3>
+              <div class="divider"></div>
+              <div class="col s12">
+                <div class="row">
+                  <div class="finput-field col s12">
+                    {!! Form::label('turno', 'Turnos') !!}
+                    {!! Form::select('turno', ['turno1', 'turno2'], null,
+                      ['placeholder' => 'Selecione un turno...', 'required'  ]) !!}
+                   </div>
+                 </div>
+               </div>
+            </div>
+            <div class="modal-footer">
+              <a href="#" class=" btn red waves-effect waves-red
+               modal-action modal-close" id="btn-modal-close">
+                @lang('app.close')
+              </a>
+            </div>
+    </div>
+
+  </div>
+
+
+  <div class="row">
+    <!-- modal 2-->
+    <a href="#modalCitas" class="modal-trigger" id="btn-modal-citas" >h</a>
+    <div class="modal modal-fixed-footer" id="modalCitas">
+        <div class="modal-content">
+              <h3 class="modal-title" id="tos-label">Solicitar Cita</h3>
+              <div class="divider"></div>
+              <ul>
+                <li>Cita 1</li>
+                <li>Cita 2</li>
+                <li>Cita 3</li>
+                <li>Cita 4</li>
+                <li>Cita 5</li>
+                <li>Cita 6</li>
+                <li>Cita 7</li>
+              </ul>
+            </div>
+            <div class="modal-footer">
+              <a href="#" class=" btn red waves-effect waves-red
+               modal-action modal-close" id="btn-modal-close2">
+                @lang('app.close')
+              </a>
+            </div>
+    </div>
+  </div>
 </div>
+
 @stop
 
 @section('scripts')
@@ -67,7 +107,7 @@
 Scripts
 ================================================ -->
 <!-- chartist -->
-  {!! HTML::script('assets/template/js/plugins/chartist-js/chartist.min.js') !!}
+
 
 <!-- Calendar Script -->
     {!! HTML::script('assets/template/js/plugins/fullcalendar/lib/jquery-ui.custom.min.js') !!}
@@ -81,6 +121,5 @@ Scripts
     {!! HTML::script('assets/template/js/plugins.js') !!}
 <!--custom-script.js - Add your own theme custom JS-->
     {!! HTML::script('assets/template/js/custom-script.js') !!}
-
 
 @stop

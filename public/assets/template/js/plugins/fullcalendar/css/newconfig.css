@@ -1,0 +1,19 @@
+body .fc-content { /* extra precedence to overcome jqui */
+	font-size: 2em;
+  text-align: center;
+}
+
+
+
+.fc-ltr .fc-basic-view .fc-day-number {
+	text-align: center;
+  font-size: 2em;
+}
+
+ .fc-title {
+  vertical-align: middle;
+}
+
+.background-fc-day {
+  background-color: green;
+}
