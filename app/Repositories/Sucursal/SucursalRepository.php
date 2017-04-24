@@ -31,7 +31,6 @@ class SucursalRepository
 
   public function getSucursalesByID($id)
   {
-      return Sucursal::where('empresa_id', '=',$id)
-      ->get();
+      return Sucursal::where('empresa_id', '=',$id)->lists('sucursal','id');
   }
 }

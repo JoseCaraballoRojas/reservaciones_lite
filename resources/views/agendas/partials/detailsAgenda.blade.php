@@ -19,9 +19,8 @@
                    <div class="row">
                      <div class="finput-field col s12">
                        {!! Form::label('sucursal', 'Sucursal') !!}
-                       {!! Form::select('sucursal_id',
-                                        ['placeholder' => 'selecione una sucursal...'],
-                                        null,['id' => 'selectSucursal']) !!}
+                       {!! Form::select('sucursal',['placeholder'=>'Selecciona'],null,['id'=>'selectSucursal']) !!}
+
                       </div>
                     </div>
                   </div>
