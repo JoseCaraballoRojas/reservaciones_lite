@@ -28,4 +28,10 @@ class SucursalRepository
   {
       return User::where('id', $id)->get();
   }
+
+  public function getSucursalesByID($id)
+  {
+      return Sucursal::where('empresa_id', '=',$id)
+      ->get();
+  }
 }

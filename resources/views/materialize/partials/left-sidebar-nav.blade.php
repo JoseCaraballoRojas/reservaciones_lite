@@ -53,8 +53,8 @@
       @endif
 
       <li class="bold">
-        <a href="{{ route('citas.index') }}" class="waves-effect waves-cyan">
-          <i class="mdi-action-today"></i>  Citas
+        <a href="{{ route('agendas.index') }}" class="waves-effect waves-cyan">
+          <i class="mdi-action-today"></i>  Agendas
         </a>
       </li>
       @permission('users.manage')

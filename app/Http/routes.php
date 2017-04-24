@@ -397,6 +397,7 @@ Route::get('sucursal/{id}/destroy', [
         'as' => 'sucursales.destroy'
         ]);
 
+
 /*
 * Areas
 */
@@ -413,5 +414,18 @@ Route::resource('citas', 'CitasController');
 Route::get('cita/{id}/destroy', [
         'uses' => 'CitasController@destroy',
         'as' => 'citas.destroy'
+        ]);
+
+/*
+* Agendas
+*/
+Route::resource('agendas', 'AgendasController');
+Route::get('agenda/{id}/destroy', [
+        'uses' => 'AgendasController@destroy',
+        'as' => 'agendas.destroy'
+        ]);
+Route::get('agendas/getSucursalesByID/{id}', [
+        'uses' => 'AgendasController@getSucursalesByID',
+        'as' => 'agendas.getSucursalesByID'
         ]);
 ///////////////////////////////////
