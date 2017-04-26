@@ -95,7 +95,7 @@ class AgendasController extends Controller
       $empresa_id = $this->agendas->getSucursalByID($agenda->area->sucursal_id);
       //dd($empresa_id);
       $edit = true;
-      $motivos = ['turno' => 'turno', 'tiempo' => 'tiempo'];
+      $motivos = ['1' => 'turno', '2' => 'tiempo'];
       $users = $this->agendas->getUsers();
       $empresas = $this->agendas->getEmpresas();
       $sucursales = $this->agendas->getSucursales();
@@ -112,9 +112,13 @@ class AgendasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(AgendaRequest $request, $id)
     {
-        //
+      $agenda = Agenda::find($id);
+      $agenda->fill($request->except(['sucursal']));
+      $agenda->save();
+      return redirect()->route('agendas.index')
+          ->withSuccess('Agenda actualizada con exito');
     }
 
     /**

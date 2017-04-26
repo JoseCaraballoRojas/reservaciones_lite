@@ -10,7 +10,7 @@ class Agenda extends Model
 
     protected $fillable = [
         'agenda', 'direccion', 'responsable_id', 'username', 'email',
-        'phone', 'area', 'area_id', 'sucursal', 'motivo'
+        'phone', 'area', 'area_id', 'sucursal', 'sucursal_id', 'motivo'
     ];
 
     public function user()
