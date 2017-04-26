@@ -46,7 +46,8 @@
 
   <!-- FONT-AWESOME -->
     {!! HTML::style('assets/css/font-awesome.min.css') !!}
-
+  <!-- Jquery.nestable -->
+  {!! HTML::style('assets/template/js/plugins/jquery.nestable/nestable.css') !!}
 @yield('styles')
 
 </head>
