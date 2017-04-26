@@ -31,10 +31,32 @@ class AgendaRepository
       return Empresa::orderBy('nombre', 'ASC')->lists('nombre', 'id');
     }
 
+    public function getSucursales()
+    {
+      return Sucursal::orderBy('sucursal', 'ASC')->lists('sucursal', 'id');
+    }
+
     public function getSucursalesByID($id)
     {
         return Sucursal::where('empresa_id', '=',$id)
         ->get();
+    }
+
+    public function getAreas()
+    {
+      return Area::orderBy('area', 'ASC')->lists('area', 'id');
+    }
+
+    public function getAreasByID($id)
+    {
+        return Area::where('sucursal_id', '=',$id)
+        ->get();
+    }
+
+    public function getSucursalByID($id)
+    {
+        return Sucursal::where('id', '=',$id)
+        ->get()->lists('empresa_id');
     }
 
 }

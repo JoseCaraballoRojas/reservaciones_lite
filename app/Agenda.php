@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Agenda extends Model
 {
-    protected $table = 'areas';
+    protected $table = 'agendas';
 
     protected $fillable = [
         'agenda', 'direccion', 'responsable_id', 'username', 'email',
-        'phone', 'area', 'area_id', 'sucursal'
+        'phone', 'area', 'area_id', 'sucursal', 'motivo'
     ];
 
     public function user()

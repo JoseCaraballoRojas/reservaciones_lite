@@ -131,12 +131,5 @@ class SucursalesController extends Controller
       return redirect()->route('sucursales.index')
           ->withSuccess('Sucursal eliminada con exito');
     }
-
-    public function getSucursalesByID(Request $request, $id)
-    {
-        if ($request->ajax()) {
-            $sucursales = $this->sucursales->getSucursalesByID($id);
-            return response()->json($sucursales);
-        }
-    }
+    
 }

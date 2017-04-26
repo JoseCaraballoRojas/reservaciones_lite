@@ -8,7 +8,7 @@
                    <div class="row">
                      <div class="finput-field col s12">
                        {!! Form::label('empresa_id', 'Empresas registradas') !!}
-                       {!! Form::select('empresa_id', $empresas, null,
+                       {!! Form::select('empresa_id', $empresas, $edit ? $empresa_id : '',
                          ['placeholder' => 'selecione una empresa...',
                           'id' => 'selectEmpresa', 'required']) !!}
                       </div>
@@ -19,11 +19,31 @@
                    <div class="row">
                      <div class="finput-field col s12">
                        {!! Form::label('sucursal', 'Sucursal') !!}
-                       {!! Form::select('sucursal',['placeholder'=>'Selecciona'],null,['id'=>'selectSucursal']) !!}
+                       @if ($edit)
+                         {!! Form::select('sucursal', $sucursales, $edit ? $agenda->area->empresa_id : '',
+                           ['placeholder' => 'selecione una sucursal...',
+                            'id' => 'selectSucursal', 'required']) !!}
+                       @endif
+                       {!! Form::select('sucursal',['placeholder'=>'Selecciona una sucursal...'],null,['id'=>'selectSucursal']) !!}
 
                       </div>
                     </div>
                   </div>
+
+                  <div class="col s12">
+                     <div class="row">
+                       <div class="finput-field col s12">
+                         {!! Form::label('area', 'Area') !!}
+                         @if ($edit)
+                           {!! Form::select('area_id', $areas, $edit ? $agenda->area_id : '',
+                             ['placeholder' => 'selecione un area...',
+                              'id' => 'selectArea', 'required']) !!}
+                         @else
+                           {!! Form::select('area_id',['placeholder'=>'Selecciona un area...'],null,['id'=>'selectArea']) !!}
+                         @endif
+                        </div>
+                      </div>
+                    </div>
 
                 <div class="col s12">
                   <div class="row">
@@ -34,6 +54,16 @@
                     </div>
                   </div>
                </div>
+               <div class="col s12">
+                 <div class="row">
+                   <div class="finput-field col s12">
+                     {!! Form::label('motivo', 'Catalogo de motivos') !!}
+                     {!! Form::select('motivo', $motivos, $edit ? $agenda->motivo : '',
+                       ['placeholder' => 'selecione un motivo...',
+                        'id' => 'selectMotivo', 'required']) !!}
+                    </div>
+                  </div>
+                </div>
 
               </div>
           </div>

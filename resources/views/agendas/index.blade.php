@@ -26,7 +26,7 @@
 
 <div class="row">
     <div class="col s12 m12 l12">
-        <a href="{{ route('agendas.create') }}" class="waves-effect waves-light green btn" id="add-agenda">
+        <a href="{{ route('agendas.create') }}" class="waves-effect waves-light green btn" id="add-user">
             <i class=" large mdi-content-add"></i>
             Agregar Agenda
         </a>
@@ -40,17 +40,16 @@
             <th>Agenda</th>
             <th>Direccion</th>
             <th>Area</th>
-            <th>Responsable</th>
             <th>@lang('app.registration_date')</th>
             <th class="text-center">@lang('app.action')</th>
         </thead>
-        @if (count($agendas))
+        <tbody>
+          @if (count($agendas))
             @foreach ($agendas as $agenda)
                 <tr>
-                    <td>{{ $agenda->agenda }}</td>
+                    <td>{{ $agenda->user->username }}</td>
                     <td>{{ $agenda->direccion }}</td>
                     <td>{{ $agenda->area->area }}</td>
-                    <td>{{ $agenda->user->username }}</td>
                     <td>{{ $agenda->created_at->format('Y-m-d') }}</td>
                     <td class="text-center">
                         <a href="{{ route('agendas.show', $agenda->id) }}"
@@ -81,7 +80,6 @@
                   <td colspan="6"><em>@lang('app.no_records_found')</em></td>
               </tr>
           @endif
-        <tbody>
         </tbody>
     </table>
     <div class="text-center">

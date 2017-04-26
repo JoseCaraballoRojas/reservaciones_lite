@@ -51,12 +51,13 @@
           </a>
         </li>
       @endif
-
+      @if (Auth::user()->roles->first()->name == 'Admin' || Auth::user()->roles->first()->name == 'User' )
       <li class="bold">
         <a href="{{ route('agendas.index') }}" class="waves-effect waves-cyan">
           <i class="mdi-action-today"></i>  Agendas
         </a>
       </li>
+      @endif
       @permission('users.manage')
       <li class="bold {{ Request::is('user*') ? 'active open' : ''  }}">
         <a href="{{ route('user.list') }}"

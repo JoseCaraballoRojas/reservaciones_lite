@@ -119,5 +119,9 @@ class User extends Model implements AuthenticatableContract,
     {
         return $tihis->hasMany('Vanguard\Area');
     }
+    public function agendas()
+    {
+        return $tihis->hasMany('Vanguard\Agenda');
+    }
 
 }

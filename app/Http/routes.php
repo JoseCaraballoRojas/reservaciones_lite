@@ -428,4 +428,8 @@ Route::get('agendas/getSucursalesByID/{id}', [
         'uses' => 'AgendasController@getSucursalesByID',
         'as' => 'agendas.getSucursalesByID'
         ]);
+Route::get('agendas/getAreasByID/{id}', [
+        'uses' => 'AgendasController@getAreasByID',
+        'as' => 'agendas.getAreasByID'
+        ]);
 ///////////////////////////////////

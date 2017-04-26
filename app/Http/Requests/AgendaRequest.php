@@ -13,7 +13,7 @@ class AgendaRequest extends Request
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +23,9 @@ class AgendaRequest extends Request
      */
     public function rules()
     {
-        return [
-            //
-        ];
+      return [
+          'responsable_id' => 'required',
+          'area_id' => 'required'
+      ];
     }
 }

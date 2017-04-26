@@ -47,11 +47,11 @@ class AgendasController extends Controller
     public function create()
     {
         $edit = false;
+        $motivos = ['turno' => 'turno', 'tiempo' => 'tiempo'];
         return view('agendas.create', [
             'users' => $this->agendas->getUsers(),
             'empresas' => $this->agendas->getEmpresas(),
-            //'sucursales' => $this->areas->getSucursales(),
-            //'areas' => $this->areas->getAreas(),
+            'motivos' => $motivos,
             'edit' => $edit
         ]);
     }
@@ -62,9 +62,12 @@ class AgendasController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AgendaRequest $request)
     {
-        //
+        $agenda = new Agenda($request->except(['sucursal']));
+        $agenda->save();
+        return redirect()->route('agendas.index')
+            ->withSuccess('Agenda creada con exito');
     }
 
     /**
@@ -86,7 +89,20 @@ class AgendasController extends Controller
      */
     public function edit($id)
     {
-        //
+      $agenda = Agenda::find($id);
+      $agenda->user;
+      $agenda->area;
+      $empresa_id = $this->agendas->getSucursalByID($agenda->area->sucursal_id);
+      //dd($empresa_id);
+      $edit = true;
+      $motivos = ['turno' => 'turno', 'tiempo' => 'tiempo'];
+      $users = $this->agendas->getUsers();
+      $empresas = $this->agendas->getEmpresas();
+      $sucursales = $this->agendas->getSucursales();
+
+      $areas = $this->agendas->getAreas();
+      return view('agendas.edit',
+      compact('edit', 'users', 'empresas', 'empresa_id', 'sucursales', 'areas', 'agenda', 'motivos'));
     }
 
     /**
@@ -117,6 +133,14 @@ class AgendasController extends Controller
         if ($request->ajax()) {
             $sucursales = $this->agendas->getSucursalesByID($id);
             return response()->json($sucursales);
+        }
+    }
+
+    public function getAreasByID(Request $request, $id)
+    {
+        if ($request->ajax()) {
+            $areas = $this->agendas->getAreasByID($id);
+            return response()->json($areas);
         }
     }
 }
