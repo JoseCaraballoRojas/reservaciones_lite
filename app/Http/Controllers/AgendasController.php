@@ -28,7 +28,7 @@ class AgendasController extends Controller
      */
     public function index()
     {
-        $agendas = Agenda::orderBy('id', 'DESC')->paginate(5);
+        $agendas = $this->agendas->getAgendas();
 
         $agendas->each(function ($agendas){
           $agendas->area;
@@ -64,8 +64,8 @@ class AgendasController extends Controller
      */
     public function store(AgendaRequest $request)
     {
-        $agenda = new Agenda($request->except(['sucursal']));
-        $agenda->save();
+        $this->agendas->create($request->except(['sucursal']));
+        
         return redirect()->route('agendas.index')
             ->withSuccess('Agenda creada con exito');
     }
@@ -89,7 +89,7 @@ class AgendasController extends Controller
      */
     public function edit($id)
     {
-      $agenda = Agenda::find($id);
+      $agenda = $this->agendas->findAgendaByID($id);
       $agenda->user;
       $agenda->area;
       $empresa_id = $this->agendas->getSucursalByID($agenda->area->sucursal_id);
@@ -114,7 +114,7 @@ class AgendasController extends Controller
      */
     public function update(AgendaRequest $request, $id)
     {
-      $agenda = Agenda::find($id);
+      $agenda = $this->agendas->findAgendaByID($id);
       $agenda->fill($request->except(['sucursal']));
       $agenda->save();
       return redirect()->route('agendas.index')
@@ -129,7 +129,10 @@ class AgendasController extends Controller
      */
     public function destroy($id)
     {
-        //
+      $agenda = $this->agendas->findAgendaByID($id);
+      $agenda->delete();
+      return redirect()->route('agendas.index')
+          ->withSuccess('Agenda eliminada con exito');
     }
 
     public function getSucursalesByID(Request $request, $id)

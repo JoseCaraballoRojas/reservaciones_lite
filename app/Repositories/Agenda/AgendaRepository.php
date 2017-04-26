@@ -5,6 +5,7 @@ use Vanguard\User;
 use Vanguard\Area;
 use Vanguard\Empresa;
 use Vanguard\Sucursal;
+use Vanguard\Agenda;
 /**
  *Repositorios para el modelo Area
  */
@@ -18,7 +19,9 @@ class AgendaRepository
 
     public function create(array $data)
     {
-        return Agenda::create($data);
+        $agenda = Agenda::create($data);
+
+        return $agenda;
     }
 
     public function findUser($id)
@@ -57,6 +60,16 @@ class AgendaRepository
     {
         return Sucursal::where('id', '=',$id)
         ->get()->lists('empresa_id');
+    }
+
+    public function findAgendaByID($id)
+    {
+        return $agenda = Agenda::find($id);
+    }
+
+    public function getAgendas()
+    {
+        return $agendas = Agenda::orderBy('id', 'DESC')->paginate(5);
     }
 
 }
