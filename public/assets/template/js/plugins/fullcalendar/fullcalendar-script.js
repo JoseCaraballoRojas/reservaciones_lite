@@ -33,11 +33,12 @@
         center: 'title',
         right: 'next'
       },
+      contentHeight: 600,
       defaultDate: date,
-      editable: true,
-      droppable: true, // this allows things to be dropped onto the calendar
+      editable: false, //no permitir mover eeventos
+      droppable: false, // this allows things to be dropped onto the calendar
       eventLimit: true, // allow "more" link when too many events
-      //hiddenDays: [ 0,6], //OCULTAR LOS DIAS SABO Y DOMINGO
+      //hiddenDays: [ 0,6], //OCULTAR LOS DIAS SABADO Y DOMINGO
       events: [
         {
           title: '3',
@@ -78,12 +79,14 @@
     //btn close modal
     $('#btn-modal-close').on('click', function() {
         $('#modalForm').hide();
-        $('#materialize-lean-overlay-1').hide();
+        $('.lean-overlay').remove();
+
     });
     //btn close modal 2
     $('#btn-modal-close2').on('click', function() {
         $('#modalCitas').hide();
-        $('#materialize-lean-overlay-1').hide();
+        $('.lean-overlay').remove();
+
     });
     // fc hover
     $('.fc-day').hover(function() {
@@ -94,8 +97,17 @@
     });
 
     $('body table tbody tr td a ').addClass('btn');
-    //$('body table tbody tr td').addClass('btn');
     $('body table ').addClass('bordered');
     $('body table ').addClass('responsive');
+    //$('body table ').css({"border-collapse": "collapse"});
+    //$('body table tbody tr').css({"border": "none"})
+    //$('body table tbody tr td').css({"border": "solid 1px #f00"});
+    //$('body table tbody tr td').css({"border-left": "solid 1px #f00;"});
+    //$("p").css({"background-color": "yellow", "font-size": "200%"});
+    //$('body table ').addClass('table_bordered');
+    //$('body table  tbody tr ').addClass('tr_border');
+    //$('body table  tbody tr td').addClass('td_bordered');
+
+
 
   });

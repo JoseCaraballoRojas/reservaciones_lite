@@ -432,4 +432,14 @@ Route::get('agendas/getAreasByID/{id}', [
         'uses' => 'AgendasController@getAreasByID',
         'as' => 'agendas.getAreasByID'
         ]);
+
+/*
+* Clientes
+*/
+Route::resource('clientes', 'ClientesController');
+Route::get('cliente/{id}/destroy', [
+        'uses' => 'ClientesController@destroy',
+        'as' => 'clientes.destroy'
+        ]);
+
 ///////////////////////////////////

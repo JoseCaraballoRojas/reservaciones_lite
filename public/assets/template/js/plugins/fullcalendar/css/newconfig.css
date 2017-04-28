@@ -7,13 +7,16 @@ body .fc-content { /* extra precedence to overcome jqui */
 
 .fc-ltr .fc-basic-view .fc-day-number {
 	text-align: center;
-  font-size: 2em;
+  font-size: 1em;
 }
 
  .fc-title {
   vertical-align: middle;
 }
 
-.background-fc-day {
-  background-color: green;
-}
+/*.fc .fc-row {
+	border-left: solid 1px #D3D8D9;
+	border-right: solid 1px #D3D8D9;
+	border-top: solid 1px #D3D8D9;
+	border-bottom: solid 1px #D3D8D9;
+}*/

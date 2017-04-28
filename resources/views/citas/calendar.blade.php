@@ -28,7 +28,7 @@
   </div>
 
 <div class="divider"></div>
-<br>
+
 @include('partials.messages')
 
 <!--start container-->
@@ -112,7 +112,7 @@ Scripts
 <!-- Calendar Script -->
     {!! HTML::script('assets/template/js/plugins/fullcalendar/lib/jquery-ui.custom.min.js') !!}
     {!! HTML::script('assets/template/js/plugins/fullcalendar/lib/moment.min.js') !!}
-    {!! HTML::script('assets/template/js/plugins/fullcalendar/js/fullcalendar.min.js') !!}
+    {!! HTML::script('assets/template/js/plugins/fullcalendar/js/fullcalendar.js') !!}
     {!! HTML::script('assets/template/js/plugins/fullcalendar/fullcalendar-script.js') !!}
 <!--Canlendar locale ES-->
     {!! HTML::script('assets/template/js/plugins/fullcalendar/lang/es.js') !!}

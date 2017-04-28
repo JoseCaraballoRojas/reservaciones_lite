@@ -65,7 +65,7 @@ class AgendasController extends Controller
     public function store(AgendaRequest $request)
     {
         $this->agendas->create($request->except(['sucursal']));
-        
+
         return redirect()->route('agendas.index')
             ->withSuccess('Agenda creada con exito');
     }
@@ -78,7 +78,7 @@ class AgendasController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('citas.calendar');
     }
 
     /**

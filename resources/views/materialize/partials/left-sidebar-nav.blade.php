@@ -65,6 +65,12 @@
           <i class="mdi-social-people"></i> @lang('app.users')
         </a>
       </li>
+      <li class="bold {{ Request::is('clientes*') ? 'active open' : ''  }}">
+        <a href="{{ route('clientes.index') }}"
+          class="waves-effect waves-cyan {{ Request::is('clientes*') ? 'active' : ''  }}">
+          <i class="mdi-social-people"></i> Clientes
+        </a>
+      </li>
       @endpermission
 
       @permission('users.activity')
