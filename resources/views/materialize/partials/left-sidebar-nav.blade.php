@@ -51,6 +51,40 @@
           </a>
         </li>
       @endif
+
+      @if (Auth::user()->roles->first()->name == 'Client')
+      <li class="bold">
+        <a href="{{ route('citas.indexCliente') }}" class="waves-effect waves-cyan">
+          <i class="mdi-action-today"></i>  Citas
+        </a>
+      </li>
+      @endif
+      <li class="no-padding ">
+          <ul class="collapsible collapsible-accordion">
+              <li class="bold">
+                <a class="collapsible-header waves-effect waves-cyan">
+                  <i class="mdi-action-account-box"></i> Citas
+                </a>
+                  <div class="collapsible-body">
+                      <ul>
+                        <li>
+                          <a href="{{ route('citas.indexCliente') }}"
+                            class="">
+                            Ver citas
+                          </a>
+                        </li>
+                        <li>
+                          <a href="{{ route('citas.create') }}"
+                            class="">
+                            Solicitar cita
+                          </a>
+                        </li>
+                      </ul>
+                  </div>
+              </li>
+          </ul>
+      </li>
+
       @if (Auth::user()->roles->first()->name == 'Admin' || Auth::user()->roles->first()->name == 'User' )
       <li class="bold">
         <a href="{{ route('agendas.index') }}" class="waves-effect waves-cyan">

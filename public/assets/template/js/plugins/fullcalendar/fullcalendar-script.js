@@ -33,7 +33,7 @@
         center: 'title',
         right: 'next'
       },
-      contentHeight: 600,
+      contentHeight: 450,
       defaultDate: date,
       editable: false, //no permitir mover eeventos
       droppable: false, // this allows things to be dropped onto the calendar
@@ -88,6 +88,9 @@
         $('.lean-overlay').remove();
 
     });
+
+    
+
     // fc hover
     $('.fc-day').hover(function() {
         $(this).css('cursor', 'pointer');

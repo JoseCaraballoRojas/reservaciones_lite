@@ -416,6 +416,12 @@ Route::get('cita/{id}/destroy', [
         'as' => 'citas.destroy'
         ]);
 
+Route::get('citas', [
+    'as' => 'citas.indexCliente',
+    'uses' => 'CitasController@indexCliente'
+]);
+
+
 /*
 * Agendas
 */

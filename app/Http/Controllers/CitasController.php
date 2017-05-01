@@ -5,9 +5,18 @@ namespace Vanguard\Http\Controllers;
 use Illuminate\Http\Request;
 
 use Vanguard\Http\Requests;
+use Vanguard\Repositories\Agenda\AgendaRepository;
+
 
 class CitasController extends Controller
 {
+
+    protected $agendas;
+
+    public function __construct(AgendaRepository $agendas)
+    {
+      $this->agendas = $agendas;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,18 +24,37 @@ class CitasController extends Controller
      */
     public function index()
     {
-        return view('citas.calendar');
+        return view('citas.indexAdmin');
     }
 
+    public function indexCliente()
+    {
+        //dd($this->agendas->getEmpresas());
+        return view('citas.indexCliente', [
+            'empresas' => $this->agendas->getEmpresas(),
+        ]);
+
+
+    }
+
+    public function indexResponsable()
+    {
+        return view('citas.indexResponsable');
+    }
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
+
     public function create()
     {
-        //
+
+      return view('citas.create', [
+          'empresas' => $this->agendas->getEmpresas()
+      ]);
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -83,4 +111,6 @@ class CitasController extends Controller
     {
         //
     }
+
+
 }
