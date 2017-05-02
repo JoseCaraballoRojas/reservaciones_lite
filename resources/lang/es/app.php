@@ -16,8 +16,8 @@ return [
     'notifications' => 'Notificaciones',
     'action' => 'Acción',
     'company' => 'Empresa',
-    'subsidiary' => 'Sucursal', 
-    'subsidiaries' => 'Sucursales', 
+    'subsidiary' => 'Sucursal',
+    'subsidiaries' => 'Sucursales',
 
     // Activity Log Section
     'activity_log' => 'Registro de Actividades',
@@ -447,6 +447,23 @@ return [
     '2fa_not_enabled_user' => 'Autenticación de dos factores no está habilitado para este usuario.',
     'you_have_to_accept_tos' => 'Tienes que aceptar las Condiciones del Servicio.',
     'permission_already_exists' => 'Permiso con este nombre ya existe!',
+
+    //Agendas
+    'agend' => 'Agendas',
+    'config' => 'Configuracion',
+    //Configuracion de Agendas
+    'citas' => 'Citas',
+    'config_citas' => 'Configuracion de citas',
+    'allow_modify_date_time' => 'Permitir la modificación de la fecha y la hora de la cita ?',
+    'anticipation_time_modify' => 'Tiempo de anticipacion',
+    'anticipation_time_cancel' => 'Tiempo de anticipacion para cancelar la cita',
+    'anticipation_time_modify_description' => 'Tiempo de anticipacion en horas para que el cliente pueda modificar la fecha y hora de la cita',
+    'anticipation_time_cancel_description' => 'Tiempo de anticipacion en horas para que el cliente pueda cancelar la cita',
+    'cancel_appointment' => 'Cancelar cita ?',
+    'cancel_appointment_enable_disable' => 'Permitir o no al cliente la cancelacion de citas ya programadas',
+    'cancel_with_confirmation_email' => 'Cancelar con correo de confirmacion ?',
+    'time_for_activation' => 'Tiempo para activación antes de borrarse el token ',
+    'time_for_activation_description' => 'Tiempo para activación antes de borrarse el token en un numero de horas determinado',
 
     //Emails
     'hi' => 'Hi',

@@ -8,7 +8,7 @@
       <div class="col s12 m12 l12">
         <h5 class="breadcrumbs-title">
           Crear Nueva Agenda
-          <small>Detalles del Agenda</small>
+          <small>Detalles de la Agenda</small>
         <div class="pull-right">
         <ol class="breadcrumbs">
           <li><a href="{{ route('dashboard') }}">@lang('app.home')</a></li>

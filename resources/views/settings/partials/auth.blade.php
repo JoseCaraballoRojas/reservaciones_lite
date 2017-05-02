@@ -14,16 +14,13 @@
             <br>
             <div class="switch">
               <label>
-                OFF
+                @lang('app.no')
                 <input type="hidden" name="remember_me" value="0">
                 <input type="checkbox" name="remember_me" value="1"
                        {{ settings('remember_me') ? 'checked' : '' }}>
-                <span class="lever"></span> ON
+                <span class="lever"></span> @lang('app.yes')
               </label>
             </div>
-            {{--<input type="hidden" name="remember_me" value="0">
-            {!! Form::checkbox('remember_me', 1, settings('remember_me'), ['class' => 'switch']) !!}
-            --}}
         </div>
         <br>
 
@@ -38,16 +35,13 @@
             <br>
             <div class="switch">
               <label>
-                OFF
+                @lang('app.no')
                 <input type="hidden" name="forgot_password" value="0">
                 <input type="checkbox" name="forgot_password" value="1"
                        {{ settings('forgot_password') ? 'checked' : '' }}>
-                <span class="lever"></span> ON
+                <span class="lever"></span> @lang('app.yes')
               </label>
             </div>
-          {{--  <input type="hidden" name="forgot_password" value="0">
-            {!! Form::checkbox('forgot_password', 1, settings('forgot_password'), ['class' => 'switch']) !!}
-            --}}
         </div>
         <br>
 

@@ -438,6 +438,10 @@ Route::get('agendas/getAreasByID/{id}', [
         'uses' => 'AgendasController@getAreasByID',
         'as' => 'agendas.getAreasByID'
         ]);
+Route::get('agendas/config/{id}', [
+        'uses' => 'AgendasController@configAgenda',
+        'as' => 'agendas.config'
+        ]);
 
 /*
 * Clientes

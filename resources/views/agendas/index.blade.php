@@ -62,6 +62,11 @@
                                 data-toggle="tooltip" data-placement="top">
                           <i class="mdi-content-create"></i>
                         </a>
+                        <a href="{{ route('agendas.config', $agenda->id) }}"
+                          class="btn-floating  waves-effect waves-light orange darken-2" title="Configurar Agenda"
+                                data-toggle="tooltip" data-placement="top">
+                          <i class="mdi-action-settings"></i>
+                        </a>
                         <a href="{{ route('agendas.destroy', $agenda->id) }}"
                           class="btn-floating  waves-effect waves-light red darken-2" title="Eliminar Agenda"
                                 data-toggle="tooltip"

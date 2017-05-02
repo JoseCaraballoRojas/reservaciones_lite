@@ -14,12 +14,12 @@ class CreateConfigAgendaTable extends Migration
     {
         Schema::create('config_agendas', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('permitir_modificacion_fecha', 10)->nullable();
-            $table->string('tiempo_anticipacion_pmf')->nullable();
-            $table->string('cancelar_cita', 10)->nullable();
-            $table->string('tiempo_anticipacion_cc')->nullable();
-            $table->string('cancelar_con_correo_confirmacion', 10)->nullable();
-            $table->string('tiempo_activacion_del_token')->nullable();
+            $table->string('allow_modify_date_time', 10)->nullable();
+            $table->string('anticipation_time_modify')->nullable();
+            $table->string('cancel_appointment', 10)->nullable();
+            $table->string('anticipation_time_cance')->nullable();
+            $table->string('cancel_with_confirmation_email', 10)->nullable();
+            $table->string('time_for_activation')->nullable();
             $table->string('limitar_numero_citas_cliente')->nullable();
             $table->string('aprobacion_cita', 10)->nullable();
             $table->string('responsable_aprobacion')->nullable();

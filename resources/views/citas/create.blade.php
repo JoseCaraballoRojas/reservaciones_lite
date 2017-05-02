@@ -102,7 +102,7 @@
                 <div class="col s6">
                   <a href="#" class="col s12 btn red waves-effect waves-red
                    modal-action modal-close" id="btn-modal-close">
-                    @lang('app.close')
+                    @lang('app.cancel')
                   </a>
                 </div>
                 <div class="col s6">

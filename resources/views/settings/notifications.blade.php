@@ -46,11 +46,6 @@
                             <span class="lever"></span> @lang('app.yes')
                           </label>
                         </div>
-                        {{--<input type="hidden" name="notifications_signup_email" value="0">
-                        <input type="checkbox" name="notifications_signup_email"
-                               class="switch" value="1"
-                               data-on-text="@lang('app.yes')" data-off-text="@lang('app.no')"
-                               {{ settings('notifications_signup_email') ? 'checked' : '' }}>--}}
                     </div>
                     <br>
                     <!-- Switch -->

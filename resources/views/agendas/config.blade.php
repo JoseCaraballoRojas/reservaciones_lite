@@ -1,25 +1,26 @@
 @extends('materialize.template')
 
-@section('page-title', trans('app.authentication_settings'))
+@section('page-title', 'Agendas')
 
 @section('content')
   <div class="container">
     <div class="row">
       <div class="col s12 m12 l12">
         <h5 class="breadcrumbs-title">
-          @lang('app.authentication')
-          <small>@lang('app.system_auth_registration_settings')</small>
+          Configurar Agenda
+          <small>Detalles de la Agenda</small>
         <div class="pull-right">
         <ol class="breadcrumbs">
           <li><a href="{{ route('dashboard') }}">@lang('app.home')</a></li>
-          <li><a href="javascript:;">@lang('app.settings')</a></li>
-          <li class="active">@lang('app.authentication')</li>
+          <li><a href="{{ route('agendas.index') }}">@lang('app.agend')</a></li>
+          <li class="active">@lang('app.config')</li>
         </ol>
         </div>
         </h5>
       </div>
     </div>
   </div>
+
 <div class="divider"></div>
 
 @include('partials.messages')
@@ -31,12 +32,13 @@
      <div class="col s12 m8 l12">
        <div class="row">
          <div class="col s12">
+
            <ul class="tabs">
              <li class="tab col s6">
-               <a href="#auth" aria-controls="auth" role="tab" data-toggle="tab"
+               <a href="#citas" aria-controls="citas" role="tab" data-toggle="tab"
                   class="white-text cyan darken-1 waves-effect waves-light active"  >
                    <i class="fa fa-lock"></i>
-                   @lang('app.authentication')
+                   @lang('app.citas')
                </a>
              </li>
              <li class="tab col s6">
@@ -47,31 +49,32 @@
                </a>
              </li>
            </ul>
+
          </div>
          <!--PANES-->
          <div class="col s12">
            <div class="row">
-             <div id="auth" class="col s12  gray lighten-3">
+             <div id="citas" class="col s12 m12 l12 gray lighten-3">
                <div class="col s12 m12 l6">
-                   @include('settings.partials.auth')
+                   @include('agendas.partials.config.citas')
                </div>
                <div class="col s12 m12 l6">
-                   @include('settings.partials.throttling')
+                   @include('agendas.partials.config.throttling')
                </div>
                <div class="row">
                    <div class="col s12 m12 l12">
-                       @include('settings.partials.two-factor')
+
                    </div>
                </div>
              </div>
           </div>
           <div class="row">
-             <div id="registration"  class="col s12  gray lighten-3">
+             <div id="registration"  class="col s12 m12 l12   gray lighten-3">
                <div class="col s12 m12 l6">
-                   @include('settings.partials.registration')
+                   @include('agendas.partials.config.registration')
                </div>
                <div class="col s12 m12 l6">
-                   @include('settings.partials.recaptcha')
+
                </div>
              </div>
           </div>
@@ -80,5 +83,4 @@
      </div>
    </div>
 </div>
-
 @stop
