@@ -36,16 +36,16 @@
            <ul class="tabs">
              <li class="tab col s6">
                <a href="#citas" aria-controls="citas" role="tab" data-toggle="tab"
-                  class="white-text cyan darken-1 waves-effect waves-light active"  >
-                   <i class="fa fa-lock"></i>
+                  class="white-text cyan darken-1 waves-effect waves-light "  >
+                   <i class="fa fa-calendar" aria-hidden="true"></i>
                    @lang('app.citas')
                </a>
              </li>
              <li class="tab col s6">
-               <a href="#registration" aria-controls="registration" role="tab" data-toggle="tab"
-                  class="white-text red darken-1 waves-effect waves-light" >
-                   <i class="fa fa-user-plus"></i>
-                   @lang('app.registration')
+               <a href="#agenda" aria-controls="agenda" role="tab" data-toggle="tab"
+                  class="white-text red darken-1 waves-effect waves-light active" >
+                   <i class="fa fa-calendar-o" aria-hidden="true"></i>
+                   @lang('app.agenda')
                </a>
              </li>
            </ul>
@@ -58,23 +58,15 @@
                <div class="col s12 m12 l6">
                    @include('agendas.partials.config.citas')
                </div>
-               <div class="col s12 m12 l6">
-                   @include('agendas.partials.config.throttling')
-               </div>
-               <div class="row">
-                   <div class="col s12 m12 l12">
-
-                   </div>
-               </div>
              </div>
           </div>
           <div class="row">
-             <div id="registration"  class="col s12 m12 l12   gray lighten-3">
+             <div id="agenda"  class="col s12 m12 l12   gray lighten-3">
                <div class="col s12 m12 l6">
-                   @include('agendas.partials.config.registration')
+                   @include('agendas.partials.config.agendas')
                </div>
                <div class="col s12 m12 l6">
-
+                  @include('agendas.partials.config.agendas2')
                </div>
              </div>
           </div>

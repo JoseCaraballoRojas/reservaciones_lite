@@ -91,7 +91,7 @@
             </div>
         </div>
       </div>
-
+      <br>
       <div class="row">
         <div class="col s12 m12 l12">
           <label for="time_for_activation">
@@ -106,6 +106,24 @@
                  value="{{ settings('time_for_activation', 36) }}">
         </div>
       </div>
+
+      <div class="row">
+        <div class="col s12 m12 l12">
+          <label for="limit_number_of_appointments">
+              <h6>@lang('app.limit_number_of_appointments')</h6>
+          </label>
+          <br>
+          <div class="switch">
+            <label>
+              @lang('app.no')
+              <input type="hidden" name="limit_number_of_appointments" value="0">
+              <input type="checkbox" name="limit_number_of_appointments" value="1"
+                     {{ settings('limit_number_of_appointments') ? 'checked' : '' }}>
+              <span class="lever"></span> @lang('app.yes')
+            </label>
+          </div>
+      </div>
+    </div>
 
       <br>
       <div class="row">
