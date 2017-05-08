@@ -25,9 +25,10 @@
                         data-placement="top"
                         title="@lang('app.start_time_description')"></span></h6>
             </label>
-            <input type="text" class="col s12 m2 l2 datepicker"
+            <input type="text" class="col s12 m3 l3 timepicker"
                    name="start_time"
-                   value="{{ settings('start_time') }}">
+                   value="{{ settings('start_time') }}"
+                   id="timepicker" >
           </div>
         </div>
 
@@ -40,9 +41,10 @@
                         data-placement="top"
                         title="@lang('app.final_hour_description')"></span></h6>
             </label>
-            <input type="text" class="col s12 m2 l2 datepicker"
+            <input type="text" class="col s12 m3 l3 timepicker"
                    name="final_hour"
-                   value="{{ settings('final_hour') }}">
+                   value="{{ settings('final_hour') }}"
+                   id="timepicker" >
           </div>
         </div>
 

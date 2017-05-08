@@ -108,3 +108,14 @@
    </div>
 </div>
 @stop
+
+@section('scripts')
+
+<!-- ================================================
+Scripts
+================================================ -->
+<!-- cargar timepicker-->
+    {!! HTML::script('assets/template/js/materialize-plugins/date_picker/picker.time.js') !!}
+    {!! HTML::script('assets/js/reservaciones/agendas/input_time.js') !!}
+
+@stop
