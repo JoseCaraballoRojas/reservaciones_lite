@@ -30,27 +30,31 @@ class CreateConfigAgendaTable extends Migration
             $table->string('block_time')->nullable();
             $table->string('block_time_minutes_hours')->nullable();
             $table->string('max_per_block')->nullable();
-            $table->string('formato_hora')->nullable();
-            $table->string('hora_inicial')->nullable();
-            $table->string('hora_final')->nullable();
-            $table->string('turnos_visibles')->nullable();
+            $table->string('visible_shifts')->nullable();
             $table->string('time_of_each_appointment')->nullable();
             $table->string('appointment_time_minutes_hours')->nullable();
-            $table->string('dias_habiles_semana')->nullable();
-            $table->string('bloqueo_horarios_dias')->nullable();
             $table->string('max_daily_appointments')->nullable();
-            $table->string('conf_numero_max_citas')->nullable();
-            $table->string('catalogo_razones_cita')->nullable();
-            $table->string('recordatorio_email')->nullable();
-            $table->string('tiempo_evio_recordatorio_dias')->nullable();
-            $table->string('sms_recordatorio')->nullable();
-            $table->string('tiempo_envio_sms_horas')->nullable();
-            $table->string('copia_email')->nullable();
-            $table->string('vacaciones_fecha_inicial')->nullable();
-            $table->string('vacaciones_fecha_final')->nullable();
-            $table->string('selecionable_frontend')->nullable();
+            $table->string('max_daily_appointments')->nullable();
+            $table->string('max_number_daily_appointments')->nullable();
+            $table->string('appointments_time_minutes_hours')->nullable();
+            $table->string('time_format')->nullable();
+            $table->string('start_time')->nullable();
+            $table->string('final_hour')->nullable();
+            $table->string('blocking_schedules_per_day')->nullable();
 
+            $table->string('notifications_email')->nullable();
+            $table->string('time_to_send_emails')->nullable();
+            $table->string('notifications_sms')->nullable();
+            $table->string('time_to_send_sms')->nullable();
+            $table->string('email_copy')->nullable();
+            $table->string('email_copy_receiver')->nullable();
+            $table->string('initial_holiday_date')->nullable();
+            $table->string('holiday_end_date')->nullable();
+            $table->string('selectable_agenda')->nullable();
+            //FOREIGN KEYS
             $table->integer('agenda_id')->unsigned();
+            $table->integer('reason_appointment_id')->unsigned();
+
             $table->timestamps();
         });
 
@@ -58,6 +62,11 @@ class CreateConfigAgendaTable extends Migration
             $table->foreign('agenda_id')
                 ->references('id')
                 ->on('agendas')
+                ->onDelete('cascade');
+
+            $table->foreign('reason_appointment_id')
+                ->references('id')
+                ->on('reasons')
                 ->onDelete('cascade');
         });
     }

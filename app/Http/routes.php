@@ -442,6 +442,10 @@ Route::get('agendas/config/{id}', [
         'uses' => 'AgendasController@configAgenda',
         'as' => 'agendas.config'
         ]);
+Route::post('agendas/config', [
+    'as' => 'agendas.config.update',
+    'uses' => 'ConfigAgendasController@update'
+]);
 
 /*
 * Clientes

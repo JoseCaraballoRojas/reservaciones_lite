@@ -1,7 +1,7 @@
 <div class="card-panel">
     <h4 class="header2">@lang('app.config_agendas')</h4>
     <div class="card-content">
-        {!! Form::open(['route' => 'settings.auth.update', 'id' => 'registration-settings-form']) !!}
+        {!! Form::open(['route' => 'agendas.config.update', 'id' => 'agendas-config-general-form']) !!}
 
         <div class="row">
           <div class="col s12 m12 l12">
@@ -36,7 +36,7 @@
              </div>
            </div>
         </div>
-        <br>
+
 
         <div class="row">
           <div class="col s12 m12 l12">
@@ -100,7 +100,37 @@
                    value="{{ settings('max_number_shifts_per_day', 10) }}">
           </div>
         </div>
+
+        <div class="row">
+          <div class="col s12 m12 l12">
+            <label for="visible_shifts">
+                <h6>@lang('app.visible_shifts')
+                  <span class="fa fa-question-circle"
+                        data-toggle="tooltip"
+                        data-placement="top"
+                        title="@lang('app.visible_shifts_description')"></span></h6>
+            </label>
+            <div class="switch">
+              <label>
+                @lang('app.no')
+                <input type="hidden" name="visible_shifts" value="0">
+                <input type="checkbox" name="visible_shifts" value="1"
+                       {{ settings('visible_shifts') ? 'checked' : '' }}>
+                <span class="lever"></span> @lang('app.yes')
+              </label>
+            </div>
+          </div>
+        </div>
+
         <br>
+        <div class="row">
+          <div class="col s12 m12 l12">
+            <button type="submit" class="btn cyan waves-effect waves-light">
+                <i class="fa fa-refresh"></i>
+                @lang('app.update_settings_agenda')
+            </button>
+          </div>
+        </div>
 
         {!! Form::close() !!}
     </div>

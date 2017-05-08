@@ -1,7 +1,7 @@
 <div class="card-panel">
     <h4 class="header2">@lang('app.config_citas')</h4>
     <div class="card-content">
-        {!! Form::open(['route' => 'settings.auth.update', 'id' => 'auth-general-settings-form']) !!}
+        {!! Form::open(['route' => 'agendas.config.update', 'id' => 'agendas-config-general-form']) !!}
 
         <div class="row">
           <div class="col s12 m12 l12">
@@ -130,7 +130,7 @@
         <div class="col s12 m12 l12">
           <button type="submit" class="btn cyan waves-effect waves-light">
               <i class="fa fa-refresh"></i>
-              @lang('app.update_settings')
+              @lang('app.update_settings_agenda')
           </button>
         </div>
       </div>
