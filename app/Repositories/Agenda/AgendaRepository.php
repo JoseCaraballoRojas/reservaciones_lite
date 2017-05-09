@@ -7,7 +7,7 @@ use Vanguard\Empresa;
 use Vanguard\Sucursal;
 use Vanguard\Agenda;
 /**
- *Repositorios para el modelo Area
+ *Repositorios para el modelo Agenda
  */
 class AgendaRepository
 {
