@@ -1,15 +1,15 @@
 <div class="card-panel">
     <h4 class="header2">@lang('app.config_general_agendas')</h4>
     <div class="card-content">
-        {!! Form::open(['route' => 'agendas.config.update', 'id' => 'agendas-config-general-form']) !!}
-
+      {!! Form::open(['route' => ['agendas.configUpdate', $agenda], 'method' => 'PUT' ]) !!}
+        <input type="hidden" name="id" value="{{ $agenda->id }}">
         <div class="row">
           <div class="col s12 ">
             <div class="row">
               <div class="finput-field col s10">
                 <label for="time_format">
                     <h6>@lang('app.time_format')</h6></label>
-                {!! Form::select('time_format', ['12 horas', '24 horas'], null,
+                {!! Form::select('time_format', ['12' => '12 horas', '24' => '24 horas'], null,
                   ['placeholder' => 'Selecione...', 'required'  ]) !!}
               </div>
             </div>
@@ -91,6 +91,7 @@
           </div>
         </div>
         <br>
+        {{-- AGREGAR AL MODIFICAR LA MIGRACION AGENDA Y ADD reason_for_appointment
         <div class="row">
           <div class="col s12">
             <div class="col s12">
@@ -98,13 +99,13 @@
                 <div class="finput-field col s12">
                   <label for="reason_for_appointment">
                       <h6>@lang('app.reason_for_appointment')</h6></label>
-                  {!! Form::select('reason_for_appointment', ['Razon 1 (45 minutos)', 'Razon 2 (30 minutos)', 'Razon 3 (60 minutos)' ], null,
+                  {!! Form::select('reason_for_appointment',$reasons, null,
                     ['placeholder' => 'Catalogo de razones...', 'required'  ]) !!}
                 </div>
               </div>
             </div>
            </div>
-        </div>
+        </div>--}}
 
         <br>
         <div class="row">

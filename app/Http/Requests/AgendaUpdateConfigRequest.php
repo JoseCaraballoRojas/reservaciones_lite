@@ -4,7 +4,7 @@ namespace Vanguard\Http\Requests;
 
 use Vanguard\Http\Requests\Request;
 
-class ConfigAgendaRequest extends Request
+class AgendaUpdateConfigRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class ConfigAgendaRequest extends Request
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,7 @@ class ConfigAgendaRequest extends Request
     public function rules()
     {
         return [
-            //
+            'start_time' => 'required'  
         ];
     }
 }

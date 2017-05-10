@@ -47,7 +47,8 @@
   <!-- FONT-AWESOME -->
     {!! HTML::style('assets/css/font-awesome.min.css') !!}
   <!-- Jquery.nestable -->
-  {!! HTML::style('assets/template/js/plugins/jquery.nestable/nestable.css') !!}
+    {!! HTML::style('assets/template/js/plugins/jquery.nestable/nestable.css') !!}
+
 @yield('styles')
 
 </head>
@@ -111,7 +112,7 @@
 
 <!-- //////////////////////////////////////////////////////////////////////////// -->
       <!-- START RIGHT SIDEBAR NAV-->
-        
+
       <!-- LEFT RIGHT SIDEBAR NAV-->
     </div>
     <!-- END WRAPPER -->
@@ -146,6 +147,7 @@
     {!! HTML::script('assets/template/js/plugins.js') !!}
     <!--custom-script.js - Add your own theme custom JS-->
     {!! HTML::script('assets/template/js/custom-script.js') !!}
+    
     <script type="text/javascript">
         $.ajaxSetup({
             headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }

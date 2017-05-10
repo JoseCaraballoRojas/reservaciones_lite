@@ -22,12 +22,12 @@ class CreateAgendasTable extends Migration
             $table->string('allow_modify_date_time', 10)->nullable();
             $table->string('anticipation_time_modify')->nullable();
             $table->string('cancel_appointment', 10)->nullable();
-            $table->string('anticipation_time_cance')->nullable();
+            $table->string('anticipation_time_cancel')->nullable();
             $table->string('cancel_with_confirmation_email', 10)->nullable();
             $table->string('time_for_activation')->nullable();
             $table->string('limit_number_of_appointments')->nullable();
-            $table->string('Appointment_approval', 10)->nullable();
-            $table->string('Appointment_approval_user')->nullable();
+            $table->string('appointment_approval', 10)->nullable();
+            $table->string('appointment_approval_user')->nullable();
             $table->string('estatus_agenda')->nullable();
             $table->string('type_reservation')->nullable();
             $table->string('type_reservation_day_or_time')->nullable();
@@ -37,7 +37,7 @@ class CreateAgendasTable extends Migration
             $table->string('max_per_block')->nullable();
             $table->string('visible_shifts')->nullable();
             $table->string('time_of_each_appointment')->nullable();
-            $table->string('appointment_time_minutes_hours')->nullable();
+            //$table->string('appointment_time_minutes_hours')->nullable();
             $table->string('max_daily_appointments')->nullable();
             $table->string('max_number_daily_appointments')->nullable();
             $table->string('appointments_time_minutes_hours')->nullable();
@@ -54,6 +54,7 @@ class CreateAgendasTable extends Migration
             $table->string('initial_holiday_date')->nullable();
             $table->string('holiday_end_date')->nullable();
             $table->string('selectable_agenda')->nullable();
+            $table->string('reason_for_appointment')->nullable();
             //WORKING DAYS
             $table->string('monday',10)->nullable();
             $table->string('tuesday',10)->nullable();

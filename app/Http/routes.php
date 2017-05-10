@@ -406,7 +406,7 @@ Route::get('area/{id}/destroy', [
         'uses' => 'AreasController@destroy',
         'as' => 'areas.destroy'
         ]);
-        
+
 /*
 * Reasons
 */
@@ -450,11 +450,14 @@ Route::get('agendas/config/{id}', [
         'uses' => 'AgendasController@configAgenda',
         'as' => 'agendas.config'
         ]);
-Route::post('agendas/config', [
+Route::put('agendas/config', [
     'as' => 'agendas.config.update',
-    'uses' => 'ConfigAgendasController@update'
+    'uses' => 'AgendasController@configAgendaUpdate'
 ]);
-
+Route::put('agendas/config/update', [
+    'as' => 'agendas.configUpdate',
+    'uses' => 'AgendasController@configAgendaUpdate'
+]);
 /*
 * Clientes
 */

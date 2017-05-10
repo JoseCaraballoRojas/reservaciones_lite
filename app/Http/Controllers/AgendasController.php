@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Vanguard\Http\Requests;
 use Vanguard\Repositories\Agenda\AgendaRepository;
 use Vanguard\Http\Requests\AgendaRequest;
+use Vanguard\Http\Requests\AgendaUpdateConfigRequest;
 use Vanguard\User;
 use Vanguard\Area;
 use Vanguard\Agenda;
@@ -51,6 +52,7 @@ class AgendasController extends Controller
         return view('agendas.create', [
             'users' => $this->agendas->getUsers(),
             'empresas' => $this->agendas->getEmpresas(),
+            'reasons' => $this->agendas->getReasons(),
             'motivos' => $motivos,
             'edit' => $edit
         ]);
@@ -130,8 +132,29 @@ class AgendasController extends Controller
     */
     public function configAgenda($id)
     {
-        return view('agendas.config');
+        $agenda = $this->agendas->findAgendaByID($id);
+        $reasons = $this->agendas->getReasons();
+        return view('agendas.config', compact('agenda', 'reasons'));
     }
+
+    /**
+    * Configurar agendas
+    *
+    * @param  int  $id
+    *
+    * @return \Illuminate\Http\Response
+    */
+    public function configAgendaUpdate(Request $request)
+    {
+        //dd($request->all());
+        $agenda = $this->agendas->findAgendaByID($request->id);
+        $agenda->fill($request->all());
+        //dd($agenda);
+        $agenda->save();
+        return redirect()->back()
+            ->withSuccess('Configuracion de ageda actualizada con exito');
+    }
+
     /**
      * Remove the specified resource from storage.
      *

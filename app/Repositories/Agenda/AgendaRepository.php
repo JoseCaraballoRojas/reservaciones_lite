@@ -6,6 +6,7 @@ use Vanguard\Area;
 use Vanguard\Empresa;
 use Vanguard\Sucursal;
 use Vanguard\Agenda;
+use Vanguard\Reason;
 /**
  *Repositorios para el modelo Agenda
  */
@@ -16,6 +17,10 @@ class AgendaRepository
       return User::orderBy('username', 'ASC')->lists('username', 'id');
     }
 
+    public function getReasons()
+    {
+      return Reason::orderBy('reason', 'ASC')->lists('reason', 'id');
+    }
 
     public function create(array $data)
     {

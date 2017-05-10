@@ -64,7 +64,16 @@
                     </div>
                   </div>
                 </div>
-
+                <div class="col s12">
+                  <div class="row">
+                    <div class="finput-field col s12">
+                      {!! Form::label('reason', 'Catalogo de razones') !!}
+                      {!! Form::select('reason_id', $reasons, $edit ? $agenda->reason_id : '',
+                        ['placeholder' => 'selecione una razon...',
+                         'id' => 'selectReason', 'required']) !!}
+                     </div>
+                   </div>
+                 </div>
               </div>
           </div>
     </div>

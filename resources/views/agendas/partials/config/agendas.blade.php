@@ -1,7 +1,8 @@
 <div class="card-panel">
     <h4 class="header2">@lang('app.config_agendas')</h4>
     <div class="card-content">
-        {!! Form::open(['route' => 'agendas.config.update', 'id' => 'agendas-config-general-form']) !!}
+      {!! Form::open(['route' => ['agendas.configUpdate', $agenda], 'method' => 'PUT' ]) !!}
+        <input type="hidden" name="id" value="{{ $agenda->id }}">
 
         <div class="row">
           <div class="col s12 m12 l12">
@@ -15,9 +16,9 @@
             <div class="switch">
               <label>
                 @lang('app.no')
-                <input type="hidden" name="Appointment_approval" value="0">
-                <input type="checkbox" name="Appointment_approval" value="1"
-                       {{ settings('Appointment_approval') ? 'checked' : '' }}>
+                <input type="hidden" name="appointment_approval" value="0">
+                <input type="checkbox" name="appointment_approval" value="1"
+                       {{ settings('appointment_approval') ? 'checked' : '' }}>
                 <span class="lever"></span> @lang('app.yes')
               </label>
             </div>
@@ -30,7 +31,7 @@
               <div class="finput-field col s10">
                 <label for="Appointment_approval_user">
                     <h6>@lang('app.Appointment_approval_user')</h6></label>
-                {!! Form::select('Appointment_approval_user', ['Administrador', 'Conctato sucursal', 'Contacto area', 'Usuario agenda'], null,
+                {!! Form::select('appointment_approval_user', ['1' =>'Administrador', '2' => 'Conctato sucursal', '3' => 'Contacto area', '4' => 'Usuario agenda'], null,
                   ['placeholder' => 'Selecione un responsable...', 'required'  ]) !!}
                </div>
              </div>
@@ -50,9 +51,9 @@
             <div class="switch">
               <label>
                 @lang('app.inactive')
-                <input type="hidden" name="Appointment_approval" value="0">
-                <input type="checkbox" name="Appointment_approval" value="1"
-                       {{ settings('Appointment_approval') ? 'checked' : '' }}>
+                <input type="hidden" name="estatus_agenda" value="0">
+                <input type="checkbox" name="estatus_agenda" value="1"
+                       {{ settings('estatus_agenda') ? 'checked' : '' }}>
                 <span class="lever"></span> @lang('app.active')
               </label>
             </div>
@@ -66,7 +67,7 @@
               <div class="finput-field col s10">
                 <label for="type_reservation">
                     <h6>@lang('app.type_reservation')</h6></label>
-                {!! Form::select('type_reservation', ['Cita', 'Turno'], null,
+                {!! Form::select('type_reservation', ['cita' => 'Cita', 'turno' => 'Turno'], null,
                   ['placeholder' => 'Selecione un tipo...', 'required'  ]) !!}
                </div>
              </div>
@@ -79,7 +80,7 @@
               <div class="finput-field col s10">
                 <label for="type_reservation_day_or_time">
                     <h6>@lang('app.type_reservation_day_or_time')</h6></label>
-                {!! Form::select('type_reservation_day_or_time', ['Dia', 'Horario'], null,
+                {!! Form::select('type_reservation_day_or_time', ['day' => 'Dia', 'time' => 'Horario'], null,
                   ['placeholder' => 'Selecione...', 'required'  ]) !!}
                </div>
              </div>

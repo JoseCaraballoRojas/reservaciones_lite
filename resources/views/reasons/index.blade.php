@@ -49,7 +49,7 @@
                     <td>{{ $reason->duration }}</td>
                     <td>{{ $reason->created_at->format('Y-m-d') }}</td>
                     <td class="text-center">
-                        
+
                         <a href="{{ route('reasons.edit', $reason->id) }}"
                           class="btn-floating  waves-effect waves-light light-blue darken-4" title="Editar Razon"
                                 data-toggle="tooltip" data-placement="top">
@@ -59,7 +59,7 @@
                           class="btn-floating  waves-effect waves-light red darken-2" title="Eliminar Razon"
                                 data-toggle="tooltip"
                                 data-placement="top"
-                                data-method="GET"
+                                data-method="DELETE"
                                 data-confirm-title="Confirme por favor!"
                                 data-confirm-text="Seguro que desea eliminar esta razon"
                                 data-confirm-delete="Si, la elimine">

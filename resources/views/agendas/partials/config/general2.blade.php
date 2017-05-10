@@ -1,8 +1,8 @@
 <div class="card-panel">
     <h4 class="header2">@lang('app.working_days_week')</h4>
     <div class="card-content">
-        {!! Form::open(['route' => 'agendas.config.update', 'id' => 'agendas-config-general-form']) !!}
-
+      {!! Form::open(['route' => ['agendas.configUpdate', $agenda], 'method' => 'PUT' ]) !!}
+        <input type="hidden" name="id" value="{{ $agenda->id }}">
         <div class="row">
           <div class="col s12 m12 l12">
             <div class="col s12 m4 l4">

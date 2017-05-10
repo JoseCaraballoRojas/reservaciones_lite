@@ -1,7 +1,8 @@
 <div class="card-panel">
     <h4 class="header2">@lang('app.notifications_conf')</h4>
     <div class="card-content">
-        {!! Form::open(['route' => 'agendas.config.update', 'id' => 'agendas-config-general-form']) !!}
+      {!! Form::open(['route' => ['agendas.configUpdate', $agenda], 'method' => 'PUT' ]) !!}
+        <input type="hidden" name="id" value="{{ $agenda->id }}">
 
         <div class="row">
           <div class="col s12 m12 l12">
@@ -35,7 +36,7 @@
                         title="@lang('app.time_to_send_emails_description')"></span></h6>
             </label>
             <input type="text" class="col s12 m2 l2"
-                   name="start_time"
+                   name="time_to_send_emails"
                    value="{{ settings('time_to_send_emails', 2) }}">
           </div>
         </div>
@@ -72,7 +73,7 @@
                         title="@lang('app.time_to_send_sms_description')"></span></h6>
             </label>
             <input type="text" class="col s12 m2 l2"
-                   name="start_time"
+                   name="time_to_send_sms"
                    value="{{ settings('time_to_send_sms', 12) }}">
           </div>
         </div>
@@ -105,7 +106,7 @@
               <div class="finput-field col s10">
                 <label for="email_copy_receiver">
                     <h6>@lang('app.email_copy_receiver')</h6></label>
-                {!! Form::select('email_copy_receiver', ['Administrador', 'Contacto sucursal', 'Contacto area'], null,
+                {!! Form::select('email_copy_receiver', ['1' => 'Administrador', '2' => 'Contacto sucursal', '3' => 'Contacto area'], null,
                   ['placeholder' => 'Selecione...', 'required'  ]) !!}
               </div>
             </div>
