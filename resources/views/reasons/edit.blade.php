@@ -7,13 +7,13 @@
     <div class="row">
       <div class="col s12 m12 l12">
         <h5 class="breadcrumbs-title">
-          @lang('app.create_new_reason')
+          @lang('app.edit_reason')
           <small>@lang('app.details_reasons_appointment')</small>
         <div class="pull-right">
         <ol class="breadcrumbs">
             <li><a href="{{ route('dashboard') }}">@lang('app.home')</a></li>
             <li><a href="{{ route('reasons.index') }}"> @lang('app.reasons') </a></li>
-            <li class="active">@lang('app.create')</li>
+            <li class="active">@lang('app.edit')</li>
         </ol>
         </div>
         </h5>
@@ -24,17 +24,9 @@
 <div class="divider"></div>
 
 @include('partials.messages')
-{!! Form::open(['route' => 'reasons.store', 'method' => 'POST' ])  !!}
+{!! Form::open(['route' => ['reasons.update', $reason], 'method' => 'PUT' ])  !!}
+
   @include('reasons.partials.detailsReason')
 
 {!! Form::close() !!}
-@stop
-
-@section('scripts')
-
-<!-- ============= Scripts ==================== -->
-<!-- cargar timepicker-->
-    {!! HTML::script('assets/template/js/materialize-plugins/date_picker/picker.time.js') !!}
-    {!! HTML::script('assets/js/reservaciones/agendas/input_time.js') !!}
-
 @stop

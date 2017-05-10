@@ -457,6 +457,8 @@ return [
     'reasons_list' => 'Lista de razones registradas',
     'add_reason' => 'Agregar razon',
     'duration' => 'Duracion',
+    'edit_reason' => 'Editar Razon',
+    'update_reason' => 'Actualizar razon',
     //Agendas
     'agend' => 'Agendas',
     'config' => 'Configuracion',

@@ -86,7 +86,10 @@ class ReasonsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $edit = true;
+        $reason = $this->reasons->findReasonByID($id);
+
+        return view('reasons.edit', compact('reason', 'edit'));
     }
 
     /**
@@ -96,9 +99,13 @@ class ReasonsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ReasonRequest $request, $id)
     {
-        //
+        $reason = $this->reasons->findReasonByID($id);
+        $reason->fill($request->all());
+        $reason->save();
+        return redirect()->route('reasons.index')
+            ->withSuccess('Razon actualizada con exito');
     }
 
     /**
@@ -109,6 +116,9 @@ class ReasonsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $reason = $this->reasons->findReasonByID($id);
+        $reason->delete();
+        return redirect()->route('reasons.index')
+            ->withSuccess('Razon eliminada con exito');
     }
 }

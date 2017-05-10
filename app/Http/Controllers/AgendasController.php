@@ -93,7 +93,7 @@ class AgendasController extends Controller
       $agenda->user;
       $agenda->area;
       $empresa_id = $this->agendas->getSucursalByID($agenda->area->sucursal_id);
-      //dd($empresa_id);
+
       $edit = true;
       $motivos = ['1' => 'turno', '2' => 'tiempo'];
       $users = $this->agendas->getUsers();
@@ -140,10 +140,10 @@ class AgendasController extends Controller
      */
     public function destroy($id)
     {
-      $agenda = $this->agendas->findAgendaByID($id);
-      $agenda->delete();
-      return redirect()->route('agendas.index')
-          ->withSuccess('Agenda eliminada con exito');
+        $agenda = $this->agendas->findAgendaByID($id);
+        $agenda->delete();
+        return redirect()->route('agendas.index')
+            ->withSuccess('Agenda eliminada con exito');
     }
 
     public function getSucursalesByID(Request $request, $id)

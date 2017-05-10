@@ -25,6 +25,11 @@ class ReasonRepository
 
   }
 
+  public function findReasonByID($id)
+  {
+      return $reason = Reason::find($id);
+  }
+
   public function update($id, array $data)
   {
       return $this->find($id)->update($data);
@@ -34,7 +39,7 @@ class ReasonRepository
   {
       $reason = $this->find($id);
 
-      return $reason->delete();
+      return $reason;
   }
 
 }

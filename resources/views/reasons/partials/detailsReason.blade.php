@@ -21,8 +21,13 @@
                     <div class="row">
                         <div class="input-field col s12">
                           <button type="submit" class="btn cyan waves-effect waves-light">
-                              <i class="mdi-content-save"></i>
-                              @lang('app.create_reason')
+                              @if ($edit == true)
+                                <i class="mdi-navigation-refresh"></i>
+                                  @lang('app.update_reason')
+                              @else
+                                <i class="mdi-content-save"></i>
+                                  @lang('app.create_reason')
+                              @endif
                           </button>
                         </div>
                     </div>
