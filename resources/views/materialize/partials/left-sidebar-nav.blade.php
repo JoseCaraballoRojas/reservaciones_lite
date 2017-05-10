@@ -50,6 +50,11 @@
             <i class="mdi-action-store"></i>  Areas & Departamentos
           </a>
         </li>
+        <li class="bold">
+          <a href="{{ route('reasons.index') }}" class="waves-effect waves-cyan">
+            <i class="mdi-action-label"></i>  @lang('app.reasons')
+          </a>
+        </li>
       @endif
 
       @if (Auth::user()->roles->first()->name == 'Client')

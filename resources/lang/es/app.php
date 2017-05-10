@@ -448,6 +448,15 @@ return [
     'you_have_to_accept_tos' => 'Tienes que aceptar las Condiciones del Servicio.',
     'permission_already_exists' => 'Permiso con este nombre ya existe!',
 
+    //Reasons
+    'reason' => 'Razon',
+    'reasons' => 'Razones',
+    'create_new_reason' => 'Crear nueva razon',
+    'create_reason' => 'Crear razon',
+    'details_reasons_appointment' => 'Detalles de la razon de la cita',
+    'reasons_list' => 'Lista de razones registradas',
+    'add_reason' => 'Agregar razon',
+    'duration' => 'Duracion',
     //Agendas
     'agend' => 'Agendas',
     'config' => 'Configuracion',

@@ -90,7 +90,7 @@
         <div id="breadcrumbs-wrapper">
             <!-- Search for small screen -->
             <div class="header-search-wrapper grey hide-on-large-only">
-                <i class="mdi-action-search active"></i>
+                <i class="mdi-action-search active">h</i>
                 <input type="text" name="Search" class="header-search-input z-depth-2" placeholder="Explore Materialize">
             </div>
         </div>
@@ -111,7 +111,7 @@
 
 <!-- //////////////////////////////////////////////////////////////////////////// -->
       <!-- START RIGHT SIDEBAR NAV-->
-          @include('materialize.partials.right-sidebar-nav')
+        
       <!-- LEFT RIGHT SIDEBAR NAV-->
     </div>
     <!-- END WRAPPER -->

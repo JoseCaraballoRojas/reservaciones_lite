@@ -39,7 +39,6 @@
         <thead>
             <th>Email</th>
             <th>Nombre</th>
-            <th>Fecha de  Nacimiento</th>
             <th>Direccion</th>
             <th>@lang('app.phone')</th>
             <th class="text-center">@lang('app.action')</th>
@@ -49,7 +48,6 @@
                 <tr>
                     <td>{{ $cliente->email }}</td>
                     <td>{{ $cliente->first_name }}</td>
-                    <td>{{ $cliente->birthday->format('Y-m-d') }}</td>
                     <td>{{ $cliente->address }}</td>
                     <td>{{ $cliente->phone }}</td>
                     <td class="text-center">
@@ -85,7 +83,7 @@
         </tbody>
     </table>
     <div class="text-center">
-      
+
     </div>
 
 </div>

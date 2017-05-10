@@ -21,7 +21,7 @@ class ClienteRepository
 */
   public function getClientes()
   {
-    return User::where('id', $id)->get();
+
     return User::orderBy('username', 'ASC')->lists('username', 'id');
   }
 

@@ -406,6 +406,15 @@ Route::get('area/{id}/destroy', [
         'uses' => 'AreasController@destroy',
         'as' => 'areas.destroy'
         ]);
+        
+/*
+* Reasons
+*/
+Route::resource('reasons', 'ReasonsController');
+Route::get('reason/{id}/destroy', [
+        'uses' => 'ReasonsController@destroy',
+        'as' => 'reasons.destroy'
+        ]);
 
 /*
 * Citas
@@ -420,7 +429,6 @@ Route::get('citas', [
     'as' => 'citas.indexCliente',
     'uses' => 'CitasController@indexCliente'
 ]);
-
 
 /*
 * Agendas

@@ -64,10 +64,10 @@ class AgendasController extends Controller
      */
     public function store(AgendaRequest $request)
     {
-         $agenda = $this->agendas->create($request->except(['sucursal']));
-        dd($agenda);
-        /*return redirect()->route('agendas.index')
-            ->withSuccess('Agenda creada con exito');*/
+        $this->agendas->create($request->except(['sucursal']));
+
+        return redirect()->route('agendas.index')
+            ->withSuccess('Agenda creada con exito');
     }
 
     /**
