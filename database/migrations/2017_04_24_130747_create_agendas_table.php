@@ -37,7 +37,6 @@ class CreateAgendasTable extends Migration
             $table->string('max_per_block')->nullable();
             $table->string('visible_shifts')->nullable();
             $table->string('time_of_each_appointment')->nullable();
-            //$table->string('appointment_time_minutes_hours')->nullable();
             $table->string('max_daily_appointments')->nullable();
             $table->string('max_number_daily_appointments')->nullable();
             $table->string('appointments_time_minutes_hours')->nullable();
