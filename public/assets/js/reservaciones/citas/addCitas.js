@@ -2,10 +2,10 @@ $(document).ready(function() {
 
   $('select').material_select();
 
-  $("#calendar").hide();//ocultar calendario
+  //$("#calendar").hide();//ocultar calendario
   $("#Sucursal").hide();//ocultar select selectSucursal
   $("#Area").hide();//ocultar selct selectArea
-  $("#btn-back-calendar").hide();//ocultar boton de regeresar
+  //$("#btn-back-calendar").hide();//ocultar boton de regeresar
   $("#selectEmpresa").change(event =>{
 
     var selectSucursal = $("#selectSucursal");

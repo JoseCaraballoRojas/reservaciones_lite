@@ -41,12 +41,6 @@
       //hiddenDays: [ 0,6], //OCULTAR LOS DIAS SABADO Y DOMINGO
       events: [
         {
-          title: '3',
-          start: '2017-04-25',
-          color: '#00bcd4'
-        },
-
-        {
           title: '7',
           start: '2017-04-13',
           color: '#00bcd4'
@@ -55,10 +49,10 @@
 
       eventClick: function(calEvent, jsEvent, view) {
 
-          $('#btn-modal-citas').click();
-          //alert('Event: ' + calEvent.title);
-          //alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
-          //alert('View: ' + view.name);
+          //$('#btn-modal-citas').click();
+          alert('Event: ' + calEvent.title);
+          alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
+          alert('View: ' + view.name);
 
           // change the border color just for fun
           //$(this).css('border-color', 'red');
@@ -89,7 +83,7 @@
 
     });
 
-    
+
 
     // fc hover
     $('.fc-day').hover(function() {
@@ -110,7 +104,5 @@
     //$('body table ').addClass('table_bordered');
     //$('body table  tbody tr ').addClass('tr_border');
     //$('body table  tbody tr td').addClass('td_bordered');
-
-
 
   });
