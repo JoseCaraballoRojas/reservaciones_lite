@@ -85,7 +85,37 @@
     </div>
   </div>
 </div>
-
+<!-- modal 1-->
+<div class="row">
+  <a href="#modalForm" class="modal-trigger" id="btn-modal" ></a>
+  <div class="modal modal-fixed-footer" id="modalForm">
+    <div class="modal-content">
+      <h3 class="modal-title center" id="tos-label">Solicitar Cita</h3>
+      <div class="divider"></div>
+      <br>
+      <div class="col s12">
+        <div class="row">
+          <div class="finput-field col s3">
+            {!! Form::label('date', 'Fecha') !!}
+            {!! Form::text('date', 'vacio',
+                ['id' => 'appointment_date']) !!}
+          </div>
+          <div class="finput-field col s9">
+            {!! Form::label('turno', 'Turnos') !!}
+            {!! Form::select('turno', ['turno1', 'turno2'], null,
+                ['placeholder' => 'Selecione un turno...', 'required'  ]) !!}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a href="#" class=" btn red waves-effect waves-red
+          modal-action modal-close" id="btn-modal-close">
+          @lang('app.close')
+      </a>
+    </div>
+  </div>
+</div>
 @stop
 
 @section('scripts')

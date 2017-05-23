@@ -32,26 +32,26 @@ $(document).ready(function() {
       center: 'title',
       right: 'next'
     },
-    contentHeight: 450,
+    contentHeight: 500,
     defaultDate: date,
     editable: false, //no permitir mover eeventos
     droppable: false, // this allows things to be dropped onto the calendar
     eventLimit: true, // allow "more" link when too many events
     //hiddenDays: [ 0,6], //OCULTAR LOS DIAS SABADO Y DOMINGO
-    events: [
+    /*events: [
       {
         title: '7',
-        start: '2017-04-13',
+        start: '2017-05-13',
         color: '#00bcd4'
       }
-    ],
+    ],*/
 
     eventClick: function(calEvent, jsEvent, view) {
 
-        //$('#btn-modal-citas').click();
-        alert('Event: ' + calEvent.title);
+        //$('#btn-modal').click();
+        /*alert('Event: ' + calEvent.title);
         alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
-        alert('View: ' + view.name);
+        alert('View: ' + view.name);*/
 
         // change the border color just for fun
         //$(this).css('border-color', 'red');
@@ -63,10 +63,13 @@ $(document).ready(function() {
   $('#btn-modal').hide();
   $('#btn-modal-citas').hide();
   //capture click event
-  $('.fc-day').on('click', function() {
+  $('.fc-future span.fc-day-number').on('click', function() {
     var valor = $(this).attr('data-date');
+    var date = $(this).parent().attr('data-date');
+    $('#appointment_date').attr('value', date);
+    $('#appointment_date').attr('readonly', 'true');
     $('#btn-modal').click();
-    //console.log(valor);
+    console.log(date);
 
   });
   //btn close modal
@@ -85,23 +88,19 @@ $(document).ready(function() {
 
 
   // fc hover
-  $('.fc-day').hover(function() {
-      $(this).css('cursor', 'pointer');
+  $('.fc-future span.fc-day-number').hover(function() {
+      //$(this).css('cursor', 'pointer');
       $(this).attr('title', 'Solicitar cita');
 
 
   });
 
   $('body table tbody tr td a ').addClass('btn');
-  $('body table ').addClass('bordered');
+  $('body table ').addClass('bordered centered');
   $('body table ').addClass('responsive');
-  //$('body table ').css({"border-collapse": "collapse"});
-  //$('body table tbody tr').css({"border": "none"})
-  //$('body table tbody tr td').css({"border": "solid 1px #f00"});
-  //$('body table tbody tr td').css({"border-left": "solid 1px #f00;"});
-  //$("p").css({"background-color": "yellow", "font-size": "200%"});
-  //$('body table ').addClass('table_bordered');
-  //$('body table  tbody tr ').addClass('tr_border');
-  //$('body table  tbody tr td').addClass('td_bordered');
-
+  $('.fc-future span.fc-day-number').addClass('btn-floating waves-effect waves-light  green accent-3');
+  $('.fc-other-month span.fc-day-number').removeClass('btn-floating waves-effect waves-light  green accent-3');
+  $('.fc-today span.fc-day-number').addClass('btn-floating waves-effect waves-light  blue accent-3');
+  $('.fc-past span.fc-day-number, .fc-other-month span.fc-day-number').addClass('btn-floating disabled');
+  
 });

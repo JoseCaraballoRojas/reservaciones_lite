@@ -1,24 +1,53 @@
 body .fc-content { /* extra precedence to overcome jqui */
 	font-size: 2em;
-  /*text-align: center;*/
+  text-align: center;
 }
 
 
 
-.fc-ltr .fc-basic-view .fc-day-number {
+ .fc-day-number {
 	text-align: center;
-  font-size: 1em;
+  /*font-size: 2em;*/
+	cursor: pointer;
 }
-
+.fc-day{
+	text-align: center;
+}
  .fc-title {
   vertical-align: middle;
 }
-.v-align {
-  vertical-align: middle;
+.fc-bg{
+	border-left: solid 1px #D3D8D9;
+	border-right: solid 1px #D3D8D9;
+
 }
-.fc .fc-row {
+.fc-content-skeleton{
+	text-align: center;
+}
+.fc-head{
 	border-left: solid 1px #D3D8D9;
 	border-right: solid 1px #D3D8D9;
 	border-top: solid 1px #D3D8D9;
-	border-bottom: solid 1px #D3D8D9;
+}
+
+.fc-past span.fc-day-number, .fc-past{/*dias anteriores a la fecha actual*/
+	cursor: not-allowed;
+	color: gray;
+}
+.fc-future{/*dias despues posteriores a la fecha actual*/
+	color: blue;
+}
+.fc-today{/*dia actual*/
+	font-size: 1.2em;
+	color: green;
+}
+.fc-other-month span.fc-day-number, .fc-other-month{
+	cursor: not-allowed;
+}
+.fc-today span.fc-day-number{
+	cursor: not-allowed;
+}
+.fc-ltr .fc-basic-view
+.fc-day-top .fc-day-number{
+	float: none;
 }
