@@ -184,4 +184,12 @@ class AgendasController extends Controller
             return response()->json($areas);
         }
     }
+
+    public function getAgendaByID(Request $request, $id)
+    {
+        if ($request->ajax()) {
+            $agenda = $this->agendas->getAgendaByID($id);
+            return response()->json($agenda);
+        }
+    }
 }

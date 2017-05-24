@@ -66,6 +66,11 @@ class AgendaRepository
         return Sucursal::where('id', '=',$id)
         ->get()->lists('empresa_id');
     }
+    public function getAgendaByID($id)
+    {
+        return Agenda::where('id', '=',$id)
+        ->get();
+    }
 
     public function findAgendaByID($id)
     {
