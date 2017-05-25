@@ -29,7 +29,7 @@ class CitasController extends Controller
 
     public function indexCliente()
     {
-        //dd($this->agendas->getEmpresas());
+        
         return view('citas.indexCliente', [
             'empresas' => $this->agendas->getEmpresas(),
         ]);
@@ -51,7 +51,8 @@ class CitasController extends Controller
     {
 
       return view('citas.create', [
-          'empresas' => $this->agendas->getEmpresas()
+          'empresas' => $this->agendas->getEmpresas(),
+          'reasons' => $this->agendas->getReasons()
       ]);
     }
 

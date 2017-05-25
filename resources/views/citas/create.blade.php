@@ -100,10 +100,17 @@
             {!! Form::text('date', 'vacio',
                 ['id' => 'appointment_date']) !!}
           </div>
-          <div class="finput-field col s9">
-            {!! Form::label('turno', 'Turnos') !!}
-            {!! Form::select('turno', ['turno1', 'turno2'], null,
-                ['placeholder' => 'Selecione un turno...', 'required'  ]) !!}
+          <div class="finput-field col s5">
+              {!! Form::label('reason_id', 'Razon de la cita') !!}
+              {!! Form::select('reason_id', $reasons,null,
+                ['placeholder' => 'selecione una razon...',
+                 'id' => 'selectReason', 'required']) !!}
+          </div>
+          <div class="finput-field col s4">
+              {!! Form::label('appointment_time', 'Hora de la cita') !!}
+              {!! Form::text('appointment_time',null,
+                  ['id' => 'appointment_time', 'class' => 'timepicker',
+                  'id' => 'timepicker_cita']) !!}
           </div>
         </div>
       </div>
@@ -111,7 +118,7 @@
     <div class="modal-footer">
       <a href="#" class=" btn red waves-effect waves-red
           modal-action modal-close" id="btn-modal-close">
-          @lang('app.close')
+          @lang('app.cancel')
       </a>
     </div>
   </div>
@@ -131,5 +138,6 @@
 
 <!-- control de eventos para solicitar citas-->
     {!! HTML::script('assets/js/reservaciones/citas/addCitas.js') !!}
-
+<!-- cargar timepicker-->
+  {!! HTML::script('assets/template/js/materialize-plugins/date_picker/picker.time.js') !!}
 @stop
