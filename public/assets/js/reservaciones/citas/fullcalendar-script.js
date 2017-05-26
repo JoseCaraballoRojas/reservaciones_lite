@@ -180,8 +180,8 @@ $(document).ready(function() {
       monday = element.monday; tuesday = element.tuesday;
       wednesday = element.wednesday; thursday = element.thursday;
       friday = element.friday; saturday = element.saturday; sunday = element.sunday;
-      minTime = (element.start_time).replace(":",",");
-      maxTime = (element.final_hour).replace(":",",");
+      minTime = (element.start_time).split(':').map(Number);
+      maxTime = (element.final_hour).split(':').map(Number);
     })
 
     $('.fc-future span.fc-day-number').addClass('btn-floating waves-effect waves-light  green accent-3');
@@ -235,15 +235,16 @@ $(document).ready(function() {
 
     //configurar hora minima y maxima de la cita
     $('.timepicker_cita').pickatime({
+      //hora inicial y final de la agenda
+      min: minTime,
+      max: maxTime,
       //formato de envio
       formatSubmit: 'HH:i',
       hiddenName: true,
       // Close on a user action
       closeOnSelect: true,
       closeOnClear: false,
-      //hora inicial y final de la agenda
-      min: [minTime],
-      max: [maxTime]
+
     });
 
     console.log(minTime);

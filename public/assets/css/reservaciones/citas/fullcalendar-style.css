@@ -54,3 +54,6 @@ body .fc-content { /* extra precedence to overcome jqui */
 .pointercancel{
 	cursor: not-allowed;
 }
+.fc-unthemed td.fc-today {
+	background: #DFFCE5;
+}

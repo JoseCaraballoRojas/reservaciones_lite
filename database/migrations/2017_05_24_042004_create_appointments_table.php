@@ -16,9 +16,11 @@ class CreateAppointmentsTable extends Migration
             $table->increments('id');
             $table->string('appointment')->nullable();
             $table->string('date')->nullable();
+            $table->string('time')->nullable();
             //FOREIGN KEYS
             $table->integer('agenda_id')->unsigned();
             $table->integer('cliente_id')->unsigned();
+            $table->integer('reason_id')->unsigned();
             $table->timestamps();
         });
         Schema::table('appointments', function(Blueprint $table) {
@@ -30,6 +32,11 @@ class CreateAppointmentsTable extends Migration
             $table->foreign('cliente_id')
                 ->references('id')
                 ->on('users')
+                ->onDelete('cascade');
+
+            $table->foreign('reason_id')
+                ->references('id')
+                ->on('reasons')
                 ->onDelete('cascade');
         });
     }

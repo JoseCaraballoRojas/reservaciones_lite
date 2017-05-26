@@ -109,17 +109,24 @@
           <div class="finput-field col s4">
               {!! Form::label('appointment_time', 'Hora de la cita') !!}
               {!! Form::text('appointment_time',null,
-                  ['id' => 'appointment_time', 'class' => 'timepicker',
+                  ['id' => 'appointment_time', 'class' => 'timepicker_cita',
                   'id' => 'timepicker_cita']) !!}
           </div>
         </div>
       </div>
     </div>
     <div class="modal-footer">
-      <a href="#" class=" btn red waves-effect waves-red
-          modal-action modal-close" id="btn-modal-close">
-          @lang('app.cancel')
+      <div class="finput-field col s3">
+        <a href="#" class=" btn red waves-effect waves-red
+            modal-action modal-close" id="btn-modal-close">
+            @lang('app.cancel')
+        </a>
+    </div>
+    <div class="finput-field col s4 offset-s5">
+      <a href="#" class=" btn green waves-effect waves-green" id="btn-modal-close">
+          Agendar cita
       </a>
+    </div>
     </div>
   </div>
 </div>
