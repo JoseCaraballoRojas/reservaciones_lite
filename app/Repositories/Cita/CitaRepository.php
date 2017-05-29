@@ -13,7 +13,25 @@ use Vanguard\Cita;
 class CitaRepository
 {
 
+  public function create(array $data)
+  {
+      $cita = Cita::create($data);
 
-  
+      return $cita;
+  }
+
+  public function getAppointmentsByID($id)
+  {
+    return Cita::where('cliente_id', '=',$id)
+    ->get();
+
+  }
+  public function findAppointmentByID($id)
+  {
+    return Cita::where('id', '=',$id)
+    ->get();
+
+  }
+
 
 }

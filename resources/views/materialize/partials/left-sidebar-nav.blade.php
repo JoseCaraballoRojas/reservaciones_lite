@@ -60,11 +60,16 @@
       @if (Auth::user()->roles->first()->name == 'Client')
       <li class="bold">
         <a href="{{ route('citas.indexCliente') }}" class="waves-effect waves-cyan">
-          <i class="mdi-action-today"></i>  Citas
+          <i class="mdi-action-visibility"></i>  Citas
+        </a>
+      </li>
+      <li class="bold">
+        <a href="{{ route('citas.create') }}" class="waves-effect waves-cyan">
+          <i class="mdi-action-today"></i>  Solicitar citas
         </a>
       </li>
       @endif
-      <li class="no-padding ">
+      {{--<li class="no-padding ">
           <ul class="collapsible collapsible-accordion">
               <li class="bold">
                 <a class="collapsible-header waves-effect waves-cyan">
@@ -88,7 +93,7 @@
                   </div>
               </li>
           </ul>
-      </li>
+      </li>--}}
 
       @if (Auth::user()->roles->first()->name == 'Admin' || Auth::user()->roles->first()->name == 'User' )
       <li class="bold">

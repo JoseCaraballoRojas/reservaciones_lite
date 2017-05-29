@@ -14,9 +14,9 @@ class CreateAppointmentsTable extends Migration
     {
         Schema::create('appointments', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('appointment')->nullable();
-            $table->string('date')->nullable();
-            $table->string('time')->nullable();
+            $table->string('appointment_date')->nullable();
+            $table->string('appointment_time')->nullable();
+            $table->string('appointment_status')->nullable();
             //FOREIGN KEYS
             $table->integer('agenda_id')->unsigned();
             $table->integer('cliente_id')->unsigned();

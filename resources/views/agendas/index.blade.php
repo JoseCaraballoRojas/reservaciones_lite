@@ -37,7 +37,7 @@
 <div class="responsive-table" id="users-table-wrapper">
     <table class="responsive-table striped bordered">
         <thead>
-            <th>Agenda</th>
+            <th>Responsable de agenda</th>
             <th>Direccion</th>
             <th>Area</th>
             <th>@lang('app.registration_date')</th>
@@ -52,13 +52,13 @@
                     <td>{{ $agenda->area->area }}</td>
                     <td>{{ $agenda->created_at->format('Y-m-d') }}</td>
                     <td class="text-center">
-                        <a href="{{ route('agendas.show', $agenda->id) }}"
-                          class="btn-floating  waves-effect waves-light green"
+                        <a href="{{-- route('agendas.show', $agenda->id) --}}#"
+                          class="btn-floating  waves-effect waves-light green disabled"
                            title="Ver Agenda" data-toggle="tooltip" data-placement="top">
                           <i  class="mdi-action-visibility"></i>
                         </a>
-                        <a href="{{ route('agendas.edit', $agenda->id) }}"
-                          class="btn-floating  waves-effect waves-light light-blue darken-4" title="Editar Agenda"
+                        <a href="{{-- route('agendas.edit', $agenda->id) --}}#"
+                          class="btn-floating  waves-effect waves-light light-blue darken-4 disabled" title="Editar Agenda"
                                 data-toggle="tooltip" data-placement="top">
                           <i class="mdi-content-create"></i>
                         </a>

@@ -3,6 +3,7 @@ $(document).ready(function() {
   var date = new Date(); //fecha actual
   var data; //data de la agenda seleccionada
   var minTime, maxTime; //horario de la agenda de citas
+  var idAgenda, appointment_approval;
   $("#btn-back-calendar").hide();//ocultar boton de regeresar
     /* initialize the external events
     -----------------------------------------------------------------*/
@@ -102,8 +103,8 @@ $(document).ready(function() {
   $("#selectArea").change(event =>{
     //obtener datos de la configuracion de las agendas
     $.get(`../agendas/getAgendaByID/${event.target.value}`, function(res, sta) {
-        $("#calendar").fadeIn(2000, function () {
-          $("#btn-back-calendar").fadeIn(1000);
+        $("#calendar").fadeIn(1500, function () {
+          $("#btn-back-calendar").fadeIn(300);
         });//mostrar calendar
         data = res;
         configCalendar(data);
@@ -137,8 +138,7 @@ $(document).ready(function() {
       $('#appointment_date').attr('value', date);
       $('#appointment_date').attr('readonly', 'true');
       $('#btn-modal').click();
-      console.log(date);
-      console.log(valor);
+
 
     }
   });
@@ -174,16 +174,17 @@ $(document).ready(function() {
   function configCalendar(data) {
     var monday, tuesday, wednesday, thursday, friday, saturday, sunday;
 
-    console.log(data);
+
     //$('body table tbody tr td a ').addClass('btn');
     data.forEach(element => {
+      idAgenda = element.id; appointment_approval = element.appointment_approval;
       monday = element.monday; tuesday = element.tuesday;
       wednesday = element.wednesday; thursday = element.thursday;
       friday = element.friday; saturday = element.saturday; sunday = element.sunday;
       minTime = (element.start_time).split(':').map(Number);
       maxTime = (element.final_hour).split(':').map(Number);
     })
-
+    $('#agenda_id').attr('value', idAgenda);// asignar ide de agen al Form
     $('.fc-future span.fc-day-number').addClass('btn-floating waves-effect waves-light  green accent-3');
     $('.fc-other-month span.fc-day-number').removeClass('btn-floating waves-effect waves-light  green accent-3');
     $('.fc-today span.fc-day-number').addClass('btn-floating waves-effect waves-light cyan');
@@ -247,8 +248,11 @@ $(document).ready(function() {
 
     });
 
-    console.log(minTime);
-    console.log(maxTime);
+    if (appointment_approval === "1") {
+        $("#appointment_status").attr('value', 'Esperando aprobacion');
+    }
+
+
   }
 
   //mejoras visuales calendar

@@ -42,4 +42,8 @@ class Agenda extends Model
         return $this->belongsTo('Vanguard\Reason', 'reason_id');
     }
 
+    public function citas()
+    {
+        return $tihis->hasMany('Vanguard\Cita');
+    }
 }

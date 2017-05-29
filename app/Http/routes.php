@@ -471,12 +471,4 @@ Route::get('cliente/{id}/destroy', [
         'as' => 'clientes.destroy'
         ]);
 
-/*
-* Appointments
-*/
-Route::resource('appointments', 'AppointmentsController');
-Route::get('appointment/{id}/destroy', [
-        'uses' => 'AppointmentsController@destroy',
-        'as' => 'appointments.destroy'
-        ]);
 ///////////////////////////////////

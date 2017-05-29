@@ -88,6 +88,7 @@
 <!-- modal 1-->
 <div class="row">
   <a href="#modalForm" class="modal-trigger" id="btn-modal" ></a>
+  {!! Form::open(['route' => 'citas.store', 'method' => 'POST' ])  !!}
   <div class="modal modal-fixed-footer" id="modalForm">
     <div class="modal-content">
       <h3 class="modal-title center" id="tos-label">Solicitar Cita</h3>
@@ -95,9 +96,13 @@
       <br>
       <div class="col s12">
         <div class="row">
+          <input name="cliente_id" type="hidden" value="<?=  Auth::user()->id ?>">
+          <input name="agenda_id" type="hidden" value="" id="agenda_id">
+          <input name="appointment_status" type="hidden" value="Aprobada" id="appointment_status">
           <div class="finput-field col s3">
-            {!! Form::label('date', 'Fecha') !!}
-            {!! Form::text('date', 'vacio',
+
+            {!! Form::label('appointment_date', 'Fecha') !!}
+            {!! Form::text('appointment_date', null,
                 ['id' => 'appointment_date']) !!}
           </div>
           <div class="finput-field col s5">
@@ -123,12 +128,14 @@
         </a>
     </div>
     <div class="finput-field col s4 offset-s5">
-      <a href="#" class=" btn green waves-effect waves-green" id="btn-modal-close">
-          Agendar cita
-      </a>
+      <button type="submit" class="btn cyan waves-effect waves-light">
+          <i class="mdi-content-save"></i>
+          Crear cita
+      </button>
     </div>
     </div>
   </div>
+  {!! Form::close() !!}
 </div>
 @stop
 

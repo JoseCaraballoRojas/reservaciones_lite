@@ -15,4 +15,9 @@ class Reason extends Model
         return $tihis->hasMany('Vanguard\Agenda');
     }
 
+    public function citas()
+    {
+        return $tihis->hasMany('Vanguard\Cita');
+    }
+
 }

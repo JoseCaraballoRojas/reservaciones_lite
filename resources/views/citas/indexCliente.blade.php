@@ -2,12 +2,12 @@
 
 @section('page-title', 'Citas')
 
-@section('styles')
+{{--@section('styles')
 <!-- FULL CALENDAR -->
     {!! HTML::style('assets/template/js/plugins/fullcalendar/css/fullcalendar.css') !!}
 <!-- FULL CALENDAR NEW CONFIG -->
     {!! HTML::style('assets/template/js/plugins/fullcalendar/css/newconfig.css') !!}
-@stop
+@stop--}}
 
 @section('content')
 
@@ -15,7 +15,7 @@
     <div class="row">
       <div class="col s12 m12 l12">
         <h5 class="breadcrumbs-title">Citas
-          <small>Calendario de citas registradas</small>
+          <small>Citas registradas</small>
         <div class="pull-right">
         <ol class="breadcrumbs">
             <li><a href="{{ route('dashboard') }}">@lang('app.home')</a></li>
@@ -30,89 +30,77 @@
 <div class="divider"></div>
 
 @include('partials.messages')
-
-<div class="divider"></div>
-<!--start container-->
-<div class="container">
-  <div class="row">
-    <div id="full-calendar">
-      <div class="col s12 m12 l12">
-        <div class="row">
-          <div class="col s12 m12 l12">
-            <div id='calendar'></div>
-          </div>
-        </div>
+<br>
+<div class="row">
+    <div class="col s12 m12 l12">
+        <a href="{{ route('citas.create') }}" class="waves-effect waves-light green btn">
+            <i class=" large mdi-content-add"></i>
+            Agregar Cita
+        </a>
     </div>
+</div>
+<br>
+<div class="responsive-table">
+    <table class="responsive-table striped bordered">
+        <thead>
+            <th>Razon</th>
+            <th>Fecha</th>
+            <th>Hora</th>
+            <th>Estatus</th>
+            <th>Agenda</th>
+            <th class="text-center">@lang('app.action')</th>
+        </thead>
+        @if (count($appointments))
+            @foreach ($appointments as $appointment)
+                <tr>
+                    <td>{{ $appointment->reason->reason }}</td>
+                    <td>{{ $appointment->appointment_date }}</td>
+                    <td>{{ $appointment->appointment_time }}</td>
+                    <td>{{ $appointment->appointment_status }}</td>
+                    <td>{{ $appointment->agenda->area->area }}</td>
+                    <td class="text-center">
+                        <a href="{{ route('citas.show', $appointment->id) }}"
+                           class="btn-floating  waves-effect waves-light green"
+                           title="Ver Cita" data-toggle="tooltip" data-placement="top">
+                            <i  class="mdi-action-visibility"></i>
+                        </a>
+                        <a href="{{-- route('citas.edit', $appointment->id) --}}#"
+                          class="btn-floating  waves-effect waves-light light-blue darken-4 disabled"
+                          title="Editar Cita" data-toggle="tooltip" data-placement="top"
+                          style="cursor: not-allowed">
+                            <i class="mdi-content-create"></i>
+                        </a>
+                        <a href="{{-- route('citas.destroy', $appointment->id) --}}#"
+                          class="btn-floating  waves-effect waves-light red darken-2 disabled" title="Eliminar Cita"
+                          style="cursor: not-allowed"
+                                data-toggle="tooltip"
+                                data-placement="top"
+                                data-method="DELETE"
+                                data-confirm-title="Confirme por favor!"
+                                data-confirm-text="Seguro que desea eliminar esta cita"
+                                data-confirm-delete="Si, la elimine">
+                            <i class="mdi-action-delete"></i>
+                        </a>
+                    </td>
+                </tr>
+              @endforeach
+          @else
+              <tr>
+                  <td colspan="6"><em>@lang('app.no_records_found')</em></td>
+              </tr>
+          @endif
+        <tbody>
+        </tbody>
+    </table>
+    <div class="text-center">
+        {{--{!! $appointments->render() !!}--}}
     </div>
-  </div>
-  <div class="row">
-    <!-- modal 1-->
-    <a href="#modalForm" class="modal-trigger" id="btn-modal" >h</a>
-    <div class="modal modal-fixed-footer" id="modalForm">
-        <div class="modal-content">
-              <h3 class="modal-title" id="tos-label">Solicitar Cita</h3>
-              <div class="divider"></div>
-              <div class="col s12">
-                <div class="row">
-                  <div class="finput-field col s12">
-                    {!! Form::label('turno', 'Turnos') !!}
-                    {!! Form::select('turno', ['turno1', 'turno2'], null,
-                      ['placeholder' => 'Selecione un turno...', 'required'  ]) !!}
-                   </div>
-                 </div>
-               </div>
-
-            </div>
-            <div class="modal-footer">
-              <div class="col s12">
-                <div class="col s6">
-                  <a href="#" class="col s12 btn red waves-effect waves-red
-                   modal-action modal-close" id="btn-modal-close">
-                    @lang('app.close')
-                  </a>
-                </div>
-                <div class="col s6">
-                  <a href="#" class="col s12 btn green waves-effect waves-red
-                   modal-action" id="btn-modal-cita">
-                    Solicitar Cita
-                  </a>
-                </div>
-              </div>
-            </div>
-    </div>
-
-  </div>
-
-
-  <div class="row">
-    <!-- modal 2-->
-    <a href="#modalCitas" class="modal-trigger" id="btn-modal-citas" >h</a>
-    <div class="modal modal-fixed-footer" id="modalCitas">
-        <div class="modal-content">
-              <h3 class="modal-title" id="tos-label">Solicitar Cita</h3>
-              <div class="divider"></div>
-              <ul>
-                <li>Cita 1</li>
-                <li>Cita 2</li>
-                <li>Cita 3</li>
-                <li>Cita 4</li>
-                <li>Cita 5</li>
-                <li>Cita 6</li>
-                <li>Cita 7</li>
-              </ul>
-            </div>
-            <div class="modal-footer">
-              <a href="#" class=" btn red waves-effect waves-red
-               modal-action modal-close" id="btn-modal-close2">
-                @lang('app.close')
-              </a>
-            </div>
-    </div>
-  </div>
 </div>
 
-@stop
 
+
+@stop
+{{--
 @section('scripts')
 
 <!-- ================================================
@@ -139,3 +127,4 @@ Scripts
 
 
 @stop
+--}}
