@@ -14,7 +14,7 @@
                 @lang('app.no')
                 <input type="hidden" name="allow_modify_date_time" value="0">
                 <input type="checkbox" name="allow_modify_date_time" value="1"
-                       {{ settings('allow_modify_date_time') ? 'checked' : '' }}>
+                       {{ $agenda->allow_modify_date_time == '1' ? 'checked' : '' }}>
                 <span class="lever"></span> @lang('app.yes')
               </label>
             </div>
@@ -32,7 +32,7 @@
             </label>
             <input type="text" class="col s12 m2 l2"
                    name="anticipation_time_modify"
-                   value="{{ settings('anticipation_time_modify', 36) }}">
+                   value="{{ $agenda ? $agenda->anticipation_time_modify: '' }}">
           </div>
         </div>
 
@@ -52,7 +52,7 @@
                 @lang('app.no')
                 <input type="hidden" name="cancel_appointment" value="0">
                 <input type="checkbox" name="cancel_appointment" value="1"
-                       {{ settings('cancel_appointment') ? 'checked' : '' }}>
+                       {{ $agenda->cancel_appointment == '1' ? 'checked' : '' }}>
                 <span class="lever"></span> @lang('app.yes')
               </label>
             </div>
@@ -71,7 +71,7 @@
             </label>
             <input type="text" class="col s12 m2 l2"
                    name="anticipation_time_cancel"
-                   value="{{ settings('anticipation_time_cancel', 36) }}">
+                   value="{{ $agenda ? $agenda->anticipation_time_cancel: '' }}">
           </div>
         </div>
 
@@ -86,7 +86,7 @@
                 @lang('app.no')
                 <input type="hidden" name="cancel_with_confirmation_email" value="0">
                 <input type="checkbox" name="cancel_with_confirmation_email" value="1"
-                       {{ settings('cancel_with_confirmation_email') ? 'checked' : '' }}>
+                       {{ $agenda->cancel_with_confirmation_email == '1' ? 'checked' : '' }}>
                 <span class="lever"></span> @lang('app.yes')
               </label>
             </div>
@@ -104,7 +104,7 @@
           </label>
           <input type="text" class="col s12 m2 l2"
                  name="time_for_activation"
-                 value="{{ settings('time_for_activation', 36) }}">
+                 value="{{ $agenda ? $agenda->time_for_activation: '' }}">
         </div>
       </div>
 
@@ -119,7 +119,7 @@
               @lang('app.no')
               <input type="hidden" name="limit_number_of_appointments" value="0">
               <input type="checkbox" name="limit_number_of_appointments" value="1"
-                     {{ settings('limit_number_of_appointments') ? 'checked' : '' }}>
+                     {{ $agenda->limit_number_of_appointments == '1' ? 'checked' : '' }}>
               <span class="lever"></span> @lang('app.yes')
             </label>
           </div>

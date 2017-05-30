@@ -18,7 +18,7 @@
                 @lang('app.no')
                 <input type="hidden" name="appointment_approval" value="0">
                 <input type="checkbox" name="appointment_approval" value="1"
-                       {{ settings('appointment_approval') ? 'checked' : '' }}>
+                       {{ $agenda->appointment_approval == '1' ? 'checked' : '' }}>
                 <span class="lever"></span> @lang('app.yes')
               </label>
             </div>
@@ -31,7 +31,10 @@
               <div class="finput-field col s10">
                 <label for="Appointment_approval_user">
                     <h6>@lang('app.Appointment_approval_user')</h6></label>
-                {!! Form::select('appointment_approval_user', ['1' =>'Administrador', '2' => 'Conctato sucursal', '3' => 'Contacto area', '4' => 'Usuario agenda'], null,
+                {!! Form::select('appointment_approval_user',
+                    ['1' =>'Administrador', '2' => 'Conctato sucursal',
+                     '3' => 'Contacto area', '4' => 'Usuario agenda'],
+                     $agenda ? $agenda->appointment_approval_user : '',
                   ['placeholder' => 'Selecione un responsable...', 'required'  ]) !!}
                </div>
              </div>
@@ -53,7 +56,7 @@
                 @lang('app.inactive')
                 <input type="hidden" name="estatus_agenda" value="0">
                 <input type="checkbox" name="estatus_agenda" value="1"
-                       {{ settings('estatus_agenda') ? 'checked' : '' }}>
+                       {{ $agenda->estatus_agenda  == '1' ? 'checked' : '' }}>
                 <span class="lever"></span> @lang('app.active')
               </label>
             </div>
@@ -67,7 +70,8 @@
               <div class="finput-field col s10">
                 <label for="type_reservation">
                     <h6>@lang('app.type_reservation')</h6></label>
-                {!! Form::select('type_reservation', ['cita' => 'Cita', 'turno' => 'Turno'], null,
+                {!! Form::select('type_reservation', ['cita' => 'Cita', 'turno' => 'Turno'],
+                  $agenda ? $agenda->type_reservation : '',
                   ['placeholder' => 'Selecione un tipo...', 'required'  ]) !!}
                </div>
              </div>
@@ -80,7 +84,8 @@
               <div class="finput-field col s10">
                 <label for="type_reservation_day_or_time">
                     <h6>@lang('app.type_reservation_day_or_time')</h6></label>
-                {!! Form::select('type_reservation_day_or_time', ['day' => 'Dia', 'time' => 'Horario'], null,
+                {!! Form::select('type_reservation_day_or_time', ['day' => 'Dia', 'time' => 'Horario'],
+                  $agenda ? $agenda->type_reservation_day_or_time : '',
                   ['placeholder' => 'Selecione...', 'required'  ]) !!}
                </div>
              </div>
@@ -98,7 +103,7 @@
             </label>
             <input type="text" class="col s12 m2 l2"
                    name="max_number_shifts_per_day"
-                   value="{{ settings('max_number_shifts_per_day', 10) }}">
+                   value="{{ $agenda ? $agenda->max_number_shifts_per_day : '12'  }}">
           </div>
         </div>
 
@@ -116,7 +121,7 @@
                 @lang('app.no')
                 <input type="hidden" name="visible_shifts" value="0">
                 <input type="checkbox" name="visible_shifts" value="1"
-                       {{ settings('visible_shifts') ? 'checked' : '' }}>
+                       {{ $agenda->visible_shifts == '1' ? 'checked' : '' }}>
                 <span class="lever"></span> @lang('app.yes')
               </label>
             </div>

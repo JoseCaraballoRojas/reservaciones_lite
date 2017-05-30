@@ -36,21 +36,21 @@
            <ul class="tabs">
              <li class="tab col s3">
                <a href="#general" aria-controls="general" role="tab" data-toggle="tab"
-                  class="white-text orange  waves-effect waves-light active " >
+                  class="white-text orange  waves-effect waves-light " >
                    <i class="mdi-action-settings" aria-hidden="true"></i>
                    @lang('app.general')
                </a>
              </li>
              <li class="tab col s3">
                <a href="#citas" aria-controls="citas" role="tab" data-toggle="tab"
-                  class="white-text cyan darken-1 waves-effect waves-light "  >
+                  class="white-text cyan darken-1 waves-effect waves-light  "  >
                    <i class="fa fa-calendar" aria-hidden="true"></i>
                    @lang('app.citas')
                </a>
              </li>
              <li class="tab col s3">
                <a href="#agenda" aria-controls="agenda" role="tab" data-toggle="tab"
-                  class="white-text green waves-effect waves-light " >
+                  class="white-text green waves-effect waves-light active " >
                    <i class="fa fa-calendar-o" aria-hidden="true"></i>
                    @lang('app.agenda')
                </a>

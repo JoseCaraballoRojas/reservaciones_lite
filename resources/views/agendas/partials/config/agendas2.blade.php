@@ -14,7 +14,7 @@
               </label>
               <input type="text" class="col s12 m2 l2"
                      name="block_time"
-                     value="{{ settings('block_time', 30) }}">
+                     value="{{ $agenda ? $agenda->block_time : '25'  }}">
             </div>
           </div>
 
@@ -24,7 +24,8 @@
                 <div class="finput-field col s10">
                   <label for="block_time_minutes_hours">
                       <h6>@lang('app.block_time_minutes_hours')</h6></label>
-                  {!! Form::select('block_time_minutes_hours', ['minutos' => 'Minutos', 'horas' => 'Horas'], null,
+                  {!! Form::select('block_time_minutes_hours', ['minutos' => 'Minutos', 'horas' => 'Horas'],
+                     $agenda ? $agenda->block_time_minutes_hours : '',
                     ['placeholder' => 'Selecione...', 'required'  ]) !!}
                 </div>
               </div>
@@ -42,7 +43,7 @@
               </label>
               <input type="text" class="col s12 m2 l2"
                      name="max_per_block"
-                     value="{{ settings('max_per_block', 30) }}">
+                     value="{{ $agenda ? $agenda->max_per_block : '15' }}">
             </div>
           </div>
 
@@ -57,7 +58,7 @@
               </label>
               <input type="text" class="col s12 m2 l2"
                      name="time_of_each_appointment"
-                     value="{{ settings('time_of_each_appointment', 30) }}">
+                     value="{{ $agenda ? $agenda->time_of_each_appointment : '20' }}">
             </div>
           </div>
           <div class="row">
@@ -66,7 +67,8 @@
                 <div class="finput-field col s10">
                   <label for="appointments_time_minutes_hours">
                       <h6>@lang('app.appointments_time_minutes_hours')</h6></label>
-                  {!! Form::select('appointments_time_minutes_hours', ['minutos' => 'Minutos', 'horas' => 'Horas'], null,
+                  {!! Form::select('appointments_time_minutes_hours', ['minutos' => 'Minutos', 'horas' => 'Horas'],
+                     $agenda ? $agenda->appointments_time_minutes_hours : '',
                     ['placeholder' => 'Selecione...', 'required'  ]) !!}
                 </div>
               </div>
@@ -87,7 +89,7 @@
                   @lang('app.no')
                   <input type="hidden" name="max_daily_appointments" value="0">
                   <input type="checkbox" name="max_daily_appointments" value="1"
-                         {{ settings('max_daily_appointments') ? 'checked' : '' }}>
+                         {{ $agenda->max_daily_appointments == '1' ? 'checked' : '' }}>
                   <span class="lever"></span> @lang('app.yes')
                 </label>
               </div>
@@ -101,7 +103,7 @@
               </label>
               <input type="text" class="col s12 m2 l2"
                      name="max_number_daily_appointments"
-                     value="{{ settings('max_number_daily_appointments', 30) }}">
+                     value="{{ $agenda ? $agenda->max_number_daily_appointments : '12' }}">
             </div>
           </div>
           <br>
