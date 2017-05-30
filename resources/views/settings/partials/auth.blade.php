@@ -57,8 +57,6 @@
                    name="login_reset_token_lifetime"
                    value="{{ settings('login_reset_token_lifetime', 30) }}">
 
-            {{--<input type="text" name="login_reset_token_lifetime" class="form-control"
-                   value="{{ settings('login_reset_token_lifetime', 30) }}">--}}
         </div>
         <br>
 

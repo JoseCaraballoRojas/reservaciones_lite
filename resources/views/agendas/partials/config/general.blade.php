@@ -9,7 +9,7 @@
               <div class="finput-field col s10">
                 <label for="time_format">
                     <h6>@lang('app.time_format')</h6></label>
-                {!! Form::select('time_format', ['12' => '12 horas', '24' => '24 horas'], null,
+                {!! Form::select('time_format', ['12' => '12 horas', '24' => '24 horas'], $agenda ? $agenda->time_format : '',
                   ['placeholder' => 'Selecione...', 'required'  ]) !!}
               </div>
             </div>
@@ -27,7 +27,7 @@
             </label>
             <input type="text" class="col s12 m3 l3 timepicker"
                    name="start_time"
-                   value="{{ settings('start_time') }}"
+                   value="{{ $agenda ? $agenda->start_time : '' }}"
                    id="timepicker" >
           </div>
         </div>
@@ -43,7 +43,7 @@
             </label>
             <input type="text" class="col s12 m3 l3 timepicker"
                    name="final_hour"
-                   value="{{ settings('final_hour') }}"
+                   value="{{ $agenda ? $agenda->final_hour : '' }}"
                    id="timepicker" >
           </div>
         </div>
@@ -62,7 +62,7 @@
                 @lang('app.no')
                 <input type="hidden" name="blocking_schedules_per_day" value="0">
                 <input type="checkbox" name="blocking_schedules_per_day" value="1"
-                       {{ settings('blocking_schedules_per_day') ? 'checked' : '' }}>
+                       {{ $agenda->blocking_schedules_per_day == '1' ? 'checked' : ''}}>
                 <span class="lever"></span> @lang('app.yes')
               </label>
             </div>
@@ -84,14 +84,14 @@
                 @lang('app.no')
                 <input type="hidden" name="selectable_agenda" value="0">
                 <input type="checkbox" name="selectable_agenda" value="1"
-                       {{ settings('selectable_agenda') ? 'checked' : '' }}>
+                       {{ $agenda->selectable_agenda == '1' ? 'checked' : '' }}>
                 <span class="lever"></span> @lang('app.yes')
               </label>
             </div>
           </div>
         </div>
         <br>
-        {{-- AGREGAR AL MODIFICAR LA MIGRACION AGENDA Y ADD reason_for_appointment
+
         <div class="row">
           <div class="col s12">
             <div class="col s12">
@@ -99,13 +99,13 @@
                 <div class="finput-field col s12">
                   <label for="reason_for_appointment">
                       <h6>@lang('app.reason_for_appointment')</h6></label>
-                  {!! Form::select('reason_for_appointment',$reasons, null,
+                  {!! Form::select('reason_for_appointment',$reasons, $agenda ? $agenda->reason_for_appointment : '',
                     ['placeholder' => 'Catalogo de razones...', 'required'  ]) !!}
                 </div>
               </div>
             </div>
            </div>
-        </div>--}}
+        </div>
 
         <br>
         <div class="row">

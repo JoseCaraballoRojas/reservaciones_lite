@@ -18,14 +18,11 @@
                   @lang('app.no')
                   <input type="hidden" name="monday" value="0">
                   <input type="checkbox" name="monday" value="1"
-                         {{ settings('monday') ? 'checked' : '' }}>
+                         {{ $agenda->monday == '1' ? 'checked' : '' }}>
                   <span class="lever"></span> @lang('app.yes')
                 </label>
               </div>
             </div>
-
-
-
 
             <div class="col s12 m4 l4">
               <label for="tuesday">
@@ -40,14 +37,11 @@
                   @lang('app.no')
                   <input type="hidden" name="tuesday" value="0">
                   <input type="checkbox" name="tuesday" value="1"
-                         {{ settings('tuesday') ? 'checked' : '' }}>
+                         {{ $agenda->tuesday == '1' ? 'checked' : ''  }}>
                   <span class="lever"></span> @lang('app.yes')
                 </label>
               </div>
             </div>
-
-
-
 
             <div class="col s12 m4 l4">
               <label for="wednesday">
@@ -62,7 +56,7 @@
                   @lang('app.no')
                   <input type="hidden" name="wednesday" value="0">
                   <input type="checkbox" name="wednesday" value="1"
-                         {{ settings('wednesday') ? 'checked' : '' }}>
+                         {{ $agenda->wednesday == '1' ? 'checked' : ''  }}>
                   <span class="lever"></span> @lang('app.yes')
                 </label>
               </div>
@@ -87,7 +81,7 @@
                   @lang('app.no')
                   <input type="hidden" name="thursday" value="0">
                   <input type="checkbox" name="thursday" value="1"
-                         {{ settings('thursday') ? 'checked' : '' }}>
+                         {{ $agenda->thursday == '1' ? 'checked' : ''  }}>
                   <span class="lever"></span> @lang('app.yes')
                 </label>
               </div>
@@ -106,7 +100,7 @@
                   @lang('app.no')
                   <input type="hidden" name="friday" value="0">
                   <input type="checkbox" name="friday" value="1"
-                         {{ settings('friday') ? 'checked' : '' }}>
+                         {{ $agenda->friday == '1' ? 'checked' : ''  }}>
                   <span class="lever"></span> @lang('app.yes')
                 </label>
               </div>
@@ -124,7 +118,7 @@
                   @lang('app.no')
                   <input type="hidden" name="saturday" value="0">
                   <input type="checkbox" name="saturday" value="1"
-                         {{ settings('saturday') ? 'checked' : '' }}>
+                         {{ $agenda->saturday == '1' ? 'checked' : ''  }}>
                   <span class="lever"></span> @lang('app.yes')
                 </label>
               </div>
@@ -149,7 +143,7 @@
                   @lang('app.no')
                   <input type="hidden" name="sunday" value="0">
                   <input type="checkbox" name="sunday" value="1"
-                         {{ settings('sunday') ? 'checked' : '' }}>
+                         {{ $agenda->sunday == '1' ? 'checked' : ''  }}>
                   <span class="lever"></span> @lang('app.yes')
                 </label>
               </div>
@@ -171,7 +165,7 @@
               </label>
               <input type="text" class="col s12 m12 l12 datepicker"
                      name="initial_holiday_date"
-                     value="{{ settings('initial_holiday_date') }}">
+                     value="{{ $agenda ? $agenda->initial_holiday_date : ''}}">
             </div>
           </div>
         </div>
@@ -188,7 +182,7 @@
               </label>
               <input type="text" class="col s12 m12 l12 datepicker"
                      name="holiday_end_date"
-                     value="{{ settings('holiday_end_date') }}">
+                     value="{{ $agenda ? $agenda->holiday_end_date : '' }}">
             </div>
           </div>
         </div>
