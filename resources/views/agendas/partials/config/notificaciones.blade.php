@@ -18,7 +18,7 @@
                 @lang('app.no')
                 <input type="hidden" name="notifications_email" value="0">
                 <input type="checkbox" name="notifications_email" value="1"
-                       {{ settings('notifications_email') ? 'checked' : '' }}>
+                       {{ $agenda->notifications_email == '1' ? 'checked' : '' }}>
                 <span class="lever"></span> @lang('app.yes')
               </label>
             </div>
@@ -37,7 +37,7 @@
             </label>
             <input type="text" class="col s12 m2 l2"
                    name="time_to_send_emails"
-                   value="{{ settings('time_to_send_emails', 2) }}">
+                   value="{{ $agenda ? $agenda->time_to_send_emails : '3' }}">
           </div>
         </div>
 
@@ -55,7 +55,7 @@
                 @lang('app.no')
                 <input type="hidden" name="notifications_sms" value="0">
                 <input type="checkbox" name="notifications_sms" value="1"
-                       {{ settings('notifications_sms') ? 'checked' : '' }}>
+                       {{ $agenda->notifications_sms == '1' ? 'checked' : '' }}>
                 <span class="lever"></span> @lang('app.yes')
               </label>
             </div>
@@ -74,7 +74,7 @@
             </label>
             <input type="text" class="col s12 m2 l2"
                    name="time_to_send_sms"
-                   value="{{ settings('time_to_send_sms', 12) }}">
+                   value="{{ $agenda ? $agenda->time_to_send_sms : '24' }}">
           </div>
         </div>
 
@@ -92,7 +92,7 @@
                 @lang('app.no')
                 <input type="hidden" name="email_copy" value="0">
                 <input type="checkbox" name="email_copy" value="1"
-                       {{ settings('email_copy') ? 'checked' : '' }}>
+                       {{ $agenda->email_copy == '1' ? 'checked' : '' }}>
                 <span class="lever"></span> @lang('app.yes')
               </label>
             </div>
@@ -106,7 +106,9 @@
               <div class="finput-field col s10">
                 <label for="email_copy_receiver">
                     <h6>@lang('app.email_copy_receiver')</h6></label>
-                {!! Form::select('email_copy_receiver', ['1' => 'Administrador', '2' => 'Contacto sucursal', '3' => 'Contacto area'], null,
+                {!! Form::select('email_copy_receiver',
+                  ['1' => 'Administrador', '2' => 'Contacto sucursal', '3' => 'Contacto area'],
+                  $agenda ? $agenda->email_copy_receiver : '',
                   ['placeholder' => 'Selecione...', 'required'  ]) !!}
               </div>
             </div>

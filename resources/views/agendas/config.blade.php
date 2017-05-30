@@ -36,7 +36,7 @@
            <ul class="tabs">
              <li class="tab col s3">
                <a href="#general" aria-controls="general" role="tab" data-toggle="tab"
-                  class="white-text orange  waves-effect waves-light " >
+                  class="white-text orange  waves-effect waves-light active" >
                    <i class="mdi-action-settings" aria-hidden="true"></i>
                    @lang('app.general')
                </a>
@@ -50,7 +50,7 @@
              </li>
              <li class="tab col s3">
                <a href="#agenda" aria-controls="agenda" role="tab" data-toggle="tab"
-                  class="white-text green waves-effect waves-light active " >
+                  class="white-text green waves-effect waves-light  " >
                    <i class="fa fa-calendar-o" aria-hidden="true"></i>
                    @lang('app.agenda')
                </a>
