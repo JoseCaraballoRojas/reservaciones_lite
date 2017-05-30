@@ -52,20 +52,25 @@
                     <td>{{ $agenda->area->area }}</td>
                     <td>{{ $agenda->created_at->format('Y-m-d') }}</td>
                     <td class="text-center">
-                        <a href="{{-- route('agendas.show', $agenda->id) --}}#"
-                          class="btn-floating  waves-effect waves-light green disabled"
+                        <a href="{{ route('agendas.show', $agenda->id) }}"
+                          class="btn-floating  waves-effect waves-light green"
                            title="Ver Agenda" data-toggle="tooltip" data-placement="top">
                           <i  class="mdi-action-visibility"></i>
                         </a>
-                        <a href="{{ route('agendas.edit', $agenda->id) }}"
-                          class="btn-floating  waves-effect waves-light light-blue darken-4" title="Editar Agenda"
+                        <a href="{{-- route('agendas.citas', $agenda->id) --}}#"
+                          class="btn-floating  waves-effect waves-light light-blue disabled" title="Ver Citas"
                                 data-toggle="tooltip" data-placement="top">
-                          <i class="mdi-content-create"></i>
+                          <i class="mdi-action-event"></i>
                         </a>
                         <a href="{{ route('agendas.config', $agenda->id) }}"
                           class="btn-floating  waves-effect waves-light orange darken-2" title="Configurar Agenda"
                                 data-toggle="tooltip" data-placement="top">
                           <i class="mdi-action-settings"></i>
+                        </a>
+                        <a href="{{ route('agendas.edit', $agenda->id) }}"
+                          class="btn-floating  waves-effect waves-light light-blue darken-4" title="Editar Agenda"
+                                data-toggle="tooltip" data-placement="top">
+                          <i class="mdi-content-create"></i>
                         </a>
                         <a href="{{ route('agendas.destroy', $agenda->id) }}"
                           class="btn-floating  waves-effect waves-light red darken-2" title="Eliminar Agenda"

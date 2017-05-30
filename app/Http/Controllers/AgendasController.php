@@ -80,7 +80,17 @@ class AgendasController extends Controller
      */
     public function show($id)
     {
-        return view('citas.calendar');
+        $agenda = $this->agendas->findAgendaByID($id);
+        $agenda->each(function ($agenda){
+          $agenda->area->sucursal->empresa;
+          $agenda->reason;
+          $agenda->user;
+        });
+
+        return view('agendas.view', [
+            'agenda' => $agenda
+        ]);
+
     }
 
     /**
@@ -154,6 +164,19 @@ class AgendasController extends Controller
         return redirect()->back()
             ->withSuccess('Configuracion de ageda actualizada con exito');
     }
+    /**
+    * Mostrar citas de la agenda
+    *
+    * @param int $id
+    *
+    * @return \Illuminate\Http\Response
+    */
+    public function getCitasAgendaByID($id)
+    {
+      # code...
+    }
+
+
 
     /**
      * Remove the specified resource from storage.

@@ -22,4 +22,9 @@ class Area extends Model
   {
       return $this->belongsTo('Vanguard\Sucursal', 'sucursal_id');
   }
+
+  public function agendas()
+  {
+      return $tihis->hasMany('Vanguard\Agenda');
+  }
 }

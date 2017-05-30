@@ -438,6 +438,10 @@ Route::get('agenda/{id}/destroy', [
         'uses' => 'AgendasController@destroy',
         'as' => 'agendas.destroy'
         ]);
+Route::get('agendas/citas/{id}', [
+        'uses' => 'AgendasController@getCitasAgendaByID',
+        'as' => 'agendas.citas'
+        ]);
 Route::get('agendas/getSucursalesByID/{id}', [
         'uses' => 'AgendasController@getSucursalesByID',
         'as' => 'agendas.getSucursalesByID'

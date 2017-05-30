@@ -1,19 +1,19 @@
 @extends('materialize.template')
 
-@section('page-title', 'cita')
+@section('page-title', 'Citas')
 
 @section('content')
   <div class="container">
     <div class="row">
       <div class="col s12 m12 l12">
         <h5 class="breadcrumbs-title">
-          @lang('app.appointment')
+          Cita
           <small> Detalles de Cita </small>
         <div class="pull-right">
         <ol class="breadcrumbs">
           <li><a href="{{ route('dashboard') }}">@lang('app.home')</a></li>
-          <li><a href="{{ route('citas.indexCliente') }}"> Citas</a></li>
-          <li class="active">{{-- $sucursal->sucursal --}}</li>
+          <li class="active"><a href="{{ route('citas.indexCliente') }}"> Citas</a></li>
+
         </ol>
         </div>
         </h5>
@@ -148,8 +148,7 @@
                       <tbody>
                           <tr>
                               <td> <b>Sucursal de la Agenda: </b> </td>
-                              <td>{!! $data->agenda->user->first_name !!}
-                                  {!! $data->agenda->user->last_name !!}</td>
+                              <td>{!! $data->agenda->area->sucursal->sucursal !!}</td>
                           </tr>
                           <tr>
                               <td><b>@lang('app.phone'): </b></td>
