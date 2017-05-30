@@ -101,10 +101,10 @@ class AgendasController extends Controller
       $users = $this->agendas->getUsers();
       $empresas = $this->agendas->getEmpresas();
       $sucursales = $this->agendas->getSucursales();
-
+      $reasons = $this->agendas->getReasons();
       $areas = $this->agendas->getAreas();
       return view('agendas.edit',
-      compact('edit', 'users', 'empresas', 'empresa_id', 'sucursales', 'areas', 'agenda', 'motivos'));
+      compact('edit', 'users', 'empresas', 'empresa_id', 'sucursales', 'areas', 'agenda', 'motivos', 'reasons'));
     }
 
     /**

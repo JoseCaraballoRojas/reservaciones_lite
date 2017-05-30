@@ -57,8 +57,8 @@
                            title="Ver Agenda" data-toggle="tooltip" data-placement="top">
                           <i  class="mdi-action-visibility"></i>
                         </a>
-                        <a href="{{-- route('agendas.edit', $agenda->id) --}}#"
-                          class="btn-floating  waves-effect waves-light light-blue darken-4 disabled" title="Editar Agenda"
+                        <a href="{{ route('agendas.edit', $agenda->id) }}"
+                          class="btn-floating  waves-effect waves-light light-blue darken-4" title="Editar Agenda"
                                 data-toggle="tooltip" data-placement="top">
                           <i class="mdi-content-create"></i>
                         </a>

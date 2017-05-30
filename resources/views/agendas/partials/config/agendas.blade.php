@@ -103,7 +103,7 @@
             </label>
             <input type="text" class="col s12 m2 l2"
                    name="max_number_shifts_per_day"
-                   value="{{ $agenda ? $agenda->max_number_shifts_per_day : '12'  }}">
+                   value="{{ $agenda->max_number_shifts_per_day ? $agenda->max_number_shifts_per_day : '12'  }}">
           </div>
         </div>
 

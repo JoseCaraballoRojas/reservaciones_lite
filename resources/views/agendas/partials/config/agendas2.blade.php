@@ -14,7 +14,7 @@
               </label>
               <input type="text" class="col s12 m2 l2"
                      name="block_time"
-                     value="{{ $agenda ? $agenda->block_time : '25'  }}">
+                     value="{{ $agenda->block_time ? $agenda->block_time : '25'  }}">
             </div>
           </div>
 
@@ -43,7 +43,7 @@
               </label>
               <input type="text" class="col s12 m2 l2"
                      name="max_per_block"
-                     value="{{ $agenda ? $agenda->max_per_block : '15' }}">
+                     value="{{ $agenda->max_per_block ? $agenda->max_per_block : '15' }}">
             </div>
           </div>
 
@@ -58,7 +58,7 @@
               </label>
               <input type="text" class="col s12 m2 l2"
                      name="time_of_each_appointment"
-                     value="{{ $agenda ? $agenda->time_of_each_appointment : '20' }}">
+                     value="{{ $agenda->time_of_each_appointment ? $agenda->time_of_each_appointment : '20' }}">
             </div>
           </div>
           <div class="row">
@@ -68,7 +68,7 @@
                   <label for="appointments_time_minutes_hours">
                       <h6>@lang('app.appointments_time_minutes_hours')</h6></label>
                   {!! Form::select('appointments_time_minutes_hours', ['minutos' => 'Minutos', 'horas' => 'Horas'],
-                     $agenda ? $agenda->appointments_time_minutes_hours : '',
+                     $agenda->appointments_time_minutes_hours ? $agenda->appointments_time_minutes_hours : '',
                     ['placeholder' => 'Selecione...', 'required'  ]) !!}
                 </div>
               </div>
@@ -103,7 +103,7 @@
               </label>
               <input type="text" class="col s12 m2 l2"
                      name="max_number_daily_appointments"
-                     value="{{ $agenda ? $agenda->max_number_daily_appointments : '12' }}">
+                     value="{{ $agenda->max_number_daily_appointments ? $agenda->max_number_daily_appointments : '12' }}">
             </div>
           </div>
           <br>

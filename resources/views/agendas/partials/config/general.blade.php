@@ -27,7 +27,7 @@
             </label>
             <input type="text" class="col s12 m3 l3 timepicker"
                    name="start_time"
-                   value="{{ $agenda ? $agenda->start_time : '' }}"
+                   value="{{ $agenda->start_time ? $agenda->start_time : '' }}"
                    id="timepicker" >
           </div>
         </div>
@@ -43,7 +43,7 @@
             </label>
             <input type="text" class="col s12 m3 l3 timepicker"
                    name="final_hour"
-                   value="{{ $agenda ? $agenda->final_hour : '' }}"
+                   value="{{ $agenda->final_hour ? $agenda->final_hour : '' }}"
                    id="timepicker" >
           </div>
         </div>

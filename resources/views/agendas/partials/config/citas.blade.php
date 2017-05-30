@@ -32,7 +32,7 @@
             </label>
             <input type="text" class="col s12 m2 l2"
                    name="anticipation_time_modify"
-                   value="{{ $agenda ? $agenda->anticipation_time_modify: '' }}">
+                   value="{{ $agenda ? $agenda->anticipation_time_modify: '48' }}">
           </div>
         </div>
 
@@ -71,7 +71,7 @@
             </label>
             <input type="text" class="col s12 m2 l2"
                    name="anticipation_time_cancel"
-                   value="{{ $agenda ? $agenda->anticipation_time_cancel: '' }}">
+                   value="{{ $agenda ? $agenda->anticipation_time_cancel: '24' }}">
           </div>
         </div>
 
@@ -104,7 +104,7 @@
           </label>
           <input type="text" class="col s12 m2 l2"
                  name="time_for_activation"
-                 value="{{ $agenda ? $agenda->time_for_activation: '' }}">
+                 value="{{ $agenda ? $agenda->time_for_activation: '12' }}">
         </div>
       </div>
 
