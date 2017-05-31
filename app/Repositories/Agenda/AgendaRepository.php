@@ -7,6 +7,7 @@ use Vanguard\Empresa;
 use Vanguard\Sucursal;
 use Vanguard\Agenda;
 use Vanguard\Reason;
+use Vanguard\Cita;
 /**
  *Repositorios para el modelo Agenda
  */
@@ -80,6 +81,12 @@ class AgendaRepository
     public function getAgendas()
     {
         return $agendas = Agenda::orderBy('id', 'DESC')->paginate(5);
+    }
+
+    public function getCitasAgendaByID($id)
+    {
+        return Cita::where('agenda_id', '=',$id)->paginate(5);
+        //->get();
     }
 
 }

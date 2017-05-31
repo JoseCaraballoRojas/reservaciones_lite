@@ -173,7 +173,22 @@ class AgendasController extends Controller
     */
     public function getCitasAgendaByID($id)
     {
-      # code...
+        $agenda = $this->agendas->findAgendaByID($id);
+        $agenda->each(function ($agenda){
+          $agenda->area;
+          $agenda->user;
+        });
+        $citas = $this->agendas->getCitasAgendaByID($id);
+        $citas->each(function ($citas){
+          $citas->agenda->area;
+          $citas->agenda->user;
+          $citas->reason;
+        });
+
+          //dd($citas);
+          return view('agendas.viewCitas', compact('agenda', 'citas'));
+
+
     }
 
 
