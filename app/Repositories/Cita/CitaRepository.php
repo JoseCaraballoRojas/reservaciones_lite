@@ -26,6 +26,7 @@ class CitaRepository
     ->get();
 
   }
+
   public function findAppointmentByID($id)
   {
     return Cita::where('id', '=',$id)
@@ -33,5 +34,10 @@ class CitaRepository
 
   }
 
+  public function findCitaByID($id)
+  {
+    return Cita::find($id);
+
+  }
 
 }

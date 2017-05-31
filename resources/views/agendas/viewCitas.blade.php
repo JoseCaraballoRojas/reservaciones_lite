@@ -44,15 +44,30 @@
                     <td>{{ $cita->appointment_date }}</td>
                     <td>{{ $cita->appointment_time}}</td>
                     <td>{{ $cita->reason->reason}}</td>
-                    <td>{{ $cita->appointment_status}}</td>
+                    @if ($cita->appointment_status == 'aprobada')
+                        <td class="green-text">
+                    @elseif ($cita->appointment_status == 'cancelada')
+                        <td class="red-text">
+                    @else
+                      <td class="orange-text">
+                    @endif
+                    {{ $cita->appointment_status}}</td>
                     <td class="text-center">
-                        <a href="{{-- route('agendas.show', $agenda->id) --}}#"
-                          class="btn-floating  waves-effect waves-light green"
-                           title="AprobarcCita" data-toggle="tooltip" data-placement="top">
-                          <i  class="mdi-action-visibility"></i>
+                        <a href="{{ route('citas.cancelar', $cita->id) }}"
+                          class="btn-floating  waves-effect waves-light red
+                          {{ $cita->appointment_status == 'cancelada' ? 'disabled' : ''}}"
+                          title="Cancelar Cita" data-toggle="tooltip" data-placement="top">
+                            <i class="mdi-notification-event-busy"></i>
                         </a>
-                        <a href="{{-- route('agendas.destroy', $agenda->id) --}}#"
-                          class="btn-floating  waves-effect waves-light red darken-2" title="Cancelar Cita"
+                        <a href="{{ route('citas.aprobar', $cita->id) }}"
+                          class="btn-floating  waves-effect waves-light green
+                          {{ $cita->appointment_status == 'aprobada' ? 'disabled' : ''}} "
+                           title="Aprobar Cita" data-toggle="tooltip" data-placement="top">
+                          <i  class="mdi-notification-event-available"></i>
+                        </a>
+                        <a href="{{ route('citas.destroy', $cita->id) }}"
+                          onclick=" return confirm('¿Seguro que deseas eliminar la cita ?')"
+                          class="btn-floating  waves-effect waves-light red darken-2" title="Eliminar Cita"
                                 data-toggle="tooltip"
                                 data-placement="top">
                             <i class="mdi-action-delete"></i>

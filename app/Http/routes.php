@@ -429,7 +429,14 @@ Route::get('citas', [
     'as' => 'citas.indexCliente',
     'uses' => 'CitasController@indexCliente'
 ]);
-
+Route::get('cita/{id}/cancelar', [
+        'uses' => 'CitasController@cancelar',
+        'as' => 'citas.cancelar'
+        ]);
+  Route::get('cita/{id}/aprobar', [
+          'uses' => 'CitasController@aprobar',
+          'as' => 'citas.aprobar'
+          ]);
 /*
 * Agendas
 */

@@ -8,6 +8,7 @@ use Vanguard\Http\Requests;
 use Vanguard\Repositories\Agenda\AgendaRepository;
 use Vanguard\Repositories\Cita\CitaRepository;
 use Auth;
+use Vanguard\Cita;
 class CitasController extends Controller
 {
 
@@ -115,13 +116,7 @@ class CitasController extends Controller
       */
      public function edit($id)
      {
-         $area = Area::find($id);
-         $area->user;
-         $area->sucursal;
-         $edit = true;
-         $users = $this->areas->getUsers();
-         $sucursales = $this->areas->getSucursales();
-         return view('areas.edit', compact('edit', 'users', 'sucursales', 'area'));
+         #code..
 
      }
 
@@ -134,12 +129,7 @@ class CitasController extends Controller
       */
      public function update(Request $request, $id)
      {
-         $area = Area::find($id);
-         $area->fill($request->all());
-         $area->save();
-         return redirect()->route('areas.index')
-             ->withSuccess('Area actualizada con exito');
-
+         #code...
      }
 
      /**
@@ -150,10 +140,47 @@ class CitasController extends Controller
       */
      public function destroy($id)
      {
-         $area = Area::find($id);
-         $area->delete();
-         return redirect()->route('areas.index')
-             ->withSuccess('Area eliminada con exito');
+       $cita = $this->citas->findCitaByID($id);
+       //dd($cita);
+       $cita->delete();
+       return redirect()->route('agendas.citas', $cita->agenda_id)
+         ->withSuccess('Cita eliminada con exito');
+     }
+     /**
+     * aprobar las citas solicitadas por los clientes en las agendas
+     *
+     *@param  int  $id
+     *@return \Illuminate\Http\Response
+     **/
+     public function aprobar(Request $request, $id)
+     {
+
+         $cita = $this->citas->findCitaByID($id);
+         $estatus = 'aprobada';
+         $cita->appointment_status = $estatus;
+         $cita->fill($request->all());
+         $cita->save();
+         return redirect()->route('agendas.citas', $cita->agenda_id)
+           ->withSuccess('Cita aprobada con exito');
+
+     }
+
+     /**
+     * cancelar las citas solicitadas por los clientes en las agendas
+     *
+     *@param  int  $id
+     *@return \Illuminate\Http\Response
+     **/
+     public function cancelar(Request $request, $id)
+     {
+
+         $cita = $this->citas->findCitaByID($id);
+         $estatus = 'cancelada';
+         $cita->appointment_status = $estatus;
+         $cita->fill($request->all());
+         $cita->save();
+         return redirect()->route('agendas.citas', $cita->agenda_id)
+           ->withSuccess('Cita cancelada con exito');
 
      }
 
