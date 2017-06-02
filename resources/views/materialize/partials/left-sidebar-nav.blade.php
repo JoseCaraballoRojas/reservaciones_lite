@@ -57,6 +57,7 @@
         </li>
       @endif
 
+      {{--menu citas para clientes--}}
       @if (Auth::user()->roles->first()->name == 'Client')
       <li class="bold">
         <a href="{{ route('citas.indexCliente') }}" class="waves-effect waves-cyan">
@@ -69,6 +70,21 @@
         </a>
       </li>
       @endif
+
+      {{--menu citas para usuarios responsables de agendas--}}
+      @if (Auth::user()->roles->first()->name == 'User')
+      <li class="bold">
+        <a href="{{ route('citas.indexResponsable') }}" class="waves-effect waves-cyan">
+          <i class="mdi-action-visibility"></i>  Citas
+        </a>
+      </li>
+      <li class="bold">
+        <a href="{{ route('citas.create') }}" class="waves-effect waves-cyan">
+          <i class="mdi-action-today"></i>  Solicitar citas
+        </a>
+      </li>
+      @endif
+      
       {{--<li class="no-padding ">
           <ul class="collapsible collapsible-accordion">
               <li class="bold">

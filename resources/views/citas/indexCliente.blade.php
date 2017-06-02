@@ -2,12 +2,6 @@
 
 @section('page-title', 'Citas')
 
-{{--@section('styles')
-<!-- FULL CALENDAR -->
-    {!! HTML::style('assets/template/js/plugins/fullcalendar/css/fullcalendar.css') !!}
-<!-- FULL CALENDAR NEW CONFIG -->
-    {!! HTML::style('assets/template/js/plugins/fullcalendar/css/newconfig.css') !!}
-@stop--}}
 
 @section('content')
 
@@ -103,9 +97,7 @@
 {{--
 @section('scripts')
 
-<!-- ================================================
-Scripts
-================================================ -->
+<!-- ===========Scripts================== -->
 <!-- chartist -->
 
 

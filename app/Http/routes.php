@@ -429,6 +429,10 @@ Route::get('citas', [
     'as' => 'citas.indexCliente',
     'uses' => 'CitasController@indexCliente'
 ]);
+Route::get('citas/responsable/', [
+    'as' => 'citas.indexResponsable',
+    'uses' => 'CitasController@indexResponsable'
+]);
 Route::get('cita/{id}/cancelar', [
         'uses' => 'CitasController@cancelar',
         'as' => 'citas.cancelar'

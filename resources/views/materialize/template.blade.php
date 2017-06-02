@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <!--================================================================================
 	Item Name: Materialize - Material Design Admin Template
@@ -19,7 +19,7 @@
 
 <!-- Title
   <title>Page Blank | Materialize - Material Design Admin Template</title>-->
-  <title>@yield('page-title') | Materialize - Material Design Admin Template</title>
+  <title>@yield('page-title') | Resrevaciones</title>
 
 
   <!-- Favicons-->

@@ -46,10 +46,7 @@ class CitasController extends Controller
 
     }
 
-    public function indexResponsable()
-    {
-        return view('citas.indexResponsable');
-    }
+   
     /**
      * Show the form for creating a new resource.
      *
@@ -74,7 +71,7 @@ class CitasController extends Controller
 
      public function store(Request $request)
      {
-       //dd($request->all());
+       
 
        $this->citas->create($request->all());
 
