@@ -12,7 +12,7 @@
         <div class="pull-right">
         <ol class="breadcrumbs">
             <li><a href="{{ route('dashboard') }}">@lang('app.home')</a></li>
-            <li><a href="{{ route('citas.indexCliente') }}"> Citas </a></li>
+            <li><a> Citas </a></li>
             <li class="active">{{ $agenda->area->area ? $agenda->area->area : '' }}</li>
         </ol>
         </div>
@@ -22,7 +22,7 @@
   </div>
 
 <div class="divider"></div>
-<div class="container" id="Selectores">
+<div class="container">
   <div class="row">
     <div class="col s12 m12 l12">
       <div class="col s12 m4 l4">

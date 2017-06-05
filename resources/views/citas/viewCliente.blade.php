@@ -36,14 +36,7 @@
                       </a>
                   </div>
               </h4>
-            {{--  <div class="card-panel">
-                <figure class="card-profile-image">
-                  <img alt="profile image" class="circle z-depth-2 responsive-img activator"
-                  src="{{ url('assets/template/images/avatar.jpg') }}">
-                </figure>
-                  <div class="name"><strong>{{--$data->sucursal</strong></div>
-              </div>--}}
-
+            
                   <table class="responsive-table striped bordered">
                       <thead>
                           <tr>

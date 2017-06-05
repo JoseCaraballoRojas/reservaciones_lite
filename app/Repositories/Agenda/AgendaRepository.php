@@ -86,7 +86,13 @@ class AgendaRepository
     public function getCitasAgendaByID($id)
     {
         return Cita::where('agenda_id', '=',$id)->paginate(5);
-        //->get();
+        
+    }
+
+    public function getAgendaByResponsableID($id)
+    {
+        return Agenda::where('responsable_id', '=',$id)->paginate(7);
+        
     }
 
 }

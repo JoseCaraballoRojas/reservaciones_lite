@@ -12,7 +12,13 @@
         <div class="pull-right">
         <ol class="breadcrumbs">
           <li><a href="{{ route('dashboard') }}">@lang('app.home')</a></li>
-          <li><a href="{{ route('agendas.index') }}">@lang('app.agend')</a></li>
+          <li>
+              @if (Auth::user()->roles->first()->name == 'Admin')
+                  <a href="{{ route('agendas.index') }}"> Agendas</a>
+              @else
+                  <a href="{{ route('agendas.agendasResponsable') }}"> Agendas</a>
+              @endif
+          </li>
           <li class="active">@lang('app.config')</li>
         </ol>
         </div>

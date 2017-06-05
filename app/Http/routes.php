@@ -429,9 +429,9 @@ Route::get('citas', [
     'as' => 'citas.indexCliente',
     'uses' => 'CitasController@indexCliente'
 ]);
-Route::get('citas/responsable/', [
-    'as' => 'citas.indexResponsable',
-    'uses' => 'CitasController@indexResponsable'
+Route::get('citas-responsable', [
+    'as' => 'citasResponsable',
+    'uses' => 'CitasController@citasResponsable'
 ]);
 Route::get('cita/{id}/cancelar', [
         'uses' => 'CitasController@cancelar',
@@ -448,6 +448,10 @@ Route::resource('agendas', 'AgendasController');
 Route::get('agenda/{id}/destroy', [
         'uses' => 'AgendasController@destroy',
         'as' => 'agendas.destroy'
+        ]);
+Route::get('agendas/responsable/agendas', [
+        'as' => 'agendas.agendasResponsable',
+        'uses' => 'AgendasController@agendasResponsable'
         ]);
 Route::get('agendas/citas/{id}', [
         'uses' => 'AgendasController@getCitasAgendaByID',

@@ -11,6 +11,7 @@ use Vanguard\Http\Requests\AgendaUpdateConfigRequest;
 use Vanguard\User;
 use Vanguard\Area;
 use Vanguard\Agenda;
+use Auth;
 
 class AgendasController extends Controller
 {
@@ -37,6 +38,25 @@ class AgendasController extends Controller
         });
 
           return view('agendas.index')
+              ->with('agendas', $agendas);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function agendasResponsable()
+    {   
+        $id = Auth::user()->id;
+        $agendas = $this->agendas->getAgendaByResponsableID($id);
+        //dd($agendas->all());
+        $agendas->each(function ($agendas){
+          $agendas->area;
+          $agendas->user;
+        });
+
+          return view('agendas.agendasResponsable')
               ->with('agendas', $agendas);
     }
 

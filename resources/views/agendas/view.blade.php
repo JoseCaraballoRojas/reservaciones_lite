@@ -12,7 +12,13 @@
         <div class="pull-right">
         <ol class="breadcrumbs">
           <li><a href="{{ route('dashboard') }}">@lang('app.home')</a></li>
-          <li><a href="{{ route('agendas.index') }}"> Agendas</a></li>
+          <li>
+              @if (Auth::user()->roles->first()->name == 'Admin')
+                  <a href="{{ route('agendas.index') }}"> Agendas</a>
+              @else
+                  <a href="{{ route('agendas.agendasResponsable') }}"> Agendas</a>
+              @endif
+          </li>
           <li class="active">{{  $agenda->area->area }}</li>
         </ol>
         </div>
@@ -26,6 +32,7 @@
   <div class="row">
       <div class="col s12 m12 l6">
           <div id="edit-user-panel" class="card-panel">
+              @if (Auth::user()->roles->first()->name == 'Admin')
               <h4 class="header2">
                   <div class="pull-right">
                       <a href="{{ route('agendas.edit', $agenda->id) }}" class="edit"
@@ -34,6 +41,7 @@
                       </a>
                   </div>
               </h4>
+              @endif
               <table class="responsive-table striped bordered">
                   <thead>
                       <tr>

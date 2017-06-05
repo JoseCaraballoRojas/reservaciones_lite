@@ -46,6 +46,13 @@ class CitasController extends Controller
 
     }
 
+    public function citasResponsable()
+    {
+      $id = Auth::user()->id;
+        $citas = $this->citas->getAppointmentsByID($id);
+        
+      return view('citas.citas-responsable');
+    }
    
     /**
      * Show the form for creating a new resource.

@@ -74,46 +74,23 @@
       {{--menu citas para usuarios responsables de agendas--}}
       @if (Auth::user()->roles->first()->name == 'User')
       <li class="bold">
-        <a href="{{ route('citas.indexResponsable') }}" class="waves-effect waves-cyan">
-          <i class="mdi-action-visibility"></i>  Citas
-        </a>
-      </li>
-      <li class="bold">
         <a href="{{ route('citas.create') }}" class="waves-effect waves-cyan">
           <i class="mdi-action-today"></i>  Solicitar citas
         </a>
       </li>
       @endif
       
-      {{--<li class="no-padding ">
-          <ul class="collapsible collapsible-accordion">
-              <li class="bold">
-                <a class="collapsible-header waves-effect waves-cyan">
-                  <i class="mdi-action-account-box"></i> Citas
-                </a>
-                  <div class="collapsible-body">
-                      <ul>
-                        <li>
-                          <a href="{{ route('citas.indexCliente') }}"
-                            class="">
-                            Ver citas
-                          </a>
-                        </li>
-                        <li>
-                          <a href="{{ route('citas.create') }}"
-                            class="">
-                            Solicitar cita
-                          </a>
-                        </li>
-                      </ul>
-                  </div>
-              </li>
-          </ul>
-      </li>--}}
 
-      @if (Auth::user()->roles->first()->name == 'Admin' || Auth::user()->roles->first()->name == 'User' )
+      @if (Auth::user()->roles->first()->name == 'Admin')
       <li class="bold">
         <a href="{{ route('agendas.index') }}" class="waves-effect waves-cyan">
+          <i class="mdi-action-today"></i>  Agendas
+        </a>
+      </li>
+      @endif
+      @if (Auth::user()->roles->first()->name == 'User')
+      <li class="bold">
+        <a href="{{ route('agendas.agendasResponsable') }}" class="waves-effect waves-cyan">
           <i class="mdi-action-today"></i>  Agendas
         </a>
       </li>
