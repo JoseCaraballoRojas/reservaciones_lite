@@ -86,6 +86,10 @@ class CitasController extends Controller
          return redirect()->route('citas.indexCliente')
              ->withSuccess('Cita creada con exito');
        }
+       if (Auth::user()->roles->first()->name == 'User') {
+         return redirect()->route('agendas.agendasResponsable')
+             ->withSuccess('Cita creada con exito');
+       }
 
      }
 
