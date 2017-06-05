@@ -38,16 +38,21 @@
       editable: false, //no permitir mover eeventos
       droppable: false, // this allows things to be dropped onto the calendar
       eventLimit: true, // allow "more" link when too many events
-      //hiddenDays: [ 0,6], //OCULTAR LOS DIAS SABADO Y DOMINGO
+      hiddenDays: [ 0,6], //OCULTAR LOS DIAS SABADO Y DOMINGO
       events: [
         {
           title: '7',
           start: '2017-04-13',
           color: '#00bcd4'
+        },
+        {
+          title: '3',
+          start: '2017-05-25',
+          color: '#00bcd4'
         }
       ],
 
-      eventClick: function(calEvent, jsEvent, view) {
+      /*eventClick: function(calEvent, jsEvent, view) {
 
           //$('#btn-modal-citas').click();
           alert('Event: ' + calEvent.title);
@@ -57,23 +62,10 @@
           // change the border color just for fun
           //$(this).css('border-color', 'red');
 
-      }
+      }*/
 
     });
-    //hide btn
-    $('#btn-modal').hide();
-    $('#btn-modal-citas').hide();
-    //capture click event
-    $('.fc-day').on('click', function() {
-      var valor = $(this).attr('data-date');
-      $('#btn-modal').click();
-      //console.log(valor);
 
-    });
-    //btn close modal
-    $('#btn-modal-close').on('click', function() {
-        $('#modalForm').hide();
-        $('.lean-overlay').remove();
 
     });
     //btn close modal 2

@@ -15,7 +15,7 @@
     <div class="row">
       <div class="col s12 m12 l12">
         <h5 class="breadcrumbs-title">Citas
-          <small>Solicitar cita</small>
+          <small>Solicitar citas</small>
         <div class="pull-right">
         <ol class="breadcrumbs">
             <li><a href="{{ route('dashboard') }}">@lang('app.home')</a></li>
@@ -135,7 +135,6 @@
     </div>
     </div>
   </div>
-  {!! Form::close() !!}
 </div>
 @stop
 
