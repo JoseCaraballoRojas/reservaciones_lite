@@ -4,6 +4,7 @@ $(document).ready(function() {
   var data; //data de la agenda seleccionada
   var minTime, maxTime; //horario de la agenda de citas
   var idAgenda, appointment_approval;
+  var horarios_ocupados = new Array();
   $("#btn-back-calendar").hide();//ocultar boton de regeresar
     /* initialize the external events
     -----------------------------------------------------------------*/
@@ -127,6 +128,8 @@ $(document).ready(function() {
   //hide btn
   $('#btn-modal').hide();
   //capture click event
+  $('#btn-modal').hide();
+  //capture click event
   $('.fc-future span.fc-day-number').on('click', function() {
     if ($(this).attr('id') === 'disabled') {
         return false;
@@ -134,9 +137,24 @@ $(document).ready(function() {
     else {
       var valor = $(this).attr('class');
       var date = $(this).parent().attr('data-date');
+      
+      $.post("../citas/getCitasByAgendaAndDay/",
+        {
+          fecha: date,
+          idAgenda: idAgenda
+        },
+      function(res, status){
+          //console.log(res);
+        res.forEach(element => {
+            horarios_ocupados.push(element.appointment_time.split(':').map(Number));
+            console.log(horarios_ocupados);
+          })
+          BloquearHorarios(horarios_ocupados);
+      });
 
       $('#appointment_date').attr('value', date);
       $('#appointment_date').attr('readonly', 'true');
+
       $('#btn-modal').click();
 
 
@@ -170,6 +188,8 @@ $(document).ready(function() {
       $(this).attr('title', 'Solicitar cita');
 
   });
+
+  
 
   function configCalendar(data) {
     var monday, tuesday, wednesday, thursday, friday, saturday, sunday;
@@ -234,11 +254,23 @@ $(document).ready(function() {
       $('.fc-sun span.fc-day-number').removeClass('waves-effect waves-light  green accent-3');
     }
 
-    //configurar hora minima y maxima de la cita
+   
+    if (appointment_approval === "1") {
+        $("#appointment_status").attr('value', 'Esperando aprobacion');
+    }
+
+
+  }
+
+  function BloquearHorarios(horas) {
+    console.log('me llamaron');
+     //configurar hora minima y maxima de la cita
     $('.timepicker_cita').pickatime({
       //hora inicial y final de la agenda
       min: minTime,
       max: maxTime,
+      //bloquear horarios
+      disable: horarios_ocupados,
       //formato de envio
       formatSubmit: 'HH:i',
       hiddenName: true,
@@ -247,16 +279,11 @@ $(document).ready(function() {
       closeOnClear: false,
 
     });
-
-    if (appointment_approval === "1") {
-        $("#appointment_status").attr('value', 'Esperando aprobacion');
-    }
-
-
   }
 
+
   //mejoras visuales calendar
-  $('body table ').addClass('bordered centered');//centar contenido de las tablas
+  $('body table ').addClass('bordered centered');//centrar contenido de las tablas
   $('body table ').addClass('responsive');//agregar responsividad a las tablas de calendario
 
 });

@@ -441,6 +441,11 @@ Route::get('cita/{id}/cancelar', [
           'uses' => 'CitasController@aprobar',
           'as' => 'citas.aprobar'
           ]);
+
+Route::post('citas/getCitasByAgendaAndDay/', [
+        'uses' => 'CitasController@getCitasByAgendaAndDay',
+        'as' => 'agendas.getCitasByAgendaAndDay'
+        ]);
 /*
 * Agendas
 */
@@ -470,6 +475,7 @@ Route::get('agendas/getAgendaByID/{id}', [
         'uses' => 'AgendasController@getAgendaByID',
         'as' => 'agendas.getAgendaByID'
         ]);
+
 Route::get('agendas/config/{id}', [
         'uses' => 'AgendasController@configAgenda',
         'as' => 'agendas.config'

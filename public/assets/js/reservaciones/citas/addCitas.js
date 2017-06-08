@@ -48,4 +48,4 @@ $(document).ready(function() {//INITIALIZE DOCUMENT READY
   //$('body table  tbody tr ').addClass('tr_border');
   //$('body table  tbody tr td').addClass('td_bordered');
     //$('#calendar').fullCalendar('refetchEvents');
-}); //END DOCUMENT READY
+ //END DOCUMENT READY

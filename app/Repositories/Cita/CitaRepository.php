@@ -40,4 +40,10 @@ class CitaRepository
 
   }
 
+  public function getCitasByAgendaAndDay($datos)
+  {
+    return Cita::where('agenda_id','=',$datos->idAgenda)
+                 ->where('appointment_date','=',$datos->fecha)->get();
+  }
+
 }

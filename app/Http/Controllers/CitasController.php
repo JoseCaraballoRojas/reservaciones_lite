@@ -192,4 +192,12 @@ class CitasController extends Controller
 
      }
 
+     public function getCitasByAgendaAndDay(Request $request)
+     {
+         if ($request->ajax()) {
+            $citas = $this->citas->getCitasByAgendaAndDay($request);
+            return response()->json($citas);
+        }
+     }
+
 }

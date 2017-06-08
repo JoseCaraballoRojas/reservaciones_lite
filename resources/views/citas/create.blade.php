@@ -96,7 +96,7 @@
       <br>
       <div class="col s12">
         <div class="row">
-          <input name="cliente_id" type="hidden" value="<?=  Auth::user()->id ?>">
+          <input name="cliente_id" type="hidden" value="{{  Auth::user()->id }}" >
           <input name="agenda_id" type="hidden" value="" id="agenda_id">
           <input name="appointment_status" type="hidden" value="Aprobada" id="appointment_status">
           <div class="finput-field col s3">
