@@ -5,8 +5,8 @@
 @section('content')
 
 <div id="login-page" class="row">
-  <div class="col s4 z-depth-4 offset-s4 card-panel">
-    <div class="form-wrap col l12 auth-form" id="login">
+  <div class="col s10 m6 l4 z-depth-4 offset-s1 offset-m3 offset-l4 card-panel ">
+    <div class="form-wrap col s12 auth-form" id="login">
         <div class="input-field col s12 center">
           <img src="{{ url('assets/template/images/login-logo.png') }}"
               alt="{{ settings('app_name') }}"
