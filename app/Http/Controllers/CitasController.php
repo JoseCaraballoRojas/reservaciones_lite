@@ -9,6 +9,7 @@ use Vanguard\Repositories\Agenda\AgendaRepository;
 use Vanguard\Repositories\Cita\CitaRepository;
 use Auth;
 use Vanguard\Cita;
+use Carbon\Carbon;
 class CitasController extends Controller
 {
 
@@ -151,8 +152,19 @@ class CitasController extends Controller
        $cita = $this->citas->findCitaByID($id);
        //dd($cita);
        $cita->delete();
-       return redirect()->route('agendas.citas', $cita->agenda_id)
-         ->withSuccess('Cita eliminada con exito');
+       if (Auth::user()->roles->first()->name == 'Client') {
+         return redirect()->route('citas.indexCliente')
+             ->withSuccess('Cita eliminada con exito');
+       }
+       if (Auth::user()->roles->first()->name == 'User') {
+         return redirect()->route('agendas.agendasResponsable')
+             ->withSuccess('Cita eliminada con exito');
+       }
+       if (Auth::user()->roles->first()->name == 'Admin') {
+         return redirect()->route('agendas.citas', $cita->agenda_id)
+            ->withSuccess('Cita eliminada con exito');
+       }
+       
      }
      /**
      * aprobar las citas solicitadas por los clientes en las agendas

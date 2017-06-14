@@ -50,7 +50,15 @@
                     <td>{{ $appointment->reason->reason }}</td>
                     <td>{{ $appointment->appointment_date }}</td>
                     <td>{{ $appointment->appointment_time }}</td>
-                    <td>{{ $appointment->appointment_status }}</td>
+                    <td class="{{ 
+                                $appointment->appointment_status == 'Esperando aprobacion' ? 'orange-text': '' 
+                                }}
+                                {{
+                                  $appointment->appointment_status == 'aprobada' ? 'green-text': ''
+                                  }}"
+                                >
+                      {{ $appointment->appointment_status }}
+                    </td>
                     <td>{{ $appointment->agenda->area->area }}</td>
                     <td class="text-center">
                         <a href="{{ route('citas.show', $appointment->id) }}"
@@ -64,15 +72,20 @@
                           style="cursor: not-allowed">
                             <i class="mdi-content-create"></i>
                         </a>
-                        <a href="{{-- route('citas.destroy', $appointment->id) --}}#"
-                          class="btn-floating  waves-effect waves-light red darken-2 disabled" title="Eliminar Cita"
-                          style="cursor: not-allowed"
+                        {{-- \Carbon\Carbon::now()--}}
+
+                        <a href="{{ route('citas.destroy', $appointment->id) }}"
+                          class="btn-floating  waves-effect waves-light red darken-2
+                           @if ( (Carbon\Carbon::parse($appointment->appointment_date)->diffInHours(\Carbon\Carbon::now()) ) < ($appointment->agenda->appointment_date) )
+                            disabled" title="Cancelar Cita"
+                            style="cursor: not-allowed"
+                            @endif
                                 data-toggle="tooltip"
                                 data-placement="top"
                                 data-method="DELETE"
                                 data-confirm-title="Confirme por favor!"
-                                data-confirm-text="Seguro que desea eliminar esta cita"
-                                data-confirm-delete="Si, la elimine">
+                                data-confirm-text="Seguro que desea Cancelar esta cita"
+                                data-confirm-delete="Si, la cancele" >
                             <i class="mdi-action-delete"></i>
                         </a>
                     </td>
@@ -91,32 +104,5 @@
     </div>
 </div>
 
-
-
 @stop
-{{--
-@section('scripts')
 
-<!-- ===========Scripts================== -->
-<!-- chartist -->
-
-
-<!-- Calendar Script -->
-    {!! HTML::script('assets/template/js/plugins/fullcalendar/lib/jquery-ui.custom.min.js') !!}
-    {!! HTML::script('assets/template/js/plugins/fullcalendar/lib/moment.min.js') !!}
-    {!! HTML::script('assets/template/js/plugins/fullcalendar/js/fullcalendar.js') !!}
-    {!! HTML::script('assets/template/js/plugins/fullcalendar/fullcalendar-script.js') !!}
-<!--Canlendar locale ES-->
-    {!! HTML::script('assets/template/js/plugins/fullcalendar/lang/es.js') !!}
-
-<!--plugins.js - Some Specific JS codes for Plugin Settings-->
-    {!! HTML::script('assets/template/js/plugins.js') !!}
-<!--custom-script.js - Add your own theme custom JS-->
-    {!! HTML::script('assets/template/js/custom-script.js') !!}
-
-<!-- control de eventos para solicitar citas-->
-    {!! HTML::script('assets/js/reservaciones/citas/addCitas.js') !!}
-
-
-@stop
---}}
