@@ -20,6 +20,11 @@ class CitaRepository
       return $cita;
   }
 
+  public function find($id)
+  {
+      return Cita::find($id);
+  }
+  
   public function getAppointmentsByID($id)
   {
     return Cita::where('cliente_id', '=',$id)
@@ -40,10 +45,22 @@ class CitaRepository
 
   }
 
+  public function findCitaByConfirmationToken($token)
+  {
+    return Cita::where('confirmation_token', $token)->first();
+
+  }
+
   public function getCitasByAgendaAndDay($datos)
   {
     return Cita::where('agenda_id','=',$datos->idAgenda)
                  ->where('appointment_date','=',$datos->fecha)->get();
   }
 
+  public function update($id, array $data)
+  {
+      return $this->find($id)->update($data);
+  }
+
+  
 }

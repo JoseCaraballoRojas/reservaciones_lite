@@ -10,6 +10,9 @@ use Vanguard\Repositories\Cita\CitaRepository;
 use Auth;
 use Vanguard\Cita;
 use Carbon\Carbon;
+use Vanguard\Mailers\UserMailer;
+
+
 class CitasController extends Controller
 {
 
@@ -109,8 +112,7 @@ class CitasController extends Controller
            $appointment->reason;
            $appointment->agenda->user;
          });
-         //$responsable = $this->areas->findUser($area->responsable_id);
-         //dd($appointment);
+
          return view('citas.viewCliente', [
              'appointment' => $appointment
          ]);
@@ -191,16 +193,52 @@ class CitasController extends Controller
      *@param  int  $id
      *@return \Illuminate\Http\Response
      **/
-     public function cancelar(Request $request, $id)
+     public function cancelar(Request $request,UserMailer $mailer, $id)
      {
-
+        
          $cita = $this->citas->findCitaByID($id);
-         $estatus = 'cancelada';
+         $agenda = $this->agendas->findAgendaByID($cita->agenda_id);
+         
+         $confirmar = $agenda->cancel_with_confirmation_email;
+         
+         if ($confirmar == "1") {
+            
+            if (Auth::user()->roles->first()->name == 'Client') {
+                
+               $this->sendConfirmationCancelCita($mailer, $id );
+             }
+            
+
+         }
+         else{
+            $estatus = 'cancelada';
+            $cita->appointment_status = $estatus;
+            $cita->fill($request->all());
+            $cita->save();
+
+            if (Auth::user()->roles->first()->name == 'Client') {
+               return redirect()->route('citas.indexCliente')
+                   ->withSuccess('Cita cancelada con exito');
+             }
+             if (Auth::user()->roles->first()->name == 'User') {
+               return redirect()->route('agendas.agendasResponsable')
+                   ->withSuccess('Cita cancelada con exito');
+             }
+             if (Auth::user()->roles->first()->name == 'Admin') {
+               return redirect()->route('agendas.citas', $cita->agenda_id)
+                  ->withSuccess('Cita cancelada con exito');
+             }
+             
+            return redirect()->route('agendas.citas', $cita->agenda_id)
+                ->withSuccess('Cita cancelada con exito');
+         }
+         //dd($agenda->cancel_with_confirmation_email);
+        /* $estatus = 'cancelada';
          $cita->appointment_status = $estatus;
          $cita->fill($request->all());
          $cita->save();
          return redirect()->route('agendas.citas', $cita->agenda_id)
-           ->withSuccess('Cita cancelada con exito');
+           ->withSuccess('Cita cancelada con exito');*/
 
      }
 
@@ -211,5 +249,45 @@ class CitasController extends Controller
             return response()->json($citas);
         }
      }
+
+     /**
+     * @param UserMailer $mailer
+     * @param $user
+     */
+    private function sendConfirmationCancelCita(UserMailer $mailer, $id)
+    {   
+        $cita = $this->citas->findCitaByID($id);
+        
+        $token = str_random(60);
+        $user = Auth::user();
+        $this->citas->update($cita->id, ['confirmation_token' => $token]);
+        $mailer->sendConfirmationCancelCita($user, $token);
+    }
+
+    /**
+     * Confirm cancel cita by email.
+     *
+     * @param $token
+     * @return $this
+     */
+    public function confirmCancelEmail($token)
+    {
+        $cita = $this->citas->findCitaByConfirmationToken($token);
+
+        if($cita)
+        {
+            $estatus = 'cancelada';
+            $cita->appointment_status = $estatus;
+            $cita->confirmation_token = null;
+            $cita->fill($request->all());
+            $cita->save();
+
+            return redirect()->to('login')
+                ->withSuccess(trans('app.email_confirmed_cancel_cita'));
+        }
+
+        return redirect()->to('login')
+            ->withErrors(trans('app.wrong_confirmation_token'));
+    }
 
 }

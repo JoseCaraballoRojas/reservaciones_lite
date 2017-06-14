@@ -446,6 +446,11 @@ Route::post('citas/getCitasByAgendaAndDay/', [
         'uses' => 'CitasController@getCitasByAgendaAndDay',
         'as' => 'agendas.getCitasByAgendaAndDay'
         ]);
+Route::get('cita/confirmation/cancel/{token}', [
+        'as' => 'citas.confirmCancelEmail',
+        'uses' => 'CitasController@confirmCancelEmail'
+    ]);
+
 /*
 * Agendas
 */

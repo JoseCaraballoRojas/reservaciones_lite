@@ -23,4 +23,13 @@ class UserMailer extends AbstractMailer
 
         $this->sendTo($user->email, $subject, $view, $data);
     }
+
+    public function sendConfirmationCancelCita($user, $token)
+    {
+        $view = 'emails.citas.cancelarCita';
+        $data = ['token' => $token];
+        $subject = 'Confirmacion de Cancelacion de cita';
+
+        $this->sendTo($user->email, $subject, $view, $data);
+    }
 }

@@ -410,6 +410,7 @@ return [
     'password_reset_email_sent' => 'Restablecimiento de contraseña de correo electrónico enviada. Compruebe su bandeja de entrada(y spam).',
     'only_users_with_account_can_login' => 'Sólo los usuarios que ya se ha creado una cuenta puede conectarse.',
     'you_have_to_provide_email' => 'Usted tiene que proporcionar su dirección de correo electrónico.',
+    'email_confirmed_cancel_cita' => 'Cancelacion de cita confirmada . ',
 
     'permission_created_successfully' => 'Permiso creado satisfactoriamente.',
     'permission_updated_successfully' => 'Permiso modificado satisfactoriamente.',
@@ -569,6 +570,8 @@ return [
     'thank_you_for_registering' => 'Gracias por registrarse en: aplicación web.',
     'confirm_email_on_link_below' => 'Se ruega confirmación de correo electrónico haciendo clic en el siguiente enlace:',
     'confirm_email' => 'Confirmar Email',
+    'confirm_cancel' => 'Por favor, haga clic en este enlace de abajo con el fin de confirmar la cancelacion de su cita:',
+    'cancelar_cita' => 'Cancelar cita',
 
     'months' => [
         'January' => 'Enero',

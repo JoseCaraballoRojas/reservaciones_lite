@@ -66,6 +66,12 @@
                            title="Ver Cita" data-toggle="tooltip" data-placement="top">
                             <i  class="mdi-action-visibility"></i>
                         </a>
+                        <a href="{{ route('citas.cancelar', $appointment->id) }}"
+                          class="btn-floating  waves-effect waves-light red
+                          {{ $appointment->appointment_status == 'cancelada' ? 'disabled' : ''}}"
+                          title="Cancelar Cita" data-toggle="tooltip" data-placement="top">
+                            <i class="mdi-notification-event-busy"></i>
+                        </a>
                         <a href="{{-- route('citas.edit', $appointment->id) --}}#"
                           class="btn-floating  waves-effect waves-light light-blue darken-4 disabled"
                           title="Editar Cita" data-toggle="tooltip" data-placement="top"
