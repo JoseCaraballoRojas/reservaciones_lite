@@ -206,6 +206,8 @@ class CitasController extends Controller
             if (Auth::user()->roles->first()->name == 'Client') {
                 
                $this->sendConfirmationCancelCita($mailer, $id );
+               return redirect()->route('citas.indexCliente')
+                   ->withSuccess('Cita cancelada con exito');
              }
             
 
@@ -230,7 +232,7 @@ class CitasController extends Controller
              }
              
             return redirect()->route('agendas.citas', $cita->agenda_id)
-                ->withSuccess('Cita cancelada con exito');
+                ->withSuccess('se le envio un correo para confirmar la cancelacion de la cita');
          }
          //dd($agenda->cancel_with_confirmation_email);
         /* $estatus = 'cancelada';
