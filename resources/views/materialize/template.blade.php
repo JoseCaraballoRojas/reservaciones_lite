@@ -140,7 +140,7 @@
     <!--scrollbar-->
     {!! HTML::script('assets/template/js/plugins/perfect-scrollbar/perfect-scrollbar.min.js') !!}
     <!-- chartist -->
-    {{--{!! HTML::script('assets/template/js/plugins/chartist-js/chartist.min.js') !!}--}}
+    {{!! HTML::script('assets/template/js/plugins/chartist-js/chartist.min.js') !!}
     <!-- dropify -->
     {!! HTML::script('assets/template/js/plugins/dropify/js/dropify.min.js') !!}
     <!--plugins.js - Some Specific JS codes for Plugin Settings-->

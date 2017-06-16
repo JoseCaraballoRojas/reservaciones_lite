@@ -151,7 +151,8 @@
                                     data-toggle="tooltip" data-placement="top">
                                 <i class="mdi-content-create"></i>
                             </a>
-                            <a href="{{ route('user.delete', $user->id) }}"
+                            {!! Form::open(['method' => 'DELETE','route' => ['user.delete', $user->id],'style'=>'display:inline']) !!}
+                            <button
                               class="btn-floating  waves-effect waves-light red darken-2" title="@lang('app.delete_user')"
                                     data-toggle="tooltip"
                                     data-placement="top"
@@ -160,7 +161,8 @@
                                     data-confirm-text="@lang('app.are_you_sure_delete_user')"
                                     data-confirm-delete="@lang('app.yes_delete_him')'">
                                 <i class="mdi-action-delete"></i>
-                            </a>
+                            </button>
+                            {!! Form::close() !!}
                         </td>
                     </tr>
                 @endforeach
