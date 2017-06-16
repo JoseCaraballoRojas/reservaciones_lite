@@ -2,6 +2,7 @@
 
 namespace Vanguard\Repositories\Holiday;
 use Vanguard\Holiday;
+use Vanguard\Area;
 
 
 /**
@@ -21,5 +22,9 @@ class HolidayRepository
       return Holiday::orderBy('id', 'DESC')->paginate(10);
   }
   
+  public function getAreas()
+  {
+    return Area::orderBy('area', 'ASC')->lists('area', 'id');
+  }
 
 }

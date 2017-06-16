@@ -39,7 +39,11 @@ class HolidaysController extends Controller
      */
     public function create()
     {
-        //
+        $edit = false;
+        return view('holidays.create', [
+            'areas' => $this->holidays->getAreas(),
+            'edit' => $edit
+        ]);
     }
 
     /**
