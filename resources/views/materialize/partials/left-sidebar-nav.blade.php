@@ -87,6 +87,11 @@
           <i class="mdi-action-today"></i>  Agendas
         </a>
       </li>
+      <li class="bold">
+        <a href="{{ route('holidays.index') }}" class="waves-effect waves-cyan">
+          <i class="mdi-action-today"></i>  Dias Festivos
+        </a>
+      </li>
       @endif
       @if (Auth::user()->roles->first()->name == 'User')
       <li class="bold">
@@ -108,6 +113,7 @@
           <i class="mdi-social-people"></i> Clientes
         </a>
       </li>
+
       @endpermission
 
       @permission('users.activity')

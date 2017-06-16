@@ -30,12 +30,12 @@
 
 <div id="search-bar" class="section">
   <div class="row">
-    <div class="col s12 m8 l4">
+    <div class="col s12 m8 l6">
       <nav class="grey ">
         <div class="nav-wrapper">
           <div class="col s12 ">
             <form class="row" method="GET" action="" accept-charset="UTF-8" id="users-form">
-              <a href="#" class="button-collapse">
+              <a href="#" class="button-collapse ">
                 <i class="mdi-navigation-menu"></i>
               </a>
               <ul class="hide-on-med-and-down">
@@ -46,8 +46,8 @@
                     </a>
                   </div>
                 </li>
-                <li>
-                  <div class="input-field">
+                <li class="col l10">
+                  <div class="input-field col l11">
                     <input id="search" type="text" required="" name="search"
                       value="{{ Input::get('search') }}" placeholder="@lang('app.search_for_action')">
                   </div>

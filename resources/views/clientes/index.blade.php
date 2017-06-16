@@ -61,16 +61,18 @@
                                 data-toggle="tooltip" data-placement="top">
                           <i class="mdi-content-create"></i>
                         </a>
-                        <a href="#"
-                          class="btn-floating  waves-effect waves-light red darken-2" title="Eliminar Cliente"
-                                data-toggle="tooltip"
-                                data-placement="top"
-                                data-method="GET"
-                                data-confirm-title="Confirme por favor!"
-                                data-confirm-text="Seguro que desea eliminar este cliente"
-                                data-confirm-delete="Si, lo elimine">
-                            <i class="mdi-action-delete"></i>
-                        </a>
+                        {!! Form::open(['method' => 'DELETE','route' => ['user.delete', $cliente->id],'style'=>'display:inline']) !!}
+                            <button
+                              class="btn-floating  waves-effect waves-light red darken-2" title="@lang('app.delete_user')"
+                                    data-toggle="tooltip"
+                                    data-placement="top"
+                                    data-method="DELETE"
+                                    data-confirm-title="@lang('app.please_confirm')'"
+                                    data-confirm-text="@lang('app.are_you_sure_delete_user')"
+                                    data-confirm-delete="@lang('app.yes_delete_him')'">
+                                <i class="mdi-action-delete"></i>
+                            </button>
+                            {!! Form::close() !!}
                     </td>
                 </tr>
               @endforeach

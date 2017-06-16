@@ -493,6 +493,7 @@ Route::put('agendas/config/update', [
     'as' => 'agendas.configUpdate',
     'uses' => 'AgendasController@configAgendaUpdate'
 ]);
+
 /*
 * Clientes
 */
@@ -502,4 +503,12 @@ Route::get('cliente/{id}/destroy', [
         'as' => 'clientes.destroy'
         ]);
 
+/*
+* Holidays
+*/
+Route::resource('holidays', 'HolidaysController');
+Route::get('holiday/{id}/destroy', [
+        'uses' => 'HolidaysController@destroy',
+        'as' => 'holidays.destroy'
+        ]);
 ///////////////////////////////////

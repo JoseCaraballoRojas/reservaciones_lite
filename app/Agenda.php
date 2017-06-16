@@ -46,4 +46,9 @@ class Agenda extends Model
     {
         return $tihis->hasMany('Vanguard\Cita');
     }
+
+    public function holiday()
+    {
+        return $tihis->hasMany('Vanguard\Holiday');
+    }
 }
