@@ -14,6 +14,6 @@ class Holiday extends Model
 
     public function agenda()
   	{
-      return $this->belongsTo('Vanguard\Agenda', 'agenda_id');
+      return $this->belongsTo('Vanguard\Agenda', 'agendas_id');
   	}
 }

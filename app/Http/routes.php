@@ -475,6 +475,10 @@ Route::get('agendas/getAreasByID/{id}', [
         'uses' => 'AgendasController@getAreasByID',
         'as' => 'agendas.getAreasByID'
         ]);
+Route::get('agendas/getAgendasByID/{id}', [
+        'uses' => 'AgendasController@getAgendasByID',
+        'as' => 'agendas.getAgendasByID'
+        ]);
 
 Route::get('agendas/getAgendaByID/{id}', [
         'uses' => 'AgendasController@getAgendaByID',

@@ -41,3 +41,14 @@
 
 {!! Form::close() !!}
 @stop
+
+@section('styles')
+    {!! HTML::style('assets/css/bootstrap-datetimepicker.min.css') !!}
+@stop
+
+@section('scripts')
+      {!! HTML::script('assets/js/moment.min.js') !!}
+      {!! HTML::script('assets/js/bootstrap-datetimepicker.min.js') !!}
+  <!-- Calendar Script -->
+      {!! HTML::script('assets/js/reservaciones/holidays/selectHolidays.js') !!}
+@stop

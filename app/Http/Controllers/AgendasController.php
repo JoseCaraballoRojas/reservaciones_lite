@@ -47,7 +47,7 @@ class AgendasController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function agendasResponsable()
-    {   
+    {
         $id = Auth::user()->id;
         $agendas = $this->agendas->getAgendaByResponsableID($id);
         //dd($agendas->all());
@@ -240,6 +240,14 @@ class AgendasController extends Controller
         if ($request->ajax()) {
             $areas = $this->agendas->getAreasByID($id);
             return response()->json($areas);
+        }
+    }
+
+    public function getAgendasByID(Request $request, $id)
+    {
+        if ($request->ajax()) {
+            $agendas = $this->agendas->getAgendasByID($id);
+            return response()->json($agendas);
         }
     }
 

@@ -62,6 +62,12 @@ class AgendaRepository
         ->get();
     }
 
+    public function getAgendasByID($id)
+    {
+        return Agenda::where('area_id', '=',$id)
+        ->get();
+    }
+    
     public function getSucursalByID($id)
     {
         return Sucursal::where('id', '=',$id)
@@ -86,13 +92,13 @@ class AgendaRepository
     public function getCitasAgendaByID($id)
     {
         return Cita::where('agenda_id', '=',$id)->paginate(5);
-        
+
     }
 
     public function getAgendaByResponsableID($id)
     {
         return Agenda::where('responsable_id', '=',$id)->paginate(7);
-        
+
     }
 
 }

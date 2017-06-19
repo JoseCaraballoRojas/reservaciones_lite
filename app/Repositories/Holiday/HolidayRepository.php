@@ -3,6 +3,7 @@
 namespace Vanguard\Repositories\Holiday;
 use Vanguard\Holiday;
 use Vanguard\Area;
+use Vanguard\Empresa;
 
 
 /**
@@ -13,7 +14,7 @@ class HolidayRepository
 
   public function create(array $data)
   {
-     
+
       return Holiday::create($data);
   }
 
@@ -21,10 +22,14 @@ class HolidayRepository
   {
       return Holiday::orderBy('id', 'DESC')->paginate(10);
   }
-  
+
   public function getAreas()
   {
     return Area::orderBy('area', 'ASC')->lists('area', 'id');
   }
 
+  public function getEmpresas()
+  {
+    return Empresa::orderBy('nombre', 'ASC')->lists('nombre', 'id');
+  }
 }

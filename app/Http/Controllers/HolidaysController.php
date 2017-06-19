@@ -6,9 +6,10 @@ use Illuminate\Http\Request;
 
 use Vanguard\Http\Requests;
 use Vanguard\Repositories\Holiday\HolidayRepository;
+use Vanguard\Http\Requests\HolidayRequest;
 class HolidaysController extends Controller
 {
-    
+
     protected $holidays;
 
     public function __construct(HolidayRepository $holidays)
@@ -41,7 +42,7 @@ class HolidaysController extends Controller
     {
         $edit = false;
         return view('holidays.create', [
-            'areas' => $this->holidays->getAreas(),
+            'empresas' => $this->holidays->getEmpresas(),
             'edit' => $edit
         ]);
     }
@@ -52,9 +53,13 @@ class HolidaysController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(HolidayRequest $request)
     {
-        //
+      //dd($request->all());
+      $this->holidays->create($request->except(['empresa_id','sucursal', 'area_id']));
+
+      return redirect()->route('holidays.index')
+          ->withSuccess('Dia Festivo creado con exito');
     }
 
     /**
