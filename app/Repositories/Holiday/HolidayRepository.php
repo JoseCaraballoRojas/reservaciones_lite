@@ -23,6 +23,11 @@ class HolidayRepository
       return Holiday::orderBy('id', 'DESC')->paginate(10);
   }
 
+  public function findHolidayByID($id)
+  {
+      return Holiday::find($id);
+  }
+
   public function getAreas()
   {
     return Area::orderBy('area', 'ASC')->lists('area', 'id');

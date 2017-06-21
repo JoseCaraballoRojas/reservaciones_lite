@@ -104,6 +104,9 @@ class HolidaysController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $holiday = $this->holidays->findHolidayByID($id);
+        $holiday->delete();
+        return redirect()->route('holidays.index')
+            ->withSuccess('Dia Festivo eliminado con exito');
     }
 }
