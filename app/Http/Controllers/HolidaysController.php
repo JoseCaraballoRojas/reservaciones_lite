@@ -81,7 +81,13 @@ class HolidaysController extends Controller
      */
     public function edit($id)
     {
-        //
+        $holiday = $this->holidays->findHolidayByID($id);
+
+      //  dd($holiday);
+        $edit = true;
+        return view('holidays.edit',
+        compact('edit', 'holiday'));
+
     }
 
     /**
@@ -91,9 +97,14 @@ class HolidaysController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(HolidayRequest $request, $id)
     {
-        //
+        //dd($request->all());
+        $holiday = $this->holidays->findHolidayByID($id);
+        $holiday->fill($request->all());
+        $holiday->save();
+        return redirect()->route('holidays.index')
+            ->withSuccess('Dia Festivo actualizado con exito');
     }
 
     /**
