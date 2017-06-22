@@ -55,7 +55,7 @@ class HolidaysController extends Controller
      */
     public function store(HolidayRequest $request)
     {
-      //dd($request->all());
+      
       $this->holidays->create($request->except(['empresa_id','sucursal', 'area_id']));
 
       return redirect()->route('holidays.index')
@@ -83,7 +83,6 @@ class HolidaysController extends Controller
     {
         $holiday = $this->holidays->findHolidayByID($id);
 
-      //  dd($holiday);
         $edit = true;
         return view('holidays.edit',
         compact('edit', 'holiday'));
@@ -99,7 +98,7 @@ class HolidaysController extends Controller
      */
     public function update(HolidayRequest $request, $id)
     {
-        //dd($request->all());
+        
         $holiday = $this->holidays->findHolidayByID($id);
         $holiday->fill($request->all());
         $holiday->save();

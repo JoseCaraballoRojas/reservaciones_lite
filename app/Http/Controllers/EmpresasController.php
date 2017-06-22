@@ -18,19 +18,19 @@ class EmpresasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    protected $users;
+    protected $empresas;
 
-    public function __construct(EmpresaRepository $users)
+    public function __construct(EmpresaRepository $empresas)
     {
-      $this->users = $users;
+      $this->empresas = $empresas;
     }
 
     public function index()
     {
-      $empresas = Empresa::orderBy('id', 'DESC')->paginate(5);
-      $empresas->each(function ($empresas){
-        $empresas->username;
-      });
+        $empresas = $this->empresas->index();
+        $empresas->each(function ($empresas){
+          $empresas->user;
+        });
 
         return view('empresas.index')
             ->with('empresas', $empresas);
@@ -45,7 +45,7 @@ class EmpresasController extends Controller
     {
         $edit = false;
         return view('empresas.create', [
-            'users' => $this->users->getUsers(),
+            'users' => $this->empresas->getUsers(),
             'edit' => $edit
         ]);
     }
@@ -58,8 +58,9 @@ class EmpresasController extends Controller
      */
     public function store(EmpresaRequest $request)
     {
-      $empresa = new Empresa($request->all());
-      $empresa->save();
+      
+      $this->empresas->create($request->all());
+      
       return redirect()->route('empresas.index')
           ->withSuccess('Empresa creada con exito');
 
@@ -73,11 +74,11 @@ class EmpresasController extends Controller
      */
     public function show($id)
     {
-      $empresa = Empresa::find($id);
-      $contacto1= $this->users->findUser($empresa->contacto1_id);
+      $empresa = $this->empresas->findEmpresayByID($id);
+      $contacto1= $this->empresas->findUser($empresa->contacto1_id);
       if ($empresa->contacto2_id)
       {
-          $contacto2= $this->users->findUser($empresa->contacto2_id);
+          $contacto2= $this->empresas->findUser($empresa->contacto2_id);
       }
       return view('empresas.view', compact('empresa', 'contacto1', 'contacto2'));
     }
@@ -90,10 +91,10 @@ class EmpresasController extends Controller
      */
     public function edit($id)
     {
-      $empresa = Empresa::find($id);
+      $empresa = $this->empresas->findEmpresayByID($id);
       $empresa->user;
       $edit = true;
-      $users= $this->users->getUsers();
+      $users= $this->empresas->getUsers();
       return view('empresas.edit', compact('edit','users', 'empresa'));
     }
 
@@ -106,7 +107,7 @@ class EmpresasController extends Controller
      */
     public function update(EmpresaRequest $request, $id)
     {
-      $empresa = Empresa::find($id);
+      $empresa = $this->empresas->findEmpresayByID($id);
       $empresa->fill($request->all());
       $empresa->save();
       return redirect()->route('empresas.index')
@@ -122,7 +123,7 @@ class EmpresasController extends Controller
      */
     public function destroy($id)
     {
-      $empresa = Empresa::find($id);
+      $empresa = $this->empresas->findEmpresayByID($id);
       $empresa->delete();
       return redirect()->route('empresas.index')
           ->withSuccess('Empresa eliminada con exito');

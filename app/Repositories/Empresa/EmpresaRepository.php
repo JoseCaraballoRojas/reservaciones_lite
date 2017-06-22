@@ -18,8 +18,18 @@ class EmpresaRepository
       return Empresa::create($data);
   }
 
+  public function index()
+  {
+      return Empresa::orderBy('id', 'DESC')->paginate(10);
+  }
+
   public function findUser($id)
   {
       return User::where('id', $id)->get();
+  }
+
+  public function findEmpresayByID($id)
+  {
+      return Empresa::find($id);
   }
 }
