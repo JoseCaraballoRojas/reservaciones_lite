@@ -16,8 +16,9 @@ class AreasController extends Controller
     protected $areas;
 
     public function __construct(AreaRepository $areas)
-    {
-      $this->areas = $areas;
+    {  
+        $this->middleware('auth');
+        $this->areas = $areas;
     }
 
 
@@ -28,7 +29,7 @@ class AreasController extends Controller
      */
     public function index()
     {
-        $areas = Area::orderBy('id', 'DESC')->paginate(5);
+        $areas = $this->areas->index();
 
         $areas->each(function ($areas){
           $areas->sucursal;
@@ -62,8 +63,8 @@ class AreasController extends Controller
      */
     public function store(AreaRequest $request)
     {
-        $areas = new Area($request->all());
-        $areas->save();
+        $areas = $this->areas->create($request->all());
+
         return redirect()->route('areas.index')
             ->withSuccess('Area creada con exito');
     }
@@ -76,7 +77,8 @@ class AreasController extends Controller
      */
     public function show($id)
     {
-        $area = Area::find($id);
+        $area = $this->areas->findAreayByID($id);
+
         $responsable = $this->areas->findUser($area->responsable_id);
 
         return view('areas.view', compact('area', 'responsable'));
@@ -91,7 +93,7 @@ class AreasController extends Controller
      */
     public function edit($id)
     {
-        $area = Area::find($id);
+        $area = $this->areas->findAreayByID($id);
         $area->user;
         $area->sucursal;
         $edit = true;
@@ -110,7 +112,7 @@ class AreasController extends Controller
      */
     public function update(AreaRequest $request, $id)
     {
-        $area = Area::find($id);
+        $area = $this->areas->findAreayByID($id);
         $area->fill($request->all());
         $area->save();
         return redirect()->route('areas.index')
@@ -126,7 +128,7 @@ class AreasController extends Controller
      */
     public function destroy($id)
     {
-        $area = Area::find($id);
+        $area = $this->areas->findAreayByID($id);
         $area->delete();
         return redirect()->route('areas.index')
             ->withSuccess('Area eliminada con exito');
