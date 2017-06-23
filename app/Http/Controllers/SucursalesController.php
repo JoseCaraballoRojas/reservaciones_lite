@@ -27,7 +27,7 @@ class SucursalesController extends Controller
       */
     public function index()
     {
-        $sucursales = Sucursal::orderBy('id', 'DESC')->paginate(5);
+        $sucursales = $this->sucursales->index();
 
         $sucursales->each(function ($sucursales){
           $sucursales->empresa;
@@ -61,8 +61,8 @@ class SucursalesController extends Controller
      */
     public function store(SucursalRequest $request)
     {
-        $sucursal = new Sucursal($request->all());
-        $sucursal->save();
+        $this->sucursales->create($request->all());
+        
         return redirect()->route('sucursales.index')
             ->withSuccess('Sucursal creada con exito');
     }
@@ -93,7 +93,7 @@ class SucursalesController extends Controller
      */
     public function edit($id)
     {
-        $sucursal = Sucursal::find($id);
+        $sucursal = $this->sucursales->findSucursalByID($id);
         $sucursal->user;
         $sucursal->empresa;
         $edit = true;
@@ -111,7 +111,7 @@ class SucursalesController extends Controller
      */
     public function update(SucursalRequest $request, $id)
     {
-        $sucursal = Sucursal::find($id);
+        $sucursal = $this->sucursales->findSucursalByID($id);
         $sucursal->fill($request->all());
         $sucursal->save();
         return redirect()->route('sucursales.index')
@@ -126,7 +126,7 @@ class SucursalesController extends Controller
      */
     public function destroy($id)
     {
-      $sucursal = Sucursal::find($id);
+      $sucursal = $this->sucursales->findSucursalByID($id);
       $sucursal->delete();
       return redirect()->route('sucursales.index')
           ->withSuccess('Sucursal eliminada con exito');
