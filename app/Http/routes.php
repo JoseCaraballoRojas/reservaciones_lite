@@ -501,10 +501,9 @@ Route::put('agendas/config/update', [
 /*
 * Clientes
 */
-Route::resource('clientes', 'ClientesController');
-Route::get('cliente/{id}/destroy', [
-        'uses' => 'ClientesController@destroy',
-        'as' => 'clientes.destroy'
+Route::get('clientes', [
+        'as' => 'clientes.index', 
+        'uses' => 'ClientesController@index'
         ]);
 
 /*
