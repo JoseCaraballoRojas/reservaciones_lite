@@ -19,6 +19,7 @@ class AreasController extends Controller
     {  
         $this->middleware('auth');
         $this->areas = $areas;
+        $this->middleware('permission:users.manage');
     }
 
 

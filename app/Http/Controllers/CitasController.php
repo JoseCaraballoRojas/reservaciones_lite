@@ -21,6 +21,7 @@ class CitasController extends Controller
 
     public function __construct(CitaRepository $citas, AgendaRepository $agendas)
     {
+      $this->middleware('auth');
       $this->citas = $citas;
       $this->agendas = $agendas;
     }

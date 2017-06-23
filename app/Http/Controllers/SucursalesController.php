@@ -17,7 +17,9 @@ class SucursalesController extends Controller
 
      public function __construct(SucursalRepository $sucursales)
      {
-       $this->sucursales = $sucursales;
+        $this->middleware('auth');
+        $this->sucursales = $sucursales;
+        $this->middleware('permission:users.manage');
      }
 
      /**

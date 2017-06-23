@@ -21,7 +21,8 @@ class ReasonsController extends Controller
     */
     public function __construct(ReasonRepository $reasons)
     {
-      $this->reasons = $reasons;
+        $this->middleware('auth');
+        $this->reasons = $reasons;
     }
 
     /**

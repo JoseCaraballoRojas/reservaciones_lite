@@ -19,7 +19,8 @@ class AgendasController extends Controller
     protected $agendas;
 
     public function __construct(AgendaRepository $agendas)
-    {
+    { 
+      $this->middleware('auth');
       $this->agendas = $agendas;
     }
 

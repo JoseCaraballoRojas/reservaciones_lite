@@ -13,8 +13,9 @@ class HolidaysController extends Controller
     protected $holidays;
 
     public function __construct(HolidayRepository $holidays)
-    {
-       $this->holidays = $holidays;
+    {   
+        $this->middleware('auth');
+        $this->holidays = $holidays;
     }
 
     /**

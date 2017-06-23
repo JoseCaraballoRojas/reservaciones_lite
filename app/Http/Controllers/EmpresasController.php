@@ -22,7 +22,9 @@ class EmpresasController extends Controller
 
     public function __construct(EmpresaRepository $empresas)
     {
+      $this->middleware('auth');
       $this->empresas = $empresas;
+      $this->middleware('permission:users.manage');
     }
 
     public function index()
