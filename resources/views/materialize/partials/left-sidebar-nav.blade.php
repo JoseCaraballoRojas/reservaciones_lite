@@ -171,6 +171,12 @@
                             @lang('app.general')
                           </a>
                         </li>
+                        <li>
+                          <a href="{{ route('settings.generalRerservaciones') }}"
+                            class="{{ Request::is('settings/rerservaciones') ? 'active' : ''  }}">
+                            @lang('app.general_reservaciones')
+                          </a>
+                        </li>
                         @endpermission
                         @permission('settings.auth')
                         <li>

@@ -12,6 +12,7 @@ return [
     'permissions' => 'Permisos',
     'settings' => 'Ajustes',
     'general' => 'General',
+    'general_reservaciones' => 'General Reservaciones',
     'auth_and_registration' => 'Autenticación',
     'notifications' => 'Notificaciones',
     'action' => 'Acción',
@@ -237,16 +238,25 @@ return [
     'registration' => 'Registro',
 
     'general_settings' => 'Configuración General',
+    'general_settings_reservaciones' => 'Configuración Reservaciones',
     'manage_general_system_settings' => 'administrar la configuración del sistema general',
     'general' => 'General',
+    'reservaciones' => 'Reservaciones',
     'general_app_settings' => 'Configuración general de la aplicación',
     'app_name' => 'Nombre de la Aplicación',
     'update_settings' => 'Ajustes de actualización',
+    'update_reservaciones' => 'Actualizar Ajustes de Reservaciones',
+    'time_zone' => 'Zona Horaria',
+    'date_format' => 'Formato de Fecha',
+
 
     'notification_settings' => 'Configuracion de notificaciones',
     'manage_system_notification_settings' => 'administrar la configuración de notificación del sistema',
     'notifications' => 'Notificaciones',
     'email_notifications' => 'Notificaciones de Email',
+    'email_send' => 'Enviar agenda por email',
+    'email_send_details' => 'Enviar agenda la agenda del dia por email',
+
     'notify_admin_when_user_signs_up' => 'Notificar a los administradores cuando el usuario se registre?',
     'yes' => 'SI',
     'no' => 'NO',
