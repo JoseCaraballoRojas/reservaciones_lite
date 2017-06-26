@@ -185,7 +185,9 @@ class SettingsController extends Controller
     public function rerservacionesUpdate(Request $request)
     {
 
-        dd($request->all());
+        $this->updateSettings($request->except("_token"));
+        return back()->withSuccess(trans('app.settings_updated'));
+        //dd($request->all());
     }
 
 }

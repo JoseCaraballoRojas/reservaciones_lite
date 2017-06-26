@@ -248,7 +248,10 @@ return [
     'update_reservaciones' => 'Actualizar Ajustes de Reservaciones',
     'time_zone' => 'Zona Horaria',
     'date_format' => 'Formato de Fecha',
-
+    'lock_time' => 'Tiempo de bloqueo temporal',
+    'lock_time_details' => 'Tiempo de bloqueo temporal al seleccionar una cita para que el usuario llene sus datos y no aparezca como visible para alguien mas',
+    'delivery_time' => 'Hora de envio',
+    'delivery_time_details' => 'Hora de envio de la agenda por email',
 
     'notification_settings' => 'Configuracion de notificaciones',
     'manage_system_notification_settings' => 'administrar la configuración de notificación del sistema',

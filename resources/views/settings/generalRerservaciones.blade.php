@@ -33,15 +33,29 @@
             <div class="card-content">
                 <div class="form-group">
                     {!! Form::label('time_zone', @trans('app.time_zone')) !!}
-                    {!! Form::select('time_zone', $timezones, null,
+                    {!! Form::select('time_zone', $timezones, settings('time_zone'),
                          ['placeholder' => 'selecione una zona horaria...', 'required'  ]) !!}
                 </div>
 
                 <div class="form-group">
                     {!! Form::label('date_format', @trans('app.date_format')) !!}
-                    {!! Form::select('date_format', ['YYYY-MM-DD' => 'YYYY-MM-DD', 'DD-MM-YYYY' => 'DD-MM-YYYY'], null,
+                    {!! Form::select('date_format', ['YYYY-MM-DD' => 'YYYY-MM-DD', 'DD-MM-YYYY' => 'DD-MM-YYYY'], settings('date_format'),
                          ['placeholder' => 'selecione un formato de fecha...', 'required'  ]) !!}
                 </div>
+                <div class="form-group">
+                    <label for="lock_time">
+                    <h6>@lang('app.lock_time')
+                    <span class="fa fa-question-circle"
+                      data-toggle="tooltip"
+                      data-placement="top"
+                      title="@lang('app.lock_time_details')">
+                    </span>
+                    </h6>
+                  </label>
+                    {!! Form::number('lock_time', settings('lock_time'),
+                         ['placeholder' => '60', 'required'  ]) !!}
+                </div>
+
                 <br>
                 <div class="form-group">
                   <label for="email_send">
@@ -65,6 +79,21 @@
                 </div>
               </div>
               <br>
+              <div class="form-group">
+                    <label for="delivery_time">
+                    <h6>@lang('app.delivery_time')
+                    <span class="fa fa-question-circle"
+                      data-toggle="tooltip"
+                      data-placement="top"
+                      title="@lang('app.delivery_time_details')">
+                    </span>
+                    </h6>
+                  </label>
+                    {!! Form::text('delivery_time', settings('delivery_time'),
+                         ['placeholder' => '6:00 PM', 'required',
+                         'class' => 'timepicker', 'id' => 'timepicker']) !!}
+                </div>
+                <br>
                 <button type="submit" class="btn cyan waves-effect waves-light">
                     <i class="fa fa-refresh"></i>
                     @lang('app.update_reservaciones')
@@ -73,5 +102,16 @@
         </div>
     </div>
 </div>
+
+@stop
+
+@section('scripts')
+
+<!-- ================================================
+Scripts
+================================================ -->
+<!-- cargar timepicker-->
+    {!! HTML::script('assets/template/js/materialize-plugins/date_picker/picker.time.js') !!}
+    {!! HTML::script('assets/js/reservaciones/settings/input_time.js') !!}
 
 @stop
