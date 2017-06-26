@@ -52,12 +52,11 @@
                     <td>{{ $permission->display_name ?: $permission->name }}</td>
 
                     @foreach ($roles as $role)
-                        <td class="text-center">
-                            <div class="checkbox">
-                                {!! Form::checkbox("roles[{$role->id}][]", $permission->id,
-                                $role->hasPermission($permission->name),
-                                ['class' => ' filled-in checkbox']) !!}
-                                <label class="no-content"></label>
+                      <td class="text-center">
+                          <div class="checkbox">
+                              {!! Form::checkbox("roles[{$role->id}][]", $permission->id,
+                                  $role->hasPermission($permission->name), ['class' => ' filled-in checkbox', 'id' => "roles[$role->id][$permission->id]"]) !!}
+                                <label for="roles[{{$role->id}}][{{$permission->id}}]" class="no-content"></label>
                             </div>
                         </td>
                     @endforeach
