@@ -138,7 +138,7 @@ $(document).ready(function() {
       var valor = $(this).attr('class');
       var date = $(this).parent().attr('data-date');
       
-      $.post("../citas/getCitasByAgendaAndDay/",
+      $.post("/citas/getCitasByAgendaAndDay/",
         {
           fecha: date,
           idAgenda: idAgenda
