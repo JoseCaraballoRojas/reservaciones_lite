@@ -53,6 +53,9 @@
                     <td class="{{ 
                                 $appointment->appointment_status == 'Esperando aprobacion' ? 'orange-text': '' 
                                 }}
+                                {{ 
+                                $appointment->appointment_status == 'Cancelada' ? 'red-text': '' 
+                                }}
                                 {{
                                   $appointment->appointment_status == 'aprobada' ? 'green-text': ''
                                   }}"

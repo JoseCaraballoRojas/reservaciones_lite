@@ -214,7 +214,7 @@ class CitasController extends Controller
 
          }
          else{
-            $estatus = 'cancelada';
+            $estatus = 'Cancelada';
             $cita->appointment_status = $estatus;
             $cita->fill($request->all());
             $cita->save();
@@ -235,13 +235,13 @@ class CitasController extends Controller
             return redirect()->route('agendas.citas', $cita->agenda_id)
                 ->withSuccess('se le envio un correo para confirmar la cancelacion de la cita');
          }
-         //dd($agenda->cancel_with_confirmation_email);
-        /* $estatus = 'cancelada';
+         
+         $estatus = 'Cancelada';
          $cita->appointment_status = $estatus;
          $cita->fill($request->all());
          $cita->save();
          return redirect()->route('agendas.citas', $cita->agenda_id)
-           ->withSuccess('Cita cancelada con exito');*/
+           ->withSuccess('Cita cancelada con exito');
 
      }
 
@@ -263,7 +263,11 @@ class CitasController extends Controller
         
         $token = str_random(60);
         $user = Auth::user();
-        $this->citas->update($cita->id, ['confirmation_token' => $token]);
+        //$cita->fill(['confirmation_token' => $token]);
+        $cita->confirmation_token = $token;
+        //dd($cita);
+        $cita->save();
+        //$this->citas->update($cita->id, ['confirmation_token' => $token]);
         $mailer->sendConfirmationCancelCita($user, $token);
     }
 
@@ -278,11 +282,12 @@ class CitasController extends Controller
         $cita = $this->citas->findCitaByConfirmationToken($token);
 
         if($cita)
-        {
-            $estatus = 'cancelada';
+        {   
+            //dd($cita);
+            $estatus = 'Cancelada';
             $cita->appointment_status = $estatus;
             $cita->confirmation_token = null;
-            $cita->fill($request->all());
+            //$cita->fill($request->all());
             $cita->save();
 
             return redirect()->to('login')
