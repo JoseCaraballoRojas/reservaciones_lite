@@ -18,7 +18,7 @@ class Notifications extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Send appointment notifications to customers';
 
     /**
      * Create a new command instance.
@@ -37,6 +37,6 @@ class Notifications extends Command
      */
     public function handle()
     {
-        //
+        \Log::info('Log de prueba fecha: '. \Carbon\Carbon::now());
     }
 }

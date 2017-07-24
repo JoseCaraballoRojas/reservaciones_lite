@@ -14,6 +14,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         \Vanguard\Console\Commands\Inspire::class,
+        \Vanguard\Console\Commands\Notifications::class,
     ];
 
     /**
@@ -26,5 +27,8 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command('inspire')
                  ->hourly();
+
+        $schedule->command('notification:sms')
+                 ->everyMinute();
     }
 }
