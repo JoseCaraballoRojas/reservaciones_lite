@@ -12,6 +12,7 @@ use Vanguard\User;
 use Vanguard\Area;
 use Vanguard\Agenda;
 use Auth;
+use Carbon\Carbon;
 
 class AgendasController extends Controller
 {
@@ -19,7 +20,7 @@ class AgendasController extends Controller
     protected $agendas;
 
     public function __construct(AgendaRepository $agendas)
-    { 
+    {
       $this->middleware('auth');
       $this->agendas = $agendas;
     }
@@ -31,6 +32,13 @@ class AgendasController extends Controller
      */
     public function index()
     {
+      $agendas = $this->agendas->getAgendaByNotificationsSms();
+      $date = Carbon::now();
+      $date = $date->format('d-m-Y');
+
+      //$endDate = $date->subYears($agendas->appointment_date);
+      dd($agendas);
+      /*
         $agendas = $this->agendas->getAgendas();
 
         $agendas->each(function ($agendas){
@@ -40,6 +48,7 @@ class AgendasController extends Controller
 
           return view('agendas.index')
               ->with('agendas', $agendas);
+      */
     }
 
     /**

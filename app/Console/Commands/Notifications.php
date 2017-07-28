@@ -4,6 +4,8 @@ namespace Vanguard\Console\Commands;
 
 use Illuminate\Console\Command;
 
+use Vanguard\Repositories\Agenda\AgendaRepository;
+
 class Notifications extends Command
 {
     /**
@@ -25,9 +27,13 @@ class Notifications extends Command
      *
      * @return void
      */
-    public function __construct()
+
+      protected $agendas; // Var for Repositories
+
+    public function __construct(AgendaRepository $agendas)
     {
         parent::__construct();
+        $this->agendas = $agendas;
     }
 
     /**
@@ -37,6 +43,9 @@ class Notifications extends Command
      */
     public function handle()
     {
-        \Log::info('Log de prueba fecha: '. \Carbon\Carbon::now());
+        //$agendas = $this->agendas->getAgendaByNotificationsSms();
+        //\Log::info('Log de prueba fecha: '. \Carbon\Carbon::now());
+        //\Log::info(var_dump($agendas));
+
     }
 }

@@ -44,7 +44,7 @@ class Agenda extends Model
 
     public function citas()
     {
-        return $tihis->hasMany('Vanguard\Cita');
+        return $this->hasMany('Vanguard\Cita');
     }
 
     public function holiday()

@@ -8,6 +8,8 @@ use Vanguard\Sucursal;
 use Vanguard\Agenda;
 use Vanguard\Reason;
 use Vanguard\Cita;
+use DB;
+use Carbon\Carbon;
 /**
  *Repositorios para el modelo Agenda
  */
@@ -67,7 +69,7 @@ class AgendaRepository
         return Agenda::where('area_id', '=',$id)
         ->get();
     }
-    
+
     public function getSucursalByID($id)
     {
         return Sucursal::where('id', '=',$id)
@@ -99,6 +101,22 @@ class AgendaRepository
     {
         return Agenda::where('responsable_id', '=',$id)->paginate(7);
 
+    }
+
+    public function getAgendaByNotificationsSms()
+    {
+        $date = Carbon::now();
+        $date = $date->addDay(1);
+        $date = $date->format('Y-m-d');
+
+        return DB::table('users')
+            ->join('appointments', 'users.id', '=', 'appointments.cliente_id')
+            ->join('agendas', 'agendas.id', '=', 'appointments.agenda_id')
+            ->select('users.phone')
+            ->where('agendas.notifications_sms', '=', '1')
+            ->where('appointments.appointment_date', '=', $date)
+            ->get();
+      
     }
 
 }
