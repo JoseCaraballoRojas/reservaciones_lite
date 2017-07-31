@@ -530,6 +530,7 @@ return [
     'selectable_agenda_description' => 'Permitir si la agenda es seleccionable desde el frontend si o no',
     'notifications' => 'Notificaciones',
     'notifications_conf' => 'Configuracion de las notificaciones de agendas',
+    'notifications_conf_sms' => 'Configuracion de las notificaciones por sms',
     'notifications_email' => 'Email de recordatorio ?',
     'notifications_email_description' => 'Configurar si desea enviar email de recordatorio a los clientes si o no',
     'time_to_send_emails' => 'Tiempo para el envio de email recordatorio antes de la cita ?',

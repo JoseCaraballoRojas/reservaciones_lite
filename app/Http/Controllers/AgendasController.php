@@ -32,13 +32,11 @@ class AgendasController extends Controller
      */
     public function index()
     {
+      /* prueba de consulta para notifications_sms
       $agendas = $this->agendas->getAgendaByNotificationsSms();
-      $date = Carbon::now();
-      $date = $date->format('d-m-Y');
-
-      //$endDate = $date->subYears($agendas->appointment_date);
       dd($agendas);
-      /*
+      */
+
         $agendas = $this->agendas->getAgendas();
 
         $agendas->each(function ($agendas){
@@ -48,7 +46,7 @@ class AgendasController extends Controller
 
           return view('agendas.index')
               ->with('agendas', $agendas);
-      */
+
     }
 
     /**

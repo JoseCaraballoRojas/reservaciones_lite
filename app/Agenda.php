@@ -23,7 +23,7 @@ class Agenda extends Model
         'cancel_appointment', 'anticipation_time_cancel', 'cancel_with_confirmation_email',
         'time_for_activation', 'limit_number_of_appointments', 'notifications_email',
         'time_to_send_emails', 'notifications_sms', 'time_to_send_sms', 'email_copy',
-        'email_copy_receiver'
+        'email_copy_receiver', 'message_sms'
 
     ];
 
