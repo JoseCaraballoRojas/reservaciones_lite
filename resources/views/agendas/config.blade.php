@@ -42,7 +42,7 @@
            <ul class="tabs">
              <li class="tab col s3">
                <a href="#general" aria-controls="general" role="tab" data-toggle="tab"
-                  class="white-text orange  waves-effect waves-light active" >
+                  class="white-text orange  waves-effect waves-light " >
                    <i class="mdi-action-settings" aria-hidden="true"></i>
                    @lang('app.general')
                </a>
@@ -64,7 +64,7 @@
 
              <li class="tab col s3">
                <a href="#notificaciones" aria-controls="notificaciones" role="tab" data-toggle="tab"
-                  class="white-text purple  waves-effect waves-light " >
+                  class="white-text purple  waves-effect waves-light active" >
                    <i class="mdi-social-notifications-on" aria-hidden="true"></i>
                    @lang('app.notifications')
                </a>
