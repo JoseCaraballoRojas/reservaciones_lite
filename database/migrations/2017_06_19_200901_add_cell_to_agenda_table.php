@@ -14,6 +14,7 @@ class AddCellToAgendaTable extends Migration
     {
       Schema::table('agendas', function (Blueprint $table) {
           $table->string('agenda')->nullable()->after('responsable_id');
+          $table->string('message_sms')->nullable()->after('time_to_send_sms');
       });
     }
 
@@ -25,7 +26,7 @@ class AddCellToAgendaTable extends Migration
     public function down()
     {
       Schema::table('agendas', function (Blueprint $table) {
-            $table->dropColumn('agenda');
+            $table->dropColumn(['agenda', 'message_sms']);
       });
     }
 }
