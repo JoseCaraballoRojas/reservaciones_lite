@@ -58,7 +58,7 @@
                        @include('user.partials.details', ['profile' => false])
                    {!! Form::close() !!}
                </div>
-               {{-- PANEL DEL AVATAR
+               
                <div class="col s12 m4 l5">
                    {!! Form::open(['route' => ['user.update.avatar',
                        $user->id], 'files' => true, 'id' => 'avatar-form']) !!}
@@ -66,7 +66,7 @@
                        ['updateUrl' => route('user.update.avatar.external', $user->id)])
                    {!! Form::close() !!}
                </div>
-               --}}
+               
              </div>
           </div>
           <div class="row">

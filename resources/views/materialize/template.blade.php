@@ -48,7 +48,10 @@
     {!! HTML::style('assets/css/font-awesome.min.css') !!}
   <!-- Jquery.nestable -->
     {!! HTML::style('assets/template/js/plugins/jquery.nestable/nestable.css') !!}
+    <!-- dropify -->
+    {!! HTML::style('assets/template/js/plugins/dropify/css/dropify.css', ['']) !!}
 
+    {{--<link href="js/plugins/dropify/css/dropify.min.css" type="text/css" rel="stylesheet" media="screen,projection">--}}
 @yield('styles')
 
 </head>

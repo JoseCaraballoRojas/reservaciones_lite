@@ -60,7 +60,18 @@ class EmpresasController extends Controller
      */
     public function store(EmpresaRequest $request)
     {
-      
+        $name = 'null';
+      if ($request->file('logo')) {
+
+          $logo = $request->file('logo');
+          $name = 'reservaciones_' . time() . '.' . $logo->getClientOriginalExtension();
+          $path = public_path() . '/img/empresas/';
+          $logo->move($path, $name);
+          
+      }
+      $request['logo'] = $name;
+      dd($request->all());
+
       $this->empresas->create($request->all());
       
       return redirect()->route('empresas.index')

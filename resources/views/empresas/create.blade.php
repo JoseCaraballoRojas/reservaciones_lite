@@ -24,7 +24,7 @@
 <div class="divider"></div>
 
 @include('partials.messages')
-{!! Form::open(['route' => 'empresas.store', 'method' => 'POST' ])  !!}
+{!! Form::open(['route' => 'empresas.store', 'method' => 'POST', 'files' => true ])  !!}
 @include('empresas.partials.detailsEmpresa')
 @include('empresas.partials.detailsContactos')
 
