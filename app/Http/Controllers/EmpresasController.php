@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Vanguard\Http\Requests;
 use Vanguard\Repositories\Empresa\EmpresaRepository;
 use Vanguard\Http\Requests\EmpresaRequest;
+use Vanguard\Http\Requests\EmpresaUpdateRequest;
 use Vanguard\Empresa;
 use Vanguard\User;
 
@@ -118,8 +119,19 @@ class EmpresasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(EmpresaRequest $request, $id)
+    public function update(EmpresaUpdateRequest $request, $id)
     {
+        $name = 'null';
+      if ($request->file('imagen')) {
+
+          $logo = $request->file('imagen');
+          $name = 'reservaciones_' . time() . '.' . $logo->getClientOriginalExtension();
+          $path = public_path() . '/img/empresas/';
+          $logo->move($path, $name);
+
+      }
+      $request['logo'] = $name;
+
       $empresa = $this->empresas->findEmpresayByID($id);
       $empresa->fill($request->all());
       $empresa->save();

@@ -20,11 +20,11 @@
       </div>
     </div>
   </div>
-  
+
 <div class="divider"></div>
 
 @include('partials.messages')
-{!! Form::open(['route' => ['empresas.update', $empresa], 'method' => 'PUT' ])  !!}
+{!! Form::open(['route' => ['empresas.update', $empresa], 'method' => 'PUT', 'files' => true ])  !!}
 @include('empresas.partials.detailsEmpresa')
 @include('empresas.partials.detailsContactos')
 

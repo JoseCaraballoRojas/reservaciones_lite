@@ -24,7 +24,7 @@
 <div class="divider"></div>
 
 @include('partials.messages')
-{!! Form::open(['route' => ['sucursales.update', $sucursal], 'method' => 'PUT' ])  !!}
+{!! Form::open(['route' => ['sucursales.update', $sucursal], 'method' => 'PUT', 'files' => true ])  !!}
 @include('sucursales.partials.detailsSucursal')
 @include('sucursales.partials.detailsContactos')
 <div class="col s12 ">

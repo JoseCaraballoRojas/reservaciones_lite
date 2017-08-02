@@ -29,7 +29,7 @@
               <h4 class="header2">
                   @lang('app.details')
                   <div class="pull-right">
-                      <a href="{{ route('empresas.edit', $sucursal->id) }}" class="edit"
+                      <a href="{{ route('sucursales.edit', $sucursal->id) }}" class="edit"
                          data-toggle="tooltip" data-placement="top" title="Editar Sucursal">
                           @lang('app.edit')
                       </a>
@@ -38,8 +38,8 @@
               <div class="card-panel">
                 <figure class="card-profile-image">
                   <img alt="profile image" class="circle z-depth-2 responsive-img activator"
-                  @if ($empresa->logo)
-                      src="{{ '/img/sucursales/'.$empresa->logo }}"
+                  @if ($sucursal->logo)
+                      src="{{ '/img/sucursales/'.$sucursal->logo }}"
                   @else
                       src="{{ url('assets/template/images/avatar.jpg') }}"
                   @endif

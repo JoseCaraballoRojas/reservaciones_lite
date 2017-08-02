@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Vanguard\Http\Requests;
 use Vanguard\Repositories\Sucursal\SucursalRepository;
 use Vanguard\Http\Requests\SucursalRequest;
+use Vanguard\Http\Requests\SucursalUpdateRequest;
 use Vanguard\Empresa;
 use Vanguard\User;
 use Vanguard\Sucursal;
@@ -73,7 +74,7 @@ class SucursalesController extends Controller
 
       }
       $request['logo'] = $name;
-      
+
         $this->sucursales->create($request->except('imagen'));
 
         return redirect()->route('sucursales.index')
@@ -122,8 +123,18 @@ class SucursalesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(SucursalRequest $request, $id)
+    public function update(SucursalUpdateRequest $request, $id)
     {
+        $name = 'null';
+        if ($request->file('imagen')) {
+
+            $logo = $request->file('imagen');
+            $name = 'reservaciones_' . time() . '.' . $logo->getClientOriginalExtension();
+            $path = public_path() . '/img/sucursales/';
+            $logo->move($path, $name);
+        }
+        $request['logo'] = $name;
+
         $sucursal = $this->sucursales->findSucursalByID($id);
         $sucursal->fill($request->all());
         $sucursal->save();
