@@ -24,9 +24,10 @@ class SucursalRequest extends Request
     public function rules()
     {
         return [
-          'sucursal' => 'min:2|max:100|required',
+          'sucursal' => 'min:2|max:100|required|unique:sucursales',
           'contacto1_id' => 'required',
-          'empresa_id' => 'required'
+          'empresa_id' => 'required',
+          'imagen' => 'size:2048|image'
         ];
     }
 }

@@ -24,8 +24,9 @@ class EmpresaRequest extends Request
     public function rules()
     {
         return [
-            'nombre' => 'min:2|max:100|required',
-            'contacto1_id' => 'required'
+            'nombre' => 'min:2|max:100|required|unique:empresas',
+            'contacto1_id' => 'required',
+            'imagen' => 'size:2048|image'
         ];
     }
 }
