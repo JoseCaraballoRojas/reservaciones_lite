@@ -38,7 +38,12 @@
               <div class="card-panel">
                 <figure class="card-profile-image">
                   <img alt="profile image" class="circle z-depth-2 responsive-img activator"
-                  src="{{ url('assets/template/images/avatar.jpg') }}">
+                  @if ($empresa->logo)
+                      src="{{ '/img/sucursales/'.$empresa->logo }}"
+                  @else
+                      src="{{ url('assets/template/images/avatar.jpg') }}"
+                  @endif
+                  >
                 </figure>
                   <div class="name"><strong>{{ $sucursal->sucursal }}</strong></div>
               </div>
