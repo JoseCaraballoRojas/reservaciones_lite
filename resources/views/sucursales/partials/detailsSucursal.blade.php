@@ -56,10 +56,22 @@
                     </div>
 
                     <div class="row">
+                      {{--
                       <div class="finput-field col s12">
                         {!! Form::label('logo', 'Logo de la sucursal') !!}
                         {!! Form::text('logo',null, ['class' => 'form-control',
                         'placeholder' => 'Logo de la sucursal']) !!}
+                      </div>
+                      --}}
+                      <div class="file-field input-field col s12">
+                        <div class="btn cyan ">
+                          <i class="mdi-image-camera-alt"></i>
+                          <span>Logo</span>
+                          <input type="file" name="logo">
+                        </div>
+                        <div class="file-path-wrapper">
+                          <input class="file-path validate" type="text">
+                        </div>
                       </div>
                     </div>
                 </div>
