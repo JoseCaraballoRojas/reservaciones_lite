@@ -67,7 +67,7 @@
                         <div class="btn cyan ">
                           <i class="mdi-image-camera-alt"></i>
                           <span>Logo</span>
-                          <input type="file" name="logo">
+                          <input type="file" name="imagen">
                         </div>
                         <div class="file-path-wrapper">
                           <input class="file-path validate" type="text">

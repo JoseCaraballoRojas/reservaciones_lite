@@ -61,19 +61,19 @@ class EmpresasController extends Controller
     public function store(EmpresaRequest $request)
     {
         $name = 'null';
-      if ($request->file('logo')) {
+      if ($request->file('imagen')) {
 
-          $logo = $request->file('logo');
+          $logo = $request->file('imagen');
           $name = 'reservaciones_' . time() . '.' . $logo->getClientOriginalExtension();
           $path = public_path() . '/img/empresas/';
           $logo->move($path, $name);
-          
+
       }
       $request['logo'] = $name;
-      dd($request->all());
+      //dd($request->except('imagen'));
 
-      $this->empresas->create($request->all());
-      
+      $this->empresas->create($request->except('imagen'));
+
       return redirect()->route('empresas.index')
           ->withSuccess('Empresa creada con exito');
 

@@ -63,8 +63,19 @@ class SucursalesController extends Controller
      */
     public function store(SucursalRequest $request)
     {
-        $this->sucursales->create($request->all());
-        
+        $name = 'null';
+      if ($request->file('imagen')) {
+
+          $logo = $request->file('imagen');
+          $name = 'reservaciones_' . time() . '.' . $logo->getClientOriginalExtension();
+          $path = public_path() . '/img/sucursales/';
+          $logo->move($path, $name);
+
+      }
+      $request['logo'] = $name;
+      
+        $this->sucursales->create($request->except('imagen'));
+
         return redirect()->route('sucursales.index')
             ->withSuccess('Sucursal creada con exito');
     }
@@ -133,5 +144,5 @@ class SucursalesController extends Controller
       return redirect()->route('sucursales.index')
           ->withSuccess('Sucursal eliminada con exito');
     }
-    
+
 }
