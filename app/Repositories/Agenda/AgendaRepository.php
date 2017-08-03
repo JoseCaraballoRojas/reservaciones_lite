@@ -116,7 +116,74 @@ class AgendaRepository
             ->where('agendas.notifications_sms', '=', '1')
             ->where('appointments.appointment_date', '=', $date)
             ->get();
-      
+
+    }
+
+    //Function to search for user emails that your appointment is within five days
+    public function getEmailsUserFiveDaysBeforeAppointment()
+    {
+        $date = Carbon::now();
+        $date = $date->addDay(5);
+        $date = $date->format('Y-m-d');
+
+        return DB::table('users')
+            ->join('appointments', 'users.id', '=', 'appointments.cliente_id')
+            ->join('agendas', 'agendas.id', '=', 'appointments.agenda_id')
+            ->select('users.phone')
+            ->where('agendas.notifications_email', '=', '1')
+            ->where('appointments.appointment_date', '=', $date)
+            ->get();
+
+    }
+
+    //Function to search for user emails that your appointment is within three days
+    public function getEmailsUserThreeDaysBeforeAppointment()
+    {
+        $date = Carbon::now();
+        $date = $date->addDay(3);
+        $date = $date->format('Y-m-d');
+
+        return DB::table('users')
+            ->join('appointments', 'users.id', '=', 'appointments.cliente_id')
+            ->join('agendas', 'agendas.id', '=', 'appointments.agenda_id')
+            ->select('users.phone')
+            ->where('agendas.notifications_email', '=', '1')
+            ->where('appointments.appointment_date', '=', $date)
+            ->get();
+
+    }
+
+    //Function to search for user emails one day before your appointment
+    public function getEmailsUserOneDaysBeforeAppointment()
+    {
+        $date = Carbon::now();
+        $date = $date->addDay(1);
+        $date = $date->format('Y-m-d');
+
+        return DB::table('users')
+            ->join('appointments', 'users.id', '=', 'appointments.cliente_id')
+            ->join('agendas', 'agendas.id', '=', 'appointments.agenda_id')
+            ->select('users.phone')
+            ->where('agendas.notifications_email', '=', '1')
+            ->where('appointments.appointment_date', '=', $date)
+            ->get();
+
+    }
+
+    //Function to search for user emails on the day of your appointment
+    public function getEmailsUserOnTheDayAppointment()
+    {
+        $date = Carbon::now();
+        $date = $date->format('Y-m-d');
+
+        return DB::table('users')
+            ->join('appointments', 'users.id', '=', 'appointments.cliente_id')
+            ->join('agendas', 'agendas.id', '=', 'appointments.agenda_id')
+            ->select('users.phone')
+            ->where('agendas.notifications_email', '=', '1')
+            ->where('appointments.appointment_date', '=', $date)
+            ->get();
+
     }
 
 }
