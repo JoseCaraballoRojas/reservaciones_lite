@@ -40,8 +40,19 @@ class NotificationsEmails extends Command
      */
     public function handle()
     {
-      //$agendas = $this->agendas->getAgendaByNotificationsSms();
-      //\Log::info('Log de prueba fecha: '. \Carbon\Carbon::now());
+      $agendas = $this->agendas->getEmailsUserFiveDaysBeforeAppointment();
+      
+      $agendas2 = $this->agendas->getEmailsUserThreeDaysBeforeAppointment();
+      if ($agendas) {
+            dd($agendas);
+      }
+
+      if (agendas2) {
+            dd($agendas2);    
+      }
+      
+      
+      //\Log::info('Log de prueba fecha: '. $agendas);
       //\Log::info(var_dump($agendas));
     }
 }

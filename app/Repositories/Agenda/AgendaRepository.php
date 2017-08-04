@@ -129,9 +129,10 @@ class AgendaRepository
         return DB::table('users')
             ->join('appointments', 'users.id', '=', 'appointments.cliente_id')
             ->join('agendas', 'agendas.id', '=', 'appointments.agenda_id')
-            ->select('users.phone')
+            ->select('users.email')
             ->where('agendas.notifications_email', '=', '1')
             ->where('appointments.appointment_date', '=', $date)
+            ->where('appointments.appointment_status', '=', 'aprobada')
             ->get();
 
     }
@@ -146,9 +147,10 @@ class AgendaRepository
         return DB::table('users')
             ->join('appointments', 'users.id', '=', 'appointments.cliente_id')
             ->join('agendas', 'agendas.id', '=', 'appointments.agenda_id')
-            ->select('users.phone')
+            ->select('users.email')
             ->where('agendas.notifications_email', '=', '1')
             ->where('appointments.appointment_date', '=', $date)
+            ->where('appointments.appointment_status', '=', 'aprobada')
             ->get();
 
     }
@@ -163,9 +165,10 @@ class AgendaRepository
         return DB::table('users')
             ->join('appointments', 'users.id', '=', 'appointments.cliente_id')
             ->join('agendas', 'agendas.id', '=', 'appointments.agenda_id')
-            ->select('users.phone')
+            ->select('users.email')
             ->where('agendas.notifications_email', '=', '1')
             ->where('appointments.appointment_date', '=', $date)
+            ->where('appointments.appointment_status', '=', 'aprobada')
             ->get();
 
     }
@@ -179,9 +182,10 @@ class AgendaRepository
         return DB::table('users')
             ->join('appointments', 'users.id', '=', 'appointments.cliente_id')
             ->join('agendas', 'agendas.id', '=', 'appointments.agenda_id')
-            ->select('users.phone')
+            ->select('users.email')
             ->where('agendas.notifications_email', '=', '1')
             ->where('appointments.appointment_date', '=', $date)
+            ->where('appointments.appointment_status', '=', 'aprobada')
             ->get();
 
     }
