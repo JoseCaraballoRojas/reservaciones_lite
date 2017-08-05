@@ -32,10 +32,6 @@ class AgendasController extends Controller
      */
     public function index()
     {
-      /* prueba de consulta para notifications_sms
-      $agendas = $this->agendas->getAgendaByNotificationsSms();
-      dd($agendas);
-      */
 
         $agendas = $this->agendas->getAgendas();
 
@@ -213,13 +209,9 @@ class AgendasController extends Controller
           $citas->reason;
         });
 
-          //dd($citas);
           return view('agendas.viewCitas', compact('agenda', 'citas'));
 
-
     }
-
-
 
     /**
      * Remove the specified resource from storage.

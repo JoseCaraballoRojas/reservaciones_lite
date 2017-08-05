@@ -32,4 +32,19 @@ class UserMailer extends AbstractMailer
 
         $this->sendTo($user->email, $subject, $view, $data);
     }
+
+    //function by Send appointment notification
+    public function SendAppointmentNotification($emails, $dias , $fecha)
+    {
+        $view = 'emails.citas.notification';
+        $data = ['fecha' => $fecha, 'dias' => $dias];
+        $subject = 'reservacion pendiente en : '.$dias.' dias';
+
+        foreach ($emails as $email) {
+
+            $this->sendTo($email->email, $subject, $view, $data);
+
+        }
+
+    }
 }

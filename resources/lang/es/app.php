@@ -586,6 +586,9 @@ return [
     'confirm_email' => 'Confirmar Email',
     'confirm_cancel' => 'Por favor, haga clic en este enlace de abajo con el fin de confirmar la cancelacion de su cita:',
     'cancelar_cita' => 'Cancelar cita',
+    'appointment_notification_days' => ' reservacion pendiente en : ',
+    'appointment_notification' => 'El siguiente mensaje es para recordarle que tiene una reservacion pendiente para el dia: ',
+    'days' => ' dias',
 
     'months' => [
         'January' => 'Enero',

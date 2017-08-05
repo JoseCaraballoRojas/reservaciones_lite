@@ -6,6 +6,9 @@ use Illuminate\Console\Command;
 
 use Vanguard\Repositories\Agenda\AgendaRepository;
 
+use Vanguard\Mailers\UserMailer;
+use Carbon\Carbon;
+
 class NotificationsEmails extends Command
 {
     /**
@@ -14,7 +17,7 @@ class NotificationsEmails extends Command
      * @var string
      */
     protected $signature = 'reminder:email';
-
+    protected $mailer;
     /**
      * The console command description.
      *
@@ -38,20 +41,45 @@ class NotificationsEmails extends Command
      *
      * @return mixed
      */
-    public function handle()
+    public function handle(UserMailer $mailer)
     {
-      $agendas = $this->agendas->getEmailsUserFiveDaysBeforeAppointment();
-      
-      $agendas2 = $this->agendas->getEmailsUserThreeDaysBeforeAppointment();
-      if ($agendas) {
-            dd($agendas);
+      $listEmailsByFiveDays = $this->agendas->getEmailsUserFiveDaysBeforeAppointment();
+
+      $listEmailsByThreeDays = $this->agendas->getEmailsUserThreeDaysBeforeAppointment();
+
+      $listEmailsByOneDays = $this->agendas->getEmailsUserOneDaysBeforeAppointment();
+
+      $listEmailsByOnTheDays = $this->agendas->getEmailsUserOnTheDayAppointment();
+
+      if ($listEmailsByFiveDays) {
+
+            $dias = 5;
+            $fecha = Carbon::now();
+            $fecha = $fecha->addDay(5);
+            $fecha = $fecha->format('Y-m-d');
+            $emails = $listEmailsByFiveDays;
+
+            $mailer->SendAppointmentNotification($emails, $dias, $fecha);
+            /*foreach ($listEmailsByFiveDays as $list) {
+
+            }*/
+            //dd($listEmailsByFiveDays);
+
       }
 
-      if (agendas2) {
-            dd($agendas2);    
+      if ($listEmailsByThreeDays) {
+            dd($listEmailsByThreeDays);
       }
-      
-      
+
+      if ($listEmailsByOneDays) {
+            dd($listEmailsByOneDays);
+      }
+
+      if ($listEmailsByOnTheDays) {
+            dd($listEmailsByOnTheDays);
+      }
+
+
       //\Log::info('Log de prueba fecha: '. $agendas);
       //\Log::info(var_dump($agendas));
     }
