@@ -60,25 +60,42 @@ class NotificationsEmails extends Command
             $emails = $listEmailsByFiveDays;
 
             $mailer->SendAppointmentNotification($emails, $dias, $fecha);
-            /*foreach ($listEmailsByFiveDays as $list) {
-
-            }*/
-            //dd($listEmailsByFiveDays);
-
       }
 
       if ($listEmailsByThreeDays) {
-            dd($listEmailsByThreeDays);
+
+            $dias = 3;
+            $fecha = Carbon::now();
+            $fecha = $fecha->addDay(3);
+            $fecha = $fecha->format('Y-m-d');
+            $emails = $listEmailsByThreeDays;
+
+            $mailer->SendAppointmentNotification($emails, $dias, $fecha);
+
       }
 
       if ($listEmailsByOneDays) {
-            dd($listEmailsByOneDays);
+
+            $dias = 1;
+            $fecha = Carbon::now();
+            $fecha = $fecha->addDay(1);
+            $fecha = $fecha->format('Y-m-d');
+            $emails = $listEmailsByOneDays;
+
+            $mailer->SendAppointmentNotification($emails, $dias, $fecha);
+
       }
 
       if ($listEmailsByOnTheDays) {
-            dd($listEmailsByOnTheDays);
-      }
 
+          $dias = "hoy";
+          $fecha = Carbon::now();
+          $fecha = $fecha->format('Y-m-d');
+          $emails = $listEmailsByOnTheDays;
+
+          $mailer->SendAppointmentNotification($emails, $dias, $fecha);
+
+      }
 
       //\Log::info('Log de prueba fecha: '. $agendas);
       //\Log::info(var_dump($agendas));
