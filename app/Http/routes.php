@@ -482,14 +482,8 @@ Route::get('agendas/citas/{id}', [
         'uses' => 'AgendasController@getCitasAgendaByID',
         'as' => 'agendas.citas'
         ]);
-Route::get('agendas/getSucursalesByID/{id}', [
-        'uses' => 'AgendasController@getSucursalesByID',
-        'as' => 'agendas.getSucursalesByID'
-        ]);
-Route::get('agendas/getAreasByID/{id}', [
-        'uses' => 'AgendasController@getAreasByID',
-        'as' => 'agendas.getAreasByID'
-        ]);
+
+
 Route::get('agendas/getAgendasByID/{id}', [
         'uses' => 'AgendasController@getAgendasByID',
         'as' => 'agendas.getAgendasByID'
@@ -517,7 +511,7 @@ Route::put('agendas/config/update', [
 * Clientes
 */
 Route::get('clientes', [
-        'as' => 'clientes.index', 
+        'as' => 'clientes.index',
         'uses' => 'ClientesController@index'
         ]);
 

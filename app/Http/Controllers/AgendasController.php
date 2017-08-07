@@ -36,7 +36,7 @@ class AgendasController extends Controller
         $agendas = $this->agendas->getAgendas();
 
         $agendas->each(function ($agendas){
-          $agendas->area;
+          $agendas->empresa;
           $agendas->user;
         });
 
@@ -72,7 +72,7 @@ class AgendasController extends Controller
     public function create()
     {
         $edit = false;
-        $motivos = ['turno' => 'turno', 'tiempo' => 'tiempo'];
+        $motivos = ['1' => 'turno', '2' => 'tiempo'];
         return view('agendas.create', [
             'users' => $this->agendas->getUsers(),
             'empresas' => $this->agendas->getEmpresas(),
@@ -90,7 +90,8 @@ class AgendasController extends Controller
      */
     public function store(AgendaRequest $request)
     {
-        $this->agendas->create($request->except(['sucursal']));
+
+        $this->agendas->create($request->all());
 
         return redirect()->route('agendas.index')
             ->withSuccess('Agenda creada con exito');
@@ -106,7 +107,7 @@ class AgendasController extends Controller
     {
         $agenda = $this->agendas->findAgendaByID($id);
         $agenda->each(function ($agenda){
-          $agenda->area->sucursal->empresa;
+          $agenda->empresa;
           $agenda->reason;
           $agenda->user;
         });
@@ -127,18 +128,15 @@ class AgendasController extends Controller
     {
       $agenda = $this->agendas->findAgendaByID($id);
       $agenda->user;
-      $agenda->area;
-      $empresa_id = $this->agendas->getSucursalByID($agenda->area->sucursal_id);
+      $agenda->empresa;
 
       $edit = true;
       $motivos = ['1' => 'turno', '2' => 'tiempo'];
       $users = $this->agendas->getUsers();
       $empresas = $this->agendas->getEmpresas();
-      $sucursales = $this->agendas->getSucursales();
       $reasons = $this->agendas->getReasons();
-      $areas = $this->agendas->getAreas();
       return view('agendas.edit',
-      compact('edit', 'users', 'empresas', 'empresa_id', 'sucursales', 'areas', 'agenda', 'motivos', 'reasons'));
+      compact('edit', 'users', 'empresas', 'agenda', 'motivos', 'reasons'));
     }
 
     /**
@@ -151,7 +149,7 @@ class AgendasController extends Controller
     public function update(AgendaRequest $request, $id)
     {
       $agenda = $this->agendas->findAgendaByID($id);
-      $agenda->fill($request->except(['sucursal']));
+      $agenda->fill($request->all());
       $agenda->save();
       return redirect()->route('agendas.index')
           ->withSuccess('Agenda actualizada con exito');
@@ -180,10 +178,9 @@ class AgendasController extends Controller
     */
     public function configAgendaUpdate(Request $request)
     {
-        //dd($request->all());
+
         $agenda = $this->agendas->findAgendaByID($request->id);
         $agenda->fill($request->all());
-        //dd($agenda);
         $agenda->save();
         return redirect()->back()
             ->withSuccess('Configuracion de ageda actualizada con exito');
@@ -199,12 +196,12 @@ class AgendasController extends Controller
     {
         $agenda = $this->agendas->findAgendaByID($id);
         $agenda->each(function ($agenda){
-          $agenda->area;
+          $agenda->empresa;
           $agenda->user;
         });
         $citas = $this->agendas->getCitasAgendaByID($id);
         $citas->each(function ($citas){
-          $citas->agenda->area;
+          $citas->agenda->empresa;
           $citas->agenda->user;
           $citas->reason;
         });
@@ -227,21 +224,6 @@ class AgendasController extends Controller
             ->withSuccess('Agenda eliminada con exito');
     }
 
-    public function getSucursalesByID(Request $request, $id)
-    {
-        if ($request->ajax()) {
-            $sucursales = $this->agendas->getSucursalesByID($id);
-            return response()->json($sucursales);
-        }
-    }
-
-    public function getAreasByID(Request $request, $id)
-    {
-        if ($request->ajax()) {
-            $areas = $this->agendas->getAreasByID($id);
-            return response()->json($areas);
-        }
-    }
 
     public function getAgendasByID(Request $request, $id)
     {

@@ -24,6 +24,7 @@
 
 @include('partials.messages')
 
+@if (!count($agendas))
 <div class="row">
     <div class="col s12 m12 l12">
         <a href="{{ route('agendas.create') }}" class="waves-effect waves-light green btn" id="add-user">
@@ -32,6 +33,8 @@
         </a>
     </div>
 </div>
+@endif
+
 <br>
 
 <div class="responsive-table" id="users-table-wrapper">
@@ -49,7 +52,7 @@
                 <tr>
                     <td>{{ $agenda->user->username }}</td>
                     <td>{{ $agenda->direccion }}</td>
-                    <td>{{ $agenda->area->area }}</td>
+                    <td>{{ $agenda->empresa->empresa }}</td>
                     <td>{{ $agenda->created_at->format('Y-m-d') }}</td>
                     <td class="text-center">
                         <a href="{{ route('agendas.show', $agenda->id) }}"

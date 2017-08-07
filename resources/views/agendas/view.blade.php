@@ -19,7 +19,7 @@
                   <a href="{{ route('agendas.agendasResponsable') }}"> Agendas</a>
               @endif
           </li>
-          <li class="active">{{  $agenda->area->area }}</li>
+          <li class="active">{{  $agenda->empresa->empresa }}</li>
         </ol>
         </div>
         </h5>
@@ -53,7 +53,7 @@
                   <tbody>
                     <tr>
                         <td> <b>Agenda:</b> </td>
-                        <td> {{ $agenda->area->area }} </td>
+                        <td> {{ $agenda->empresa->nombre }} </td>
                     </tr>
                       <tr>
                           <td> <b>Tipo de reservacion:</b> </td>
@@ -78,28 +78,20 @@
                       <tbody>
                         <tr>
                             <td> <b> Empresa:</b></td>
-                            <td> {!! $agenda->area->sucursal->empresa->nombre !!}  </td>
+                            <td> {!! $agenda->empresa->nombre !!}  </td>
                         </tr>
                         <tr>
-                            <td> <b> Sucursal:</b></td>
-                            <td> {!! $agenda->area->sucursal->sucursal !!}  </td>
+                            <td> <b> @lang('app.address'):</b></td>
+                            <td>{!! $agenda->empresa->direccion !!} </td>
                         </tr>
                         <tr>
-                            <td> <b> Area o Departamento:</b></td>
-                            <td> {!! $agenda->area->area !!}  </td>
+                            <td> <b>@lang('app.city'): </b></td>
+                            <td>{!! $agenda->empresa->ciudad !!}</td>
                         </tr>
-                      <tr>
-                          <td> <b> @lang('app.address'):</b></td>
-                          <td>{!! $agenda->area->sucursal->direccion !!} </td>
-                      </tr>
-                      <tr>
-                          <td> <b>@lang('app.city'): </b></td>
-                          <td>{!! $agenda->area->sucursal->ciudad !!}</td>
-                      </tr>
-                      <tr>
-                          <td> <b>Estado: </b></td>
-                          <td>{!! $agenda->area->sucursal->estado !!}</td>
-                      </tr>
+                        <tr>
+                            <td> <b>Estado: </b></td>
+                            <td>{!! $agenda->empresa->estado !!}</td>
+                        </tr>
                       </tbody>
                   </table>
               </div>
@@ -175,13 +167,13 @@
                             </tr>
                             @endif
                             <tr>
-                                <td> <b>Sucursal de la Agenda: </b> </td>
-                                <td>{!! $agenda->area->sucursal->sucursal !!}</td>
+                                <td> <b>Empresa de la Agenda: </b> </td>
+                                <td>{!! $agenda->empresa->nombre !!}</td>
                             </tr>
                             <tr>
                                 <td><b>@lang('app.phone'): </b></td>
-                                <td><a href="telto:{!! $agenda->area->sucursal->telefono !!}">
-                                      {!! $agenda->area->sucursal->telefono !!}</a></td>
+                                <td><a href="telto:{!! $agenda->empresa->telefono !!}">
+                                      {!! $agenda->empresa->telefono !!}</a></td>
                             </tr>
                         </tbody>
                   </table>
