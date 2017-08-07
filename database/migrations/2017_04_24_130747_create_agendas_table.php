@@ -63,7 +63,7 @@ class CreateAgendasTable extends Migration
             $table->string('saturday',10)->nullable();
             $table->string('sunday',10)->nullable();
             //FOREIGN KEYS
-            $table->integer('area_id')->unsigned();
+            $table->integer('empresa_id')->unsigned();
             $table->integer('reason_id')->unsigned();
             $table->timestamps();
         });
@@ -74,9 +74,9 @@ class CreateAgendasTable extends Migration
                 ->on('users')
                 ->onDelete('cascade');
 
-            $table->foreign('area_id')
+            $table->foreign('empresa_id')
                 ->references('id')
-                ->on('areas')
+                ->on('empresas')
                 ->onDelete('cascade');
 
             $table->foreign('reason_id')
