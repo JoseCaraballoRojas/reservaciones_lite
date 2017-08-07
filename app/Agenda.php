@@ -10,7 +10,7 @@ class Agenda extends Model
 
     protected $fillable = [
         'agenda', 'direccion', 'responsable_id', 'username', 'email',
-        'phone', 'area', 'area_id', 'sucursal', 'sucursal_id', 'motivo',
+        'phone', 'motivo', 'empresa', 'empresa_id', 
         'reason_id', 'reason', 'duration', 'start_time', 'final_hour',
         'blocking_schedules_per_day', 'selectable_agenda', 'reason_for_appointment',
         'time_format', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday',
@@ -32,9 +32,9 @@ class Agenda extends Model
       return $this->belongsTo('Vanguard\User', 'responsable_id');
     }
 
-    public function area()
+    public function empresa()
     {
-        return $this->belongsTo('Vanguard\Area', 'area_id');
+        return $this->belongsTo('Vanguard\Empresa', 'empresa_id');
     }
 
     public function reason()

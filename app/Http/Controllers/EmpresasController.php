@@ -46,11 +46,23 @@ class EmpresasController extends Controller
      */
     public function create()
     {
+        $count = $this->empresas->countEmpresas();
         $edit = false;
-        return view('empresas.create', [
-            'users' => $this->empresas->getUsers(),
-            'edit' => $edit
-        ]);
+        if ($count > 0) {
+
+            return redirect()->route('empresas.index')
+                ->withSuccess('No Puede Crear mas Empresas Comuniquese con el Administrador');
+
+        }
+        else {
+
+            return view('empresas.create', [
+                'users' => $this->empresas->getUsers(),
+                'edit' => $edit
+            ]);
+
+        }
+
     }
 
     /**
@@ -61,22 +73,35 @@ class EmpresasController extends Controller
      */
     public function store(EmpresaRequest $request)
     {
-        $name = 'null';
-      if ($request->file('imagen')) {
 
-          $logo = $request->file('imagen');
-          $name = 'reservaciones_' . time() . '.' . $logo->getClientOriginalExtension();
-          $path = public_path() . '/img/empresas/';
-          $logo->move($path, $name);
+        $count = $this->empresas->countEmpresas();
+        $edit = false;
+        if ($count > 0) {
 
-      }
-      $request['logo'] = $name;
-      //dd($request->except('imagen'));
+            return redirect()->route('empresas.index')
+                ->withSuccess('No Puede Crear mas Empresas Comuniquese con el Administrador');
 
-      $this->empresas->create($request->except('imagen'));
+        }
+        else {
 
-      return redirect()->route('empresas.index')
-          ->withSuccess('Empresa creada con exito');
+            $name = 'null';
+          if ($request->file('imagen')) {
+
+              $logo = $request->file('imagen');
+              $name = 'reservaciones_' . time() . '.' . $logo->getClientOriginalExtension();
+              $path = public_path() . '/img/empresas/';
+              $logo->move($path, $name);
+
+          }
+          $request['logo'] = $name;
+          //dd($request->except('imagen'));
+
+          $this->empresas->create($request->except('imagen'));
+
+          return redirect()->route('empresas.index')
+              ->withSuccess('Empresa creada con exito');
+
+          }
 
     }
 

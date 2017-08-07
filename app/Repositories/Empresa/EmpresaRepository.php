@@ -32,4 +32,9 @@ class EmpresaRepository
   {
       return Empresa::find($id);
   }
+
+  public function countEmpresas()
+  {
+      return Empresa::count();
+  }
 }

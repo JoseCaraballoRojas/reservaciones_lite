@@ -8,42 +8,12 @@
                    <div class="row">
                      <div class="finput-field col s12">
                        {!! Form::label('empresa_id', 'Empresas registradas') !!}
-                       {!! Form::select('empresa_id', $empresas, $edit ? $empresa_id[0] : '',
+                       {!! Form::select('empresa_id', $empresas, $edit ? $agenda->empresa_id : '',
                          ['placeholder' => 'selecione una empresa...',
                           'id' => 'selectEmpresa', 'required']) !!}
                       </div>
                     </div>
                   </div>
-
-                <div class="col s12">
-                   <div class="row">
-                     <div class="finput-field col s12">
-                       {!! Form::label('sucursal', 'Sucursal') !!}
-                       @if ($edit)
-                         {!! Form::select('sucursal', $sucursales, $edit ? $agenda->area->sucursal_id : '',
-                           ['placeholder' => 'selecione una sucursal...',
-                            'id' => 'selectSucursal', 'required']) !!}
-                       @else
-                       {!! Form::select('sucursal',['placeholder'=>'Selecciona una sucursal...'],null,['id'=>'selectSucursal']) !!}
-                       @endif
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="col s12">
-                     <div class="row">
-                       <div class="finput-field col s12">
-                         {!! Form::label('area', 'Area') !!}
-                         @if ($edit)
-                           {!! Form::select('area_id', $areas, $edit ? $agenda->area_id : '',
-                             ['placeholder' => 'selecione un area...',
-                              'id' => 'selectArea', 'required']) !!}
-                         @else
-                           {!! Form::select('area_id',['placeholder'=>'Selecciona un area...'],null,['id'=>'selectArea']) !!}
-                         @endif
-                        </div>
-                      </div>
-                    </div>
 
                 <div class="col s12">
                   <div class="row">

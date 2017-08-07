@@ -41,16 +41,6 @@
         </li>
 
         <li class="bold">
-          <a href="{{ route('sucursales.index') }}" class="waves-effect waves-cyan">
-            <i class="mdi-social-location-city"></i>  @lang('app.subsidiaries')
-          </a>
-        </li>
-        <li class="bold">
-          <a href="{{ route('areas.index') }}" class="waves-effect waves-cyan">
-            <i class="mdi-action-store"></i>  Areas & Departamentos
-          </a>
-        </li>
-        <li class="bold">
           <a href="{{ route('reasons.index') }}" class="waves-effect waves-cyan">
             <i class="mdi-action-label"></i>  @lang('app.reasons')
           </a>
@@ -79,7 +69,7 @@
         </a>
       </li>
       @endif
-      
+
 
       @if (Auth::user()->roles->first()->name == 'Admin')
       <li class="bold">
@@ -200,12 +190,6 @@
           </ul>
       </li>
       @endpermission
-      <li class="li-hover">
-        <div class="divider"></div>
-      </li>
-      <li class="li-hover">
-        <p class="ultra-small margin more-text">MAS</p>
-      </li>
   </ul>
   <a href="#" data-activates="slide-out" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only cyan"><i class="mdi-navigation-menu"></i></a>
   </aside>

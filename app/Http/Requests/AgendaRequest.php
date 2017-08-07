@@ -25,7 +25,9 @@ class AgendaRequest extends Request
     {
       return [
           'responsable_id' => 'required',
-          'area_id' => 'required'
+          'empresa_id' => 'required',
+          'reason_id' => 'required',
+          'motivo' => 'required'
       ];
     }
 }

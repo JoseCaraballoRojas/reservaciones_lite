@@ -18,7 +18,7 @@
                       <a href="{{ route('agendas.agendasResponsable') }}"> Agendas</a>
                   @endif
               </li>
-              <li><a href="{{ route('agendas.show', $agenda->id) }}">{{ $agenda->area->area }}</a></li>
+              <li><a href="{{ route('agendas.show', $agenda->id) }}">{{ $agenda->empresa->nombre}}</a></li>
               <li class="active">Citas</li>
             </ol>
           </div>
