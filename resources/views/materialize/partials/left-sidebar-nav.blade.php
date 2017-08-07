@@ -190,12 +190,6 @@
           </ul>
       </li>
       @endpermission
-      <li class="li-hover">
-        <div class="divider"></div>
-      </li>
-      <li class="li-hover">
-        <p class="ultra-small margin more-text">MAS</p>
-      </li>
   </ul>
   <a href="#" data-activates="slide-out" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only cyan"><i class="mdi-navigation-menu"></i></a>
   </aside>

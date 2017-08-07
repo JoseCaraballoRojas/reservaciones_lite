@@ -24,6 +24,7 @@
 <br>
 @include('partials.messages')
 
+@if (!count($empresas))
 <div class="row">
     <div class="col s12 m12 l12">
         <a href="{{ route('empresas.create') }}" class="btn waves-effect waves-light green  " id="add-user">
@@ -32,6 +33,8 @@
         </a>
     </div>
 </div>
+@endif
+
 <br>
 <div class="responsive-table" id="users-table-wrapper">
     <table class="responsive-table striped bordered">
@@ -79,7 +82,7 @@
               @endforeach
           @else
               <tr>
-                  <td colspan="6"><em>@lang('app.no_records_found')</em></td>
+                  <td colspan="7"><em>@lang('app.no_records_found')</em></td>
               </tr>
           @endif
         <tbody>
