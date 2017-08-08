@@ -1,4 +1,4 @@
-<?
+<?php
 //Libreria para el manejo de SOAP
 require_once('nusoap.php');
 
@@ -18,20 +18,20 @@ function pyxter_enviar($e_TELEFONO, $e_SMS)
   $e_TIMEOUT = 200;
 
   $e_TIEMPO_INICIAL = time();
-  
+
   $e_TRANSACCION = pyxter_solicitar_envio($e_TELEFONO, $e_SMS);
-  
+
   do
   {
     sleep(1);
-    
+
     $m_RESPUESTA = pyxter_consultar_envio($e_TRANSACCION);
-    
+
     if($m_RESPUESTA['ESTADO'] == 'CANCELADO' || $m_RESPUESTA['ESTADO'] == 'FALLIDO')
     {
       throw new Exception($m_RESPUESTA['DETALLES']);
     }
-    
+
     $e_TIEMPO_TRANSCURRIDO = time() - $e_TIEMPO_INICIAL;
   }
   while($m_RESPUESTA['ESTADO'] != 'ENVIADO' && $e_TIEMPO_TRANSCURRIDO < $e_TIMEOUT);
@@ -49,7 +49,7 @@ function pyxter_enviar($e_TELEFONO, $e_SMS)
  *
  * @param double e_TELEFONO: Telefono a recargar
  * @param double e_SMS: Mensaje a enviar
- * 
+ *
  * @return string: Transaccion enviada
  */
 function pyxter_solicitar_envio($e_TELEFONO, $e_SMS)
@@ -62,7 +62,7 @@ function pyxter_solicitar_envio($e_TELEFONO, $e_SMS)
 
   //Id de entidad asignado por el proveedor
   $e_ENTIDAD_ID = '?';
-  
+
   //Usuario de la entidad asignado por el proveedor
   $e_ENTIDAD_USUARIO = '?';
 
@@ -71,20 +71,20 @@ function pyxter_solicitar_envio($e_TELEFONO, $e_SMS)
 
   //Numero de usuario asignado por el proveedor
   $e_USUARIO_NUMERO = '?';
-  
+
   //Nip del usuario asignado por el proveedor
   $e_USUARIO_NIP = '?';
-  
+
   //Bolsa asignada por el proveedor
   $e_BOLSA = '?';
-  
+
   //Timeout para el soap
   $e_TIMEOUT = 60;
-  
+
   $e_TRANSACCION = 'EXT' . str_pad($e_ENTIDAD_ID, 3, '0', STR_PAD_LEFT) . date('YmdHis') . get_random_string(10);
-  
+
   $o_WEBSERVICE = new nusoap_client($e_URL, false, false, false, false, false, 0, $e_TIMEOUT);
-  
+
   //Se preparan los parametros a enviar
   $m_PARAMS_WEBSERVICE = array
   (
@@ -97,9 +97,9 @@ function pyxter_solicitar_envio($e_TELEFONO, $e_SMS)
     'destino' => $e_TELEFONO,
     'sms' => $e_SMS
   );
-  
+
   $o_WEBSERVICE->call('envio_solicitar', $m_PARAMS_WEBSERVICE);
-  
+
   //Se evalua si hubo errores
   if($o_WEBSERVICE->fault)
   {
@@ -109,7 +109,7 @@ function pyxter_solicitar_envio($e_TELEFONO, $e_SMS)
   {
     throw new Exception("{$o_WEBSERVICE->error_str}, {$o_WEBSERVICE->responseData}");
   }
-  
+
   return $e_TRANSACCION;
 }
 
@@ -136,7 +136,7 @@ function pyxter_consultar_envio($e_TRANSACCION)
 
   //Numero de usuario asignado por el proveedor
   $e_USUARIO_NUMERO = '?';
-  
+
   //Nip del usuario asignado por el proveedor
   $e_USUARIO_NIP = '?';
 
@@ -144,7 +144,7 @@ function pyxter_consultar_envio($e_TRANSACCION)
   $e_TIMEOUT = 60;
 
   $o_WEBSERVICE = new nusoap_client($e_URL, false, false, false, false, false, 0, $e_TIMEOUT);
-  
+
   //Se preparan los parametros a enviar
   $m_PARAMS_WEBSERVICE = array
   (
@@ -154,9 +154,9 @@ function pyxter_consultar_envio($e_TRANSACCION)
     'transaccion' => $e_TRANSACCION,
     'nodo' => $e_USUARIO_NUMERO
   );
-  
+
   $m_RETURN = $o_WEBSERVICE->call('consultar_envio', $m_PARAMS_WEBSERVICE);
-  
+
   return $m_RETURN;
 }
 ?>

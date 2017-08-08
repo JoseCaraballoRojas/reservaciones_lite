@@ -1,4 +1,4 @@
-<?
+<?php
 function get_random_string($LENGHT = 40, $CHARSET = 'A-Z0-9')
 {
   $ID = "";

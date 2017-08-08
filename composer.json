@@ -34,7 +34,8 @@
             "Vanguard\\": "app/"
         },
         "files": [
-            "app/Support/helpers.php"
+            "app/Support/helpers.php",
+            "app/Helpers/Notifications/Sms/helper.php"
         ]
     },
     "autoload-dev": {

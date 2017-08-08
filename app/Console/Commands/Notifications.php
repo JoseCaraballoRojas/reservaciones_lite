@@ -43,6 +43,7 @@ class Notifications extends Command
      */
     public function handle()
     {
+        //$enviarMensaje = enviarSms();
         //$agendas = $this->agendas->getAgendaByNotificationsSms();
         //\Log::info('Log de prueba fecha: '. \Carbon\Carbon::now());
         //\Log::info(var_dump($agendas));
