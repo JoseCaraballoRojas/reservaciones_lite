@@ -97,7 +97,5 @@ class NotificationsEmails extends Command
 
       }
 
-      //\Log::info('Log de prueba fecha: '. $agendas);
-      //\Log::info(var_dump($agendas));
     }
 }

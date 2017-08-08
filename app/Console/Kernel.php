@@ -30,11 +30,12 @@ class Kernel extends ConsoleKernel
                  ->hourly();
 
         $schedule->command('notification:sms')
-                 ->everyMinute();
-                 //->dailyAt('06:00');
+                 ->dailyAt('06:00');
+                 //->everyMinute();
 
         $schedule->command('reminder:email')
-                 ->everyMinute();
-                 //->dailyAt('06:00');
+                 ->dailyAt('06:00');
+                 //->everyMinute();
+
     }
 }
