@@ -7,17 +7,27 @@
           </div>
           <div class="col col s8 m8 l8">
               <ul id="profile-dropdown" class="dropdown-content">
-                  <li><a href="#"><i class="mdi-action-face-unlock"></i> Profile</a>
+                  <li>
+                    <a href="{{ route('user.show', Auth::user()->id) }}">
+                      <i class="mdi-action-face-unlock"></i> Perfil
+                    </a>
                   </li>
-                  <li><a href="#"><i class="mdi-action-settings"></i> Config</a>
+                  <li>
+                    <a href="{{ route('user.edit', Auth::user()->id) }}">
+                      <i class="mdi-action-settings"></i> Ajustes
+                    </a>
                   </li>
-                  <li><a href="#"><i class="mdi-communication-live-help"></i> Help</a>
-                  </li>
+                  {{--<li>
+                    <a href="#"><i class="mdi-communication-live-help"></i> Help</a>
+                  </li>--}}
                   <li class="divider"></li>
-                  <li><a href="#"><i class="mdi-action-lock-outline"></i> Lock</a>
-                  </li>
-                  <li><a href="{{ route('auth.logout') }}">
-                    <i class="mdi-hardware-keyboard-tab"></i> @lang('app.logout')</a>
+                  {{--<li>
+                    <a href="#"><i class="mdi-action-lock-outline"></i> Lock</a>
+                  </li>--}}
+                  <li>
+                    <a href="{{ route('auth.logout') }}">
+                      <i class="mdi-hardware-keyboard-tab"></i> @lang('app.logout')
+                    </a>
                   </li>
               </ul>
               <a class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn"
