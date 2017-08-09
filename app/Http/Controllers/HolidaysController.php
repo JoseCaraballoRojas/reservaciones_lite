@@ -7,15 +7,20 @@ use Illuminate\Http\Request;
 use Vanguard\Http\Requests;
 use Vanguard\Repositories\Holiday\HolidayRepository;
 use Vanguard\Http\Requests\HolidayRequest;
+use Vanguard\Services\Logging\UserActivity\Logger;
+
 class HolidaysController extends Controller
 {
 
     protected $holidays;
 
-    public function __construct(HolidayRepository $holidays)
-    {   
+    protected $logger;
+
+    public function __construct(HolidayRepository $holidays, Logger $logger)
+    {
         $this->middleware('auth');
         $this->holidays = $holidays;
+        $this->logger = $logger;
     }
 
     /**
@@ -56,8 +61,12 @@ class HolidaysController extends Controller
      */
     public function store(HolidayRequest $request)
     {
-      
-      $this->holidays->create($request->except(['empresa_id','sucursal', 'area_id']));
+
+      $holiday = $this->holidays->create($request->except(['empresa_id','sucursal', 'area_id']));
+
+      $data = 'Creacion de Dia Festivo: ' . $holiday->day;
+
+      $userActivities = $this->logger->log($data);
 
       return redirect()->route('holidays.index')
           ->withSuccess('Dia Festivo creado con exito');
@@ -99,10 +108,15 @@ class HolidaysController extends Controller
      */
     public function update(HolidayRequest $request, $id)
     {
-        
+
         $holiday = $this->holidays->findHolidayByID($id);
         $holiday->fill($request->all());
         $holiday->save();
+
+        $data = 'Edicion de Dia Festivo: ' . $holiday->day;
+
+        $userActivities = $this->logger->log($data);
+
         return redirect()->route('holidays.index')
             ->withSuccess('Dia Festivo actualizado con exito');
     }
@@ -117,6 +131,11 @@ class HolidaysController extends Controller
     {
         $holiday = $this->holidays->findHolidayByID($id);
         $holiday->delete();
+
+        $data = 'Eliminacion de Dia Festivo: ' . $holiday->day;
+
+        $userActivities = $this->logger->log($data);
+
         return redirect()->route('holidays.index')
             ->withSuccess('Dia Festivo eliminado con exito');
     }
