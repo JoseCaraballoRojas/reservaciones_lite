@@ -44,14 +44,16 @@
         </a>
       </li>
       @if (Auth::user()->roles->first()->name == 'Admin' || Auth::user()->roles->first()->name == 'User' )
-        <li class="bold">
-          <a href="{{ route('empresas.index') }}" class="waves-effect waves-cyan">
+        <li class="bold {{ Request::is('empresas*') ? 'active open' : ''  }}">
+          <a href="{{ route('empresas.index') }}"
+             class="waves-effect waves-cyan {{ Request::is('empresas*') ? 'active' : ''  }}">
             <i class="mdi-communication-business"></i>  @lang('app.company')s
           </a>
         </li>
 
-        <li class="bold">
-          <a href="{{ route('reasons.index') }}" class="waves-effect waves-cyan">
+        <li class="bold {{ Request::is('reasons*') ? 'active open' : ''  }}">
+          <a href="{{ route('reasons.index') }}"
+            class="waves-effect waves-cyan {{ Request::is('reasons*') ? 'active' : ''  }}">
             <i class="mdi-action-label"></i>  @lang('app.reasons')
           </a>
         </li>
@@ -59,7 +61,7 @@
 
       {{--menu citas para clientes--}}
       @if (Auth::user()->roles->first()->name == 'Client')
-      <li class="bold">
+      <li class="bold ">
         <a href="{{ route('citas.indexCliente') }}" class="waves-effect waves-cyan">
           <i class="mdi-action-visibility"></i>  Citas
         </a>
@@ -73,7 +75,7 @@
 
       {{--menu citas para usuarios responsables de agendas--}}
       @if (Auth::user()->roles->first()->name == 'User')
-      <li class="bold">
+      <li class="bold ">
         <a href="{{ route('citas.create') }}" class="waves-effect waves-cyan">
           <i class="mdi-action-today"></i>  Solicitar citas
         </a>
@@ -82,12 +84,12 @@
 
 
       @if (Auth::user()->roles->first()->name == 'Admin')
-      <li class="bold">
+      <li class="bold {{ Request::is('agendas*') ? 'active open' : ''  }}">
         <a href="{{ route('agendas.index') }}" class="waves-effect waves-cyan">
           <i class="mdi-action-today"></i>  Agendas
         </a>
       </li>
-      <li class="bold">
+      <li class="bold {{ Request::is('holidays*') ? 'active open' : ''  }}">
         <a href="{{ route('holidays.index') }}" class="waves-effect waves-cyan">
           <i class="mdi-action-today"></i>  Dias Festivos
         </a>
