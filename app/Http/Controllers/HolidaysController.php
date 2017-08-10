@@ -32,7 +32,7 @@ class HolidaysController extends Controller
     {
         $holidays = $this->holidays->index();
         $holidays->each(function ($holidays){
-          $holidays->agenda->area;
+          $holidays->agenda->empresa;
         });
 
           return view('holidays.index')
@@ -48,7 +48,6 @@ class HolidaysController extends Controller
     {
         $edit = false;
         return view('holidays.create', [
-            'empresas' => $this->holidays->getEmpresas(),
             'edit' => $edit
         ]);
     }
@@ -61,8 +60,11 @@ class HolidaysController extends Controller
      */
     public function store(HolidayRequest $request)
     {
+      $agenda_id = $this->holidays->getAgenda();
+      $holidays = $request->all();
+      $holidays = array_add($holidays, 'agendas_id', $agenda_id[0]);
 
-      $holiday = $this->holidays->create($request->except(['empresa_id','sucursal', 'area_id']));
+      $holiday = $this->holidays->create($holidays);
 
       $data = 'Creacion de Dia Festivo: ' . $holiday->day;
 
@@ -80,7 +82,7 @@ class HolidaysController extends Controller
      */
     public function show($id)
     {
-        //
+        return redirect()->back();
     }
 
     /**
@@ -92,10 +94,10 @@ class HolidaysController extends Controller
     public function edit($id)
     {
         $holiday = $this->holidays->findHolidayByID($id);
-
+        $empresas = $this->holidays->getEmpresas();
         $edit = true;
         return view('holidays.edit',
-        compact('edit', 'holiday'));
+        compact('edit', 'holiday', 'empresas'));
 
     }
 

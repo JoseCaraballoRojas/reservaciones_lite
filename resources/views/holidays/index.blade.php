@@ -48,13 +48,8 @@
                     <td>{{ $holiday->day }}</td>
                     <td>{{ $holiday->reason }}</td>
                     <td>{{ $holiday->details }}</td>
-                    <td>{{ $holiday->agenda->area->area }}</td>
+                    <td>{{ $holiday->agenda->empresa->nombre }}</td>
                     <td class="text-center">
-                        <a href="{{ route('holidays.show', $holiday->id) }}"
-                           class="btn-floating  waves-effect waves-light green"
-                           title="Ver Dia Festivo" data-toggle="tooltip" data-placement="top">
-                            <i  class="mdi-action-visibility"></i>
-                        </a>
                         <a href="{{ route('holidays.edit', $holiday->id) }}"
                           class="btn-floating  waves-effect waves-light light-blue darken-4"
                           title="Editar Dia Festivo" data-toggle="tooltip" data-placement="top">

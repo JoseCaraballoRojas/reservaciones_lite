@@ -1,9 +1,12 @@
 <?php
 
 namespace Vanguard\Repositories\Holiday;
+
 use Vanguard\Holiday;
-use Vanguard\Area;
+
 use Vanguard\Empresa;
+
+use Vanguard\Agenda;
 
 
 /**
@@ -28,13 +31,13 @@ class HolidayRepository
       return Holiday::find($id);
   }
 
-  public function getAreas()
-  {
-    return Area::orderBy('area', 'ASC')->lists('area', 'id');
-  }
-
   public function getEmpresas()
   {
     return Empresa::orderBy('nombre', 'ASC')->lists('nombre', 'id');
+  }
+
+  public function getAgenda()
+  {
+    return Agenda::get()->first()->lists('id');
   }
 }

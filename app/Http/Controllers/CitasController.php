@@ -44,7 +44,6 @@ class CitasController extends Controller
           $appointments->reason;
         });
 
-        //dd($appointments);
         return view('citas.indexCliente', [
             'appointments' => $appointments
         ]);

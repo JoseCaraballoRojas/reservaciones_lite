@@ -26,8 +26,7 @@ class HolidayRequest extends Request
       return [
           'day' => 'required',
           'reason' => 'min:4|max:100|required',
-          'details' => 'min:4|max:250|required',
-          'agendas_id' => 'required'
+          'details' => 'min:4|max:250|required'
       ];
     }
 }
