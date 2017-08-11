@@ -10,7 +10,7 @@ use Vanguard\Http\Requests\EmpresaRequest;
 use Vanguard\Http\Requests\EmpresaUpdateRequest;
 use Vanguard\Empresa;
 use Vanguard\User;
-
+use Vanguard\Services\Logging\UserActivity\Logger;
 
 class EmpresasController extends Controller
 {
@@ -21,10 +21,13 @@ class EmpresasController extends Controller
      */
     protected $empresas;
 
-    public function __construct(EmpresaRepository $empresas)
+    protected $logger;
+
+    public function __construct(EmpresaRepository $empresas, Logger $logger)
     {
       $this->middleware('auth');
       $this->empresas = $empresas;
+      $this->logger = $logger;
       $this->middleware('permission:users.manage');
     }
 
@@ -96,9 +99,12 @@ class EmpresasController extends Controller
 
           }
           $request['logo'] = $name;
-          //dd($request->except('imagen'));
+          
+          $empresa =  $this->empresas->create($request->except('imagen'));
 
-          $this->empresas->create($request->except('imagen'));
+          $data = 'Creacion de Empresa: ' . $empresa->nombre ;
+
+          $userActivities = $this->logger->log($data);
 
           return redirect()->route('empresas.index')
               ->withSuccess('Empresa creada con exito');
@@ -162,6 +168,11 @@ class EmpresasController extends Controller
       $empresa = $this->empresas->findEmpresayByID($id);
       $empresa->fill($request->all());
       $empresa->save();
+
+      $data = 'Edicion de Empresa: ' . $empresa->nombre ;
+
+      $userActivities = $this->logger->log($data);
+
       return redirect()->route('empresas.index')
           ->withSuccess('Empresa actualizada con exito');
 
@@ -177,6 +188,11 @@ class EmpresasController extends Controller
     {
       $empresa = $this->empresas->findEmpresayByID($id);
       $empresa->delete();
+
+      $data = 'Eliminacion de Empresa: ' . $empresa->nombre ;
+
+      $userActivities = $this->logger->log($data);
+
       return redirect()->route('empresas.index')
           ->withSuccess('Empresa eliminada con exito');
     }

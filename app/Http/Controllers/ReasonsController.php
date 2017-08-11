@@ -8,6 +8,8 @@ use Vanguard\Http\Requests;
 use Vanguard\Repositories\Reason\ReasonRepository;
 use Vanguard\Http\Requests\ReasonRequest;
 use Vanguard\Reason;
+use Vanguard\Services\Logging\UserActivity\Logger;
+
 class ReasonsController extends Controller
 {
 
@@ -15,14 +17,17 @@ class ReasonsController extends Controller
     * @var ReasonRepository
     */
     protected $reasons;
+
+    protected $logger;
     /**
     * ReasonController constructor.
     * @param ReasonRepository $reasons
     */
-    public function __construct(ReasonRepository $reasons)
+    public function __construct(ReasonRepository $reasons, Logger $logger)
     {
         $this->middleware('auth');
         $this->reasons = $reasons;
+        $this->logger = $logger;
     }
 
     /**
@@ -62,7 +67,11 @@ class ReasonsController extends Controller
      */
     public function store(ReasonRequest $request)
     {
-        $this->reasons->create($request->all());
+        $reason = $this->reasons->create($request->all());
+
+        $data = 'Creacion de Razon: ' . $reason->reason ;
+
+        $userActivities = $this->logger->log($data);
 
         return redirect()->route('reasons.index')
             ->withSuccess('Razon creada con exito');
@@ -76,7 +85,7 @@ class ReasonsController extends Controller
      */
     public function show($id)
     {
-        //
+        return redirect()->back();
     }
 
     /**
@@ -105,6 +114,11 @@ class ReasonsController extends Controller
         $reason = $this->reasons->findReasonByID($id);
         $reason->fill($request->all());
         $reason->save();
+
+        $data = 'Edicion de Razon: ' . $reason->reason ;
+
+        $userActivities = $this->logger->log($data);
+
         return redirect()->route('reasons.index')
             ->withSuccess('Razon actualizada con exito');
     }
@@ -119,6 +133,11 @@ class ReasonsController extends Controller
     {
         $reason = $this->reasons->findReasonByID($id);
         $reason->delete();
+
+        $data = 'Eliminacion de Razon: ' . $reason->reason ;
+
+        $userActivities = $this->logger->log($data);
+
         return redirect()->route('reasons.index')
             ->withSuccess('Razon eliminada con exito');
     }
