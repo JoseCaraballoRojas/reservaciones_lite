@@ -30,15 +30,15 @@ class EmpresasController extends Controller
 
     public function index()
     {
-        $enviarSms = enviarSms();
-        dd($enviarSms);
-        /*$empresas = $this->empresas->index();
+        /*$enviarSms = enviarSms();
+        dd($enviarSms);*/
+        $empresas = $this->empresas->index();
         $empresas->each(function ($empresas){
           $empresas->user;
         });
 
         return view('empresas.index')
-            ->with('empresas', $empresas);*/
+            ->with('empresas', $empresas);
     }
 
     /**
