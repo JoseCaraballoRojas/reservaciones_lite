@@ -13,16 +13,20 @@ use Vanguard\Area;
 use Vanguard\Agenda;
 use Auth;
 use Carbon\Carbon;
+use Vanguard\Services\Logging\UserActivity\Logger;
 
 class AgendasController extends Controller
 {
 
     protected $agendas;
 
-    public function __construct(AgendaRepository $agendas)
+    protected $logger;
+
+    public function __construct(AgendaRepository $agendas, Logger $logger)
     {
       $this->middleware('auth');
       $this->agendas = $agendas;
+      $this->logger = $logger;
     }
 
     /**
@@ -54,7 +58,7 @@ class AgendasController extends Controller
     {
         $id = Auth::user()->id;
         $agendas = $this->agendas->getAgendaByResponsableID($id);
-        //dd($agendas->all());
+
         $agendas->each(function ($agendas){
           $agendas->area;
           $agendas->user;
@@ -91,7 +95,12 @@ class AgendasController extends Controller
     public function store(AgendaRequest $request)
     {
 
-        $this->agendas->create($request->all());
+        $agenda = $this->agendas->create($request->all());
+
+        $data = 'Creacion de Agenda: ' . $agenda->empresa->nombre ;
+
+        $userActivities = $this->logger->log($data);
+
 
         return redirect()->route('agendas.index')
             ->withSuccess('Agenda creada con exito');
@@ -151,6 +160,11 @@ class AgendasController extends Controller
       $agenda = $this->agendas->findAgendaByID($id);
       $agenda->fill($request->all());
       $agenda->save();
+
+      $data = 'Edicion de Agenda: ' . $agenda->empresa->nombre ;
+
+      $userActivities = $this->logger->log($data);
+
       return redirect()->route('agendas.index')
           ->withSuccess('Agenda actualizada con exito');
     }
@@ -220,6 +234,11 @@ class AgendasController extends Controller
     {
         $agenda = $this->agendas->findAgendaByID($id);
         $agenda->delete();
+
+        $data = 'Eliminacion de Agenda: ' . $agenda->empresa->nombre ;
+
+        $userActivities = $this->logger->log($data);
+
         return redirect()->route('agendas.index')
             ->withSuccess('Agenda eliminada con exito');
     }
