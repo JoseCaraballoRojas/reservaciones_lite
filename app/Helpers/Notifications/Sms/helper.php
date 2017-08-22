@@ -11,11 +11,11 @@ function enviarSms($telefono='', $mensaje='')
 
     //SMS
     $e_SMS = $mensaje;
-
+    //dd($e_TELEFONO);
     try
     {
       $m_RESPUESTA = pyxter_enviar($e_TELEFONO, $e_SMS);
-    
+
     }
     catch(Exception $o_EXCEPTION)
     {
