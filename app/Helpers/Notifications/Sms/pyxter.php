@@ -15,6 +15,7 @@ require_once('tool.php');
  */
 function pyxter_enviar($e_TELEFONO, $e_SMS)
 {
+
   $e_TIMEOUT = 200;
 
   $e_TIEMPO_INICIAL = time();
@@ -54,34 +55,35 @@ function pyxter_enviar($e_TELEFONO, $e_SMS)
  */
 function pyxter_solicitar_envio($e_TELEFONO, $e_SMS)
 {
+
   //URL asignado por el proveedor
-  $e_URL = '?';
+  $e_URL = 'https://ext2.smsexpert.mx:12547/index.php?ACTION=WEBSERVICE:LOAD_NUSOAP&NUSOAP=PYXTER_SMSEXPERT_EXT1_EXT:C5A.EXT.CONTROL.DOCUMENTO';
 
   //Instancia asignada por el proveedor
-  $e_INSTANCIA = '?';
+  $e_INSTANCIA = 'SMSEXPERT_EXT1';
 
   //Id de entidad asignado por el proveedor
-  $e_ENTIDAD_ID = '?';
+  $e_ENTIDAD_ID = '052';
 
   //Usuario de la entidad asignado por el proveedor
-  $e_ENTIDAD_USUARIO = '?';
+  $e_ENTIDAD_USUARIO = 'SR_SMS';
 
   //Contraseña de la entidad asignado por el proveedor
-  $e_ENTIDAD_CONTRASENA = '?';
+  $e_ENTIDAD_CONTRASENA = 'PXU4CB';
 
   //Numero de usuario asignado por el proveedor
-  $e_USUARIO_NUMERO = '?';
+  $e_USUARIO_NUMERO = '4771530172';
 
   //Nip del usuario asignado por el proveedor
-  $e_USUARIO_NIP = '?';
+  $e_USUARIO_NIP = '4275';
 
   //Bolsa asignada por el proveedor
-  $e_BOLSA = '?';
+  $e_BOLSA = 'SMS';
 
   //Timeout para el soap
   $e_TIMEOUT = 60;
 
-  $e_TRANSACCION = 'EXT' . str_pad($e_ENTIDAD_ID, 3, '0', STR_PAD_LEFT) . date('YmdHis') . get_random_string(10);
+  //$e_TRANSACCION = 'EXT' . str_pad($e_ENTIDAD_ID, 3, '0', STR_PAD_LEFT) . date('YmdHis') . get_random_string(10);
 
   $o_WEBSERVICE = new nusoap_client($e_URL, false, false, false, false, false, 0, $e_TIMEOUT);
 
@@ -91,14 +93,14 @@ function pyxter_solicitar_envio($e_TELEFONO, $e_SMS)
     'instancia' => $e_INSTANCIA,
     'entidad' => json_encode(array('USUARIO' => $e_ENTIDAD_USUARIO, 'CONTRASENA' => $e_ENTIDAD_CONTRASENA)),
     'usuario' => json_encode(array('TIPO_USUARIO' => 'PYXTER', 'NUMERO' => $e_USUARIO_NUMERO, 'NIP' => $e_USUARIO_NIP)),
-    'transaccion' => $e_TRANSACCION,
+    //'transaccion' => $e_TRANSACCION,
     'nodo' => $e_USUARIO_NUMERO,
-    'bolsa' => $e_BOLSA,
+    //'bolsa' => $e_BOLSA,
     'destino' => $e_TELEFONO,
     'sms' => $e_SMS
   );
 
-  $o_WEBSERVICE->call('envio_solicitar', $m_PARAMS_WEBSERVICE);
+  $o_WEBSERVICE->call('envio_sms', $m_PARAMS_WEBSERVICE);
 
   //Se evalua si hubo errores
   if($o_WEBSERVICE->fault)
@@ -123,27 +125,27 @@ function pyxter_solicitar_envio($e_TELEFONO, $e_SMS)
 function pyxter_consultar_envio($e_TRANSACCION)
 {
   //URL asignado por el proveedor
-  $e_URL = '?';
+  $e_URL = 'https://ext2.smsexpert.mx:12547/index.php?ACTION=WEBSERVICE:LOAD_NUSOAP&NUSOAP=PYXTER_SMSEXPERT_EXT1_EXT:C5A.EXT.CONTROL.DOCUMENTO';
 
   //Instancia asignada por el proveedor
-  $e_INSTANCIA = '?';
+  $e_INSTANCIA = 'SMSEXPERT_EXT1';
 
   //Usuario de la entidad asignado por el proveedor
-  $e_ENTIDAD_USUARIO = '?';
+  $e_ENTIDAD_USUARIO = 'SR_SMS';
 
   //Contraseña de la entidad asignado por el proveedor
-  $e_ENTIDAD_CONTRASENA = '?';
+  $e_ENTIDAD_CONTRASENA = 'PXU4CB';
 
   //Numero de usuario asignado por el proveedor
-  $e_USUARIO_NUMERO = '?';
+  $e_USUARIO_NUMERO = '4771530172';
 
   //Nip del usuario asignado por el proveedor
-  $e_USUARIO_NIP = '?';
+  $e_USUARIO_NIP = '4275';
 
   //Timeout para el soap
   $e_TIMEOUT = 60;
 
-  $o_WEBSERVICE = new nusoap_client($e_URL, false, false, false, false, false, 0, $e_TIMEOUT);
+  $o_WEBSERVICE = new nusoap_client($e_URL, [false, false, false, false, false, 0, $e_TIMEOUT]);
 
   //Se preparan los parametros a enviar
   $m_PARAMS_WEBSERVICE = array
@@ -151,11 +153,11 @@ function pyxter_consultar_envio($e_TRANSACCION)
     'instancia' => $e_INSTANCIA,
     'entidad' => json_encode(array('USUARIO' => $e_ENTIDAD_USUARIO, 'CONTRASENA' => $e_ENTIDAD_CONTRASENA)),
     'usuario' => json_encode(array('TIPO_USUARIO' => 'PYXTER', 'NUMERO' => $e_USUARIO_NUMERO, 'NIP' => $e_USUARIO_NIP)),
-    'transaccion' => $e_TRANSACCION,
+    //'transaccion' => $e_TRANSACCION,
     'nodo' => $e_USUARIO_NUMERO
   );
 
-  $m_RETURN = $o_WEBSERVICE->call('consultar_envio', $m_PARAMS_WEBSERVICE);
+  $m_RETURN = $o_WEBSERVICE->call('consulta_sms', $m_PARAMS_WEBSERVICE);
 
   return $m_RETURN;
 }
