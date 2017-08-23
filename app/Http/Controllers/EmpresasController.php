@@ -33,19 +33,19 @@ class EmpresasController extends Controller
 
     public function index()
     {
-        $tlf = '4771530172';
+        /*$tlf = '4771530172';
         $msj = "Buenas tardes mensaje de prueba de envios
                 aplicacion reservaciones hora: 16:00";
         $enviarSms = enviarSms($tlf, $msj);
-        dd($enviarSms);
-        /*
+        dd($enviarSms);*/
+
         $empresas = $this->empresas->index();
         $empresas->each(function ($empresas){
           $empresas->user;
         });
 
         return view('empresas.index')
-            ->with('empresas', $empresas);*/
+            ->with('empresas', $empresas);
     }
 
     /**

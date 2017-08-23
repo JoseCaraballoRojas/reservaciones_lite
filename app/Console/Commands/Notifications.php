@@ -43,6 +43,11 @@ class Notifications extends Command
      */
     public function handle()
     {
+        /*$tlf = '4771530172';
+        $msj = "Buenas tardes mensaje de prueba de envios
+                aplicacion reservaciones hora: 16:00";
+        $enviarSms = enviarSms($tlf, $msj);
+        dd($enviarSms);*/
         //$enviarMensaje = enviarSms();
         //$agendas = $this->agendas->getAgendaByNotificationsSms();
         //\Log::info('Log de prueba fecha: '. \Carbon\Carbon::now());

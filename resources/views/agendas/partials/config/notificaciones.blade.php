@@ -26,7 +26,7 @@
         </div>
         <br>
 
-        <div class="row">
+      {{--  <div class="row">
           <div class="col s12 m12 l12">
             <label for="time_to_send_emails">
                 <h6>@lang('app.time_to_send_emails')
@@ -39,8 +39,8 @@
                    name="time_to_send_emails"
                    value="{{ $agenda ? $agenda->time_to_send_emails : '3' }}">
           </div>
-        </div>
-
+        </div>--}}
+        <br>
         <div class="row">
           <div class="col s12 m12 l12">
             <label for="notifications_sms">
@@ -72,11 +72,13 @@
                         data-placement="top"
                         title="@lang('app.time_to_send_sms_description')"></span></h6>
             </label>
-            <input type="text" class="col s12 m2 l2"
+            <input type="text" class="col s12 m3 l3 timepicker"
                    name="time_to_send_sms"
-                   value="{{ $agenda ? $agenda->time_to_send_sms : '24' }}">
+                   value="{{ $agenda ? $agenda->time_to_send_sms :  '' }}"
+                   id="timepicker" >
           </div>
         </div>
+
 
         <div class="row">
           <div class="col s12 m12 l12">

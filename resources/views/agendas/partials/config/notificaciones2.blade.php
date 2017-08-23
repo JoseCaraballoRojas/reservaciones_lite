@@ -3,7 +3,6 @@
     <div class="card-content">
       {!! Form::open(['route' => ['agendas.configUpdate', $agenda], 'method' => 'PUT' ]) !!}
         <input type="hidden" name="id" value="{{ $agenda->id }}">
-
         <div class="row">
           <div class="input-field col s12">
             <textarea id="textarea2" class="materialize-textarea" length="160"
@@ -12,26 +11,6 @@
             <label for="textarea1">Contenido del sms informativo</label>
           </div>
         </div>
-        {{--
-        <div class="row">
-          <div class="col s12 m12 l12">
-            <label for="message_sms">
-                <h6>@lang('app.message_sms')
-                  <span class="fa fa-question-circle"
-                        data-toggle="tooltip"
-                        data-placement="top"
-                        title="@lang('app.message_sms_description')"></span></h6>
-            </label>
-            <input type="text" class="col s12 m2 l2"
-                   name="message_sms"
-                   value="{{ $agenda ? $agenda->message_sms : '' }}">
-
-          </div>
-        </div>--}}
-
-
-
-
         <br>
         <div class="row">
           <div class="col s12 m12 l12">
