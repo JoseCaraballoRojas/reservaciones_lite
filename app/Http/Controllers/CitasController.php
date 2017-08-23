@@ -81,20 +81,55 @@ class CitasController extends Controller
      */
 
      public function store(Request $request)
-     {
+ {
+   $cliente_id = Auth::user()->id;
+   $today = Carbon::now();
+   $todaymin = $today->format('Y-m-d 00:00:00');
+   $todaymax = $today->format('Y-m-d 23:59:59');
+   $appointment_date = $request->appointment_date;
+   $maxMonth = settings('max_months_future_to_schedule');
+   //dd($appointment_date);
 
-       $this->citas->create($request->all());
+   $cantidadPermitida = settings('appointments_customer_per_day');
+   $cantidad = $this->citas->countAppointmentByClientID($cliente_id, $todaymin, $todaymax);
 
-       if (Auth::user()->roles->first()->name == 'Client') {
-         return redirect()->route('citas.indexCliente')
-             ->withSuccess('Cita creada con exito');
-       }
-       if (Auth::user()->roles->first()->name == 'User') {
-         return redirect()->route('agendas.agendasResponsable')
-             ->withSuccess('Cita creada con exito');
-       }
+   if (Auth::user()->roles->first()->name == 'Client')
+   {
+         $fechaTope = Carbon::now();
+         $fechaTope = $fechaTope->addMonth($maxMonth);
+         $fechaTope = $fechaTope->format('Y-m-d');
 
-     }
+
+         if ($request->appointment_date > $fechaTope)
+         {
+            return redirect()->route('citas.indexCliente')
+                  ->withSuccess('Cita no registrada su fecha excede el maximo de fechas futuras configuradas');
+         }
+         else
+         {
+             if ($cantidad < $cantidadPermitida)
+             {
+                 $this->citas->create($request->all());
+                 return redirect()->route('citas.indexCliente')
+                        ->withSuccess('Cita creada con exito');
+             }
+             else
+             {
+                 return redirect()->route('citas.indexCliente')
+                        ->withSuccess('Cita no registrada ha alcansado el maximo diario');
+             }
+
+         }
+
+
+   }
+   if (Auth::user()->roles->first()->name == 'User')
+   {
+     return redirect()->route('agendas.agendasResponsable')
+         ->withSuccess('Cita creada con exito');
+   }
+
+ }
 
      /**
       * Display the specified resource.

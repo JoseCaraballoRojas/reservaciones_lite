@@ -263,7 +263,7 @@ Route::post('settings/general', [
     'middleware' => 'permission:settings.general'
 ]);
 
-//agg by develop jose caraballo for senttings reservaciones
+
 Route::get('settings/rerservaciones', [
     'as' => 'settings.generalRerservaciones',
     'uses' => 'SettingsController@generalRerservaciones',
@@ -276,7 +276,12 @@ Route::post('settings/rerservacionesUpdate', [
     'middleware' => 'permission:settings.general'
 ]);
 
-//
+Route::get('settings/registro', [
+    'as' => 'settings.registro',
+    'uses' => 'SettingsController@registro',
+    'middleware' => 'permission:settings.general'
+]);
+
 
 Route::get('settings/auth', [
     'as' => 'settings.auth',

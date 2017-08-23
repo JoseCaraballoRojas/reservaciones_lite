@@ -24,7 +24,7 @@ class CitaRepository
   {
       return Cita::find($id);
   }
-  
+
   public function getAppointmentsByID($id)
   {
     return Cita::where('cliente_id', '=',$id)
@@ -62,5 +62,14 @@ class CitaRepository
       return $this->find($id)->update($data);
   }
 
-  
+  public function countAppointmentByClientID($id,$todaymin, $todaymax)
+    {
+      return $cantidad = DB::table('appointments')
+                       ->select(DB::raw('count(*) as cantidad' ))
+                       ->where('cliente_id', '=', $id)
+                       ->whereBetween('created_at', [$todaymin, $todaymax])
+                       ->get();
+
+    }
+
 }

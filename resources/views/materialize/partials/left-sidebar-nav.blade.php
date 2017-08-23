@@ -179,6 +179,12 @@
                             @lang('app.general_reservaciones')
                           </a>
                         </li>
+                        <li>
+                          <a href="{{ route('settings.registro') }}"
+                            class="{{ Request::is('settings/registro') ? 'active' : ''  }}">
+                            @lang('app.registro')
+                          </a>
+                        </li>
                         @endpermission
                         @permission('settings.auth')
                         <li>

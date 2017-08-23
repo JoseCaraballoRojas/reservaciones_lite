@@ -120,6 +120,16 @@ class SettingsController extends Controller
     {
         return view('settings.notifications');
     }
+
+    /**
+     * Display notification settings page.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function registro()
+    {
+        return view('settings.registro');
+    }
     
 
     /**
@@ -129,8 +139,8 @@ class SettingsController extends Controller
      */
     public function generalRerservaciones()
     {
-        //function by time zone list 
-    
+        //function by time zone list
+
     /////////// INIT  FUNCTION //////////////////////
     function timezone_list() {
         static $timezones = null;
